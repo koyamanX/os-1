@@ -2,6 +2,8 @@
 
 __attribute__ ((aligned (16))) char stack[4096];
 
+extern char *_end;
+
 struct {
 	u64 tmp0;
 	u64 tmp1;
@@ -105,15 +107,74 @@ int uart_puts(char *str) {
 #define PTE_A		(1<<6)
 #define PTE_D		(1<<7)
 
+#define PAGE_OFFSET	12
+#define PAGE_SIZE	(1<<PAGE_OFFSET)
+#define ROUNDUP(x) 		((((u64)(x)) + PAGE_SIZE-1) & (~(PAGE_SIZE-1)))
+#define ROUNDDOWN(x)	(((u64)(x)) & (~(PAGE_SIZE-1)))
 
+#define PA2PTE(pa)		(((u64)(pa) >> 12) << 10)
+#define PTE2PA(pte)		(((u64)(pte) >> 10) << 12)
+#define PTE_FLAGS(pte)	((pte) & 0x3ff)
+
+#define VAIDX_MASK		0x1ff
+#define VA_LEVEL(level) (9*(level))
+#define VA2IDX_SHIFT(level) (PAGE_OFFSET + (VA_LEVEL(level)))
+#define VA2IDX(va, level) ((((u64)(va)) >> VA2IDX_SHIFT(level)) & VAIDX_MASK)
+
+// 128MB
+#define PHYEND	((u64 *) 0x88000000)
+
+struct page {
+	struct page *next;
+};
+struct kmem {
+	struct page *freelist;
+	// TODO: lock
+} kmem;
+
+void *memset(void *s, int c, u64 sz) {
+	char *p = (char *)s;
+
+	for(u64 i = 0; i < sz; i++) {
+		p[i] = c;
+	}
+	return s;
+}
+
+void kfree(void *pa) {
+	struct page *pz;
+	
+	memset(pa, 0xff, PAGE_SIZE);
+	pz = (struct page *)pa;
+	pz->next = kmem.freelist;
+	kmem.freelist = pz;
+}
+void kfreerange(void *pa_start, void *pa_end) {
+	for(char *p = (char *)ROUNDUP(pa_start); p < (char *)pa_end; p+=PAGE_SIZE) {
+		kfree(p);
+	}
+}
+void *kalloc(void) {
+	struct page *pz;
+
+	pz = kmem.freelist;
+	kmem.freelist = pz->next;
+
+	return (void*)pz;
+}
+
+void kmeminit(void) {
+	kfreerange(&_end, PHYEND);
+}
 
 void kvminit(void) {
-	
+	kmeminit();	
 }
 
 void kmain(void) {
 	uart_init();
 	uart_puts("hello,world\n");
+	kvminit();
 
 	while(1) {
 		asm volatile("nop");

@@ -106,7 +106,7 @@ kernelvec:
 	sd x30, 232(sp)
 	sd x31, 240(sp)
 
-	#call kerneltrap
+	call kerneltrap
 
 	ld x1, 0(sp)
 	ld x2, 8(sp)

@@ -80,11 +80,19 @@ static inline u64 r_sscratch(void) {
 	asm volatile("csrr %0, sscratch" : "=r"(v));
 	return v;
 }
+static inline u64 r_scause(void) {
+	u64 v;
+	asm volatile("csrr %0, scause" : "=r"(v));
+	return v;
+}
 static inline void w_sscratch(u64 v) {
 	asm volatile("csrw sscratch, %0" : : "r"(v));
 }
 static inline void w_stvec(u64 v) {
 	asm volatile("csrw stvec, %0" : : "r"(v));
+}
+static inline void sfence_vma(void) {
+	asm volatile("sfence.vma");
 }
 
 #endif

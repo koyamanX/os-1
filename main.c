@@ -1,8 +1,11 @@
 #include "riscv.h"
 
+#define NULL ((void *)0)
+
 __attribute__ ((aligned (16))) char stack[4096];
 
 extern char *_end;
+extern char *_etext;
 
 struct {
 	u64 tmp0;
@@ -28,7 +31,7 @@ void kinit(void) {
 
 	w_satp(0);
 
-	//init_timer();
+//	init_timer();
 	w_sie(SIE_SEIE | SIE_STIE | SIE_SSIE);
 
 	w_mepc((u64)((u64 *)&kmain));
@@ -124,6 +127,9 @@ int uart_puts(char *str) {
 // 128MB
 #define PHYEND	((u64 *) 0x88000000)
 
+typedef u64 * pagetable_t;
+typedef u64 pte_t;
+
 struct page {
 	struct page *next;
 };
@@ -167,19 +173,111 @@ void kmeminit(void) {
 	kfreerange(&_end, PHYEND);
 }
 
-void kvminit(void) {
+pte_t *kvmalloc(pagetable_t pgtbl, u64 va) {
+	pte_t *pte;
+
+	for(int level = 2; level >  0; level--) {
+		pte = &pgtbl[VA2IDX(va, level)];
+
+		if(*pte & PTE_V) {
+			pgtbl = (pagetable_t)PTE2PA(*pte);
+		} else {
+			pgtbl = (pagetable_t)kalloc();
+			memset(pgtbl, 0, PAGE_SIZE);
+			*pte = PA2PTE(pgtbl) | PTE_V;
+		}
+	}
+	return &pgtbl[VA2IDX(va, 0)];
+}
+
+pte_t *kvmwalk(pagetable_t pgtbl, u64 va) {
+	pte_t *pte;
+
+	for(int level = 2; level >  0; level--) {
+		pte = &pgtbl[VA2IDX(va, level)];	
+
+		if(*pte & PTE_V) {
+			pgtbl = pte;
+		}
+	}
+	return &pgtbl[VA2IDX(va, 0)];
+}
+
+void kvmmap(pagetable_t pgtbl, u64 va, u64 pa, u64 sz, u64 perm) {
+	pte_t *pte;
+
+	for(u64 i = ROUNDDOWN(va); i < ROUNDDOWN(va+sz); i+=PAGE_SIZE, pa+=PAGE_SIZE) {
+		pte = kvmalloc(pgtbl, i);
+
+		*pte = PA2PTE(pa) | perm;
+	}
+}
+
+pagetable_t kvminit(void) {
+	pagetable_t kpgtbl;
+
 	kmeminit();	
+	kpgtbl = kalloc();
+	memset(kpgtbl, 0, PAGE_SIZE);
+	kvmmap(kpgtbl, 0x80000000, 0x80000000, (u64)PHYEND-0x80000000, PTE_R|PTE_X|PTE_V|PTE_W|PTE_A|PTE_D);
+	kvmmap(kpgtbl, UART_BASE, UART_BASE, PAGE_SIZE, PTE_W|PTE_R|PTE_V|PTE_A|PTE_D);
+
+	return kpgtbl;
+}
+
+#define SV39 (8UL << 60)
+#define SATP(pgtbl) (SV39 | ((u64)pgtbl) >> 12)
+
+void kvmstart(pagetable_t kpgtbl) {
+	sfence_vma();
+	w_satp(SATP(kpgtbl));
+	sfence_vma();
 }
 
 void kmain(void) {
+	pagetable_t kpgtbl;
+
 	uart_init();
 	uart_puts("hello,world\n");
-	kvminit();
+	kpgtbl = kvminit();
+	kvmstart(kpgtbl);
+	uart_puts("hello,world2\n");
 
 	while(1) {
 		asm volatile("nop");
 	}
 }
+
+#define INSTRUCTION_PAGE_FAULT 12
+#define LOAD_PAGE_FAULT 13
+#define STORE_AMO_PAGE_FAULT 15
+#define LOAD_ACCESS_FAULT 5
+
 void kerneltrap(void) {
+	u64 scause = r_scause();
+	
+	switch(scause) {
+		case LOAD_PAGE_FAULT: {
+			uart_puts("load page fault\n");
+			break;
+		}
+		case STORE_AMO_PAGE_FAULT: {
+			uart_puts("store/amo page fault\n");
+			break;
+		}
+		case INSTRUCTION_PAGE_FAULT: {
+			uart_puts("instruction page fault\n");
+			break;
+		}
+		case LOAD_ACCESS_FAULT: {
+			uart_puts("load access fault\n");
+			break;
+		}
+		default: {
+			uart_puts("fault\n");
+			break;
+		}
+	}
+
 	return ;
 }

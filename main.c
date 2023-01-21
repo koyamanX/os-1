@@ -1,4 +1,6 @@
 #include "riscv.h"
+#include "proc.h"
+#include <stdarg.h>
 
 #define NULL ((void *)0)
 
@@ -20,6 +22,7 @@ void kmain(void);
 void init_timer(void);
 extern void timervec(void);
 extern char kernelvec;
+int printk(const char *format, ...);
 
 void kinit(void) {
 	u64 mstatus;
@@ -126,6 +129,8 @@ int uart_puts(char *str) {
 
 // 128MB
 #define PHYEND	((u64 *) 0x88000000)
+#define TRAPFRAME	(TRAPFRAME-PAGE_SIZE)
+#define TRAMPOLINE	((2<<(39-1))-PAGE_SIZE)
 
 typedef u64 * pagetable_t;
 typedef u64 pte_t;
@@ -194,10 +199,10 @@ pte_t *kvmwalk(pagetable_t pgtbl, u64 va) {
 	pte_t *pte;
 
 	for(int level = 2; level >  0; level--) {
-		pte = &pgtbl[VA2IDX(va, level)];	
+		pte = &pgtbl[VA2IDX(va, level)];
 
 		if(*pte & PTE_V) {
-			pgtbl = pte;
+			pgtbl = (pagetable_t)PTE2PA(*pte);
 		}
 	}
 	return &pgtbl[VA2IDX(va, 0)];
@@ -213,13 +218,25 @@ void kvmmap(pagetable_t pgtbl, u64 va, u64 pa, u64 sz, u64 perm) {
 	}
 }
 
+void kvmdump(pagetable_t pgtbl, u64 va) {
+	pte_t *pte;
+
+	pte = kvmwalk(pgtbl, va);
+	if(*pte == 0) {
+		printk("%x: not mapped\n", va);
+		return ;
+	}
+	printk("%x: %p, attrs:%x\n", va, PTE2PA(*pte), PTE_FLAGS(*pte));
+}
+
 pagetable_t kvminit(void) {
 	pagetable_t kpgtbl;
 
 	kmeminit();	
 	kpgtbl = kalloc();
 	memset(kpgtbl, 0, PAGE_SIZE);
-	kvmmap(kpgtbl, 0x80000000, 0x80000000, (u64)PHYEND-0x80000000, PTE_R|PTE_X|PTE_V|PTE_W|PTE_A|PTE_D);
+	kvmmap(kpgtbl, 0x80000000, 0x80000000, (u64)&_etext-0x80000000, PTE_R|PTE_X|PTE_V|PTE_W|PTE_A|PTE_D);
+	kvmmap(kpgtbl, (u64)&_etext, (u64)&_etext, (u64)PHYEND-(u64)&_etext, PTE_R|PTE_X|PTE_V|PTE_W|PTE_A|PTE_D);
 	kvmmap(kpgtbl, UART_BASE, UART_BASE, PAGE_SIZE, PTE_W|PTE_R|PTE_V|PTE_A|PTE_D);
 
 	return kpgtbl;
@@ -234,14 +251,106 @@ void kvmstart(pagetable_t kpgtbl) {
 	sfence_vma();
 }
 
+struct proc procs[NPROCS];
+u64 mpid = 0;
+
+void initproc(void) {
+	for(int i = 0; i < NPROCS; i++) {
+		procs[i].stat = UNUSED;
+	}
+}
+
+char *strcpy(char *dest, const char *src) {
+	char *p = dest;
+
+	while(*src) {
+		*dest++ = *src++;
+	}
+	return p;
+}
+
+pagetable_t uvminit(void) {
+	pagetable_t upgtbl;
+
+	upgtbl = kalloc();
+	memset(upgtbl, 0, PAGE_SIZE);
+
+	return upgtbl;
+}
+
+void create_init(void) {
+	procs[mpid].pid = mpid;
+	procs[mpid].stat = RUNNABLE;
+	strcpy(procs[mpid].name, "init");
+	memset(&procs[mpid].context, 0x0, 64*32);
+	uvminit();
+}
+
+char *ulltoa(u64 n, char *buffer, int radix) {
+	char *p;
+	int c = 0;
+
+	p = buffer;
+	while(n > 0) {
+		*buffer = "0123456789abcdef"[(n % radix)];
+		buffer++;
+		n = n / radix;
+		c++;
+	}
+	*buffer = '\0';
+	c--;
+	for(int i = 0, j = c; i <= c/2; i++, j--) {
+		int x;
+		x = p[i];
+		p[i] = p[j];
+		p[j] = x;
+	}
+	return p;
+}
+
+int printk(const char *format, ...) {
+	va_list ap;
+	const char *bp;
+	char buf[256];
+
+	va_start(ap, format);
+
+	bp = format;
+	while(*bp) {
+		if(*bp == '%') {
+			bp++;
+			switch(*bp) {
+				case 's':
+					uart_puts(va_arg(ap, char*));
+					bp++;
+					break;
+				case 'x':
+			    case 'p':
+					ulltoa(va_arg(ap, u64), buf, 16);
+					uart_puts(buf);
+					bp++;
+					break;
+			}
+		} else {
+			uart_putchar(*bp);
+			bp++;
+		}
+	}
+
+	va_end(ap);
+	return 0;
+}
+
 void kmain(void) {
 	pagetable_t kpgtbl;
 
 	uart_init();
-	uart_puts("hello,world\n");
+	printk("kernel starts\n");
 	kpgtbl = kvminit();
 	kvmstart(kpgtbl);
-	uart_puts("hello,world2\n");
+	printk("enable paging\n");
+	initproc();
+	create_init();
 
 	while(1) {
 		asm volatile("nop");

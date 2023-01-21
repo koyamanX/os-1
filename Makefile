@@ -7,7 +7,7 @@ OBJDUMP=$(PREFIX)objdump
 
 CFLAGS  = -Wall -Werror -O0 -ggdb -gdwarf-2
 CFLAGS += -march=rv64g
-CFLAGS += -nostdinc -ffreestanding -fno-common -nostdlib 
+CFLAGS += -ffreestanding -fno-common -nostdlib 
 CFLAGS += -fno-omit-frame-pointer -mno-relax -mcmodel=medany -fno-stack-protector 
 CFLAGS += -fno-pie -no-pie 
 #CFLAGS +=  -no-pie 

@@ -59,7 +59,7 @@ timervec:
 	# mtimecmp + interval
 	add a1, a1, a3
 	# update mtimecmp
-	sd a1, 0x00(a0)
+	sd a1, 0x00(a2)
 
 	li a1, 0x02
 	csrw sip, a1
@@ -144,4 +144,8 @@ kernelvec:
 
 	sret
 
+.globl trampoline
+trampoline:
+	csrrw a0, sscratch, a0
+	
 

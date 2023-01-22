@@ -1,6 +1,8 @@
 #ifndef PROC_H
 #define PROC_H
 
+#include "riscv.h"
+
 typedef struct {
 	u64 ra;
 	u64 sp;
@@ -11,6 +13,7 @@ typedef struct {
 	u64 t2;
 	u64 s0;
 	u64 s1;
+	u64 a0;
 	u64 a1;
 	u64 a2;
 	u64 a3;
@@ -32,6 +35,8 @@ typedef struct {
 	u64 t4;
 	u64 t5;
 	u64 t6;
+	u64 sepc;
+	u64 satp;
 } trapframe_t;
 
 typedef struct {
@@ -57,6 +62,7 @@ struct proc {
 	u64 pid;
 	context_t context;
 	char name[16];
+	pagetable_t pgtbl;
 };
 #define UNUSED 0
 #define RUNNING 1

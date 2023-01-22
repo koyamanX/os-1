@@ -2,12 +2,11 @@
 #include "proc.h"
 #include <stdarg.h>
 
-#define NULL ((void *)0)
-
-__attribute__ ((aligned (16))) char stack[4096];
+__attribute__ ((aligned (16))) char stack[PAGE_SIZE*4];
 
 extern char *_end;
 extern char *_etext;
+extern void trampoline(void);
 
 struct {
 	u64 tmp0;
@@ -57,24 +56,6 @@ void init_timer(void) {
 	w_mie(r_mie() | MIE_MTIE);
 }
 
-#define UART_BASE	0x10000000
-
-#define UART_RBR	((volatile u8*)UART_BASE+0x0)
-#define UART_THR	((volatile u8*)UART_BASE+0x0)
-#define UART_DLL	((volatile u8*)UART_BASE+0x0)
-#define UART_DLM	((volatile u8*)UART_BASE+0x1)
-#define UART_IER	((volatile u8*)UART_BASE+0x1)
-#define UART_IIR	((volatile u8*)UART_BASE+0x2)
-#define UART_FCR	((volatile u8*)UART_BASE+0x2)
-#define UART_LCR	((volatile u8*)UART_BASE+0x3)
-#define UART_MCR	((volatile u8*)UART_BASE+0x4)
-#define UART_LSR	((volatile u8*)UART_BASE+0x5)
-#define UART_MSR	((volatile u8*)UART_BASE+0x6)
-#define UART_SCR	((volatile u8*)UART_BASE+0x7)
-
-#define UART_LCR_DLAB	(1<<7)
-#define UART_LCR_THRE   (1<<5)
-
 void uart_init(void) {
 	// Disable interrupt
 	*UART_IER = 0;
@@ -104,45 +85,6 @@ int uart_puts(char *str) {
 	return 0;
 }
 
-#define PTE_V		(1<<0)
-#define PTE_R		(1<<1)
-#define PTE_W		(1<<2)
-#define PTE_X		(1<<3)
-#define PTE_U		(1<<4)
-#define PTE_G		(1<<5)
-#define PTE_A		(1<<6)
-#define PTE_D		(1<<7)
-
-#define PAGE_OFFSET	12
-#define PAGE_SIZE	(1<<PAGE_OFFSET)
-#define ROUNDUP(x) 		((((u64)(x)) + PAGE_SIZE-1) & (~(PAGE_SIZE-1)))
-#define ROUNDDOWN(x)	(((u64)(x)) & (~(PAGE_SIZE-1)))
-
-#define PA2PTE(pa)		(((u64)(pa) >> 12) << 10)
-#define PTE2PA(pte)		(((u64)(pte) >> 10) << 12)
-#define PTE_FLAGS(pte)	((pte) & 0x3ff)
-
-#define VAIDX_MASK		0x1ff
-#define VA_LEVEL(level) (9*(level))
-#define VA2IDX_SHIFT(level) (PAGE_OFFSET + (VA_LEVEL(level)))
-#define VA2IDX(va, level) ((((u64)(va)) >> VA2IDX_SHIFT(level)) & VAIDX_MASK)
-
-// 128MB
-#define PHYEND	((u64 *) 0x88000000)
-#define TRAPFRAME	(TRAPFRAME-PAGE_SIZE)
-#define TRAMPOLINE	((2<<(39-1))-PAGE_SIZE)
-
-typedef u64 * pagetable_t;
-typedef u64 pte_t;
-
-struct page {
-	struct page *next;
-};
-struct kmem {
-	struct page *freelist;
-	// TODO: lock
-} kmem;
-
 void *memset(void *s, int c, u64 sz) {
 	char *p = (char *)s;
 
@@ -151,6 +93,8 @@ void *memset(void *s, int c, u64 sz) {
 	}
 	return s;
 }
+
+struct kmem kmem;
 
 void kfree(void *pa) {
 	struct page *pz;
@@ -235,15 +179,13 @@ pagetable_t kvminit(void) {
 	kmeminit();	
 	kpgtbl = kalloc();
 	memset(kpgtbl, 0, PAGE_SIZE);
-	kvmmap(kpgtbl, 0x80000000, 0x80000000, (u64)&_etext-0x80000000, PTE_R|PTE_X|PTE_V|PTE_W|PTE_A|PTE_D);
-	kvmmap(kpgtbl, (u64)&_etext, (u64)&_etext, (u64)PHYEND-(u64)&_etext, PTE_R|PTE_X|PTE_V|PTE_W|PTE_A|PTE_D);
+	kvmmap(kpgtbl, (u64)TRAMPOLINE, (u64)trampoline, PAGE_SIZE, PTE_R|PTE_X|PTE_V);
+	kvmmap(kpgtbl, 0x80000000, 0x80000000, (u64)&_etext-0x80000000, PTE_R|PTE_X|PTE_V);
+	kvmmap(kpgtbl, (u64)&_etext, (u64)&_etext, (u64)PHYEND-(u64)&_etext, PTE_R|PTE_V|PTE_W|PTE_A|PTE_D);
 	kvmmap(kpgtbl, UART_BASE, UART_BASE, PAGE_SIZE, PTE_W|PTE_R|PTE_V|PTE_A|PTE_D);
 
 	return kpgtbl;
 }
-
-#define SV39 (8UL << 60)
-#define SATP(pgtbl) (SV39 | ((u64)pgtbl) >> 12)
 
 void kvmstart(pagetable_t kpgtbl) {
 	sfence_vma();
@@ -252,7 +194,7 @@ void kvmstart(pagetable_t kpgtbl) {
 }
 
 struct proc procs[NPROCS];
-u64 mpid = 0;
+u64 mpid = 1;
 
 void initproc(void) {
 	for(int i = 0; i < NPROCS; i++) {
@@ -269,11 +211,20 @@ char *strcpy(char *dest, const char *src) {
 	return p;
 }
 
+void init(void) {
+	while(1) {
+		asm volatile("nop");
+	}
+}
+
 pagetable_t uvminit(void) {
 	pagetable_t upgtbl;
 
 	upgtbl = kalloc();
 	memset(upgtbl, 0, PAGE_SIZE);
+	kvmmap(upgtbl, (u64)TRAMPOLINE, (u64)trampoline, PAGE_SIZE, PTE_R|PTE_X|PTE_V);
+	kvmmap(upgtbl, (u64)TRAPFRAME, (u64)kalloc(), PAGE_SIZE, PTE_R|PTE_W|PTE_V);
+	kvmmap(upgtbl, (u64)0x0, (u64)init, PAGE_SIZE, PTE_R|PTE_W|PTE_X|PTE_V);
 
 	return upgtbl;
 }
@@ -283,7 +234,11 @@ void create_init(void) {
 	procs[mpid].stat = RUNNABLE;
 	strcpy(procs[mpid].name, "init");
 	memset(&procs[mpid].context, 0x0, 64*32);
-	uvminit();
+	procs[mpid].pgtbl = uvminit();
+	pte_t *pte = kvmwalk(procs[mpid].pgtbl, TRAPFRAME);
+	trapframe_t *tf = (trapframe_t *)PTE2PA(*pte);
+	memset(tf, 0, sizeof(trapframe_t));
+	tf->satp = SATP(procs[mpid].pgtbl);
 }
 
 char *ulltoa(u64 n, char *buffer, int radix) {
@@ -291,6 +246,11 @@ char *ulltoa(u64 n, char *buffer, int radix) {
 	int c = 0;
 
 	p = buffer;
+	if(n == 0) {
+		buffer[0] = '0';
+		buffer[1] = '\0';
+		return p;
+	}
 	while(n > 0) {
 		*buffer = "0123456789abcdef"[(n % radix)];
 		buffer++;
@@ -356,11 +316,6 @@ void kmain(void) {
 		asm volatile("nop");
 	}
 }
-
-#define INSTRUCTION_PAGE_FAULT 12
-#define LOAD_PAGE_FAULT 13
-#define STORE_AMO_PAGE_FAULT 15
-#define LOAD_ACCESS_FAULT 5
 
 void kerneltrap(void) {
 	u64 scause = r_scause();

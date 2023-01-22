@@ -27,6 +27,71 @@ typedef signed char s8;
 #define CLINT_MTIMECMP	(CLINT_BASE+0x4000)
 #define CLINT_MTIME		(CLINT_BASE+0xBFF8)
 
+#define NULL ((void *)0)
+#define PAGE_OFFSET	12
+#define PAGE_SIZE	(1<<PAGE_OFFSET)
+#define ROUNDUP(x) 		((((u64)(x)) + PAGE_SIZE-1) & (~(PAGE_SIZE-1)))
+#define ROUNDDOWN(x)	(((u64)(x)) & (~(PAGE_SIZE-1)))
+
+#define PA2PTE(pa)		(((u64)(pa) >> 12) << 10)
+#define PTE2PA(pte)		(((u64)(pte) >> 10) << 12)
+#define PTE_FLAGS(pte)	((pte) & 0x3ff)
+
+#define VAIDX_MASK		0x1ff
+#define VA_LEVEL(level) (9*(level))
+#define VA2IDX_SHIFT(level) (PAGE_OFFSET + (VA_LEVEL(level)))
+#define VA2IDX(va, level) ((((u64)(va)) >> VA2IDX_SHIFT(level)) & VAIDX_MASK)
+
+// 128MB
+#define PHYEND	((u64 *) 0x88000000)
+#define TRAMPOLINE	(((u64)2<<(39-1))-PAGE_SIZE)
+#define TRAPFRAME	(TRAMPOLINE-PAGE_SIZE)
+
+#define UART_BASE	0x10000000
+#define UART_RBR	((volatile u8*)UART_BASE+0x0)
+#define UART_THR	((volatile u8*)UART_BASE+0x0)
+#define UART_DLL	((volatile u8*)UART_BASE+0x0)
+#define UART_DLM	((volatile u8*)UART_BASE+0x1)
+#define UART_IER	((volatile u8*)UART_BASE+0x1)
+#define UART_IIR	((volatile u8*)UART_BASE+0x2)
+#define UART_FCR	((volatile u8*)UART_BASE+0x2)
+#define UART_LCR	((volatile u8*)UART_BASE+0x3)
+#define UART_MCR	((volatile u8*)UART_BASE+0x4)
+#define UART_LSR	((volatile u8*)UART_BASE+0x5)
+#define UART_MSR	((volatile u8*)UART_BASE+0x6)
+#define UART_SCR	((volatile u8*)UART_BASE+0x7)
+
+#define UART_LCR_DLAB	(1<<7)
+#define UART_LCR_THRE   (1<<5)
+
+#define PTE_V		(1<<0)
+#define PTE_R		(1<<1)
+#define PTE_W		(1<<2)
+#define PTE_X		(1<<3)
+#define PTE_U		(1<<4)
+#define PTE_G		(1<<5)
+#define PTE_A		(1<<6)
+#define PTE_D		(1<<7)
+
+typedef u64 * pagetable_t;
+typedef u64 pte_t;
+
+struct page {
+	struct page *next;
+};
+struct kmem {
+	struct page *freelist;
+	// TODO: lock
+};
+
+#define SV39 (8UL << 60)
+#define SATP(pgtbl) (SV39 | ((u64)pgtbl) >> 12)
+
+#define INSTRUCTION_PAGE_FAULT 12
+#define LOAD_PAGE_FAULT 13
+#define STORE_AMO_PAGE_FAULT 15
+#define LOAD_ACCESS_FAULT 5
+
 static inline u64 r_mstatus(void) {
 	u64 v;
 	asm volatile("csrr %0, mstatus" : "=r"(v));

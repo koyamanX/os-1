@@ -14,10 +14,18 @@ CFLAGS += -fno-pie -no-pie
 
 LDFLAGS = -z max-page-size=4096
 
-kernel: start.S kernel.ldS main.c
+kernel: start.S kernel.ldS main.c vm.c uart.c string.c printk.c timer.c trap.c proc.c panic.c
 	$(CC) $(CFLAGS) -c start.S
 	$(CC) $(CFLAGS) -c main.c
-	$(LD) $(LDFLAGS) start.o main.o -o kernel -T kernel.ldS
+	$(CC) $(CFLAGS) -c uart.c
+	$(CC) $(CFLAGS) -c vm.c
+	$(CC) $(CFLAGS) -c string.c
+	$(CC) $(CFLAGS) -c printk.c
+	$(CC) $(CFLAGS) -c timer.c
+	$(CC) $(CFLAGS) -c trap.c
+	$(CC) $(CFLAGS) -c proc.c
+	$(CC) $(CFLAGS) -c panic.c
+	$(LD) $(LDFLAGS) vm.o panic.o proc.o start.o uart.o main.o string.o printk.o timer.o trap.o -o kernel -T kernel.ldS
 	$(OBJDUMP) -D kernel > kernel.dump
 
 QEMU=qemu-system-riscv64

@@ -60,13 +60,19 @@ typedef struct {
 struct proc {
 	u64 stat;	
 	u64 pid;
-	context_t context;
+	trapframe_t *tf;
 	char name[16];
 	pagetable_t pgtbl;
 };
 #define UNUSED 0
-#define RUNNING 1
-#define RUNNABLE 2
+#define USED	1
+#define RUNNING 2
+#define RUNNABLE 3
 
+void initproc(void);
+pagetable_t uvminit(void);
+void create_init(void);
+int newproc(void);
+void init(void);
 
 #endif

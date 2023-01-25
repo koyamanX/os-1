@@ -1,7 +1,6 @@
-.section .text
+.section .text.init
 .align 4
 .globl _start
-
 
 _start:
 	# clear bss
@@ -192,4 +191,5 @@ trampoline:
 
 	la sp, stack
 
-
+.globl userret
+userret:

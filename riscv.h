@@ -1,14 +1,6 @@
 #ifndef RISCV_H
 #define RISCV_H
-
-typedef unsigned long long u64;
-typedef long long int i64;
-typedef unsigned int u32;
-typedef int i32;
-typedef unsigned short u16;
-typedef short s16;
-typedef unsigned char u8;
-typedef signed char s8;
+#include "types.h"
 
 #define MSTATUS_MPP_MASK (0x3<<11)
 #define MSTATUS_MPP_M_MODE (0x3<<11)
@@ -46,23 +38,6 @@ typedef signed char s8;
 #define PHYEND	((u64 *) 0x88000000)
 #define TRAMPOLINE	(((u64)2<<(39-1))-PAGE_SIZE)
 #define TRAPFRAME	(TRAMPOLINE-PAGE_SIZE)
-
-#define UART_BASE	0x10000000
-#define UART_RBR	((volatile u8*)UART_BASE+0x0)
-#define UART_THR	((volatile u8*)UART_BASE+0x0)
-#define UART_DLL	((volatile u8*)UART_BASE+0x0)
-#define UART_DLM	((volatile u8*)UART_BASE+0x1)
-#define UART_IER	((volatile u8*)UART_BASE+0x1)
-#define UART_IIR	((volatile u8*)UART_BASE+0x2)
-#define UART_FCR	((volatile u8*)UART_BASE+0x2)
-#define UART_LCR	((volatile u8*)UART_BASE+0x3)
-#define UART_MCR	((volatile u8*)UART_BASE+0x4)
-#define UART_LSR	((volatile u8*)UART_BASE+0x5)
-#define UART_MSR	((volatile u8*)UART_BASE+0x6)
-#define UART_SCR	((volatile u8*)UART_BASE+0x7)
-
-#define UART_LCR_DLAB	(1<<7)
-#define UART_LCR_THRE   (1<<5)
 
 #define PTE_V		(1<<0)
 #define PTE_R		(1<<1)

@@ -7,8 +7,17 @@
 
 struct proc procs[NPROCS];
 u64 mpid = 1;
+struct cpu cpus[NCPUS];
+
+void initcpu(void) {
+	for(int i = 0; i < NCPUS; i++) {
+		cpus[i].rp = NULL;
+		memset(&cpus[i].ctx, 0, sizeof(context_t));
+	}
+}
 
 void initproc(void) {
+	mpid = 1;
 	for(int i = 0; i < NPROCS; i++) {
 		procs[i].stat = UNUSED;
 	}
@@ -20,40 +29,22 @@ void init(void) {
 	}
 }
 
-pagetable_t uvminit(void) {
-	pagetable_t upgtbl;
-
-	upgtbl = kalloc();
-	memset(upgtbl, 0, PAGE_SIZE);
-	kvmmap(upgtbl, (u64)TRAMPOLINE, (u64)trampoline, PAGE_SIZE, PTE_R|PTE_X|PTE_V);
-	kvmmap(upgtbl, (u64)TRAPFRAME, (u64)kalloc(), PAGE_SIZE, PTE_R|PTE_W|PTE_V);
-	kvmmap(upgtbl, (u64)0x0, (u64)init, PAGE_SIZE, PTE_R|PTE_W|PTE_X|PTE_V);
-
-	return upgtbl;
-}
-
-void create_init(void) {
-	procs[mpid].pid = mpid;
-	procs[mpid].stat = RUNNABLE;
-	strcpy(procs[mpid].name, "init");
-//	memset(&procs[mpid].context, 0x0, 64*32);
-	procs[mpid].pgtbl = uvminit();
-	pte_t *pte = kvmwalk(procs[mpid].pgtbl, TRAPFRAME);
-	trapframe_t *tf = (trapframe_t *)PTE2PA(*pte);
-	memset(tf, 0, sizeof(trapframe_t));
-	tf->satp = SATP(procs[mpid].pgtbl);
-}
-
 int newproc(void) {
-	/* Set newly created process
-	 * a0 <- pid
-	 * ra <- ra
-	 * SO, newly created process start executing
-	 * in kernel, after newproc call.
-	 * fork() will return to user mode, so kernel mode is ok
-	 */
+	struct proc *p;
 
-	return 0;
+	p = &procs[mpid];
+	p->stat = RUNNABLE;
+	p->pid = mpid;
+	p->tf = kalloc();
+	p->pgtbl = kalloc();
+	p->kstack = kalloc();
+	memset(p->tf, 0, sizeof(trapframe_t));
+	p->tf->ra = (u64)usertrapret;
+	p->tf->satp = SATP(p->pgtbl);	
+	kvmmap(p->pgtbl, TRAPFRAME, (u64)p->tf, PAGE_SIZE, PTE_V|PTE_W|PTE_R);
+	kvmmap(p->pgtbl, TRAMPOLINE, TRAMPOLINE, PAGE_SIZE, PTE_V|PTE_X|PTE_R);
+	
+	return mpid++;
 }
 
 

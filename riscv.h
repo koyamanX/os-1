@@ -7,6 +7,9 @@
 #define MSTATUS_MPP_S_MODE (0x1<<11)
 #define MSTATUS_MIE			(0x1<<3)
 
+#define SSTATUS_SPIE (0x1<<5)
+#define SSTATUS_SPP (0x1<<8)
+
 #define MIE_MEIE	(0x1<<11)
 #define MIE_MTIE	(0x1<<7)
 #define MIE_MSIE	(0x1<<3)
@@ -75,6 +78,9 @@ static inline u64 r_mstatus(void) {
 static inline void w_mstatus(u64 v) {
 	asm volatile("csrw mstatus, %0" : : "r"(v));
 }
+static inline void w_sepc(u64 v) {
+	asm volatile("csrw sepc, %0" : : "r"(v));
+}
 static inline u64 r_mie(void) {
 	u64 v;
 	asm volatile("csrr %0, mie" : "=r"(v));
@@ -125,6 +131,11 @@ static inline u64 r_scause(void) {
 	asm volatile("csrr %0, scause" : "=r"(v));
 	return v;
 }
+static inline u64 r_satp(void) {
+	u64 v;
+	asm volatile("csrr %0, satp" : "=r"(v));
+	return v;
+}
 static inline void w_sscratch(u64 v) {
 	asm volatile("csrw sscratch, %0" : : "r"(v));
 }
@@ -133,6 +144,11 @@ static inline void w_stvec(u64 v) {
 }
 static inline void sfence_vma(void) {
 	asm volatile("sfence.vma");
+}
+static inline u64 r_tp(void) {
+	u64 v;
+	asm volatile("mv %0, tp" : "=r"(v));
+	return v;
 }
 
 #endif

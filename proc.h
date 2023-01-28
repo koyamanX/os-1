@@ -37,6 +37,7 @@ typedef struct {
 	u64 t6;
 	u64 sepc;
 	u64 satp;
+	u64 ksp;
 } trapframe_t;
 
 typedef struct {
@@ -63,16 +64,26 @@ struct proc {
 	trapframe_t *tf;
 	char name[16];
 	pagetable_t pgtbl;
+	u8 *kstack;
 };
 #define UNUSED 0
 #define USED	1
 #define RUNNING 2
 #define RUNNABLE 3
 
+struct cpu {
+	struct proc *rp;
+	context_t ctx;
+};
+#define NCPUS 1
+extern struct cpu cpus[NCPUS];
+
 void initproc(void);
 pagetable_t uvminit(void);
 void create_init(void);
 int newproc(void);
 void init(void);
+extern void usertrapret(void);
+extern void userret(pagetable_t pgtbl);
 
 #endif

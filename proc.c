@@ -32,7 +32,10 @@ void init(void) {
 
 void userinit(void) {
 	u64 pid = newproc();
-	kvmmap(procs[pid].pgtbl, 0x0, (u64)init, PAGE_SIZE, PTE_V|PTE_W|PTE_R|PTE_X);
+	kvmmap(procs[pid].pgtbl, 0x0, (u64)init, PAGE_SIZE, PTE_V|PTE_W|PTE_R|PTE_X|PTE_U);
+	kvmdump(procs[pid].pgtbl, TRAPFRAME);
+	kvmdump(procs[pid].pgtbl, TRAMPOLINE);
+	kvmdump(procs[pid].pgtbl, 0x0);
 }
 
 int newproc(void) {
@@ -45,10 +48,12 @@ int newproc(void) {
 	p->pgtbl = kalloc();
 	p->kstack = kalloc();
 	memset(p->tf, 0, sizeof(trapframe_t));
-	p->tf->ra = (u64)usertrapret;
+	p->ctx.ra = (u64)usertrapret;
+	p->ctx.sp = (u64)(p->kstack+PAGE_SIZE);
 	p->tf->satp = SATP(p->pgtbl);	
-	kvmmap(p->pgtbl, TRAPFRAME, (u64)p->tf, PAGE_SIZE, PTE_V|PTE_W|PTE_R);
-	kvmmap(p->pgtbl, TRAMPOLINE, TRAMPOLINE, PAGE_SIZE, PTE_V|PTE_X|PTE_R);
+	p->tf->ksp = (u64)(p->kstack + PAGE_SIZE);
+	kvmmap(p->pgtbl, TRAPFRAME, (u64)p->tf, PAGE_SIZE, PTE_V|PTE_W|PTE_R|PTE_U);
+	kvmmap(p->pgtbl, TRAMPOLINE, (u64)trampoline, PAGE_SIZE, PTE_V|PTE_X|PTE_R|PTE_U);
 	
 	return mpid++;
 }

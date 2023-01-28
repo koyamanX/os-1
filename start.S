@@ -143,6 +143,7 @@ kernelvec:
 
 	sret
 
+.align 0xc
 .globl trampoline
 trampoline:
 	csrrw a0, sscratch, a0
@@ -193,16 +194,11 @@ trampoline:
 
 .globl userret
 userret:
-	ld t2, 256(a0)
 	sfence.vma
-	csrw satp, t2
+	csrw satp, a0
 	sfence.vma
 
-	csrrw a0, sscratch, a0
-	li a0, 0x7fffffc000
-
-	ld t1, 248(a0)
-	csrw sepc, t1
+	li a0, 0x7fffffe000
 
 	ld x1, 0(a0)
 	ld x2, 8(a0)
@@ -234,6 +230,7 @@ userret:
 	ld x29, 224(a0)
 	ld x30, 232(a0)
 	ld x31, 240(a0)
+	ld x10, 72(a0)
 
 	sret
 

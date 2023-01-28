@@ -7,6 +7,7 @@
 #include "printk.h"
 #include "os1.h"
 #include "timer.h"
+#include "sched.h"
 
 __attribute__ ((aligned (16))) char stack[PAGE_SIZE*4];
 
@@ -42,6 +43,7 @@ void kmain(void) {
 	initcpu();
 	initproc();
 	userinit();
+	scheduler();
 
 	while(1) {
 		asm volatile("nop");

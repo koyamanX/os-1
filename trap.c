@@ -2,6 +2,7 @@
 #include "os1.h"
 #include "uart.h"
 #include "proc.h"
+#include "printk.h"
 
 void usertrap(void) {
 	asm volatile("nop");
@@ -42,6 +43,7 @@ void kerneltrap(void) {
 		}
 #define SMODE_SOFTWARE_INTERRUPT 0x8000000000000001
 		case SMODE_SOFTWARE_INTERRUPT: {
+			uart_puts("software interrupt\n");
 			w_sip(0x0);
 			break;
 		}

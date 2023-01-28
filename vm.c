@@ -11,7 +11,7 @@ struct kmem kmem;
 void kfree(void *pa) {
 	struct page *pz;
 	
-	memset(pa, 0xff, PAGE_SIZE);
+	memset(pa, 0x00, PAGE_SIZE);
 	pz = (struct page *)pa;
 	pz->next = kmem.freelist;
 	kmem.freelist = pz;

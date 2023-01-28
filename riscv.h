@@ -29,7 +29,7 @@
 #define ROUNDDOWN(x)	(((u64)(x)) & (~(PAGE_SIZE-1)))
 
 #define PA2PTE(pa)		(((u64)(pa) >> 12) << 10)
-#define PTE2PA(pte)		(((u64)(pte) >> 10) << 12)
+#define PTE2PA(pte)		(((pte) >> 10) << 12)
 #define PTE_FLAGS(pte)	((pte) & 0x3ff)
 
 #define VAIDX_MASK		0x1ff
@@ -113,6 +113,11 @@ static inline void w_sie(u64 v) {
 static inline void w_sip(u64 v) {
 	asm volatile("csrw sip, %0" : : "r"(v));
 }
+static inline u64 r_sip(void) {
+	u64 v;
+	asm volatile("csrr %0, sip" : "=r"(v));
+	return v;
+}
 static inline u64 r_sstatus(void) {
 	u64 v;
 	asm volatile("csrr %0, sstatus" : "=r"(v));
@@ -131,6 +136,12 @@ static inline u64 r_scause(void) {
 	asm volatile("csrr %0, scause" : "=r"(v));
 	return v;
 }
+static inline u64 r_sepc(void) {
+	u64 v;
+	asm volatile("csrr %0, sepc" : "=r"(v));
+	return v;
+}
+
 static inline u64 r_satp(void) {
 	u64 v;
 	asm volatile("csrr %0, satp" : "=r"(v));

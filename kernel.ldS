@@ -8,6 +8,8 @@ SECTIONS {
 		*(.text.init)
 		*(.text .text.*)
 		. = ALIGN(0x1000);
+		*(.userproc0)
+		. = ALIGN(0x1000);
 		PROVIDE(_etext = .);
 	}
 

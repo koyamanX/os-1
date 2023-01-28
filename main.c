@@ -39,8 +39,9 @@ void kmain(void) {
 	kpgtbl = kvminit();
 	kvmstart(kpgtbl);
 	printk("enable paging\n");
+	initcpu();
 	initproc();
-	create_init();
+	userinit();
 
 	while(1) {
 		asm volatile("nop");

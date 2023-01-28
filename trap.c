@@ -40,6 +40,11 @@ void kerneltrap(void) {
 			uart_puts("load access fault\n");
 			break;
 		}
+#define SMODE_SOFTWARE_INTERRUPT 0x8000000000000001
+		case SMODE_SOFTWARE_INTERRUPT: {
+			w_sip(0x0);
+			break;
+		}
 		default: {
 			uart_puts("fault\n");
 			break;

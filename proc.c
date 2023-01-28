@@ -23,10 +23,16 @@ void initproc(void) {
 	}
 }
 
+__attribute__ ((section(".userproc0")))
 void init(void) {
 	while(1) {
 		asm volatile("nop");
 	}
+}
+
+void userinit(void) {
+	u64 pid = newproc();
+	kvmmap(procs[pid].pgtbl, 0x0, (u64)init, PAGE_SIZE, PTE_V|PTE_W|PTE_R|PTE_X);
 }
 
 int newproc(void) {

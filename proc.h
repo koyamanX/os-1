@@ -62,6 +62,7 @@ struct proc {
 	u64 stat;	
 	u64 pid;
 	trapframe_t *tf;
+	context_t ctx;
 	char name[16];
 	pagetable_t pgtbl;
 	u8 *kstack;
@@ -78,11 +79,13 @@ struct cpu {
 #define NCPUS 1
 extern struct cpu cpus[NCPUS];
 
+extern struct proc procs[NPROCS];
 void initproc(void);
+void initcpu(void);
 pagetable_t uvminit(void);
-void create_init(void);
 int newproc(void);
 void init(void);
+void userinit(void);
 extern void usertrapret(void);
 extern void userret(pagetable_t pgtbl);
 

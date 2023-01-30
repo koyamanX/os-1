@@ -87,6 +87,6 @@ int newproc(void);
 void init(void);
 void userinit(void);
 extern void usertrapret(void);
-extern void userret(pagetable_t pgtbl);
+extern void userret(u64 satp);
 
 #endif

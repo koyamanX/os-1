@@ -18,7 +18,7 @@ void usertrapret(void) {
     w_sstatus(((r_sstatus() & ~SSTATUS_SPP) | SSTATUS_SPIE));
 	w_sepc(p->tf->sepc);
 	
-	userret(p->pgtbl);
+	((void(*)(u64))(TRAMPOLINE + (((u64) userret) - ((u64) trampoline))))((u64)SATP(p->pgtbl));
 }
 
 void kerneltrap(void) {

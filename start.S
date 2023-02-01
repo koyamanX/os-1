@@ -198,7 +198,7 @@ userret:
 	csrw satp, a0
 	sfence.vma
 
-	li a0, 0x7fffffe000
+	li a0, 0x3fffffe000
 
 	ld x1, 0(a0)
 	ld x2, 8(a0)

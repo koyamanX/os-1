@@ -52,7 +52,7 @@ int newproc(void) {
 	p->ctx.sp = (u64)(p->kstack+PAGE_SIZE);
 	p->tf->satp = SATP(p->pgtbl);	
 	p->tf->ksp = (u64)(p->kstack + PAGE_SIZE);
-	kvmmap(p->pgtbl, TRAPFRAME, (u64)p->tf, PAGE_SIZE, PTE_V|PTE_W|PTE_R|PTE_U);
+	kvmmap(p->pgtbl, TRAPFRAME, (u64)p->tf, PAGE_SIZE, PTE_V|PTE_W|PTE_R);
 	kvmmap(p->pgtbl, TRAMPOLINE, (u64)trampoline, PAGE_SIZE, PTE_V|PTE_X|PTE_R);
 	
 	return mpid++;

@@ -26,15 +26,15 @@ void kerneltrap(void) {
 	
 	switch(scause) {
 		case LOAD_PAGE_FAULT: {
-			uart_puts("load page fault\n");
+			printk("Load page fault: epc:%x, tval:%x\n", r_sepc(), r_stval());
 			break;
 		}
 		case STORE_AMO_PAGE_FAULT: {
-			uart_puts("store/amo page fault\n");
+			printk("store/amo page fault: epc:%x, tval:%x\n", r_sepc(), r_stval());
 			break;
 		}
 		case INSTRUCTION_PAGE_FAULT: {
-			uart_puts("instruction page fault\n");
+			printk("instruction page fault: epc:%x, tval:%x\n", r_sepc(), r_stval());
 			break;
 		}
 		case LOAD_ACCESS_FAULT: {

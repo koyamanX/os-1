@@ -39,17 +39,17 @@
 
 // 128MB
 #define PHYEND	((u64 *) 0x88000000)
-#define TRAMPOLINE	(((u64)2<<(39-1))-PAGE_SIZE)
+#define TRAMPOLINE	0x3ffffff000
 #define TRAPFRAME	(TRAMPOLINE-PAGE_SIZE)
 
-#define PTE_V		(1<<0)
-#define PTE_R		(1<<1)
-#define PTE_W		(1<<2)
-#define PTE_X		(1<<3)
-#define PTE_U		(1<<4)
-#define PTE_G		(1<<5)
-#define PTE_A		(1<<6)
-#define PTE_D		(1<<7)
+#define PTE_V		(1L<<0)
+#define PTE_R		(1L<<1)
+#define PTE_W		(1L<<2)
+#define PTE_X		(1L<<3)
+#define PTE_U		(1L<<4)
+#define PTE_G		(1L<<5)
+#define PTE_A		(1L<<6)
+#define PTE_D		(1L<<7)
 
 typedef u64 * pagetable_t;
 typedef u64 pte_t;
@@ -147,6 +147,12 @@ static inline u64 r_satp(void) {
 	asm volatile("csrr %0, satp" : "=r"(v));
 	return v;
 }
+static inline u64 r_stval(void) {
+	u64 v;
+	asm volatile("csrr %0, stval" : "=r"(v));
+	return v;
+}
+
 static inline void w_sscratch(u64 v) {
 	asm volatile("csrw sscratch, %0" : : "r"(v));
 }

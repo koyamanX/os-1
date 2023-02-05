@@ -147,7 +147,7 @@ kernelvec:
 .globl trampoline
 trampoline:
 	csrrw a0, sscratch, a0
-	li a0, 0x7fffffc000
+	li a0, 0x3fffffe000
 
 	sd x1, 0(a0)
 	sd x2, 8(a0)
@@ -190,7 +190,15 @@ trampoline:
 	csrr t3, satp
 	sd t3, 256(a0)
 
-	la sp, stack
+	ld sp, 264(a0)
+
+	ld t5, 272(a0)
+
+	sfence.vma
+	csrw satp, t2
+	sfence.vma
+
+	jr t5
 
 .globl userret
 userret:

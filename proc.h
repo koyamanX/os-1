@@ -38,6 +38,7 @@ typedef struct {
 	u64 sepc;
 	u64 satp;
 	u64 ksp;
+	u64 trap_handler;
 } trapframe_t;
 
 typedef struct {

@@ -3,6 +3,7 @@
 #include "types.h"
 #include "proc.h"
 #include "vm.h"
+#include "trap.h"
 #include "string.h"
 
 struct proc procs[NPROCS];
@@ -23,13 +24,7 @@ void initproc(void) {
 	}
 }
 
-__attribute__ ((section(".userproc0")))
-void init(void) {
-	while(1) {
-		asm volatile("nop");
-	}
-}
-
+extern void init(void);
 void userinit(void) {
 	u64 pid = newproc();
 	kvmmap(procs[pid].pgtbl, 0x0, (u64)init, PAGE_SIZE, PTE_V|PTE_W|PTE_R|PTE_X|PTE_U);
@@ -50,8 +45,9 @@ int newproc(void) {
 	memset(p->tf, 0, sizeof(trapframe_t));
 	p->ctx.ra = (u64)usertrapret;
 	p->ctx.sp = (u64)(p->kstack+PAGE_SIZE);
-	p->tf->satp = SATP(p->pgtbl);	
+	p->tf->satp = SATP(p->pgtbl);
 	p->tf->ksp = (u64)(p->kstack + PAGE_SIZE);
+	p->tf->trap_handler = (u64)(kerneltrap);
 	kvmmap(p->pgtbl, TRAPFRAME, (u64)p->tf, PAGE_SIZE, PTE_V|PTE_W|PTE_R);
 	kvmmap(p->pgtbl, TRAMPOLINE, (u64)trampoline, PAGE_SIZE, PTE_V|PTE_X|PTE_R);
 	

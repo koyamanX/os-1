@@ -76,6 +76,16 @@ void kvmmap(pagetable_t pgtbl, u64 va, u64 pa, u64 sz, u64 perm) {
 	}
 }
 
+u64 va2pa(pagetable_t pgtbl, u64 va) {
+	pte_t *pte;
+	u64 pa;
+
+	pte = kvmwalk(pgtbl, va);
+	pa = (PTE2PA(*pte) | (va & ((1<<PAGE_OFFSET)-1)));
+	
+	return pa;
+}
+
 void kvmdump(pagetable_t pgtbl, u64 va) {
 	pte_t *pte;
 

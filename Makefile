@@ -14,7 +14,7 @@ CFLAGS += -fno-pie -no-pie
 
 LDFLAGS = -z max-page-size=4096
 
-kernel: start.S kernel.ldS main.c vm.c uart.c string.c printk.c timer.c trap.c proc.c panic.c sched.c swtch.S init.S
+kernel: start.S kernel.ldS main.c vm.c uart.c string.c printk.c timer.c trap.c proc.c panic.c sched.c swtch.S init.S 
 	$(CC) $(CFLAGS) -c start.S
 	$(CC) $(CFLAGS) -c init.S
 	$(CC) $(CFLAGS) -c swtch.S

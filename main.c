@@ -22,7 +22,6 @@ void kinit(void) {
 	w_satp(0);
 
 //	init_timer();
-	w_sie(SIE_SEIE | SIE_STIE | SIE_SSIE);
 
 	w_mepc((u64)((u64 *)&kmain));
 
@@ -43,6 +42,8 @@ void kmain(void) {
 	initcpu();
 	initproc();
 	userinit();
+	userinit();
+	w_sie(SIE_SEIE | SIE_STIE | SIE_SSIE);
 	scheduler();
 
 	while(1) {

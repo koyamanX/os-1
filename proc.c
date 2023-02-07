@@ -5,6 +5,7 @@
 #include "vm.h"
 #include "trap.h"
 #include "string.h"
+#include "sched.h"
 
 struct proc procs[NPROCS];
 u64 mpid = 1;

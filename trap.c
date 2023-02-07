@@ -28,6 +28,8 @@ void usertrapret(void) {
 }
 
 void kerneltrap(void) {
+	struct proc *rp;
+	rp = cpus[r_tp()].rp;
 	u64 scause = r_scause();
 	
 	switch(scause) {
@@ -51,14 +53,15 @@ void kerneltrap(void) {
 		case SMODE_SOFTWARE_INTERRUPT: {
 			uart_puts("software interrupt\n");
 			w_sip(0x0);
+			rp->stat = RUNNABLE;
+			sched(rp);
 			break;
 		}
 #define ECALL_FROM_U_MODE 8
 		case ECALL_FROM_U_MODE: {
-			struct proc *rp;
-			rp = cpus[r_tp()].rp;
 			rp->tf->a0 = syscall(rp);
 			rp->tf->sepc+=4;
+			sched(rp);
 			break;
 		}
 		default: {
@@ -66,10 +69,7 @@ void kerneltrap(void) {
 			break;
 		}
 	}
-
-	scheduler();
-
-	return ;
+	usertrapret();
 }
 
 #define SYS_WRITE 1

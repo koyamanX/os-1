@@ -8,6 +8,7 @@
 #include "os1.h"
 #include "timer.h"
 #include "sched.h"
+#include "virtio.h"
 
 __attribute__ ((aligned (16))) char stack[PAGE_SIZE*4];
 
@@ -41,6 +42,7 @@ void kmain(void) {
 	printk("enable paging\n");
 	initcpu();
 	initproc();
+	virtio_init();
 	userinit();
 	userinit();
 	scheduler();

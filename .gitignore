@@ -2,3 +2,4 @@
 kernel
 *.log
 *.dump
+rootfs.img

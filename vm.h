@@ -1,6 +1,8 @@
 #ifndef VM_H
 #define VM_H
 
+#include "riscv.h"
+
 void kvmstart(pagetable_t kpgtbl);
 pagetable_t kvminit(void);
 void kvmdump(pagetable_t pgtbl, u64 va);

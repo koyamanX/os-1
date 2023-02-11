@@ -18,3 +18,14 @@ void *memset(void *s, int c, u64 sz) {
 	return s;
 }
 
+size_t strlen(char *s) {
+	char *p = s;
+	size_t cnt = 0;
+
+	while(*p != '\0'){
+		p++;
+		cnt++;
+	}
+
+	return cnt;
+}

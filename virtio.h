@@ -45,17 +45,64 @@ enum {
 #define VIRTIO_STATUS_DEVICE_NEEDS_RESET 64
 
 #define VIRTIO_BLK_F_RO 5
-
-typedef struct {
-	void *desc;
-	void *avail;
-	void *used;
-} block_device_t;
-
-extern block_device_t block_device;
-
 #define QUEUE_SIZE 8
 
+struct virtq_desc {
+	u64 addr;
+	u32 len;
+#define VIRTQ_DESC_F_NEXT 1
+#define VIRTQ_DESC_F_WRITE 2
+#define VIRTQ_DESC_F_INDIRECT 4
+	u16 flags;
+	u16 next;
+};
+
+struct virtq_avail {
+#define VIRTQ_AVAIL_F_NO_INTERRUPT 1
+	u16 flags;
+	u16 idx;
+	u16 ring[QUEUE_SIZE];
+	u16 used_event;
+};
+
+struct virtq_used_elem {
+	u32 id;
+	u32 len;
+};
+
+struct virtq_used {
+#define VIRTQ_USED_F_NO_NOTIFY 1
+	u16 flags;
+	u16 idx;
+	struct virtq_used_elem ring[QUEUE_SIZE];
+	u16 avail_event;
+};
+
+struct virtio_blk_req {
+#define VIRTIO_BKL_T_IN 0
+#define VIRTIO_BKL_T_OUT 1
+#define VIRTIO_BLK_T_FLUSH 4
+#define VIRTIO_BLK_T_DISCARD 11
+#define VIRTIO_BKL_T_WRITE_ZEROS 13
+	u32 type;
+	u32 reserved;
+	u64 sector;
+};
+
+typedef u8 virtio_blk_req_data;
+typedef u8 virtio_blk_req_status;
+
+typedef struct {
+	struct virtq_desc *desc;
+	struct virtq_avail *avail;
+	struct virtq_used *used;
+	struct virtio_blk_req request[QUEUE_SIZE];
+	virtio_blk_req_status status[QUEUE_SIZE];
+} block_device_t;
+
+
+extern block_device_t block_device;
 void virtio_init(void);
+int virtio_req(char *buf, u64 sector, u32 type);
 
 #endif

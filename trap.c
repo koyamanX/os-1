@@ -64,7 +64,7 @@ void kerneltrap(void) {
 			break;
 		}
 		default: {
-			uart_puts("fault\n");
+			panic("trap: fault\n");
 			break;
 		}
 	}

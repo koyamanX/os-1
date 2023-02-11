@@ -17,7 +17,7 @@ init:
 	li a7, 1
 	li a0, 1
 	la a1, newline
-	la a2, 6
+	la a2, 1
 	ecall
 
 loop:

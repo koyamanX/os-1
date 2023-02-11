@@ -52,7 +52,7 @@ void virtio_init(void) {
 	// 4. Read feature bits, Write feature bits understood by driver.
 	u32 features = *VIRTIO_OFFSET(DEVICE_FEATURES);
 	// Disable Read-only mode.
-	features &= !(1 << VIRTIO_BLK_F_RO);
+	features &= ~(1 << VIRTIO_BLK_F_RO);
 	*VIRTIO_OFFSET(DEVICE_FEATURES) = features;
 	// 5. Set FEATURE_OK status bit.
 	*VIRTIO_OFFSET(STATUS) = *VIRTIO_OFFSET(STATUS) | VIRTIO_STATUS_FEATURES_OK;
@@ -81,10 +81,45 @@ void virtio_init(void) {
 	*VIRTIO_OFFSET(QUEUE_DRIVER_HIGH) = ((u64)(block_device.avail)) >> 32;
 	*VIRTIO_OFFSET(QUEUE_DRIVER_LOW) =  ((u64)(block_device.avail));
 	*VIRTIO_OFFSET(QUEUE_DEVICE_HIGH) = ((u64)(block_device.used)) >> 32;
-	*VIRTIO_OFFSET(QUEUE_DESC_LOW) =  ((u64)(block_device.used));
+	*VIRTIO_OFFSET(QUEUE_DEVICE_LOW) =  ((u64)(block_device.used));
 
 	*VIRTIO_OFFSET(QUEUE_READY) = 1;
 
 	// 8. Set DRIVER_OK status bit.
 	*VIRTIO_OFFSET(STATUS) = *VIRTIO_OFFSET(STATUS) | VIRTIO_STATUS_DRIVER_OK;
+}
+
+int virtio_req(char *buf, u64 sector, u32 type) {
+	struct virtq_desc *desc;
+	struct virtq_avail *avail;
+
+	block_device.request[0].type = type;
+	block_device.request[0].sector = sector;
+	desc = block_device.desc;
+	desc[0].addr = (u64)&block_device.request[0];
+	desc[0].len = sizeof(struct virtio_blk_req);
+	desc[0].flags = VIRTQ_DESC_F_NEXT;
+	desc[0].next = 1;
+
+	desc[1].addr = (u64) buf;
+	desc[1].len = 512;
+	desc[1].flags = VIRTQ_DESC_F_NEXT | VIRTQ_DESC_F_WRITE;
+	desc[1].next = 2;
+
+	block_device.status[0] = 0xff;
+	desc[2].addr = (u64)&block_device.status[0];
+	desc[2].len = sizeof(virtio_blk_req_status);
+	desc[2].flags = VIRTQ_DESC_F_WRITE;
+	desc[2].next = 0;
+	
+	avail = block_device.avail;
+	avail->ring[0] = 0;
+
+	__sync_synchronize();
+	avail->idx++;
+	__sync_synchronize();
+
+	*VIRTIO_OFFSET(QUEUE_NOTIFY) = 0;
+
+	return 0;
 }

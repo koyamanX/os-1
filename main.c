@@ -45,8 +45,6 @@ void kmain(void) {
 	virtio_init();
 	userinit();
 	userinit();
-	int len = strlen("chinchin");
-	printk("len:%x\n",len);
 	scheduler();
 
 	while(1) {

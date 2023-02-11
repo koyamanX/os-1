@@ -1,5 +1,5 @@
 PREFIX=riscv64-linux-gnu-
-CC=$(PREFIX)gcc
+CC=$(PREFIX)gcc-12
 AS=$(PREFIX)as
 LD=$(PREFIX)ld
 OBJCOPY=$(PREFIX)objcopy

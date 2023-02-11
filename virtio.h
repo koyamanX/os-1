@@ -103,6 +103,6 @@ typedef struct {
 
 extern block_device_t block_device;
 void virtio_init(void);
-int virtio_req(char *buf, u64 sector, u32 type);
+int virtio_req(char *buf, u64 sector, u8 write);
 
 #endif

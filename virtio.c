@@ -89,11 +89,12 @@ void virtio_init(void) {
 	*VIRTIO_OFFSET(STATUS) = *VIRTIO_OFFSET(STATUS) | VIRTIO_STATUS_DRIVER_OK;
 }
 
-int virtio_req(char *buf, u64 sector, u32 type) {
+int virtio_req(char *buf, u64 sector, u8 write) {
 	struct virtq_desc *desc;
 	struct virtq_avail *avail;
 
-	block_device.request[0].type = type;
+	block_device.request[0].type
+		= (write) ? VIRTIO_BKL_T_OUT : VIRTIO_BKL_T_IN;
 	block_device.request[0].sector = sector;
 	desc = block_device.desc;
 	desc[0].addr = (u64)&block_device.request[0];
@@ -103,7 +104,8 @@ int virtio_req(char *buf, u64 sector, u32 type) {
 
 	desc[1].addr = (u64) buf;
 	desc[1].len = 512;
-	desc[1].flags = VIRTQ_DESC_F_NEXT | VIRTQ_DESC_F_WRITE;
+	desc[1].flags = VIRTQ_DESC_F_NEXT;
+	desc[1].flags |= (!write) ? VIRTQ_DESC_F_WRITE : 0;
 	desc[1].next = 2;
 
 	block_device.status[0] = 0xff;
@@ -120,6 +122,12 @@ int virtio_req(char *buf, u64 sector, u32 type) {
 	__sync_synchronize();
 
 	*VIRTIO_OFFSET(QUEUE_NOTIFY) = 0;
+
+	while(1) {
+		if(block_device.status[0] != 0xff) {
+			break;
+		}
+	}
 
 	return 0;
 }

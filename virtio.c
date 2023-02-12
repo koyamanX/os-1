@@ -115,7 +115,7 @@ int virtio_req(char *buf, u64 sector, u8 write) {
 	desc[2].next = 0;
 	
 	avail = block_device.avail;
-	avail->ring[0] = 0;
+	avail->ring[avail->idx % QUEUE_SIZE] = 0;
 
 	__sync_synchronize();
 	avail->idx++;

@@ -3,3 +3,4 @@ kernel
 *.log
 *.dump
 rootfs.img
+os1/*

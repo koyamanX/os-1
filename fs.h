@@ -19,6 +19,28 @@ struct super_block {
 	u8 disk_version;
 };
 
+struct inode {
+	u16 mode;
+	u16 nlinks;
+	u16 uid;
+	u16 gid;
+	u32 size;
+	u32 atime;
+	u32 mtime;
+	u32 ctime;
+	u32 zone[10];
+};
+
 void fs_dump_super_block(void);
+void fs_read_root(void);
+
+#define S_IFDIR 0x6000
+
+#define DIRSIZ 60
+
+struct direct {
+	u32 ino;
+	char name[DIRSIZ];
+};
 
 #endif

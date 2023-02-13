@@ -33,9 +33,18 @@ kernel: start.S kernel.ldS main.c vm.c uart.c string.c printk.c timer.c trap.c p
 	$(LD) $(LDFLAGS) vm.o panic.o proc.o start.o uart.o main.o string.o printk.o timer.o trap.o sched.o swtch.o init.o virtio.o fs.o -o kernel -T kernel.ldS
 	$(OBJDUMP) -D kernel > kernel.dump
 
+rootfs.img:
+	fallocate -l 512M rootfs.img
+	mkfs.minix -3 rootfs.img
+	mkdir ./os1
+	sudo mount rootfs.img ./os1
+	touch os1/hello.txt
+	sync
+	sudo umount ./os1
+
 QEMU=qemu-system-riscv64
 
-qemu: kernel
+qemu: kernel rootfs.img
 	$(QEMU) -D qemu.log -d in_asm -machine virt -bios none -kernel kernel -m 128M -nographic -global virtio-mmio.force-legacy=false -drive file=rootfs.img,if=none,format=raw,id=x0 -device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0
 
 qemu-gdb: kernel
@@ -43,4 +52,5 @@ qemu-gdb: kernel
 
 
 clean:
-	rm -rf *.o kernel *.dump *.log rootfs.img
+	sudo umount os1
+	rm -rf *.o kernel *.dump *.log rootfs.img os1

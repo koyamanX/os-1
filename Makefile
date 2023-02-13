@@ -30,7 +30,6 @@ kernel: start.S kernel.ldS main.c vm.c uart.c string.c printk.c timer.c trap.c p
 	$(CC) $(CFLAGS) -c panic.c
 	$(CC) $(CFLAGS) -c sched.c
 	$(LD) $(LDFLAGS) vm.o panic.o proc.o start.o uart.o main.o string.o printk.o timer.o trap.o sched.o swtch.o init.o virtio.o -o kernel -T kernel.ldS
-	dd if=/dev/zero of=rootfs.img bs=1M count=512 status=progress
 	$(OBJDUMP) -D kernel > kernel.dump
 
 QEMU=qemu-system-riscv64

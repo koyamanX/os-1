@@ -1,6 +1,8 @@
 #ifndef FS_H
 #define FS_H
 
+#include "types.h"
+
 struct super_block {
 	u32 ninodes;
 	u16 nzones;
@@ -16,5 +18,7 @@ struct super_block {
 	u16 block_size;
 	u8 disk_version;
 };
+
+void fs_dump_super_block(void);
 
 #endif

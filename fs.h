@@ -31,7 +31,8 @@ struct inode {
 	u32 zone[10];
 };
 
-void fs_dump_super_block(void);
+void read_super(void);
+void fsinit(void);
 void fs_read_root(void);
 
 #define S_IFDIR 0x6000

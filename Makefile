@@ -14,8 +14,9 @@ CFLAGS += -fno-pie -no-pie
 
 LDFLAGS = -z max-page-size=4096
 
-kernel: start.S kernel.ldS main.c vm.c uart.c string.c printk.c timer.c trap.c proc.c panic.c sched.c swtch.S init.S virtio.c fs.c
+kernel: start.S kernel.ldS main.c vm.c uart.c string.c printk.c timer.c trap.c proc.c panic.c sched.c swtch.S init.S virtio.c fs.c bio.c
 	$(CC) $(CFLAGS) -c start.S
+	$(CC) $(CFLAGS) -c bio.c
 	$(CC) $(CFLAGS) -c init.S
 	$(CC) $(CFLAGS) -c virtio.c
 	$(CC) $(CFLAGS) -c swtch.S
@@ -30,7 +31,7 @@ kernel: start.S kernel.ldS main.c vm.c uart.c string.c printk.c timer.c trap.c p
 	$(CC) $(CFLAGS) -c panic.c
 	$(CC) $(CFLAGS) -c sched.c
 	$(CC) $(CFLAGS) -c fs.c
-	$(LD) $(LDFLAGS) vm.o panic.o proc.o start.o uart.o main.o string.o printk.o timer.o trap.o sched.o swtch.o init.o virtio.o fs.o -o kernel -T kernel.ldS
+	$(LD) $(LDFLAGS) vm.o panic.o proc.o start.o uart.o main.o string.o printk.o timer.o trap.o sched.o swtch.o init.o virtio.o fs.o bio.o -o kernel -T kernel.ldS
 	$(OBJDUMP) -D kernel > kernel.dump
 
 rootfs.img:
@@ -38,7 +39,7 @@ rootfs.img:
 	mkfs.minix -3 rootfs.img
 	mkdir ./os1
 	sudo mount rootfs.img ./os1
-	touch os1/hello.txt
+	echo "Hello,world!" >> os1/hello.txt
 	sync
 	sudo umount ./os1
 
@@ -52,5 +53,4 @@ qemu-gdb: kernel
 
 
 clean:
-	sudo umount os1
 	rm -rf *.o kernel *.dump *.log rootfs.img os1

@@ -3,15 +3,15 @@
 #include "types.h"
 #include "string.h"
 #include "printk.h"
+#include "buf.h"
 
-char buf[512];
 struct super_block sb;
 struct inode inode[16];
 
-void fs_dump_super_block(void) {
-	memset(buf, 0, 512);
-	virtio_req(buf, 2, 0);
-	memcpy(&sb, buf, sizeof(struct super_block));
+void read_super(void) {
+	struct buf *bp;
+	bp = bread(0, 2);
+	memcpy(&sb, bp->data, sizeof(struct super_block));
 
 	printk("\n\n\n");
 
@@ -27,6 +27,7 @@ void fs_dump_super_block(void) {
 	printk("block_size: %x\n", sb.block_size);
 	printk("disk_version: %x\n", sb.disk_version);
 
+#if 0
 	memset(buf, 0, 512);
 	u64 offset = 2 + sb.imap_blocks + sb.zmap_blocks;
 	virtio_req(buf, (offset*1024)/512, 0);
@@ -49,7 +50,16 @@ void fs_dump_super_block(void) {
 		printk("dir.inode: %x\n", dir[i].ino);
 	}
 
+	memset(buf, 0, 512);
+	virtio_req(buf, (inode[1].zone[0]*1024)/512, 0);
+	printk("%s\n", buf);
+
 	printk("\n\n\n");
+#endif
+}
+
+void fsinit(void) {
+	read_super();
 }
 
 void fs_read_root(void) {

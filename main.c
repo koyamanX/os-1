@@ -10,6 +10,7 @@
 #include "sched.h"
 #include "virtio.h"
 #include "fs.h"
+#include "buf.h"
 
 __attribute__ ((aligned (16))) char stack[PAGE_SIZE*4];
 
@@ -44,7 +45,8 @@ void kmain(void) {
 	initcpu();
 	initproc();
 	virtio_init();
-	fs_dump_super_block();
+	binit();
+	fsinit();
 	userinit();
 	userinit();
 	scheduler();

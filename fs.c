@@ -67,7 +67,7 @@ void fsinit(void) {
 	printk("fsinit: rooti->size: %x\n", rooti->size);
 }
 
-struct inode *iget(u32 dev, u32 inum) {
+struct inode *iget(u32 dev, u64 inum) {
 	struct buf *buf;
 	u64 offset;
 	u8 bitmap;
@@ -77,9 +77,7 @@ struct inode *iget(u32 dev, u32 inum) {
 	buf = bread(0, (offset*1024)/512);
 	memcpy(&inode[0], buf->data, sizeof(struct inode) * NINODE);
 	
-	offset = 2 + (inum / (1024 * 8));
-	buf = bread(0, (offset*1024)/512);
-	bitmap = buf->data[inum % 1024];	
+	bitmap = bmapget(2, inum);
 	bitmap = bitmap >> inum % 8;
 
 	return bitmap ? &inode[inum % NINODE] : NULL;
@@ -97,14 +95,27 @@ struct inode *namei(char *path) {
 	}
 	return ip;
 }
+
+u8 bmapget(u64 bmap, u64 inum) {
+	struct buf *buf;
+	u64 offset;
+	u64 bitmap;
+
+	offset = bmap + (inum / (1024 * 8));
+	buf = bread(0, (offset*1024)/512);
+	bitmap = buf->data[inum % 1024];
+
+	return bitmap;
+}
+
 u64 zmap(struct inode *ip, u64 zone) {
 	// TODO: handle indirect zone
-	u64 blkno;
+	u64 addr;
 	
 	if(zone >= 8) {
 		panic("zmap: Indirect zone is not supported\n");
 	}
-	blkno = (ip->zone[zone] * 1024) / 512;
+	addr = (ip->zone[zone] * 1024);
 
-	return blkno;
+	return addr;
 }

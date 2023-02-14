@@ -34,9 +34,10 @@ struct inode {
 
 void read_super(void);
 void fsinit(void);
-struct inode *iget(u32 dev, u32 inum);
+struct inode *iget(u32 dev, u64 inum);
 struct inode *namei(char *path);
 struct inode *diri(struct inode *ip, char *name);
+u8 bmapget(u64 bmap, u64 inum);
 u64 zmap(struct inode *ip, u64 zone);
 
 extern struct inode inode[NINODE];

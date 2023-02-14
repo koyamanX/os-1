@@ -5,6 +5,7 @@
 #include "printk.h"
 #include "riscv.h"
 #include "buf.h"
+#include "panic.h"
 
 struct super_block sb;
 struct inode inode[NINODE];
@@ -63,6 +64,7 @@ void fsinit(void) {
 	read_super();
 	struct inode *rooti = namei("/");
 	printk("fsinit: rooti->mode: %x\n", rooti->mode);
+	printk("fsinit: rooti->size: %x\n", rooti->size);
 }
 
 struct inode *iget(u32 dev, u32 inum) {
@@ -83,6 +85,10 @@ struct inode *iget(u32 dev, u32 inum) {
 	return bitmap ? &inode[inum % NINODE] : NULL;
 }
 
+struct inode *diri(struct inode *ip, char *name) {
+	return NULL;
+}
+
 struct inode *namei(char *path) {
 	struct inode *ip;
 
@@ -90,4 +96,15 @@ struct inode *namei(char *path) {
 		ip = iget(0, 1);
 	}
 	return ip;
+}
+u64 zmap(struct inode *ip, u64 zone) {
+	// TODO: handle indirect zone
+	u64 blkno;
+	
+	if(zone >= 8) {
+		panic("zmap: Indirect zone is not supported\n");
+	}
+	blkno = (ip->zone[zone] * 1024) / 512;
+
+	return blkno;
 }

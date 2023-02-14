@@ -3,10 +3,11 @@
 #include "types.h"
 #include "string.h"
 #include "printk.h"
+#include "riscv.h"
 #include "buf.h"
 
 struct super_block sb;
-struct inode inode[16];
+struct inode inode[NINODE];
 
 void read_super(void) {
 	struct buf *bp;
@@ -60,8 +61,33 @@ void read_super(void) {
 
 void fsinit(void) {
 	read_super();
+	struct inode *rooti = namei("/");
+	printk("fsinit: rooti->mode: %x\n", rooti->mode);
 }
 
-void fs_read_root(void) {
-	;
+struct inode *iget(u32 dev, u32 inum) {
+	struct buf *buf;
+	u64 offset;
+	u8 bitmap;
+
+	inum--;
+	offset = (2 + sb.imap_blocks + sb.zmap_blocks + (inum / NINODE));
+	buf = bread(0, (offset*1024)/512);
+	memcpy(&inode[0], buf->data, sizeof(struct inode) * NINODE);
+	
+	offset = 2 + (inum / (1024 * 8));
+	buf = bread(0, (offset*1024)/512);
+	bitmap = buf->data[inum % 1024];	
+	bitmap = bitmap >> inum % 8;
+
+	return bitmap ? &inode[inum % NINODE] : NULL;
+}
+
+struct inode *namei(char *path) {
+	struct inode *ip;
+
+	if(*path == '/') {
+		ip = iget(0, 1);
+	}
+	return ip;
 }

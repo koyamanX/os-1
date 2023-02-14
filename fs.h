@@ -19,6 +19,7 @@ struct super_block {
 	u8 disk_version;
 };
 
+#define NINODE 16
 struct inode {
 	u16 mode;
 	u16 nlinks;
@@ -33,7 +34,19 @@ struct inode {
 
 void read_super(void);
 void fsinit(void);
-void fs_read_root(void);
+struct inode *iget(u32 dev, u32 inum);
+struct inode *namei(char *path);
+
+extern struct inode inode[NINODE];
+
+/* 
+readi();
+writei();
+openi();
+closei();
+bmap();
+namei();
+*/
 
 #define S_IFDIR 0x6000
 

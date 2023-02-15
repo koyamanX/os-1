@@ -51,6 +51,9 @@ bmap();
 namei();
 */
 
+#define IMAP(sb) (2)
+#define ZMAP(sb) (2+sb->imap_blocks)
+
 #define S_IFDIR 0x6000
 
 #define DIRSIZ 60

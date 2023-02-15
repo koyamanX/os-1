@@ -77,7 +77,7 @@ struct inode *iget(u32 dev, u64 inum) {
 	buf = bread(0, (offset*1024)/512);
 	memcpy(&inode[0], buf->data, sizeof(struct inode) * NINODE);
 	
-	bitmap = bmapget(2, inum);
+	bitmap = bmapget(IMAP(sb), inum);
 	bitmap = bitmap >> inum % 8;
 
 	return bitmap ? &inode[inum % NINODE] : NULL;
@@ -99,7 +99,7 @@ struct inode *namei(char *path) {
 u8 bmapget(u64 bmap, u64 inum) {
 	struct buf *buf;
 	u64 offset;
-	u64 bitmap;
+	u8 bitmap;
 
 	offset = bmap + (inum / (1024 * 8));
 	buf = bread(0, (offset*1024)/512);

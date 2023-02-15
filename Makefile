@@ -39,6 +39,7 @@ rootfs.img:
 	mkfs.minix -3 rootfs.img
 	mkdir ./os1
 	sudo mount rootfs.img ./os1
+	mkdir os1/usr
 	echo "Hello,world!" >> os1/hello.txt
 	sync
 	sudo umount ./os1

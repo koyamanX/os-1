@@ -65,12 +65,7 @@ void fsinit(void) {
 	struct inode *rooti = namei("/");
 	printk("fsinit: rooti->mode: %x\n", rooti->mode);
 	printk("fsinit: rooti->size: %x\n", rooti->size);
-	printk("/usr/lib: %s\n", dirname("/usr/lib"));
-	printk("/usr/: %s\n", dirname("/usr/"));
-	printk("usr: %s\n", dirname("usr"));
-	printk("/: %s\n", dirname("/"));
-	printk(".: %s\n", dirname("."));
-	printk("..: %s\n", dirname(".."));
+	printk("fsinit: /usr: %x\n", diri(rooti, "usr"));
 }
 
 struct inode *iget(u32 dev, u64 inum) {
@@ -81,6 +76,7 @@ struct inode *iget(u32 dev, u64 inum) {
 	offset = (2 + sb.imap_blocks + sb.zmap_blocks + (inum / NINODE));
 	buf = bread(0, (offset*1024)/512);
 	memcpy(&inode[0], buf->data, sizeof(struct inode) * NINODE);
+	printk("iget: %x\n", inode[inum % NINODE].size);
 	
 	return &inode[inum % NINODE];
 }
@@ -126,13 +122,17 @@ char *basename(char *path) {
 }
 
 struct inode *diri(struct inode *ip, char *name) {
-	struct inode *root;
+	struct direct *dp;
+	struct buf *buf;
+	u8 zone = 0;
 
-	root = iget(0, 1);
-
-	u64 size = root->size;
-	while(size) {
-		size -= sizeof(struct direct);
+	buf = bread(0, zmap(ip, zone)/512);
+	dp = (struct direct *)buf->data;
+	for(int i = ip->size; i; i -= sizeof(struct direct)) {
+		if(strcmp(dp->name, name) == 0) {
+			return iget(0, dp->ino);
+		}
+		dp++;
 	}
 
 	return NULL;

@@ -39,6 +39,8 @@ struct inode *namei(char *path);
 struct inode *diri(struct inode *ip, char *name);
 u8 bmapget(u64 bmap, u64 inum);
 u64 zmap(struct inode *ip, u64 zone);
+char *dirname(char *path);
+char *basename(char *path);
 
 extern struct inode inode[NINODE];
 

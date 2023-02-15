@@ -65,25 +65,76 @@ void fsinit(void) {
 	struct inode *rooti = namei("/");
 	printk("fsinit: rooti->mode: %x\n", rooti->mode);
 	printk("fsinit: rooti->size: %x\n", rooti->size);
+	printk("/usr/lib: %s\n", dirname("/usr/lib"));
+	printk("/usr/: %s\n", dirname("/usr/"));
+	printk("usr: %s\n", dirname("usr"));
+	printk("/: %s\n", dirname("/"));
+	printk(".: %s\n", dirname("."));
+	printk("..: %s\n", dirname(".."));
 }
 
 struct inode *iget(u32 dev, u64 inum) {
 	struct buf *buf;
 	u64 offset;
-	u8 bitmap;
 
 	inum--;
 	offset = (2 + sb.imap_blocks + sb.zmap_blocks + (inum / NINODE));
 	buf = bread(0, (offset*1024)/512);
 	memcpy(&inode[0], buf->data, sizeof(struct inode) * NINODE);
 	
-	bitmap = bmapget(IMAP(sb), inum);
-	bitmap = bitmap >> inum % 8;
+	return &inode[inum % NINODE];
+}
 
-	return bitmap ? &inode[inum % NINODE] : NULL;
+char *dirname(char *path) {
+	char *bp;
+
+	bp = path;
+	if(*bp == '/' && *(bp+1) == '\0') {
+		// "/"
+		return bp;
+	}
+	if(*bp == '.') {
+		// "." or ".." -> "."
+		*(bp+1) = '\0';
+		return bp;
+	}
+	if(*bp != '/') {
+		// reletive path assuming CWD -> "."
+		*bp = '.';
+		*(bp+1) = '\0';
+		return bp;
+	}
+	bp++; // skip root "/"
+	while(*bp) {
+		if(*bp == '/' && *(bp+1) == '\0') {
+			// remove last "/"
+			*(bp+1) = '\0';
+			return bp;
+		}
+		if(*bp == '/') {
+			// remove last directory
+			*bp = '\0';
+			return path;
+		}
+		bp++;
+	}
+	return path;
+}
+
+char *basename(char *path) {
+	return NULL;
 }
 
 struct inode *diri(struct inode *ip, char *name) {
+	struct inode *root;
+
+	root = iget(0, 1);
+
+	u64 size = root->size;
+	while(size) {
+		size -= sizeof(struct direct);
+	}
+
 	return NULL;
 }
 

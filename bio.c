@@ -20,8 +20,7 @@ struct buf *bread(u32 dev, u64 blkno) {
 	blist->valid = 1;
 	blist->dev = dev;
 	blist->blkno = blkno;
-	virtio_req(&blist->data[0], blist->blkno+0, 0);
-	virtio_req(&blist->data[512], blist->blkno+1, 0);
+	virtio_req(blist->data, blist->blkno, 0);
 	
 	return blist;
 }
@@ -30,8 +29,7 @@ int bwrite(struct buf *bp) {
 	if(!bp->valid) {
 		return -1;
 	}
-	virtio_req(&bp->data[0], bp->blkno+0, 1);
-	virtio_req(&bp->data[512], bp->blkno+1, 1);
+	virtio_req(bp->data, bp->blkno, 1);
 
 	return 0;
 }

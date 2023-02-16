@@ -103,7 +103,7 @@ int virtio_req(char *buf, u64 sector, u8 write) {
 	desc[0].next = 1;
 
 	desc[1].addr = (u64) buf;
-	desc[1].len = 512;
+	desc[1].len = BLOCKSIZE;
 	desc[1].flags = VIRTQ_DESC_F_NEXT;
 	desc[1].flags |= (!write) ? VIRTQ_DESC_F_WRITE : 0;
 	desc[1].next = 2;

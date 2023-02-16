@@ -6,6 +6,7 @@
 #include "riscv.h"
 #include "buf.h"
 #include "panic.h"
+#include "vm.h"
 
 struct super_block sb;
 struct inode inode[NINODE];
@@ -14,8 +15,6 @@ void read_super(void) {
 	struct buf *bp;
 	bp = bread(VIRTIO_BLK, SUPERBLOCK);
 	memcpy(&sb, bp->data, sizeof(struct super_block));
-
-	printk("\n\n\n");
 
 	printk("ninodes: %x\n", sb.ninodes);
 	printk("nzones: %x\n", sb.nzones);
@@ -37,9 +36,26 @@ void read_super(void) {
 void fsinit(void) {
 	read_super();
 	struct inode *rooti = namei("/");
-	printk("fsinit: rooti->mode: %x\n", rooti->mode);
-	printk("fsinit: rooti->size: %x\n", rooti->size);
-	printk("fsinit: /usr: %x\n", diri(rooti, "usr"));
+
+	struct direct dir;
+	u64 ino = -1;
+	printk("List files in \"/\"\n");
+	printk("=================\n");
+	for(u64 i = 0; i < rooti->size; i+=sizeof(struct direct)) {
+		readi(rooti, (char *)&dir, i, sizeof(struct direct));
+		if(strcmp(dir.name, "hello.txt") == 0) {
+			ino = dir.ino;
+		}
+		printk("%s %x\n", dir.name, iget(VIRTIO_BLK, dir.ino)->size);
+	}
+	printk("=================\n");
+	if(ino != -1) {
+		printk("=================\n");
+		char *buf = kalloc();
+		readi(iget(VIRTIO_BLK, ino), buf, 0, 4096);
+		printk("%s\n", buf);
+		printk("=================\n");
+	}
 }
 
 struct inode *iget(u32 dev, u64 inum) {
@@ -50,7 +66,6 @@ struct inode *iget(u32 dev, u64 inum) {
 	offset = (SUPERBLOCK + sb.imap_blocks + sb.zmap_blocks + (inum / NINODE));
 	buf = bread(VIRTIO_BLK, (offset*BLOCKSIZE)/SECTORSIZE);
 	memcpy(&inode[0], buf->data, sizeof(struct inode) * NINODE);
-	printk("iget: %x\n", inode[inum % NINODE].size);
 	
 	return &inode[inum % NINODE];
 }

@@ -19,4 +19,6 @@ struct buf {
 
 extern struct buf *blist;
 
+#define VIRTIO_BLK 0
+
 #endif

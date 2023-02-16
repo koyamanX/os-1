@@ -62,6 +62,9 @@ namei();
 
 #define DIRSIZ 60
 
+#define SUPERBLOCK 2
+#define BLOCKSIZE 1024
+
 struct direct {
 	u32 ino;
 	char name[DIRSIZ];

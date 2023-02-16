@@ -119,7 +119,7 @@ struct inode *diri(struct inode *ip, char *name) {
 	dp = (struct direct *)buf->data;
 	for(int i = ip->size; i; i -= sizeof(struct direct)) {
 		if(strcmp(dp->name, name) == 0) {
-			return iget(0, dp->ino);
+			return iget(VIRTIO_BLK, dp->ino);
 		}
 		dp++;
 	}
@@ -131,7 +131,7 @@ struct inode *namei(char *path) {
 	struct inode *ip;
 
 	if(*path == '/') {
-		ip = iget(0, 1);
+		ip = iget(VIRTIO_BLK, ROOT);
 	}
 	return ip;
 }

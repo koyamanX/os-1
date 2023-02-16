@@ -63,6 +63,7 @@ namei();
 #define DIRSIZ 60
 
 #define SUPERBLOCK 2
+#define ROOT 1
 
 struct direct {
 	u32 ino;

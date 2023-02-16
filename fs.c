@@ -48,7 +48,7 @@ struct inode *iget(u32 dev, u64 inum) {
 
 	inum--;
 	offset = (SUPERBLOCK + sb.imap_blocks + sb.zmap_blocks + (inum / NINODE));
-	buf = bread(VIRTIO_BLK, (offset*BLOCKSIZE)/512);
+	buf = bread(VIRTIO_BLK, (offset*BLOCKSIZE)/SECTORSIZE);
 	memcpy(&inode[0], buf->data, sizeof(struct inode) * NINODE);
 	printk("iget: %x\n", inode[inum % NINODE].size);
 	
@@ -100,7 +100,7 @@ struct inode *diri(struct inode *ip, char *name) {
 	struct buf *buf;
 	u8 zone = 0;
 
-	buf = bread(VIRTIO_BLK, zmap(ip, zone)/512);
+	buf = bread(VIRTIO_BLK, zmap(ip, zone));
 	dp = (struct direct *)buf->data;
 	for(int i = ip->size; i; i -= sizeof(struct direct)) {
 		if(strcmp(dp->name, name) == 0) {
@@ -132,13 +132,13 @@ u64 readi(struct inode *ip, char *dest, u64 offset, u64 size) {
 		for(u64 i = BLOCKSIZE; i < offset; i+=BLOCKSIZE) {
 			zone++;
 		}
-		buf = bread(VIRTIO_BLK, zmap(ip, zone)/512);
+		buf = bread(VIRTIO_BLK, zmap(ip, zone));
 		memcpy(dest, &buf->data[(offset % BLOCKSIZE)], size-total);
 		total = total + (size - total);
 	}
 
 	while(total < size) {
-		buf = bread(VIRTIO_BLK, zmap(ip, zone)/512);
+		buf = bread(VIRTIO_BLK, zmap(ip, zone));
 		memcpy(dest, buf->data, size - total);
 		zone++;
 		total = total + (size - total);
@@ -152,7 +152,7 @@ u8 bmapget(u64 bmap, u64 inum) {
 	u8 bitmap;
 
 	offset = bmap + (inum / (BLOCKSIZE * 8));
-	buf = bread(VIRTIO_BLK, (offset*BLOCKSIZE)/512);
+	buf = bread(VIRTIO_BLK, (offset*BLOCKSIZE)/SECTORSIZE);
 	bitmap = buf->data[inum % BLOCKSIZE];
 
 	return bitmap;
@@ -165,7 +165,7 @@ u64 zmap(struct inode *ip, u64 zone) {
 	if(zone >= 8) {
 		panic("zmap: Indirect zone is not supported\n");
 	}
-	addr = (ip->zone[zone] * BLOCKSIZE);
+	addr = (ip->zone[zone] * BLOCKSIZE) / SECTORSIZE;
 
 	return addr;
 }

@@ -147,6 +147,31 @@ struct inode *namei(char *path) {
 	return ip;
 }
 
+// read content pointed by ip to dest, for size bytes start from offset.
+// TODO: implement offset.
+u64 readi(struct inode *ip, char *dest, u64 offset, u64 size) {
+	u64 total = 0;
+	int zone = 0;
+	struct buf *buf;
+
+	if(offset > 0) {
+		for(u64 i = 1024; i < offset; i+=1024) {
+			zone++;
+		}
+		buf = bread(0, zmap(ip, zone)/512);
+		memcpy(dest, &buf->data[(offset % 1024)], size-total);
+		total = total + (size - total);
+	}
+
+	while(total < size) {
+		buf = bread(0, zmap(ip, zone)/512);
+		memcpy(dest, buf->data, size - total);
+		zone++;
+		total = total + (size - total);
+	}
+	return total;
+}
+
 u8 bmapget(u64 bmap, u64 inum) {
 	struct buf *buf;
 	u64 offset;

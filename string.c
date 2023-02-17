@@ -1,4 +1,5 @@
 #include "string.h"
+#include "riscv.h"
 
 char *strcpy(char *dest, const char *src) {
 	char *p = dest;
@@ -42,12 +43,53 @@ size_t strlen(char *s) {
 }
 
 int strcmp(const char *s1, const char *s2) {
-	while(*s1) {
+	return strncmp(s1, s2, strlen((char *)s1));
+}
+int strncmp(const char *s1, const char *s2, size_t n) {
+	while(*s1 || n) {
 		if(*s1 != *s2) {
 			break;
 		}
+		n--;
 		s1++;
 		s2++;
 	}
 	return *((const unsigned char *) s1) - *((const unsigned char *) s2);
+}
+
+char *strtok(char *str, const char *delim) {
+	static char *saveptr = NULL;
+	char *bp;
+	char *ret;
+
+	if(str) {
+		saveptr = str;
+	}
+	if(!saveptr) {
+		return NULL;
+	}
+
+	bp = saveptr;
+	for(const char *c = delim; *c; c++) {
+		if(*bp == *c) {
+			bp++;
+			saveptr = bp;
+			break;
+		}
+	}
+
+	while(*bp) {
+		for(const char *c = delim; *c; c++) {
+			if(*bp == *c) {
+				*bp = '\0';
+				ret = saveptr;
+				saveptr = bp + 1;
+				return ret;
+			}
+		}
+		bp++;
+	}
+	ret = saveptr;
+	saveptr = NULL;
+	return ret;
 }

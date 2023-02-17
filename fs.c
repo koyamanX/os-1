@@ -35,27 +35,13 @@ void read_super(void) {
 
 void fsinit(void) {
 	read_super();
-	struct inode *rooti = namei("/");
+	struct inode *ip = namei("/usr/bin/hello.txt");
 
-	struct direct dir;
-	u64 ino = -1;
-	printk("List files in \"/\"\n");
 	printk("=================\n");
-	for(u64 i = 0; i < rooti->size; i+=sizeof(struct direct)) {
-		readi(rooti, (char *)&dir, i, sizeof(struct direct));
-		if(strcmp(dir.name, "hello.txt") == 0) {
-			ino = dir.ino;
-		}
-		printk("%s %x\n", dir.name, iget(VIRTIO_BLK, dir.ino)->size);
-	}
+	char *buf = kalloc();
+	readi(ip, buf, 0, 4096);
+	printk("%s\n", buf);
 	printk("=================\n");
-	if(ino != -1) {
-		printk("=================\n");
-		char *buf = kalloc();
-		readi(iget(VIRTIO_BLK, ino), buf, 0, 4096);
-		printk("%s\n", buf);
-		printk("=================\n");
-	}
 }
 
 struct inode *iget(u32 dev, u64 inum) {
@@ -129,10 +115,30 @@ struct inode *diri(struct inode *ip, char *name) {
 
 struct inode *namei(char *path) {
 	struct inode *ip;
+	char *file;
+	struct inode *p;
 
 	if(*path == '/') {
 		ip = iget(VIRTIO_BLK, ROOT);
+		path++;
 	}
+	
+	file = strtok(path, "/");
+	if(file) {
+		p = diri(ip, file);
+		if(p != NULL) {
+			ip = p;
+		}
+	}
+	while((file = strtok(NULL, "/")) != NULL) {
+		p = diri(ip, file);
+		if(p == NULL) {
+			printk("file: %s\n", file);
+		} else {
+			ip = p;
+		}
+	}
+
 	return ip;
 }
 

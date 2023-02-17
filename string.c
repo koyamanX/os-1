@@ -65,7 +65,7 @@ char *strtok(char *str, const char *delim) {
 	if(str) {
 		saveptr = str;
 	}
-	if(!saveptr) {
+	if(!saveptr || !*saveptr) {
 		return NULL;
 	}
 

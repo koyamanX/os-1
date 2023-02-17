@@ -39,7 +39,15 @@ void fsinit(void) {
 
 	printk("=================\n");
 	char *buf = kalloc();
-	readi(ip, buf, 0, 4096);
+	readi(ip, buf, 0, 1024);
+	printk("%s\n", buf);
+	readi(ip, buf, 1024, 1024);
+	printk("%s\n", buf);
+	readi(ip, buf, 2048, 1024);
+	printk("%s\n", buf);
+	readi(ip, buf, 2048+1024, 1024);
+	printk("%s\n", buf);
+	readi(ip, buf, 4096, 1024);
 	printk("%s\n", buf);
 	printk("=================\n");
 }

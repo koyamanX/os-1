@@ -41,7 +41,7 @@ rootfs.img:
 	sudo mount rootfs.img ./os1
 	mkdir os1/usr/bin/ -p
 	echo "Hello,world!" >> os1/hello.txt
-	echo "Hello,Hello" >> os1/usr/bin/hello.txt
+	cp fs.c os1/usr/bin/hello.txt
 	sync
 	sudo umount ./os1
 

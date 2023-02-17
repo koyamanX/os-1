@@ -35,21 +35,10 @@ void read_super(void) {
 
 void fsinit(void) {
 	read_super();
-	struct inode *ip = namei("/usr/bin/hello.txt");
+	struct inode *ip = namei("/usr/sbin/init");
 
-	printk("=================\n");
 	char *buf = kalloc();
 	readi(ip, buf, 0, 1024);
-	printk("%s\n", buf);
-	readi(ip, buf, 1024, 1024);
-	printk("%s\n", buf);
-	readi(ip, buf, 2048, 1024);
-	printk("%s\n", buf);
-	readi(ip, buf, 2048+1024, 1024);
-	printk("%s\n", buf);
-	readi(ip, buf, 4096, 1024);
-	printk("%s\n", buf);
-	printk("=================\n");
 }
 
 struct inode *iget(u32 dev, u64 inum) {

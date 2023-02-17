@@ -34,14 +34,19 @@ kernel: start.S kernel.ldS main.c vm.c uart.c string.c printk.c timer.c trap.c p
 	$(LD) $(LDFLAGS) vm.o panic.o proc.o start.o uart.o main.o string.o printk.o timer.o trap.o sched.o swtch.o init.o virtio.o fs.o bio.o -o kernel -T kernel.ldS
 	$(OBJDUMP) -D kernel > kernel.dump
 
-rootfs.img:
+USER_CFLAGS= -O0 -march=rv64g
+init: init.c crt0.S user.ldS
+	$(CC) $(USER_CFLAGS) -c init.c
+	$(CC) $(USER_CFLAGS) -c crt0.S
+	$(LD) crt0.o init.o -o init -T user.ldS
+
+rootfs.img: init
 	fallocate -l 512M rootfs.img
 	mkfs.minix -3 rootfs.img
 	mkdir ./os1
 	sudo mount rootfs.img ./os1
-	mkdir os1/usr/bin/ -p
-	echo "Hello,world!" >> os1/hello.txt
-	cp fs.c os1/usr/bin/hello.txt
+	mkdir os1/usr/sbin/ -p
+	cp init os1/usr/sbin
 	sync
 	sudo umount ./os1
 
@@ -55,4 +60,4 @@ qemu-gdb: kernel
 
 
 clean:
-	rm -rf *.o kernel *.dump *.log rootfs.img os1
+	rm -rf *.o kernel *.dump *.log rootfs.img os1 init

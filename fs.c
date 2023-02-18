@@ -112,7 +112,7 @@ struct inode *diri(struct inode *ip, char *name) {
 
 struct inode *namei(char *path) {
 	struct inode *ip;
-	char *file;
+	char *name;
 	struct inode *p;
 
 	if(*path == '/') {
@@ -120,18 +120,16 @@ struct inode *namei(char *path) {
 		path++;
 	}
 	
-	file = strtok(path, "/");
-	if(file) {
-		p = diri(ip, file);
+	name = strtok(path, "/");
+	if(name) {
+		p = diri(ip, name);
 		if(p != NULL) {
 			ip = p;
 		}
 	}
-	while((file = strtok(NULL, "/")) != NULL) {
-		p = diri(ip, file);
-		if(p == NULL) {
-			printk("file: %s\n", file);
-		} else {
+	while((name = strtok(NULL, "/")) != NULL) {
+		p = diri(ip, name);
+		if(p != NULL) {
 			ip = p;
 		}
 	}

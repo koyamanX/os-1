@@ -71,7 +71,7 @@ void kerneltrap(void) {
 	usertrapret();
 }
 
-#define SYS_WRITE 1
+#define SYS_WRITE 64
 int syscall(struct proc *rp) {
 	u64 syscall_num = rp->tf->a7;
 	u64 a0 = rp->tf->a0;

@@ -60,6 +60,7 @@ void kerneltrap(void) {
 		case ECALL_FROM_U_MODE: {
 			rp->tf->sepc+=4;
 			rp->tf->a0 = syscall(rp);
+			sched(rp);
 			break;
 		}
 		default: {

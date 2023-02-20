@@ -6,6 +6,8 @@
 #include "trap.h"
 #include "string.h"
 #include "sched.h"
+#include "fs.h"
+#include "printk.h"
 
 struct proc procs[NPROCS];
 u64 mpid = 1;
@@ -53,6 +55,22 @@ int newproc(void) {
 	kvmmap(p->pgtbl, TRAMPOLINE, (u64)trampoline, PAGE_SIZE, PTE_V|PTE_X|PTE_R);
 	
 	return mpid++;
+}
+
+int exec(const char *file, char const **argv) {
+	struct inode *ip;
+	char path[128];
+
+	strcpy(path, file);
+	ip = namei((char *)path);
+	if(ip == NULL) {
+		return -1;
+	}
+	char magic[5];
+	readi(ip, (char *)magic, 0, 4);
+	magic[4] = '\0';
+	printk("exec: %s\n", magic);
+	return 0;
 }
 
 

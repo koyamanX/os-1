@@ -72,6 +72,7 @@ void kerneltrap(void) {
 }
 
 #define SYS_WRITE 64
+#define SYS_EXECEV 221
 int syscall(struct proc *rp) {
 	u64 syscall_num = rp->tf->a7;
 	u64 a0 = rp->tf->a0;
@@ -82,6 +83,10 @@ int syscall(struct proc *rp) {
 	switch(syscall_num) {
 		case SYS_WRITE: {
 			ret = write(a0, (void *)va2pa(rp->pgtbl, a1), a2);
+			break;
+		}
+		case SYS_EXECEV: {
+			ret = exec(((const char *)va2pa(rp->pgtbl, a0)), ((char const **)va2pa(rp->pgtbl, a1)));
 			break;
 		}
 		default: {

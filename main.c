@@ -48,7 +48,6 @@ void kmain(void) {
 	binit();
 	fsinit();
 	userinit();
-	userinit();
 	scheduler();
 
 	while(1) {

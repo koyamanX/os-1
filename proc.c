@@ -8,6 +8,8 @@
 #include "sched.h"
 #include "fs.h"
 #include "printk.h"
+#include "elf.h"
+#include "panic.h"
 
 struct proc procs[NPROCS];
 u64 mpid = 1;
@@ -57,20 +59,55 @@ int newproc(void) {
 	return mpid++;
 }
 
+// TODO:
+static Elf64_Phdr *phdr = NULL;
+
 int exec(const char *file, char const **argv) {
 	struct inode *ip;
 	char path[128];
+	Elf64_Ehdr ehdr;
+	struct proc *rp;
+	char *seg;
 
 	strcpy(path, file);
 	ip = namei((char *)path);
+	// TODO: check permission for executable file (rx)
 	if(ip == NULL) {
 		return -1;
 	}
-	char magic[5];
-	readi(ip, (char *)magic, 0, 4);
-	magic[4] = '\0';
-	printk("exec: %s\n", magic);
+	readi(ip, (char *)&ehdr, 0, sizeof(ehdr));
+
+	if(IS_RISCV_ELF(ehdr) && ehdr.e_type == ET_EXEC) {
+		printk("Valid ELF\n");
+	} else {
+		panic("Invalid ELF\n");
+	}
+
+	if(ehdr.e_phnum > 4) {
+		panic("exec: load failed\n");
+	}
+	if(phdr == NULL) {
+		// TODO:
+		phdr = kalloc();
+	}
+
+	rp = cpus[r_tp()].rp;
+	readi(ip, (char *)phdr, ehdr.e_phoff, sizeof(Elf64_Phdr)*ehdr.e_phnum);
+	for(int i = 0; i < ehdr.e_phnum; i++) {
+		if(phdr[i].p_type == PT_LOAD) {
+			printk("PT_LOAD: p_offset: %x, p_vaddr: %x, p_paddr: %x, p_filesz: %x,p_memsz: %x, p_align: %x\n",
+					phdr[i].p_offset, phdr[i].p_vaddr, phdr[i].p_paddr, phdr[i].p_filesz, phdr[i].p_memsz, phdr[i].p_align);
+			seg = (char *)va2pa(rp->pgtbl, 0x0);
+			memset(seg, 0, PAGE_SIZE);
+			readi(ip, (char *)seg, phdr[i].p_offset, PAGE_SIZE);
+			sfence_vma(); // required?
+			break; // TODO: only load first page for segment
+		}
+	}
+
+	rp->tf->sepc = ehdr.e_entry;
+	rp->tf->sp = PAGE_SIZE;
+
 	return 0;
 }
-
 

@@ -145,7 +145,7 @@ u64 readi(struct inode *ip, char *dest, u64 offset, u64 size) {
 	struct buf *buf;
 
 	if(offset > 0) {
-		for(u64 i = BLOCKSIZE; i < offset; i+=BLOCKSIZE) {
+		for(u64 i = BLOCKSIZE; i <= offset; i+=BLOCKSIZE) {
 			zone++;
 		}
 		buf = bread(VIRTIO_BLK, zmap(ip, zone));

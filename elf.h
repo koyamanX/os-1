@@ -12,7 +12,55 @@ typedef u32 Elf64_Word;
 typedef i64 Elf64_Sxword;
 typedef u64 Elf64_Xword;
 
+
+#define EI_MAG0	0
+#define EI_MAG1 1
+#define EI_MAG2 2
+#define EI_MAG3 3
+#define EI_CLASS 4
+#define EI_DATA 5
+#define EI_VERSION 6
+#define EI_OSABI 7
+#define EI_ABIVERSION 8
+#define EI_PAD 9
 #define EI_NIDENT 16
+
+#define ELFMAG0 0x7f
+#define ELFMAG1 'E'
+#define ELFMAG2 'L'
+#define ELFMAG3 'F'
+
+#define EV_NONE 0
+#define EV_CURRENT 1
+
+#define ELFCLASSNONE 0
+#define ELFCLASS32 1
+#define ELFCLASS64 2
+
+#define ELFDATANONE 0
+#define ELFDATA2LSB 1
+#define ELFDATA2MSB 2
+
+#define ELFOSABI_NONE 0
+#define ELFOSABI_SYSV ELFOSABI_NONE
+
+#define ET_NONE 0
+#define ET_EXEC 2
+
+#define EM_RISCV 243
+
+#define IS_RISCV_ELF(ehdr) ((ehdr).e_ident[EI_MAG0] == ELFMAG0 && \
+							(ehdr).e_ident[EI_MAG1] == ELFMAG1 && \
+							(ehdr).e_ident[EI_MAG2] == ELFMAG2 && \
+							(ehdr).e_ident[EI_MAG3] == ELFMAG3 && \
+							(ehdr).e_ident[EI_CLASS] == ELFCLASS64 && \
+							(ehdr).e_ident[EI_DATA] == ELFDATA2LSB && \
+							(ehdr).e_ident[EI_VERSION] == EV_CURRENT && \
+							(ehdr).e_ident[EI_OSABI] == ELFOSABI_SYSV && \
+							(ehdr).e_machine == EM_RISCV)
+
+#define PT_NULL 0
+#define PT_LOAD 1
 
 typedef struct elf64_hdr {
 	Elf64_Byte e_ident[EI_NIDENT];
@@ -53,5 +101,5 @@ typedef struct elf64_shdr {
 	Elf64_Word sh_info;
 	Elf64_Xword sh_addralign;
 	Elf64_Xword sh_entsize;
-};
+} ELF64_Shdr;
 #endif

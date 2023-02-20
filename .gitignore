@@ -4,3 +4,4 @@ kernel
 *.dump
 rootfs.img
 os1/*
+init

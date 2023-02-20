@@ -58,13 +58,13 @@ void kerneltrap(void) {
 		}
 #define ECALL_FROM_U_MODE 8
 		case ECALL_FROM_U_MODE: {
-			rp->tf->a0 = syscall(rp);
 			rp->tf->sepc+=4;
-			sched(rp);
+			rp->tf->a0 = syscall(rp);
 			break;
 		}
 		default: {
-			panic("trap: fault\n");
+			printk("trap: fault: cause: %x, epc:%x, tval:%x\n", r_scause(), r_sepc(), r_stval());
+			panic("trap");
 			break;
 		}
 	}

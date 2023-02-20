@@ -2,24 +2,6 @@
 .section .userproc0
 .globl init
 init:
-	li a7, 64
-	li a0, 1
-	la a1, hello
-	la a2, 6
-
-	ecall
-	li a7, 64
-	li a0, 1
-	la a1, world
-	la a2, 6
-	ecall
-
-	li a7, 64
-	li a0, 1
-	la a1, newline
-	la a2, 1
-	ecall
-
 	li a7, 221
 	la a0, file
 	li a1, 0

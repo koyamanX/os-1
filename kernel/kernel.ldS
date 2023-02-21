@@ -36,5 +36,9 @@ SECTIONS {
 		_bss_end = .;
 	}
 
+	.note : {
+		KEEP(*(.note.gnu.build-id))
+	}
+
 	PROVIDE(_end = .);
 }

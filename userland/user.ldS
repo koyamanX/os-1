@@ -28,5 +28,9 @@ SECTIONS {
 		*(.bss .bss.*)
 	}
 
+	.note : {
+		KEEP(*(.note.gnu.build-id))
+	}
+
 	PROVIDE(_end = .);
 }

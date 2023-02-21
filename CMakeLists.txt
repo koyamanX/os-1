@@ -14,5 +14,7 @@ set(CMAKE_LINKER "${TOOLCHAIN_PREFIX}gcc${TOOLCHAIN_SUFFIX}")
 set(CMAKE_C_FLAGS   "-Wall -Werror -O0 -ggdb -g3 -gdwarf-2 -march=rv64g -ffreestanding -fno-common -nostdlib")
 set(CMAKE_ASM_FLAGS "-Wall -Werror -O0 -ggdb -g3 -gdwarf-2 -march=rv64g -ffreestanding -fno-common -nostdlib")
 
+set(CMAKE_INSTALL_PREFIX "${CMAKE_BINARY_DIR}/mnt")
+
 add_subdirectory(kernel)
 add_subdirectory(userland)

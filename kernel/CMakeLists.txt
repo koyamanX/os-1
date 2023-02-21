@@ -22,3 +22,5 @@ set(CMAKE_ASM_FLAGS "${CMAKE_C_FLAGS} -fno-omit-frame-pointer -mno-relax -mcmode
 
 add_executable(kernel ${KERNEL_SOURCE})
 target_link_options(kernel PRIVATE LINKER:-T ${KERNEL_LINKER_SCRIPT} -nostdlib -nodefaultlibs -fno-pie -no-pie -z max-page-size=4096)
+
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/kernel DESTINATION ${CMAKE_INSTALL_PREFIX})

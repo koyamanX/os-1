@@ -79,6 +79,11 @@ CMD=$1
 if [ "$CMD" = "build" ]; then
 	shift
 	build
+	CI=$1
+	if [ "$CI" = "CI" ] ; then
+		shift
+		exit 0
+	fi
 	create_image
 	exit 0
 fi

@@ -23,11 +23,6 @@ void fsinit(void) {
 	// TODO:
 	mount[0].sb = (char*)&sb;
 	mount[0].ip = namei("/");
-
-	struct inode *ip = namei("/usr/sbin/init");
-
-	char *buf = kalloc();
-	readi(ip, buf, 0, 1024);
 }
 
 struct super_block *getfs(dev_t dev) {

@@ -1,6 +1,7 @@
 #include <buf.h>
 #include <vm.h>
 #include <virtio.h>
+#include <devsw.h>
 
 struct buf *blist;
 
@@ -9,7 +10,7 @@ void binit(void) {
 	blist->valid = 0;
 }
 
-struct buf *bread(u32 dev, u64 blkno) {
+struct buf *bread(dev_t dev, u64 blkno) {
 	if(blist->valid && blist->blkno == blkno) {
 		return blist;
 	}
@@ -20,7 +21,7 @@ struct buf *bread(u32 dev, u64 blkno) {
 	blist->valid = 1;
 	blist->dev = dev;
 	blist->blkno = blkno;
-	virtio_req(blist->data, blist->blkno, 0);
+	bdevsw[dev.major].strategy(blist->data, blist->blkno, 0);
 	
 	return blist;
 }
@@ -29,15 +30,15 @@ int bwrite(struct buf *bp) {
 	if(!bp->valid) {
 		return -1;
 	}
-	virtio_req(bp->data, bp->blkno, 1);
+	bdevsw[bp->dev.major].strategy(bp->data, bp->blkno, 1);
 
 	return 0;
 }
 
-int bflush(u32 dev) {
+int bflush(dev_t dev) {
 	int ret = 0;
 
-	if(blist->valid && blist->dev == dev) {
+	if(blist->valid && blist->dev.major == dev.major && blist->dev.minor == dev.minor) {
 		ret = bwrite(blist);
 	}
 	return ret;

@@ -1,4 +1,3 @@
-#include <fs.h>
 #include <virtio.h>
 #include <types.h>
 #include <string.h>
@@ -7,6 +6,8 @@
 #include <buf.h>
 #include <panic.h>
 #include <vm.h>
+#include <devsw.h>
+#include <fs.h>
 
 struct super_block sb;
 struct inode inode[NINODE];
@@ -34,20 +35,26 @@ void read_super(void) {
 }
 
 void fsinit(void) {
+	bdevsw[rootdev.major].open();
 	read_super();
+	mount[0].dev = rootdev;
+	// TODO:
+	mount[0].sb = (char*)&sb;
+	mount[0].ip = namei("/");
+
 	struct inode *ip = namei("/usr/sbin/init");
 
 	char *buf = kalloc();
 	readi(ip, buf, 0, 1024);
 }
 
-struct inode *iget(u32 dev, u64 inum) {
+struct inode *iget(dev_t dev, u64 inum) {
 	struct buf *buf;
 	u64 offset;
 
 	inum--;
 	offset = (SUPERBLOCK + sb.imap_blocks + sb.zmap_blocks + (inum / NINODE));
-	buf = bread(VIRTIO_BLK, (offset*BLOCKSIZE)/SECTORSIZE);
+	buf = bread(dev, (offset*BLOCKSIZE)/SECTORSIZE);
 	memcpy(&inode[0], buf->data, sizeof(struct inode) * NINODE);
 	
 	return &inode[inum % NINODE];

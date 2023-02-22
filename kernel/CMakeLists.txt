@@ -14,6 +14,7 @@ set(KERNEL_SOURCE
 	init.S
 	start.S
 	syscall.c
+	devsw.c
 	swtch.S)
 
 set(KERNEL_LINKER_SCRIPT ${CMAKE_CURRENT_SOURCE_DIR}/kernel.ldS)

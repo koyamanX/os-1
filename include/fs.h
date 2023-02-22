@@ -2,6 +2,7 @@
 #define FS_H
 
 #include <types.h>
+#include <devsw.h>
 
 struct super_block {
 	u32 ninodes;
@@ -34,7 +35,7 @@ struct inode {
 
 void read_super(void);
 void fsinit(void);
-struct inode *iget(u32 dev, u64 inum);
+struct inode *iget(dev_t dev, u64 inum);
 struct inode *namei(char *path);
 struct inode *diri(struct inode *ip, char *name);
 u8 bmapget(u64 bmap, u64 inum);

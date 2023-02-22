@@ -9,6 +9,6 @@ add_library(string STATIC
 	strcpy.c)
 
 target_include_directories(string PUBLIC
-	${PROJECT_SOURCE_DIR}/lib/libc/include
+	${PROJECT_SOURCE_DIR}/libc/include
 	# TODO:
 	${PROJECT_SOURCE_DIR}/include)

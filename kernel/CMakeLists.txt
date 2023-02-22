@@ -22,7 +22,7 @@ set(CMAKE_ASM_FLAGS "${CMAKE_C_FLAGS} -fno-omit-frame-pointer -mno-relax -mcmode
 add_executable(kernel ${KERNEL_SOURCE})
 
 target_include_directories(kernel
-	PUBLIC ${PROJECT_SOURCE_DIR}/lib/libc/include
+	PUBLIC ${PROJECT_SOURCE_DIR}/libc/include
 	PUBLIC ${PROJECT_SOURCE_DIR}/include)
 target_link_libraries(kernel libc)
 

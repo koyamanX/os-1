@@ -1,7 +1,7 @@
 #ifndef PROC_H
 #define PROC_H
 
-#include "riscv.h"
+#include <riscv.h>
 
 typedef struct {
 	u64 ra;

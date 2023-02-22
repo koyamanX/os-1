@@ -1,7 +1,7 @@
 #ifndef BUF_H
 #define BUF_H
 
-#include "types.h"
+#include <types.h>
 
 #define BUFSIZ 1024
 

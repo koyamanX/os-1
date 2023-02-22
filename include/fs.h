@@ -1,7 +1,7 @@
 #ifndef FS_H
 #define FS_H
 
-#include "types.h"
+#include <types.h>
 
 struct super_block {
 	u32 ninodes;

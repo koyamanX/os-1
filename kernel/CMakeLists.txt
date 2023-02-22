@@ -13,6 +13,7 @@ set(KERNEL_SOURCE
 	vm.c
 	init.S
 	start.S
+	syscall.c
 	swtch.S)
 
 set(KERNEL_LINKER_SCRIPT ${CMAKE_CURRENT_SOURCE_DIR}/kernel.ldS)

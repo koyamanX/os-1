@@ -13,9 +13,6 @@ void usertrap(void) {
 	asm volatile("nop");
 }
 
-int syscall(struct proc *rp);
-ssize_t write(int fd, const void *buf, size_t count);
-
 void usertrapret(void) {
 	struct proc *p;
 
@@ -29,6 +26,7 @@ void usertrapret(void) {
 	((void(*)(u64))(TRAMPOLINE + (((u64) userret) - ((u64) trampoline))))((u64)SATP(p->pgtbl));
 }
 
+int syscall(struct proc *rp);
 void kerneltrap(void) {
 	struct proc *rp;
 	rp = cpus[r_tp()].rp;
@@ -72,41 +70,4 @@ void kerneltrap(void) {
 		}
 	}
 	usertrapret();
-}
-
-#define SYS_WRITE 64
-#define SYS_EXECEV 221
-int syscall(struct proc *rp) {
-	u64 syscall_num = rp->tf->a7;
-	u64 a0 = rp->tf->a0;
-	u64 a1 = rp->tf->a1;
-	u64 a2 = rp->tf->a2;
-	int ret = -1;
-
-	switch(syscall_num) {
-		case SYS_WRITE: {
-			ret = write(a0, (void *)va2pa(rp->pgtbl, a1), a2);
-			break;
-		}
-		case SYS_EXECEV: {
-			ret = exec(((const char *)va2pa(rp->pgtbl, a0)), ((char const **)va2pa(rp->pgtbl, a1)));
-			break;
-		}
-		default: {
-			panic("invalid syscall\n");
-			break;
-		}
-	}
-
-	return ret;
-}
-ssize_t write(int fd, const void *buf, size_t count) {
-	u64 i = 0;
-	if(fd != 1) {
-		return -1;
-	}
-	for(i = 0; i < count; i++) {
-		uart_putchar(((u8 *)buf)[i]);
-	}
-	return 0;
 }

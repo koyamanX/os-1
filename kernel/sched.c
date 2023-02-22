@@ -1,6 +1,6 @@
-#include "sched.h"
-#include "proc.h"
-#include "printk.h"
+#include <sched.h>
+#include <proc.h>
+#include <printk.h>
 
 extern void swtch(context_t *old, context_t *new);
 

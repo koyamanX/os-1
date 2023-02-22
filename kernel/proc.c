@@ -1,15 +1,15 @@
-#include "riscv.h"
-#include "os1.h"
-#include "types.h"
-#include "proc.h"
-#include "vm.h"
-#include "trap.h"
-#include "string.h"
-#include "sched.h"
-#include "fs.h"
-#include "printk.h"
-#include "elf.h"
-#include "panic.h"
+#include <riscv.h>
+#include <os1.h>
+#include <types.h>
+#include <proc.h>
+#include <vm.h>
+#include <trap.h>
+#include <string.h>
+#include <sched.h>
+#include <fs.h>
+#include <printk.h>
+#include <elf.h>
+#include <panic.h>
 
 struct proc procs[NPROCS];
 u64 mpid = 1;

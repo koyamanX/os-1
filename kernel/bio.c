@@ -1,6 +1,6 @@
-#include "buf.h"
-#include "vm.h"
-#include "virtio.h"
+#include <buf.h>
+#include <vm.h>
+#include <virtio.h>
 
 struct buf *blist;
 

@@ -1,11 +1,11 @@
-#include "riscv.h"
-#include "types.h"
-#include "vm.h"
-#include "string.h"
-#include "printk.h"
-#include "uart.h"
-#include "os1.h"
-#include "virtio.h"
+#include <riscv.h>
+#include <types.h>
+#include <vm.h>
+#include <string.h>
+#include <printk.h>
+#include <uart.h>
+#include <os1.h>
+#include <virtio.h>
 
 struct kmem kmem;
 

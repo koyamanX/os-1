@@ -1,7 +1,7 @@
-#include "types.h"
-#include "riscv.h"
-#include "timer.h"
-#include "os1.h"
+#include <types.h>
+#include <riscv.h>
+#include <timer.h>
+#include <os1.h>
 
 struct mscratch mscratch;
 

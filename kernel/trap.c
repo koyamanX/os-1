@@ -1,11 +1,11 @@
-#include "riscv.h"
-#include "os1.h"
-#include "uart.h"
-#include "proc.h"
-#include "printk.h"
-#include "vm.h"
-#include "panic.h"
-#include "sched.h"
+#include <riscv.h>
+#include <os1.h>
+#include <uart.h>
+#include <proc.h>
+#include <printk.h>
+#include <vm.h>
+#include <panic.h>
+#include <sched.h>
 #include <stddef.h>
 #include <types.h>
 

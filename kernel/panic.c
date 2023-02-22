@@ -1,5 +1,5 @@
-#include "uart.h"
-#include "panic.h"
+#include <uart.h>
+#include <panic.h>
 
 void panic(char *msg) {
 	uart_puts("panic: ");

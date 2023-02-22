@@ -1,16 +1,16 @@
-#include "riscv.h"
-#include "proc.h"
-#include "uart.h"
-#include "types.h"
-#include "vm.h"
-#include "string.h"
-#include "printk.h"
-#include "os1.h"
-#include "timer.h"
-#include "sched.h"
-#include "virtio.h"
-#include "fs.h"
-#include "buf.h"
+#include <riscv.h>
+#include <proc.h>
+#include <uart.h>
+#include <types.h>
+#include <vm.h>
+#include <string.h>
+#include <printk.h>
+#include <os1.h>
+#include <timer.h>
+#include <sched.h>
+#include <virtio.h>
+#include <fs.h>
+#include <buf.h>
 
 __attribute__ ((aligned (16))) char stack[PAGE_SIZE*4];
 

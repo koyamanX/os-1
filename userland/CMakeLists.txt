@@ -5,5 +5,10 @@ set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -fno-pie -no-pie")
 set(CMAKE_ASM_FLAGS "${CMAKE_C_FLAGS} -fno-pie -no-pie")
 
 add_executable(init init.c crt0.S)
+target_include_directories(init
+	PUBLIC ${PROJECT_SOURCE_DIR}/libc/include
+	PUBLIC ${PROJECT_SOURCE_DIR}/include)
+target_link_libraries(init libc)
+
 
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/init" DESTINATION "${CMAKE_INSTALL_PREFIX}/usr/sbin/")

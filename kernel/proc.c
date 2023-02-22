@@ -59,15 +59,13 @@ int newproc(void) {
 	return mpid++;
 }
 
-// TODO:
-static Elf64_Phdr *phdr = NULL;
-
 int exec(const char *file, char const **argv) {
 	struct inode *ip;
 	char path[128];
 	Elf64_Ehdr ehdr;
 	struct proc *rp;
 	char *seg;
+	Elf64_Phdr *phdr = NULL;
 
 	strcpy(path, file);
 	ip = namei((char *)path);
@@ -86,10 +84,7 @@ int exec(const char *file, char const **argv) {
 	if(ehdr.e_phnum > 4) {
 		panic("exec: load failed\n");
 	}
-	if(phdr == NULL) {
-		// TODO:
-		phdr = kalloc();
-	}
+	phdr = kalloc();
 
 	rp = cpus[r_tp()].rp;
 	readi(ip, (char *)phdr, ehdr.e_phoff, sizeof(Elf64_Phdr)*ehdr.e_phnum);
@@ -104,6 +99,8 @@ int exec(const char *file, char const **argv) {
 			break; // TODO: only load first page for segment
 		}
 	}
+
+	kfree(phdr);
 
 	rp->tf->sepc = ehdr.e_entry;
 	rp->tf->sp = PAGE_SIZE;

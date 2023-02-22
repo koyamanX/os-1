@@ -15,4 +15,4 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: build for CI
-      run: ./run.sh build CI
+      run: ./run.sh build

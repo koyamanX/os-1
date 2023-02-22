@@ -22,6 +22,7 @@ usage() {
 
 		COMMANDs:
 			build:
+			create_image:
 			run:
 			gdb:
 			clean:
@@ -79,11 +80,14 @@ CMD=$1
 if [ "$CMD" = "build" ]; then
 	shift
 	build
-	CI=$1
-	if [ "$CI" = "CI" ] ; then
-		shift
-		exit 0
-	fi
+	exit 0
+fi
+
+CMD=$1
+if [ "$CMD" = "create_image" ]; then
+	shift
+	build
+	[ -f "$IMAGE_NAME" ] && rm -rf $IMAGE_NAME
 	create_image
 	exit 0
 fi

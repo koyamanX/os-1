@@ -33,7 +33,7 @@ struct inode {
 	u32 zone[10];
 };
 
-void read_super(void);
+struct super_block *getfs(dev_t dev);
 void fsinit(void);
 struct inode *iget(dev_t dev, u64 inum);
 struct inode *namei(char *path);
@@ -71,4 +71,6 @@ struct direct {
 	char name[DIRSIZ];
 };
 
+#define NSUPERBLK 10
+extern struct super_block sb[];
 #endif

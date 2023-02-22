@@ -9,34 +9,16 @@
 #include <devsw.h>
 #include <fs.h>
 
-struct super_block sb;
 struct inode inode[NINODE];
-
-void read_super(void) {
-	struct buf *bp;
-	bp = bread(VIRTIO_BLK, SUPERBLOCK);
-	memcpy(&sb, bp->data, sizeof(struct super_block));
-
-	printk("ninodes: %x\n", sb.ninodes);
-	printk("nzones: %x\n", sb.nzones);
-	printk("imap_blocks: %x\n", sb.imap_blocks);
-	printk("zmap_blocks: %x\n", sb.zmap_blocks);
-	printk("firstdatazone: %x\n", sb.firstdatazone);
-	printk("log_zone_size: %x\n", sb.log_zone_size);
-	printk("max_size: %x\n", sb.max_size);
-	printk("zones: %x\n", sb.zones);
-	printk("magic: %x\n", sb.magic);
-	printk("block_size: %x\n", sb.block_size);
-	printk("disk_version: %x\n", sb.disk_version);
-
-	if(sb.block_size != BLOCKSIZE) {
-		panic("read_super: Unsupported block size\n");
-	}
-}
+struct super_block sb[NSUPERBLK];
 
 void fsinit(void) {
+	struct buf *bp;
+
 	bdevsw[rootdev.major].open();
-	read_super();
+	bp = bread(rootdev, SUPERBLOCK);
+	memcpy(&sb, bp->data, sizeof(struct super_block));
+
 	mount[0].dev = rootdev;
 	// TODO:
 	mount[0].sb = (char*)&sb;
@@ -48,12 +30,24 @@ void fsinit(void) {
 	readi(ip, buf, 0, 1024);
 }
 
+struct super_block *getfs(dev_t dev) {
+	for(struct mount *p = &mount[0]; p < &mount[NMOUNT]; p++) {
+		if(p->dev.major == dev.major && p->dev.minor == dev.minor) {
+			return (struct super_block *)p->sb;
+		}
+	}
+	panic("no fs\n");
+	return NULL;
+}
+
 struct inode *iget(dev_t dev, u64 inum) {
 	struct buf *buf;
 	u64 offset;
+	struct super_block *sb;
 
+	sb = getfs(dev);
 	inum--;
-	offset = (SUPERBLOCK + sb.imap_blocks + sb.zmap_blocks + (inum / NINODE));
+	offset = (SUPERBLOCK + sb->imap_blocks + sb->zmap_blocks + (inum / NINODE));
 	buf = bread(dev, (offset*BLOCKSIZE)/SECTORSIZE);
 	memcpy(&inode[0], buf->data, sizeof(struct inode) * NINODE);
 	
@@ -105,11 +99,11 @@ struct inode *diri(struct inode *ip, char *name) {
 	struct buf *buf;
 	u8 zone = 0;
 
-	buf = bread(VIRTIO_BLK, zmap(ip, zone));
+	buf = bread(rootdev, zmap(ip, zone));
 	dp = (struct direct *)buf->data;
 	for(int i = ip->size; i; i -= sizeof(struct direct)) {
 		if(strcmp(dp->name, name) == 0) {
-			return iget(VIRTIO_BLK, dp->ino);
+			return iget(rootdev, dp->ino);
 		}
 		dp++;
 	}
@@ -123,7 +117,7 @@ struct inode *namei(char *path) {
 	struct inode *p;
 
 	if(*path == '/') {
-		ip = iget(VIRTIO_BLK, ROOT);
+		ip = iget(rootdev, ROOT);
 		path++;
 	}
 	
@@ -155,13 +149,13 @@ u64 readi(struct inode *ip, char *dest, u64 offset, u64 size) {
 		for(u64 i = BLOCKSIZE; i <= offset; i+=BLOCKSIZE) {
 			zone++;
 		}
-		buf = bread(VIRTIO_BLK, zmap(ip, zone));
+		buf = bread(rootdev, zmap(ip, zone));
 		memcpy(dest, &buf->data[(offset % BLOCKSIZE)], size-total);
 		total = total + (size - total);
 	}
 
 	while(total < size) {
-		buf = bread(VIRTIO_BLK, zmap(ip, zone));
+		buf = bread(rootdev, zmap(ip, zone));
 		memcpy(dest, buf->data, size - total);
 		zone++;
 		total = total + (size - total);
@@ -175,7 +169,7 @@ u8 bmapget(u64 bmap, u64 inum) {
 	u8 bitmap;
 
 	offset = bmap + (inum / (BLOCKSIZE * 8));
-	buf = bread(VIRTIO_BLK, (offset*BLOCKSIZE)/SECTORSIZE);
+	buf = bread(rootdev, (offset*BLOCKSIZE)/SECTORSIZE);
 	bitmap = buf->data[inum % BLOCKSIZE];
 
 	return bitmap;

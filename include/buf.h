@@ -20,6 +20,4 @@ struct buf {
 
 extern struct buf *blist;
 
-#define VIRTIO_BLK rootdev
-
 #endif

@@ -11,6 +11,5 @@ typedef unsigned char u8;
 typedef signed char s8;
 
 typedef long long ssize_t;
-typedef unsigned long long size_t;
 
 #endif

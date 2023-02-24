@@ -7,7 +7,7 @@
 #include <panic.h>
 #include <sched.h>
 #include <stddef.h>
-#include <types.h>
+#include <sys/types.h>
 
 void usertrap(void) {
 	asm volatile("nop");

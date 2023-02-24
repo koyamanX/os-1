@@ -2,7 +2,7 @@
 #define DEVSW_H
 
 #include <stdint.h>
-#include <types.h>
+#include <sys/types.h>
 
 typedef struct dev_t {
 	uint32_t major;

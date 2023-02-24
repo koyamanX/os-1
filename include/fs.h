@@ -1,10 +1,8 @@
 #ifndef FS_H
 #define FS_H
 
-#include <types.h>
+#include <sys/types.h>
 #include <devsw.h>
-
-typedef u64 ino_t;
 
 struct super_block {
 	u32 ninodes;

@@ -1,7 +1,7 @@
 #ifndef RISCV_H
 #define RISCV_H
 
-#include <types.h>
+#include <sys/types.h>
 
 #define MSTATUS_MPP_MASK (0x3<<11)
 #define MSTATUS_MPP_M_MODE (0x3<<11)

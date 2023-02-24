@@ -1,7 +1,7 @@
 #ifndef FILE_H
 #define FILE_H
 
-#include <types.h>
+#include <sys/types.h>
 #include <fs.h>
 
 struct file {

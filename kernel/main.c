@@ -1,7 +1,7 @@
 #include <riscv.h>
 #include <proc.h>
 #include <uart.h>
-#include <types.h>
+#include <sys/types.h>
 #include <vm.h>
 #include <string.h>
 #include <printk.h>

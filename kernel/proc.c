@@ -1,6 +1,6 @@
 #include <riscv.h>
 #include <os1.h>
-#include <types.h>
+#include <sys/types.h>
 #include <proc.h>
 #include <vm.h>
 #include <trap.h>

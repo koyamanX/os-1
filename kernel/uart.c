@@ -1,5 +1,5 @@
 #include <uart.h>
-#include <types.h>
+#include <sys/types.h>
 
 void uart_init(void) {
 	// Disable interrupt

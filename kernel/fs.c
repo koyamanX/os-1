@@ -1,5 +1,5 @@
 #include <virtio.h>
-#include <types.h>
+#include <sys/types.h>
 #include <string.h>
 #include <printk.h>
 #include <riscv.h>

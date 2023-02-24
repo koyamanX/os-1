@@ -1,4 +1,4 @@
-#include <types.h>
+#include <sys/types.h>
 #include <riscv.h>
 #include <timer.h>
 #include <os1.h>

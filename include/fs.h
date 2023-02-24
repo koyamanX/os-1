@@ -4,6 +4,8 @@
 #include <types.h>
 #include <devsw.h>
 
+typedef u64 ino_t;
+
 struct super_block {
 	u32 ninodes;
 	u16 nzones;
@@ -22,6 +24,7 @@ struct super_block {
 
 #define NINODE 16
 struct inode {
+	// on disk structure
 	u16 mode;
 	u16 nlinks;
 	u16 uid;
@@ -31,7 +34,12 @@ struct inode {
 	u32 mtime;
 	u32 ctime;
 	u32 zone[10];
+	// on memory structure
+	dev_t dev;
+	ino_t inum;
+	u64 count;
 };
+#define INODE_SIZE 64
 
 struct super_block *getfs(dev_t dev);
 void fsinit(void);
@@ -43,6 +51,7 @@ u64 zmap(struct inode *ip, u64 zone);
 char *dirname(char *path);
 char *basename(char *path);
 struct inode *ialloc(dev_t dev);
+void iupdate(struct inode *ip);
 
 u64 readi(struct inode *ip, char *dest, u64 offset, u64 size);
 

@@ -42,14 +42,25 @@ struct inode *iget(dev_t dev, u64 inum) {
 	struct buf *buf;
 	u64 offset;
 	struct super_block *sb;
+	struct inode *ip;
 
 	sb = getfs(dev);
 	inum--;
 	offset = (SUPERBLOCK + sb->imap_blocks + sb->zmap_blocks + (inum / NINODE));
 	buf = bread(dev, (offset*BLOCKSIZE)/SECTORSIZE);
-	memcpy(&inode[0], buf->data, sizeof(struct inode) * NINODE);
-	
-	return &inode[inum % NINODE];
+
+	for(int i = 0; i < NINODE; i++) {
+		if(inode[i].count == 0) {
+			memcpy(&inode[i], (buf->data+((inum%NINODE)*INODE_SIZE)), INODE_SIZE);
+			ip = &inode[i];
+			ip->count++;
+			ip->dev = dev;
+			ip->inum = inum;
+			return ip;
+		}
+	}
+	panic("no empty inode cache entry\n");
+	return NULL;
 }
 
 char *dirname(char *path) {
@@ -189,10 +200,25 @@ struct inode *ialloc(dev_t dev) {
 		if((pos = ffs(~buf->data[i] & 0xff)) != 0) {
 			buf->data[i] = buf->data[i] | (1 << (pos-1));
 			bwrite(buf);
-			return iget(dev, 1<<(pos-1));
+			ip = iget(dev, 1<<(pos-1));
+			break;
 		}
 	}
 	return ip;
+}
+
+void iupdate(struct inode *ip) {
+	dev_t dev;
+	struct super_block *sb;
+	struct buf *buf;
+	u64 offset;
+
+	dev = ip->dev;
+	sb = getfs(dev);
+	offset = (SUPERBLOCK + sb->imap_blocks + sb->zmap_blocks + (ip->inum / NINODE));
+	buf = bread(dev, (offset*BLOCKSIZE)/SECTORSIZE);
+	memcpy(&buf->data[(ip->inum % NINODE)*INODE_SIZE], ip, INODE_SIZE);
+	bwrite(buf);
 }
 
 // TODO: writei

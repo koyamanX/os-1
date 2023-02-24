@@ -2,6 +2,7 @@
 #define PROC_H
 
 #include <riscv.h>
+#include <file.h>
 
 typedef struct {
 	u64 ra;
@@ -59,12 +60,14 @@ typedef struct {
 } context_t;
 
 #define NPROCS 16
+#define NOFILE 8
 struct proc {
 	u64 stat;	
 	u64 pid;
 	trapframe_t *tf;
 	context_t ctx;
 	char name[16];
+	struct file *ofile[NOFILE];
 	pagetable_t pgtbl;
 	u8 *kstack;
 };

@@ -8,6 +8,7 @@
 #include <vm.h>
 #include <devsw.h>
 #include <fs.h>
+#include <file.h>
 
 struct inode inode[NINODE];
 struct super_block sb[NSUPERBLK];
@@ -18,6 +19,7 @@ void fsinit(void) {
 	bdevsw[rootdev.major].open();
 	bp = bread(rootdev, SUPERBLOCK);
 	memcpy(&sb, bp->data, sizeof(struct super_block));
+	memset(&file, 0, NFILE);
 
 	mount[0].dev = rootdev;
 	// TODO:

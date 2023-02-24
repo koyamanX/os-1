@@ -16,7 +16,6 @@ struct buf *bread(dev_t dev, u64 blkno) {
 	}
 	if(blist->valid) {
 		bwrite(blist);
-		blist->valid = 0;
 	}
 	blist->valid = 1;
 	blist->dev = dev;
@@ -31,6 +30,7 @@ int bwrite(struct buf *bp) {
 		return -1;
 	}
 	bdevsw[bp->dev.major].strategy(bp->data, bp->blkno, 1);
+	bp->valid = 0;
 
 	return 0;
 }

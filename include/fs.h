@@ -42,6 +42,7 @@ u8 bmapget(u64 bmap, u64 inum);
 u64 zmap(struct inode *ip, u64 zone);
 char *dirname(char *path);
 char *basename(char *path);
+struct inode *ialloc(dev_t dev);
 
 u64 readi(struct inode *ip, char *dest, u64 offset, u64 size);
 

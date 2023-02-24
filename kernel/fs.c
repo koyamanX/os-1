@@ -158,6 +158,42 @@ u64 readi(struct inode *ip, char *dest, u64 offset, u64 size) {
 	return total;
 }
 
+static int ffs(int x) {
+	int bit;
+
+	if(x == 0) {
+	   return 0;
+	}
+	for (bit = 1; !(x & 1); bit++) {
+	   x = (unsigned int)x >> 1;
+	}
+	return bit;
+}
+
+struct inode *ialloc(dev_t dev) {
+	struct super_block *sb;
+	struct inode *ip = NULL;
+	u64 offset;
+	u8 pos;
+	struct buf *buf;
+
+	sb = getfs(dev);
+	offset = SUPERBLOCK + 1;
+	buf = bread(dev, (offset*BLOCKSIZE)/SECTORSIZE);
+
+	for(u64 i = 0; i < sb->imap_blocks; i+=8) {
+		//TODO:
+		if((pos = ffs(~buf->data[i] & 0xff)) != 0) {
+			buf->data[i] = buf->data[i] | (1 << (pos-1));
+			bwrite(buf);
+			return iget(dev, 1<<(pos-1));
+		}
+	}
+	return ip;
+}
+
+// TODO: writei
+
 u8 bmapget(u64 bmap, u64 inum) {
 	struct buf *buf;
 	u64 offset;

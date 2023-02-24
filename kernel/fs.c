@@ -234,6 +234,12 @@ u8 bmapget(u64 bmap, u64 inum) {
 
 	return bitmap;
 }
+void iput(struct inode *ip) {
+	if(ip->count == 1) {
+		iupdate(ip);
+	}
+	ip->count--;
+}
 
 u64 zmap(struct inode *ip, u64 zone) {
 	// TODO: handle indirect zone

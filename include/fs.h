@@ -52,6 +52,7 @@ char *dirname(char *path);
 char *basename(char *path);
 struct inode *ialloc(dev_t dev);
 void iupdate(struct inode *ip);
+void iput(struct inode *ip);
 
 u64 readi(struct inode *ip, char *dest, u64 offset, u64 size);
 

@@ -19,7 +19,8 @@ void fsinit(void) {
 	bdevsw[rootdev.major].open();
 	bp = bread(rootdev, SUPERBLOCK);
 	memcpy(&sb, bp->data, sizeof(struct super_block));
-	memset(&file, 0, NFILE);
+	memset(&file, 0, sizeof(struct file)*NFILE);
+	memset(&inode, 0, sizeof(struct inode)*NINODE);
 
 	mount[0].dev = rootdev;
 	// TODO:

@@ -224,7 +224,7 @@ struct inode *ialloc(dev_t dev) {
 		if((pos = ffs(~buf->data[i] & 0xff)) != 0) {
 			buf->data[i] = buf->data[i] | (1 << (pos-1));
 			bwrite(buf);
-			ip = iget(dev, 1<<(pos-1));
+			ip = iget(dev, i+pos);
 			break;
 		}
 	}
@@ -282,20 +282,26 @@ int open(const char *pathname, int flags, mode_t mode) {
 
 	if(flags & O_CREAT) {
 		ip = namei("/usr/sbin/");
+		ip->size += sizeof(struct direct);
+		iupdate(ip);
 		u64 offset = 0;
 		do {
 			readi(ip, (char *)&dir, offset, sizeof(struct direct));		
 			offset += sizeof(struct direct);
+			printk("lookup: %s:%x\n", dir.name, dir.ino);
 		} while(!(strcmp(dir.name, "") == 0) && dir.ino != 0);
 		fd = ufalloc();
 		fp = falloc();
 		fp->ip = ialloc(ip->dev);
-		fp->ip->mode = mode;
+		fp->ip->mode = I_REGULAR | 0777;
 		fp->ip->nlinks = 1;
-		fp->ip->size = 0xdeadbeef;
+		fp->ip->size = 0x4;
+		fp->ip->zone[0] = 0;
 		iupdate(fp->ip);
 		strcpy(dir.name, "hello.txt");
-		dir.ino = ip->inum;
+		dir.ino = fp->ip->inum;
+		printk("%s:%x\n", dir.name, dir.ino);
+		printk("%x\n", offset);
 		writei(ip, (char *)&dir, offset, sizeof(struct direct));
 	}
 	return fd;

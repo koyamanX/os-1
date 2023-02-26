@@ -9,6 +9,7 @@
 #include <devsw.h>
 #include <fs.h>
 #include <file.h>
+#include <fcntl.h>
 
 struct inode inode[NINODE];
 struct super_block sb[NSUPERBLK];
@@ -171,6 +172,29 @@ u64 readi(struct inode *ip, char *dest, u64 offset, u64 size) {
 	}
 	return total;
 }
+u64 writei(struct inode *ip, char *src, u64 offset, u64 size) {
+	u64 total = 0;
+	int zone = 0;
+	struct buf *buf;
+
+	if(offset > 0) {
+		for(u64 i = BLOCKSIZE; i <= offset; i+=BLOCKSIZE) {
+			zone++;
+		}
+		buf = bread(rootdev, zmap(ip, zone));
+		memcpy(&buf->data[(offset % BLOCKSIZE)], src, size-total);
+		bwrite(buf);
+		total = total + (size - total);
+	}
+	while(total < size) {
+		buf = bread(rootdev, zmap(ip, zone));
+		memcpy(buf->data, src, size - total);
+		bwrite(buf);
+		zone++;
+		total = total + (size - total);
+	}
+	return total;
+}
 
 static int ffs(int x) {
 	int bit;
@@ -221,8 +245,6 @@ void iupdate(struct inode *ip) {
 	bwrite(buf);
 }
 
-// TODO: writei
-
 u8 bmapget(u64 bmap, u64 inum) {
 	struct buf *buf;
 	u64 offset;
@@ -251,4 +273,33 @@ u64 zmap(struct inode *ip, u64 zone) {
 	addr = (ip->zone[zone] * BLOCKSIZE) / SECTORSIZE;
 
 	return addr;
+}
+int open(const char *pathname, int flags, mode_t mode) {
+	struct inode *ip;
+	struct direct dir;
+	struct file *fp;
+	int fd = -1;
+
+	if(flags & O_CREAT) {
+		ip = namei("/usr/sbin/");
+		u64 offset = 0;
+		do {
+			readi(ip, (char *)&dir, offset, sizeof(struct direct));		
+			offset += sizeof(struct direct);
+		} while(!(strcmp(dir.name, "") == 0) && dir.ino != 0);
+		fd = ufalloc();
+		fp = falloc();
+		fp->ip = ialloc(ip->dev);
+		fp->ip->mode = mode;
+		fp->ip->nlinks = 1;
+		fp->ip->size = 0xdeadbeef;
+		iupdate(fp->ip);
+		strcpy(dir.name, "hello.txt");
+		dir.ino = ip->inum;
+		writei(ip, (char *)&dir, offset, sizeof(struct direct));
+	}
+	return fd;
+}
+int creat(const char *pathname, mode_t mode) {
+	return open(pathname, (O_WRONLY | O_CREAT | O_TRUNC), mode);
 }

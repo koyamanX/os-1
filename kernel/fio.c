@@ -6,7 +6,7 @@
 
 struct file file[NFILE];
 
-static int ufalloc(void) {
+int ufalloc(void) {
 	struct proc *rp;
 
 	rp = cpus[r_tp()].rp;

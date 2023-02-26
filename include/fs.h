@@ -70,6 +70,22 @@ namei();
 
 #define S_IFDIR 0x6000
 
+#define I_TYPE          0170000
+#define I_REGULAR       0100000
+#define I_BLOCK_SPECIAL 0060000
+
+#define I_DIRECTORY     0040000
+#define I_CHAR_SPECIAL  0020000
+#define I_NAMED_PIPE    0010000
+#define I_SET_UID_BIT   0004000
+#define I_SET_GID_BIT   0002000
+#define ALL_MODES       0006777
+#define RWX_MODES       0000777
+#define R_BIT           0000004
+#define W_BIT           0000002
+#define X_BIT           0000001
+#define I_NOT_ALLOC     0000000
+
 #define DIRSIZ 60
 
 #define SUPERBLOCK 2

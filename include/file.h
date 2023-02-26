@@ -19,5 +19,6 @@ struct file {
 
 extern struct file file[];
 struct file *falloc(void);
+int ufalloc(void);
 
 #endif

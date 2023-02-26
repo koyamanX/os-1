@@ -4,6 +4,7 @@
 #include <panic.h>
 #include <stddef.h>
 #include <uart.h>
+#include <fcntl.h>
 
 ssize_t write(int fd, const void *buf, size_t count);
 int syscall(struct proc *rp) {
@@ -20,6 +21,10 @@ int syscall(struct proc *rp) {
 		}
 		case __NR_EXECEV: {
 			ret = exec(((const char *)va2pa(rp->pgtbl, a0)), ((char const **)va2pa(rp->pgtbl, a1)));
+			break;
+		}
+		case __NR_OPEN: {
+			ret = open(((const char *)va2pa(rp->pgtbl, a0)), a1, a2);
 			break;
 		}
 		default: {

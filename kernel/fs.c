@@ -295,8 +295,7 @@ int open(const char *pathname, int flags, mode_t mode) {
 		fp->ip = ialloc(ip->dev);
 		fp->ip->mode = I_REGULAR | 0777;
 		fp->ip->nlinks = 1;
-		fp->ip->size = 0x4;
-		fp->ip->zone[0] = 0;
+		fp->ip->size = 0x0;
 		iupdate(fp->ip);
 		strcpy(dir.name, pathname);
 		dir.ino = fp->ip->inum + 1;

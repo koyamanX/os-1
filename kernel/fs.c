@@ -217,16 +217,16 @@ struct inode *ialloc(dev_t dev) {
 
 	sb = getfs(dev);
 	offset = SUPERBLOCK + 1;
-	buf = bread(dev, (offset*BLOCKSIZE)/SECTORSIZE);
 
-	for(u64 i = 0; i < sb->imap_blocks; i+=8) {
-		//TODO:
+	for(u64 i = 0; i < (sb->imap_blocks / sizeof(u8)); i++) {
+		buf = bread(dev, (offset*BLOCKSIZE)/SECTORSIZE);
 		if((pos = ffs(~buf->data[i] & 0xff)) != 0) {
 			buf->data[i] = buf->data[i] | (1 << (pos-1));
 			bwrite(buf);
-			ip = iget(dev, i+pos);
+			ip = iget(dev, i*8+(7-pos));
 			break;
 		}
+		offset++;
 	}
 	return ip;
 }
@@ -299,9 +299,10 @@ int open(const char *pathname, int flags, mode_t mode) {
 		fp->ip->zone[0] = 0;
 		iupdate(fp->ip);
 		strcpy(dir.name, "hello.txt");
-		dir.ino = fp->ip->inum;
+		dir.ino = fp->ip->inum + 1;
 		printk("%s:%x\n", dir.name, dir.ino);
 		printk("%x\n", offset);
+		offset -= sizeof(struct direct);
 		writei(ip, (char *)&dir, offset, sizeof(struct direct));
 	}
 	return fd;

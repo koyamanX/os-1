@@ -281,7 +281,7 @@ int open(const char *pathname, int flags, mode_t mode) {
 	int fd = -1;
 
 	if(flags & O_CREAT) {
-		ip = namei("/usr/sbin/");
+		ip = namei("/");
 		ip->size += sizeof(struct direct);
 		iupdate(ip);
 		u64 offset = 0;
@@ -298,7 +298,7 @@ int open(const char *pathname, int flags, mode_t mode) {
 		fp->ip->size = 0x4;
 		fp->ip->zone[0] = 0;
 		iupdate(fp->ip);
-		strcpy(dir.name, "hello.txt");
+		strcpy(dir.name, pathname);
 		dir.ino = fp->ip->inum + 1;
 		printk("%s:%x\n", dir.name, dir.ino);
 		printk("%x\n", offset);

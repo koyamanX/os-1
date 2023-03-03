@@ -241,10 +241,23 @@ int open(const char *pathname, int flags, mode_t mode) {
 	struct direct dir;
 	struct file *fp;
 	int fd = -1;
-	char rootdir[] = "/";
+	char buf[128];	// TODO:
+	char buf1[128];	// TODO:
+	char *basedir;
+	char *filename;
 
+	// dirname, basename destroy 'str' argument.
+	strcpy(buf, pathname);
+	strcpy(buf1, pathname);
+	basedir = dirname(buf);
+	filename = basename(buf1);
+	if(strncmp(basedir, ".", 2) == 0) {
+		// TODO: CWD is not supported for now
+		basedir = "/";
+	}
+	printk("basedir: %s, filename: %s\n", basedir, filename);
 	if(flags & O_CREAT) {
-		ip = namei(rootdir);
+		ip = namei(basedir);
 		ip->size += sizeof(struct direct);
 		iupdate(ip);
 		u64 offset = 0;
@@ -260,7 +273,7 @@ int open(const char *pathname, int flags, mode_t mode) {
 		fp->ip->nlinks = 1;
 		fp->ip->size = 0x0;
 		iupdate(fp->ip);
-		strcpy(dir.name, pathname);
+		strcpy(dir.name, filename);
 		dir.ino = fp->ip->inum + 1;
 		printk("%s:%x\n", dir.name, dir.ino);
 		printk("%x\n", offset);

@@ -22,5 +22,8 @@ char *basename(char *path) {
 	while(path[i] != '/' && i != 0) {
 		i--;
 	}
-	return path + i;
+	if(path[i] == '/') {
+		i++;
+	}
+	return &path[i];
 }

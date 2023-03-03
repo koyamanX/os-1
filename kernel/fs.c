@@ -65,38 +65,43 @@ struct inode *iget(dev_t dev, u64 inum) {
 }
 
 char *dirname(char *path) {
-	char *bp;
+	int i;
 
-	bp = path;
-	if(*bp == '/' && *(bp+1) == '\0') {
+	i = strlen(path) - 1;
+
+	if((path == NULL) || (*path == '\0')) {
+		// NULL or ""
+		return ".";
+	}
+	if((path[i] == '/') && (i == 0)) {
 		// "/"
-		return bp;
+		return "/";
 	}
-	if(*bp == '.') {
-		// "." or ".." -> "."
-		*(bp+1) = '\0';
-		return bp;
-	}
-	if(*bp != '/') {
-		// reletive path assuming CWD -> "."
-		*bp = '.';
-		*(bp+1) = '\0';
-		return bp;
-	}
-	bp++; // skip root "/"
-	while(*bp) {
-		if(*bp == '/' && *(bp+1) == '\0') {
-			// remove last "/"
-			*(bp+1) = '\0';
-			return bp;
+	i--;
+
+	while(path[i] != '/') {
+		if(i == 0) {
+		// only filename
+			return ".";
 		}
-		if(*bp == '/') {
-			// remove last directory
-			*bp = '\0';
-			return path;
-		}
-		bp++;
+		i--;
 	}
+
+	// filename, "/", NULL, "" are handled above,
+	// so remaining char must be either
+	// "/A/B/../"
+	// or "//.."
+	while(path[i] == '/') {
+		// find '/'
+		if(i == 0) {
+			// if it is the last '/'
+			return "/";
+		}
+		i--;
+	}
+	// last '/' found and also character remains
+	path[i + 1] = '\0';
+
 	return path;
 }
 

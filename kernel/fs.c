@@ -10,6 +10,7 @@
 #include <fs.h>
 #include <file.h>
 #include <fcntl.h>
+#include <libgen.h>
 
 struct inode inode[NINODE];
 struct super_block sb[NSUPERBLK];
@@ -62,71 +63,6 @@ struct inode *iget(dev_t dev, u64 inum) {
 	}
 	panic("no empty inode cache entry\n");
 	return NULL;
-}
-
-char *dirname(char *path) {
-	int i;
-
-	if((path == NULL) || (*path == '\0')) {
-		// NULL or ""
-		return ".";
-	}
-
-	i = strlen(path) - 1;
-	if((path[i] == '/') && (i == 0)) {
-		// "/"
-		return "/";
-	}
-	i--;
-
-	while(path[i] != '/') {
-		if(i == 0) {
-		// only filename
-			return ".";
-		}
-		i--;
-	}
-
-	// filename, "/", NULL, "" are handled above,
-	// so remaining char must be either
-	// "/A/B/../"
-	// or "//.."
-	while(path[i] == '/') {
-		// find '/'
-		if(i == 0) {
-			// if it is the last '/'
-			return "/";
-		}
-		i--;
-	}
-	// last '/' found and also character remains
-	path[i + 1] = '\0';
-
-	return path;
-}
-
-char *basename(char *path) {
-	int i;
-
-	if((path == NULL) || (*path == '\0')) {
-		return ".";
-	}
-	if((*path == '/') && (*(path+1) == '\0')) {
-		return "/";
-	}
-	if((*path == '/') && (*(path+1) == '/') && (*(path+2) == '\0')) {
-		return "/";
-	}
-
-	i = strlen(path) - 1;
-	while(path[i] == '/' && i != 0) {
-		path[i] = '\0';
-		i--;
-	}
-	while(path[i] != '/' && i != 0) {
-		i--;
-	}
-	return path + i;
 }
 
 struct inode *diri(struct inode *ip, char *name) {

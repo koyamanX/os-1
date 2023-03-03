@@ -16,7 +16,18 @@ Supporting following features.
 - [ ] open (partially implemented)
 - [ ] execev (partially implemented)
 
+# How to use
+RISC-V toolchain, qemu for RISC-V and minix3 kernel module is required to run os-1.
+
+## Build
+```bash
+./run build
+```
 ## Build & Run
 ```bash
 ./run.sh run
+```
+## Clean
+```bash
+./run.sh clean
 ```

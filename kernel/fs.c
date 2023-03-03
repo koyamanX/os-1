@@ -67,12 +67,12 @@ struct inode *iget(dev_t dev, u64 inum) {
 char *dirname(char *path) {
 	int i;
 
-	i = strlen(path) - 1;
-
 	if((path == NULL) || (*path == '\0')) {
 		// NULL or ""
 		return ".";
 	}
+
+	i = strlen(path) - 1;
 	if((path[i] == '/') && (i == 0)) {
 		// "/"
 		return "/";
@@ -106,7 +106,27 @@ char *dirname(char *path) {
 }
 
 char *basename(char *path) {
-	return NULL;
+	int i;
+
+	if((path == NULL) || (*path == '\0')) {
+		return ".";
+	}
+	if((*path == '/') && (*(path+1) == '\0')) {
+		return "/";
+	}
+	if((*path == '/') && (*(path+1) == '/') && (*(path+2) == '\0')) {
+		return "/";
+	}
+
+	i = strlen(path) - 1;
+	while(path[i] == '/' && i != 0) {
+		path[i] = '\0';
+		i--;
+	}
+	while(path[i] != '/' && i != 0) {
+		i--;
+	}
+	return path + i;
 }
 
 struct inode *diri(struct inode *ip, char *name) {

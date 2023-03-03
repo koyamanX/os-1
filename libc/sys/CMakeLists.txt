@@ -1,6 +1,7 @@
 
 add_library(sys STATIC
 	open.S
+	mkdir.S
 	write.S)
 
 target_include_directories(sys PUBLIC

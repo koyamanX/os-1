@@ -271,9 +271,10 @@ int open(const char *pathname, int flags, mode_t mode) {
 		} while(!(strcmp(dir.name, "") == 0) && dir.ino != 0);
 		fd = ufalloc();
 		fp = falloc();
+		fp->flags = mode; 
 		fp->ip = ialloc(ip->dev);
-		fp->ip->mode = I_REGULAR | 0777;
-		fp->ip->nlinks = 1;
+		fp->ip->mode = mode;
+		fp->ip->nlinks++;
 		fp->ip->size = 0x0;
 		iupdate(fp->ip);
 		strcpy(dir.name, filename);
@@ -287,4 +288,7 @@ int open(const char *pathname, int flags, mode_t mode) {
 }
 int creat(const char *pathname, mode_t mode) {
 	return open(pathname, (O_WRONLY | O_CREAT | O_TRUNC), mode);
+}
+int mkdir(const char *pathname, mode_t mode) {
+	return open(pathname, (O_CREAT), (mode & RWX_MODES) | I_DIRECTORY);
 }

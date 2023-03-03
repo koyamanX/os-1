@@ -11,10 +11,6 @@ struct file {
 	struct inode *ip;
 };
 
-#define FREAD	0x1
-#define FWRITE	0x2
-#define FPIPE	0x4
-
 #define NFILE 128
 
 extern struct file file[];

@@ -1,8 +1,9 @@
 #ifndef SYSCALL_H
 #define SYSCALL_H
 
-#define __NR_WRITE 	64
-#define __NR_EXECEV 221 
-#define __NR_OPEN 5
+#define __NR_WRITE 		0
+#define __NR_EXECEV 	1
+#define __NR_OPEN 		2
+#define __NR_MKDIR 		3
 
 #endif

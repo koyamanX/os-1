@@ -1,8 +1,9 @@
+#include <syscall.h>
 .text
 .section .userproc0
 .globl init
 init:
-	li a7, 221
+	li a7, __NR_EXECEV
 	la a0, file
 	li a1, 0
 	ecall

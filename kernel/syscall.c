@@ -5,6 +5,7 @@
 #include <stddef.h>
 #include <uart.h>
 #include <fcntl.h>
+#include <sys/stat.h>
 
 ssize_t write(int fd, const void *buf, size_t count);
 int syscall(struct proc *rp) {
@@ -15,22 +16,21 @@ int syscall(struct proc *rp) {
 	int ret = -1;
 
 	switch(syscall_num) {
-		case __NR_WRITE: {
+		case __NR_WRITE:
 			ret = write(a0, (void *)va2pa(rp->pgtbl, a1), a2);
 			break;
-		}
-		case __NR_EXECEV: {
+		case __NR_EXECEV:
 			ret = exec(((const char *)va2pa(rp->pgtbl, a0)), ((char const **)va2pa(rp->pgtbl, a1)));
 			break;
-		}
-		case __NR_OPEN: {
+		case __NR_OPEN:
 			ret = open(((const char *)va2pa(rp->pgtbl, a0)), a1, a2);
 			break;
-		}
-		default: {
+		case __NR_MKDIR:
+			ret = mkdir(((const char *)va2pa(rp->pgtbl, a0)), a1);
+			break;
+		default:
 			panic("invalid syscall\n");
 			break;
-		}
 	}
 
 	return ret;

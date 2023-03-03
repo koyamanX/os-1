@@ -17,6 +17,7 @@ struct super_block sb[NSUPERBLK];
 
 void fsinit(void) {
 	struct buf *bp;
+	char rootdir[] = "/";
 
 	bdevsw[rootdev.major].open();
 	bp = bread(rootdev, SUPERBLOCK);
@@ -27,7 +28,7 @@ void fsinit(void) {
 	mount[0].dev = rootdev;
 	// TODO:
 	mount[0].sb = (char*)&sb;
-	mount[0].ip = namei("/");
+	mount[0].ip = namei(rootdir);
 }
 
 struct super_block *getfs(dev_t dev) {
@@ -240,9 +241,10 @@ int open(const char *pathname, int flags, mode_t mode) {
 	struct direct dir;
 	struct file *fp;
 	int fd = -1;
+	char rootdir[] = "/";
 
 	if(flags & O_CREAT) {
-		ip = namei("/");
+		ip = namei(rootdir);
 		ip->size += sizeof(struct direct);
 		iupdate(ip);
 		u64 offset = 0;

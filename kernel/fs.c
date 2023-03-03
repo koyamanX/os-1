@@ -258,6 +258,9 @@ int open(const char *pathname, int flags, mode_t mode) {
 	printk("basedir: %s, filename: %s\n", basedir, filename);
 	if(flags & O_CREAT) {
 		ip = namei(basedir);
+		if(ip == NULL) {
+			return -1;
+		}
 		ip->size += sizeof(struct direct);
 		iupdate(ip);
 		u64 offset = 0;

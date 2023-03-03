@@ -2,7 +2,9 @@
 
 # Overview
 OS-1 is a toy UNIX like operating system version 1.
+
 OS-1 is implemented in C and assembly for RISC-V qemu.
+
 Supporting following features.
 - Round-robin scheduling
 - virtio-blk device dirver

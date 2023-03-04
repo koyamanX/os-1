@@ -55,6 +55,7 @@ struct inode *ialloc(dev_t dev);
 void iupdate(struct inode *ip);
 void iput(struct inode *ip);
 u64 readi(struct inode *ip, char *dest, u64 offset, u64 size);
+u64 writei(struct inode *ip, char *src, u64 offset, u64 size);
 
 #define ROOT 1
 #define SUPERBLOCK 2

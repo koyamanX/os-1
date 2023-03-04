@@ -43,12 +43,14 @@ int syscall(struct proc *rp) {
 }
 
 ssize_t write(int fd, const void *buf, size_t count) {
-	u64 i = 0;
-	if(fd != 1) {
-		return -1;
-	}
-	for(i = 0; i < count; i++) {
-		uart_putchar(((u8 *)buf)[i]);
-	}
-	return 0;
+	u64 ret = -1;
+	struct proc *rp;
+	struct file *fp;
+
+	rp = cpus[r_tp()].rp;
+	fp = rp->ofile[fd];
+	// TODO: fp->offset
+	ret = writei(fp->ip, (char *)buf, 0, count);
+
+	return ret;
 }

@@ -3,6 +3,7 @@
 #include <proc.h>
 #include <riscv.h>
 #include <panic.h>
+#include <sys/stat.h>
 
 struct file file[NFILE];
 
@@ -44,4 +45,18 @@ struct file *falloc(void) {
 	}
 	panic("no file\n");
 	return NULL;
+}
+
+void openi(struct inode *ip) {
+	switch(ip->mode & I_TYPE) {
+		case I_CHAR_SPECIAL:
+			cdevsw[ip->dev.major].open();
+			break;
+		case I_BLOCK_SPECIAL:
+			bdevsw[ip->dev.major].open();
+			break;
+		default:
+			panic("openi: unsupported device\n");
+			break;
+	}
 }

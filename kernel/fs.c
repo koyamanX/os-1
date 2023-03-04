@@ -140,6 +140,14 @@ u64 writei(struct inode *ip, char *src, u64 offset, u64 size) {
 	int zone = 0;
 	struct buf *buf;
 
+	if((ip->mode & S_IFMT) == S_IFCHR) {
+		printk("writei: S_IFCHR\n");
+		for(u64 i = 0; i < size; i++) {
+			cdevsw[ip->dev.major].write(src[i]);
+		}
+		return size;
+	}
+
 	if(offset > 0) {
 		for(u64 i = BLOCKSIZE; i <= offset; i+=BLOCKSIZE) {
 			zone++;
@@ -336,6 +344,7 @@ int mknod(const char *pathname, mode_t mode, dev_t dev) {
 		printk("mknod: I_CHAR_SPECIAL\n");
 		fp->ip->mode |= I_CHAR_SPECIAL;
 	}
+	openi(fp->ip);
 	fp->ip->nlinks++;
 	fp->ip->size = 0x0;
 	fp->ip->dev = dev;

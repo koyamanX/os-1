@@ -10,6 +10,14 @@ struct bdevsw {
 	int (*strategy)(char *, u64, u8);
 };
 
+struct cdevsw {
+	int (*open)(void);
+	int (*close)(void);
+	int (*read)(void);
+	int (*write)(int c);
+	int (*sgtty)(void);
+};
+
 struct mount {
 	dev_t dev;			// device
 	char *sb;			// pointer to superblock
@@ -17,10 +25,12 @@ struct mount {
 };
 
 extern struct bdevsw bdevsw[];
+extern struct cdevsw cdevsw[];
 extern struct mount mount[];
 extern dev_t rootdev;
 
 #define NBDEVSW 4
+#define NCDEVSW 4
 #define NMOUNT 32
 
 #endif

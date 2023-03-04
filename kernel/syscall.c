@@ -6,8 +6,8 @@
 #include <uart.h>
 #include <fcntl.h>
 #include <sys/stat.h>
+#include <unistd.h>
 
-ssize_t write(int fd, const void *buf, size_t count);
 int syscall(struct proc *rp) {
 	u64 syscall_num = rp->tf->a7;
 	u64 a0 = rp->tf->a0;
@@ -34,6 +34,9 @@ int syscall(struct proc *rp) {
 			dev.minor = a2 & 0xffff;
 			ret = mknod(((const char *)va2pa(rp->pgtbl, a0)), a1, dev);
 			break;
+		case __NR_DUP:
+			ret = dup((int)a0);
+			break;
 		default:
 			panic("invalid syscall\n");
 			break;
@@ -53,4 +56,17 @@ ssize_t write(int fd, const void *buf, size_t count) {
 	ret = writei(fp->ip, (char *)buf, 0, count);
 
 	return ret;
+}
+
+int dup(int fildes) {
+	int fd;
+	struct proc *rp;
+	struct file *fp;
+
+	rp = cpus[r_tp()].rp;
+	fp = rp->ofile[fildes];
+	fd = ufalloc();
+	rp->ofile[fd] = fp;
+
+	return fd;
 }

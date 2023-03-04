@@ -37,6 +37,9 @@ int syscall(struct proc *rp) {
 		case __NR_DUP:
 			ret = dup((int)a0);
 			break;
+		case __NR_READ:
+			ret = read(a0, (void *)va2pa(rp->pgtbl, a1), a2);
+			break;
 		default:
 			panic("invalid syscall\n");
 			break;
@@ -54,6 +57,18 @@ ssize_t write(int fd, const void *buf, size_t count) {
 	fp = rp->ofile[fd];
 	// TODO: fp->offset
 	ret = writei(fp->ip, (char *)buf, 0, count);
+
+	return ret;
+}
+ssize_t read(int fd, const void *buf, size_t count) {
+	u64 ret = -1;
+	struct proc *rp;
+	struct file *fp;
+
+	rp = cpus[r_tp()].rp;
+	fp = rp->ofile[fd];
+	// TODO: fp->offset
+	ret = readi(fp->ip, (char *)buf, 0, count);
 
 	return ret;
 }

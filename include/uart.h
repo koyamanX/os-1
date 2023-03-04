@@ -4,6 +4,7 @@
 void uart_init(void);
 int uart_putchar(int c);
 int uart_puts(char *str);
+int uart_getc(void);
 
 #define UART_BASE	0x10000000
 #define UART_RBR	((volatile u8*)UART_BASE+0x0)

@@ -7,5 +7,6 @@
 #define __NR_MKDIR 		3
 #define __NR_MKNOD		4
 #define __NR_DUP		5
+#define __NR_READ		6
 
 #endif

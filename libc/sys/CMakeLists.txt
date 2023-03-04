@@ -1,10 +1,12 @@
 
 add_library(sys STATIC
+	write.S
 	open.S
 	mkdir.S
 	mknod.S
 	dup.S
-	write.S)
+	read.S
+	)
 
 target_include_directories(sys PUBLIC
 	${PROJECT_SOURCE_DIR}/libc/include

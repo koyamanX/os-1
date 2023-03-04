@@ -31,3 +31,9 @@ int uart_puts(char *str) {
 	return 0;
 }
 
+int uart_getc(void) {
+	while(!(*UART_LSR & 0x1)) {
+		asm volatile("nop");
+	}
+	return *UART_RBR;
+}

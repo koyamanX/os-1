@@ -15,7 +15,7 @@ struct bdevsw bdevsw[NBDEVSW] = {
 };
 
 struct cdevsw cdevsw[NCDEVSW] = {
-	{nulldev, nulldev, nulldev, uart_putchar, nulldev},
+	{nulldev, nulldev, uart_getc, uart_putchar, nulldev},
 	{NULL, NULL, NULL, NULL, NULL},
 	{NULL, NULL, NULL, NULL, NULL},
 	{NULL, NULL, NULL, NULL, NULL},

@@ -118,6 +118,14 @@ u64 readi(struct inode *ip, char *dest, u64 offset, u64 size) {
 	int zone = 0;
 	struct buf *buf;
 
+	if((ip->mode & S_IFMT) == S_IFCHR) {
+		printk("readi: S_IFCHR\n");
+		for(u64 i = 0; i < size; i++) {
+			dest[i] = cdevsw[ip->dev.major].read();
+		}
+		return size;
+	}
+
 	if(offset > 0) {
 		for(u64 i = BLOCKSIZE; i <= offset; i+=BLOCKSIZE) {
 			zone++;

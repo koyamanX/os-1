@@ -14,6 +14,9 @@ int main(void) {
 	dup(0);
 	dup(0);
 	write(STDOUT_FILENO, buf, strlen(buf));
+	char str[10];
+	read(STDIN_FILENO, str, 10);
+	write(STDOUT_FILENO, str, 10);
 	open("/usr/sbin/hello2.txt", O_CREAT, 0);
 
 	return 0;

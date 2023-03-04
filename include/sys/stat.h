@@ -60,10 +60,10 @@ int fchmod(int, mode_t);
 int fstat(int, struct stat *);
 int lstat(const char *, struct stat *);
 int mkfifo(const char *, mode_t);
-int mknod(const char *, mode_t, dev_t);
 int stat(const char *, struct stat *);
 mode_t umask(mode_t);
 #endif
 int mkdir(const char *pathname, mode_t mode);
+int mknod(const char *pathname, mode_t mode, dev_t dev);
 
 #endif

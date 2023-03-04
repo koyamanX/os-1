@@ -11,6 +11,7 @@
 #include <file.h>
 #include <fcntl.h>
 #include <libgen.h>
+#include <sys/stat.h>
 
 struct inode inode[NINODE];
 struct super_block sb[NSUPERBLK];
@@ -291,4 +292,59 @@ int creat(const char *pathname, mode_t mode) {
 }
 int mkdir(const char *pathname, mode_t mode) {
 	return open(pathname, (O_CREAT), (mode & RWX_MODES) | I_DIRECTORY);
+}
+int mknod(const char *pathname, mode_t mode, dev_t dev) {
+	struct inode *ip;
+	struct direct dir;
+	struct file *fp;
+	int fd = -1;
+	char buf[128];	// TODO:
+	char buf1[128];	// TODO:
+	char *basedir;
+	char *filename;
+
+	// dirname, basename destroy 'str' argument.
+	strcpy(buf, pathname);
+	strcpy(buf1, pathname);
+	basedir = dirname(buf);
+	filename = basename(buf1);
+	if(strncmp(basedir, ".", 2) == 0) {
+		// TODO: CWD is not supported for now
+		basedir = "/";
+	}
+	printk("basedir: %s, filename: %s\n", basedir, filename);
+	ip = namei(basedir);
+	if(ip == NULL) {
+		return -1;
+	}
+	ip->size += sizeof(struct direct);
+	iupdate(ip);
+	u64 offset = 0;
+	do {
+		readi(ip, (char *)&dir, offset, sizeof(struct direct));		
+		offset += sizeof(struct direct);
+		printk("lookup: %s:%x\n", dir.name, dir.ino);
+	} while(!(strcmp(dir.name, "") == 0) && dir.ino != 0);
+	fd = ufalloc();
+	fp = falloc();
+	fp->flags = mode;
+	fp->ip = ialloc(ip->dev);
+	fp->ip->mode = mode & RWX_MODES;
+	if(S_ISBLK(mode)) {
+		fp->ip->mode |= I_BLOCK_SPECIAL;
+	} else if(S_ISCHR(mode)) {
+		printk("mknod: I_CHAR_SPECIAL\n");
+		fp->ip->mode |= I_CHAR_SPECIAL;
+	}
+	fp->ip->nlinks++;
+	fp->ip->size = 0x0;
+	fp->ip->dev = dev;
+	iupdate(fp->ip);
+	strcpy(dir.name, filename);
+	dir.ino = fp->ip->inum + 1;
+	printk("%s:%x\n", dir.name, dir.ino);
+	printk("%x\n", offset);
+	offset -= sizeof(struct direct);
+	writei(ip, (char *)&dir, offset, sizeof(struct direct));
+	return fd;
 }

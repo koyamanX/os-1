@@ -5,5 +5,6 @@
 #define __NR_EXECEV 	1
 #define __NR_OPEN 		2
 #define __NR_MKDIR 		3
+#define __NR_MKNOD		4
 
 #endif

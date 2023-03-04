@@ -28,6 +28,12 @@ int syscall(struct proc *rp) {
 		case __NR_MKDIR:
 			ret = mkdir(((const char *)va2pa(rp->pgtbl, a0)), a1);
 			break;
+		case __NR_MKNOD:
+			dev_t dev;
+			dev.major = (a2 >> 16) & 0xffff;
+			dev.minor = a2 & 0xffff;
+			ret = mknod(((const char *)va2pa(rp->pgtbl, a0)), a1, dev);
+			break;
 		default:
 			panic("invalid syscall\n");
 			break;

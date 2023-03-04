@@ -11,7 +11,6 @@ typedef unsigned long long size_t;
 typedef long long ssize_t;
 #endif
 
-//typedef short dev_t;
 typedef unsigned long ino_t;
 typedef unsigned short mode_t;
 typedef unsigned long off_t;
@@ -24,5 +23,12 @@ typedef unsigned short u16;
 typedef short s16;
 typedef unsigned char u8;
 typedef signed char s8;
+
+// dev_t is incompatible with that of linux
+typedef struct dev_t {
+	u16 major;
+	u16 minor;
+} dev_t;
+//typedef short dev_t;
 
 #endif

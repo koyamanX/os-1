@@ -4,11 +4,6 @@
 #include <stdint.h>
 #include <sys/types.h>
 
-typedef struct dev_t {
-	uint32_t major;
-	uint32_t minor;
-} dev_t;
-
 struct bdevsw {
 	int (*open)(void);
 	int (*close)(void);

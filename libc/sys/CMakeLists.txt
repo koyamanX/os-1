@@ -6,6 +6,7 @@ add_library(sys STATIC
 	mknod.S
 	dup.S
 	read.S
+	fork.S
 	)
 
 target_include_directories(sys PUBLIC

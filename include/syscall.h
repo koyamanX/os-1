@@ -8,5 +8,6 @@
 #define __NR_MKNOD		4
 #define __NR_DUP		5
 #define __NR_READ		6
+#define __NR_FORK		7
 
 #endif

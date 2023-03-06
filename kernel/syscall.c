@@ -7,6 +7,7 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <unistd.h>
+#include <sched.h>
 
 int syscall(struct proc *rp) {
 	u64 syscall_num = rp->tf->a7;
@@ -40,6 +41,9 @@ int syscall(struct proc *rp) {
 		case __NR_READ:
 			ret = read(a0, (void *)va2pa(rp->pgtbl, a1), a2);
 			break;
+		case __NR_FORK:
+			ret = fork();
+			break;
 		default:
 			panic("invalid syscall\n");
 			break;
@@ -56,6 +60,9 @@ ssize_t write(int fd, const void *buf, size_t count) {
 	rp = cpus[r_tp()].rp;
 	fp = rp->ofile[fd];
 	// TODO: fp->offset
+	if(fp == NULL) {
+		panic("No file opened\n");
+	}
 	ret = writei(fp->ip, (char *)buf, 0, count);
 
 	return ret;

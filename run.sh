@@ -33,7 +33,7 @@ EOF
 build() {
 	[ ! -d "$BUILD_DIR" ] && mkdir $BUILD_DIR
 	pushd $BUILD_DIR
-	[ ! -f "$BUILD_DIR/CMakeCache.txt" ] && cmake ..
+	[ ! -f "CMakeCache.txt" ] && cmake ..
 	make install -j$(nproc)
 	popd
 }

@@ -3,4 +3,4 @@ _start:
 .extern main
 	call main
 exit:
-	j exit
+	j _exit

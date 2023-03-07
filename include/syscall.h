@@ -9,5 +9,6 @@
 #define __NR_DUP		5
 #define __NR_READ		6
 #define __NR_FORK		7
+#define __NR__EXIT		8
 
 #endif

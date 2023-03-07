@@ -128,3 +128,20 @@ int fork(void) {
 
 	return pid;
 }
+
+void _exit(int status) {
+	struct proc *rp;
+
+	rp = cpus[r_tp()].rp;
+
+	for(int i = 0; i < NOFILE; i++) {
+		if(rp->ofile[i] != NULL) {
+			closei(rp->ofile[i]->ip);
+			rp->ofile[i]->count--;
+		}
+	}
+
+	rp->stat = UNUSED;
+
+	//TODO: deallocate page
+}

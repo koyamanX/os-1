@@ -18,12 +18,15 @@ int main(void) {
 	pid = fork();
 	if(pid == 0) {
 		write(STDOUT_FILENO, "child\n", 6);
-		while(1)
-			asm volatile("nop");
+		_exit(1);
 	} else {
 		write(STDOUT_FILENO, "parent\n", 7);
 	}
 	write(STDOUT_FILENO, buf, strlen(buf));
+
+	while(1) {
+		asm volatile("nop");
+	}
 
 	return 0;
 }

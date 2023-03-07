@@ -25,7 +25,9 @@ void scheduler(void) {
 		rp->stat = RUNNING;
 		swtch(&cpus[r_tp()].ctx, &rp->ctx);
 		cpus[r_tp()].rp = NULL;
-		rp->stat = RUNNABLE;
+		if(rp->stat == RUNNING) {
+			rp->stat = RUNNABLE;
+		}
 		rp++;
 	}
 }

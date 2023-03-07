@@ -93,5 +93,6 @@ void userinit(void);
 extern void usertrapret(void);
 extern void userret(u64 satp);
 int exec(const char *file, char const **argv);
+void _exit(int status);
 
 #endif

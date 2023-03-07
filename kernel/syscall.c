@@ -44,6 +44,11 @@ int syscall(struct proc *rp) {
 		case __NR_FORK:
 			ret = fork();
 			break;
+		case __NR__EXIT:
+			_exit(a0);
+extern void swtch(context_t *old, context_t *new);
+			swtch(&rp->ctx, &cpus[r_tp()].ctx);
+			break;
 		default:
 			panic("invalid syscall\n");
 			break;

@@ -7,6 +7,7 @@ add_library(sys STATIC
 	dup.S
 	read.S
 	fork.S
+	exec.S
 	)
 
 target_include_directories(sys PUBLIC

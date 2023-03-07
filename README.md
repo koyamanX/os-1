@@ -14,9 +14,15 @@ Supporting following features.
 - device file (not implemented yet)
 
 # Implemented system calls
-- [ ] write (partially implemented)
-- [ ] open (partially implemented)
-- [ ] execev (partially implemented)
+- [x] write
+- [x] execev
+- [x] open
+- [x] mkdir
+- [x] mknod
+- [x] dup
+- [x] read
+- [x] fork
+- [x] _exit
 
 # How to use
 RISC-V toolchain, qemu for RISC-V and minix3 kernel module is required to run os-1.

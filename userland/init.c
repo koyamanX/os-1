@@ -2,6 +2,7 @@
 #include <string.h>
 #include <fcntl.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <sys/stat.h>
 
 int main(void) {
@@ -18,7 +19,7 @@ int main(void) {
 	pid = fork();
 	if(pid == 0) {
 		write(STDOUT_FILENO, "child\n", 6);
-		_exit(1);
+		exit(0);
 	} else {
 		write(STDOUT_FILENO, "parent\n", 7);
 	}

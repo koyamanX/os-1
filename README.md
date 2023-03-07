@@ -11,7 +11,7 @@ Supporting following features.
 - UART 16550 driver
 - minix3 filesystem
 - UNIX system call 
-- device file (not implemented yet)
+- device file
 
 # Implemented system calls
 - [x] write
@@ -23,6 +23,18 @@ Supporting following features.
 - [x] read
 - [x] fork
 - [x] _exit
+- [ ] wait
+- [ ] sleep
+- [ ] pipe
+- [ ] fstat
+- [ ] chdir
+- [ ] kill
+- [ ] getpid
+- [ ] sbrk
+- [ ] uptime
+- [ ] unlink
+- [ ] link
+- [ ] close
 
 # How to use
 RISC-V toolchain, qemu for RISC-V and minix3 kernel module is required to run os-1.

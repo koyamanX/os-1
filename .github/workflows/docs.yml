@@ -6,14 +6,13 @@ on:
       - master
 
 jobs:
-  prepare:
+  build_and_deploy:
     runs-on: ubuntu-latest
     steps:
       - name: "Install Doxygen"
         run: sudo apt install -y doxygen graphviz
         shell: bash
-  build:
-    steps:
+
       - name: "Checkout"
         uses: actions/checkout@v3
         with:
@@ -21,8 +20,7 @@ jobs:
       - name: "Generate Doxygen documentation"
         run: doxygen
         shell: bash
-  deploy:
-    steps:
+
       - name: "create .nojekyll"
         run: touch docs/html/.nojekyll
         shell: bash

@@ -228,6 +228,7 @@ void iput(struct inode *ip) {
 	if(ip->count == 1) {
 		iupdate(ip);
 	}
+	// TODO: last reference
 	ip->count--;
 }
 

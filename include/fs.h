@@ -93,32 +93,50 @@ struct inode *namei(char *path);
 struct inode *diri(struct inode *ip, char *name);
 
 /**
- * zmap
+ * Get block number of zone in ip.
+ * @param[in] ip pointer to inode to get zone of.
+ * @param[in] zone zone number.
+ * @return block number of zone of ip.
  */
 u64 zmap(struct inode *ip, u64 zone);
 
 /**
- * ialloc
+ * Allocate new inode on dev.
+ * @param[in] dev device to allocate inode on.
+ * @return newly allocated inode or NULL on failure.
  */
 struct inode *ialloc(dev_t dev);
 
 /**
- * iupdate
+ * Update inode pointed by ip.
+ * @param[in] ip inode to update.
  */
 void iupdate(struct inode *ip);
 
 /**
- * iput
+ * Put inode into disk if it is last reference and decrement reference counter.
+ * If last reference, remove ip.
+ * @param[in] ip Pointer to inode to put into disk.
  */
 void iput(struct inode *ip);
 
 /**
- * readi
+ *	Read content of inode zone from disk.
+ *	@param[in] ip pointer to inode to obtain content of.
+ *	@param[out] dest pointer to memory location to fill the content obtained.
+ *	@param[in] offset offset of inode zone to read.
+ *	@param[in] size size in bytes to read.
+ *	@return size read.
  */
 u64 readi(struct inode *ip, char *dest, u64 offset, u64 size);
 
 /**
- * writei
+ *	Write content of inode zone to disk.
+ *	@param[in] ip pointer to inode to write content to.
+ *	@param[out] dest pointer to memory location to read the content to write.
+ *	@param[in] offset offset of inode zone to write.
+ *	@param[in] size size in bytes to write.
+ *	@return size written.
  */
 u64 writei(struct inode *ip, char *src, u64 offset, u64 size);
 

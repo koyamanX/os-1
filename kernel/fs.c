@@ -26,12 +26,22 @@ void fsinit(void) {
 	struct buf *bp;
 	char rootdir[] = "/";
 
-	bdevsw[rootdev.major].open();
+	if(bdevsw[rootdev.major].open) {
+		// Call device dependent open if exist.
+		bdevsw[rootdev.major].open();
+	}
+	// Read Superblock.
 	bp = bread(rootdev, SUPERBLOCK);
+	// Copy superblock to superblock cache.
 	memcpy(&sb, bp->data, sizeof(struct super_block));
+	// Zero clear file cache.
 	memset(&file, 0, sizeof(struct file)*NFILE);
+	// Zero clear inode cache.
 	memset(&inode, 0, sizeof(struct inode)*NINODE);
+	// Zero clear mount cache.
+	memset(&mount, 0, sizeof(struct mount)*NMOUNT);
 
+	// Create mount point for root directory.
 	mount[0].dev = rootdev;
 	mount[0].sb = sb;
 	mount[0].ip = namei(rootdir);
@@ -39,11 +49,16 @@ void fsinit(void) {
 
 struct super_block *getfs(dev_t dev) {
 	for(struct mount *p = &mount[0]; p < &mount[NMOUNT]; p++) {
+		if(p == NULL) {
+			continue;
+		}
 		if(p->dev.major == dev.major && p->dev.minor == dev.minor) {
+			// If matching device found on mount point, return superblock.
 			return p->sb;
 		}
 	}
-	panic("no fs\n");
+	panic("No fs\n");
+
 	return NULL;
 }
 
@@ -54,13 +69,20 @@ struct inode *iget(dev_t dev, u64 inum) {
 	struct inode *ip;
 
 	sb = getfs(dev);
+	/** 
+	 * Inode number starts from 1, however block number starts with 0,
+	 * so subtract by 1 to map block number.
+	 */
 	inum--;
 	offset = (SUPERBLOCK + sb->imap_blocks + sb->zmap_blocks + (inum / NINODE));
 	buf = bread(dev, (offset*BLOCKSIZE)/SECTORSIZE);
 
 	for(int i = 0; i < NINODE; i++) {
+		// Find unused inode cache entry.
 		if(inode[i].count == 0) {
+			// Read inode to inode cache.
 			memcpy(&inode[i], (buf->data+((inum%NINODE)*INODE_SIZE)), INODE_SIZE);
+			// Create on-memory inode entry.
 			ip = &inode[i];
 			ip->count++;
 			ip->dev = dev;
@@ -68,7 +90,8 @@ struct inode *iget(dev_t dev, u64 inum) {
 			return ip;
 		}
 	}
-	panic("no empty inode cache entry\n");
+	panic("No empty inode cache entry\n");
+
 	return NULL;
 }
 
@@ -77,6 +100,7 @@ struct inode *diri(struct inode *ip, char *name) {
 	struct buf *buf;
 	u8 zone = 0;
 
+	// TODO: find directory in all zone.
 	buf = bread(rootdev, zmap(ip, zone));
 	dp = (struct direct *)buf->data;
 	for(int i = ip->size; i; i -= sizeof(struct direct)) {
@@ -171,6 +195,7 @@ u64 writei(struct inode *ip, char *src, u64 offset, u64 size) {
 		total = total + (size - total);
 	}
 	while(total < size) {
+		// TODO: allocate zone bit map.
 		buf = bread(rootdev, zmap(ip, zone));
 		memcpy(buf->data, src, size - total);
 		bwrite(buf);

@@ -28,7 +28,7 @@ void kinit(void) {
 
     w_mepc((u64)((u64 *)&kmain));
 
-    	w_stvec((u64)((u64 *)&kernelvec));
+    w_stvec((u64)((u64 *)&kernelvec));
     w_sstatus(r_sstatus() | 1 << 1);
 
     asm volatile("mret");

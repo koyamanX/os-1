@@ -92,10 +92,10 @@ void kvmdump(pagetable_t pgtbl, u64 va) {
 
 	pte = kvmwalk(pgtbl, va);
 	if(*pte == 0) {
-		printk("%x: not mapped\n", va);
+		VERBOSE_PRINTK("%x: not mapped\n", va);
 		return ;
 	}
-	printk("%x: %p, attrs:%x\n", va, PTE2PA(*pte), PTE_FLAGS(*pte));
+	VERBOSE_PRINTK("%x: %p, attrs:%x\n", va, PTE2PA(*pte), PTE_FLAGS(*pte));
 }
 
 pagetable_t kvminit(void) {

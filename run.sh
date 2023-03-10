@@ -14,26 +14,44 @@ QEMU_OPTS="$QEMU_OPTS -global virtio-mmio.force-legacy=false"
 QEMU_OPTS="$QEMU_OPTS -drive file=$IMAGE_NAME,if=none,format=raw,id=x0 -device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0"
 QEMU_GDB_PORT=tcp::12345
 CLEAN_LISTS=*.log
+declare -A LOG_LEVELS=( [verbose]=0 [debug]=1 [info]=2 [warn]=3 [release]=15 )
+LOG_LEVEL="verbose"
 
 usage() {
-	EXE=$(basename "$ARG0")
 	cat <<EOF
-		Usage $NAME COMMAND
-
-		COMMANDs:
-			build:
-			create_image:
-			run:
-			gdb:
-			clean:
+NAME `basename $0`
+USAGE
+	`basename $0` [COMMANDS]... [OPTIONS]...
+DESCRIPTION
+	Build & run automate tool
+COMMANDS 
+	build
+		verbose
+		debug
+		info
+		warn
+		release
+	create_image
+	run
+		verbose
+		debug
+		info
+		warn
+		release
+	gdb
+	clean
 EOF
 	exit 0
 }
 
 build() {
+	if [ "$1" = "verbose" ] || [ "$1" = "debug" ] || [ "$1" = "info"] || [ "$1" = "warn" ] || [ "$1" = "release" ]; then
+		LOG_LEVEL=${LOG_LEVELS[$1]}
+		shift
+	fi
 	[ ! -d "$BUILD_DIR" ] && mkdir $BUILD_DIR
 	pushd $BUILD_DIR
-	[ ! -f "CMakeCache.txt" ] && cmake ..
+	[ ! -f "CMakeCache.txt" ] && cmake .. -DLOG_LEVEL=$LOG_LEVEL
 	make install -j$(nproc)
 	popd
 }
@@ -79,7 +97,7 @@ fi
 CMD=$1
 if [ "$CMD" = "build" ]; then
 	shift
-	build
+	build $1
 	exit 0
 fi
 
@@ -95,7 +113,7 @@ fi
 CMD=$1
 if [ "$CMD" = "run" ]; then
 	shift
-	[ ! -d "$BUILD_DIR" ] && build
+	[ ! -d "$BUILD_DIR" ] && build $1
 	[ ! -d "$IMAGE_NAME" ] && create_image
 	run
 	exit 0

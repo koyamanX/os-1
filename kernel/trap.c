@@ -34,19 +34,19 @@ void kerneltrap(void) {
 	
 	switch(scause) {
 		case LOAD_PAGE_FAULT: {
-			printk("Load page fault: epc:%x, tval:%x\n", r_sepc(), r_stval());
+			DEBUG_PRINTK("Load page fault: epc:%x, tval:%x\n", r_sepc(), r_stval());
 			break;
 		}
 		case STORE_AMO_PAGE_FAULT: {
-			printk("store/amo page fault: epc:%x, tval:%x\n", r_sepc(), r_stval());
+			DEBUG_PRINTK("store/amo page fault: epc:%x, tval:%x\n", r_sepc(), r_stval());
 			break;
 		}
 		case INSTRUCTION_PAGE_FAULT: {
-			printk("instruction page fault: epc:%x, tval:%x\n", r_sepc(), r_stval());
+			DEBUG_PRINTK("instruction page fault: epc:%x, tval:%x\n", r_sepc(), r_stval());
 			break;
 		}
 		case LOAD_ACCESS_FAULT: {
-			uart_puts("load access fault\n");
+			DEBUG_PRINTK("load access fault: epc:%x, tval:%x\n", r_sepc(), r_stval());
 			break;
 		}
 #define SMODE_SOFTWARE_INTERRUPT 0x8000000000000001
@@ -64,7 +64,7 @@ void kerneltrap(void) {
 			break;
 		}
 		default: {
-			printk("trap: fault: cause: %x, epc:%x, tval:%x\n", r_scause(), r_sepc(), r_stval());
+			DEBUG_PRINTK("trap: fault: cause: %x, epc:%x, tval:%x\n", r_scause(), r_sepc(), r_stval());
 			panic("trap");
 			break;
 		}

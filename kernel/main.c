@@ -38,10 +38,10 @@ void kmain(void) {
 	pagetable_t kpgtbl;
 
 	uart_init();
-	printk("kernel starts\n");
+	INFO_PRINTK("kernel starts\n");
 	kpgtbl = kvminit();
 	kvmstart(kpgtbl);
-	printk("enable paging\n");
+	INFO_PRINTK("enable paging\n");
 	initcpu();
 	initproc();
 	virtio_init();

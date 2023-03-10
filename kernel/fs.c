@@ -119,7 +119,7 @@ u64 readi(struct inode *ip, char *dest, u64 offset, u64 size) {
 	struct buf *buf;
 
 	if((ip->mode & S_IFMT) == S_IFCHR) {
-		printk("readi: S_IFCHR\n");
+		VERBOSE_PRINTK("readi: S_IFCHR\n");
 		for(u64 i = 0; i < size; i++) {
 			dest[i] = cdevsw[ip->dev.major].read();
 		}
@@ -149,7 +149,7 @@ u64 writei(struct inode *ip, char *src, u64 offset, u64 size) {
 	struct buf *buf;
 
 	if((ip->mode & S_IFMT) == S_IFCHR) {
-		printk("writei: S_IFCHR\n");
+		VERBOSE_PRINTK("writei: S_IFCHR\n");
 		for(u64 i = 0; i < size; i++) {
 			cdevsw[ip->dev.major].write(src[i]);
 		}
@@ -272,7 +272,7 @@ int open(const char *pathname, int flags, mode_t mode) {
 		// TODO: CWD is not supported for now
 		basedir = "/";
 	}
-	printk("basedir: %s, filename: %s\n", basedir, filename);
+	VERBOSE_PRINTK("basedir: %s, filename: %s\n", basedir, filename);
 	if(flags & O_CREAT) {
 		ip = namei(basedir);
 		if(ip == NULL) {
@@ -284,7 +284,7 @@ int open(const char *pathname, int flags, mode_t mode) {
 		do {
 			readi(ip, (char *)&dir, offset, sizeof(struct direct));		
 			offset += sizeof(struct direct);
-			printk("lookup: %s:%x\n", dir.name, dir.ino);
+			VERBOSE_PRINTK("lookup: %s:%x\n", dir.name, dir.ino);
 		} while(!(strcmp(dir.name, "") == 0) && dir.ino != 0);
 		fd = ufalloc();
 		fp = falloc();
@@ -296,8 +296,8 @@ int open(const char *pathname, int flags, mode_t mode) {
 		iupdate(fp->ip);
 		strcpy(dir.name, filename);
 		dir.ino = fp->ip->inum + 1;
-		printk("%s:%x\n", dir.name, dir.ino);
-		printk("%x\n", offset);
+		VERBOSE_PRINTK("%s:%x\n", dir.name, dir.ino);
+		VERBOSE_PRINTK("%x\n", offset);
 		offset -= sizeof(struct direct);
 		writei(ip, (char *)&dir, offset, sizeof(struct direct));
 	}
@@ -328,7 +328,7 @@ int mknod(const char *pathname, mode_t mode, dev_t dev) {
 		// TODO: CWD is not supported for now
 		basedir = "/";
 	}
-	printk("basedir: %s, filename: %s\n", basedir, filename);
+	VERBOSE_PRINTK("basedir: %s, filename: %s\n", basedir, filename);
 	ip = namei(basedir);
 	if(ip == NULL) {
 		return -1;
@@ -339,7 +339,7 @@ int mknod(const char *pathname, mode_t mode, dev_t dev) {
 	do {
 		readi(ip, (char *)&dir, offset, sizeof(struct direct));		
 		offset += sizeof(struct direct);
-		printk("lookup: %s:%x\n", dir.name, dir.ino);
+		VERBOSE_PRINTK("lookup: %s:%x\n", dir.name, dir.ino);
 	} while(!(strcmp(dir.name, "") == 0) && dir.ino != 0);
 	fd = ufalloc();
 	fp = falloc();
@@ -349,7 +349,7 @@ int mknod(const char *pathname, mode_t mode, dev_t dev) {
 	if(S_ISBLK(mode)) {
 		fp->ip->mode |= I_BLOCK_SPECIAL;
 	} else if(S_ISCHR(mode)) {
-		printk("mknod: I_CHAR_SPECIAL\n");
+		VERBOSE_PRINTK("mknod: I_CHAR_SPECIAL\n");
 		fp->ip->mode |= I_CHAR_SPECIAL;
 	}
 	openi(fp->ip);
@@ -359,8 +359,8 @@ int mknod(const char *pathname, mode_t mode, dev_t dev) {
 	iupdate(fp->ip);
 	strcpy(dir.name, filename);
 	dir.ino = fp->ip->inum + 1;
-	printk("%s:%x\n", dir.name, dir.ino);
-	printk("%x\n", offset);
+	VERBOSE_PRINTK("%s:%x\n", dir.name, dir.ino);
+	VERBOSE_PRINTK("%x\n", offset);
 	offset -= sizeof(struct direct);
 	writei(ip, (char *)&dir, offset, sizeof(struct direct));
 	return fd;

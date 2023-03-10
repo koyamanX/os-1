@@ -20,7 +20,7 @@ void scheduler(void) {
 			rp++;
 			continue;
 		}
-		printk("scheduler: pid==%x\n", rp->pid);
+		VERBOSE_PRINTK("scheduler: pid==%x\n", rp->pid);
 		cpus[r_tp()].rp = rp;
 		rp->stat = RUNNING;
 		swtch(&cpus[r_tp()].ctx, &rp->ctx);

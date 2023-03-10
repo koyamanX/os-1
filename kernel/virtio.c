@@ -1,5 +1,4 @@
 #include <virtio.h>
-#include <printk.h>
 #include <panic.h>
 #include <vm.h>
 #include <string.h>

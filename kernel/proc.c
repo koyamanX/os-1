@@ -76,9 +76,9 @@ int exec(const char *file, char const **argv) {
 	readi(ip, (char *)&ehdr, 0, sizeof(ehdr));
 
 	if(IS_RISCV_ELF(ehdr) && ehdr.e_type == ET_EXEC) {
-		printk("Valid ELF\n");
+		DEBUG_PRINTK("Valid ELF\n");
 	} else {
-		panic("Invalid ELF\n");
+		DEBUG_PRINTK("Invalid ELF\n");
 	}
 
 	if(ehdr.e_phnum > 4) {
@@ -90,7 +90,7 @@ int exec(const char *file, char const **argv) {
 	readi(ip, (char *)phdr, ehdr.e_phoff, sizeof(Elf64_Phdr)*ehdr.e_phnum);
 	for(int i = 0; i < ehdr.e_phnum; i++) {
 		if(phdr[i].p_type == PT_LOAD) {
-			printk("PT_LOAD: p_offset: %x, p_vaddr: %x, p_paddr: %x, p_filesz: %x,p_memsz: %x, p_align: %x\n",
+			INFO_PRINTK("PT_LOAD: p_offset: %x, p_vaddr: %x, p_paddr: %x, p_filesz: %x,p_memsz: %x, p_align: %x\n",
 					phdr[i].p_offset, phdr[i].p_vaddr, phdr[i].p_paddr, phdr[i].p_filesz, phdr[i].p_memsz, phdr[i].p_align);
 			seg = (char *)va2pa(rp->pgtbl, 0x0);
 			memset(seg, 0, PAGE_SIZE);

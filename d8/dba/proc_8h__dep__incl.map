@@ -1,0 +1,10 @@
+<map id="include/proc.h" name="include/proc.h">
+<area shape="rect" id="node1" title=" " alt="" coords="307,5,420,32"/>
+<area shape="rect" id="node2" href="$d7/d00/sched_8h.html" title=" " alt="" coords="302,80,425,107"/>
+<area shape="rect" id="node3" href="$d0/d29/main_8c.html" title=" " alt="" coords="5,155,116,181"/>
+<area shape="rect" id="node4" href="$d3/dda/proc_8c.html" title=" " alt="" coords="140,155,245,181"/>
+<area shape="rect" id="node5" href="$db/dbe/sched_8c.html" title=" " alt="" coords="270,155,385,181"/>
+<area shape="rect" id="node6" href="$db/dd8/syscall_8c.html" title=" " alt="" coords="409,155,531,181"/>
+<area shape="rect" id="node7" href="$dc/d6f/trap_8c.html" title=" " alt="" coords="556,155,659,181"/>
+<area shape="rect" id="node8" href="$d9/dc3/fio_8c.html" title=" " alt="" coords="550,80,643,107"/>
+</map>

@@ -1,0 +1,19 @@
+<map id="kernel/proc.c" name="kernel/proc.c">
+<area shape="rect" id="node1" title=" " alt="" coords="326,5,431,32"/>
+<area shape="rect" id="node2" href="$d1/d4e/riscv_8h.html" title=" " alt="" coords="311,229,375,256"/>
+<area shape="rect" id="node3" href="$d9/d49/types_8h.html" title=" " alt="" coords="145,453,241,480"/>
+<area shape="rect" id="node4" href="$da/da9/os1_8h.html" title=" " alt="" coords="442,80,499,107"/>
+<area shape="rect" id="node5" href="$df/d03/proc_8h.html" title=" " alt="" coords="173,155,235,181"/>
+<area shape="rect" id="node7" href="$df/d26/fs_8h.html" title=" " alt="" coords="35,304,82,331"/>
+<area shape="rect" id="node10" href="$da/d0a/vm_8h.html" title=" " alt="" coords="311,155,366,181"/>
+<area shape="rect" id="node11" href="$d7/d0b/trap_8h.html" title=" " alt="" coords="523,80,583,107"/>
+<area shape="rect" id="node12" href="$da/d66/string_8h.html" title=" " alt="" coords="607,80,678,107"/>
+<area shape="rect" id="node14" href="$d7/d00/sched_8h.html" title=" " alt="" coords="193,80,265,107"/>
+<area shape="rect" id="node15" href="$db/d11/printk_8h.html" title=" " alt="" coords="703,80,775,107"/>
+<area shape="rect" id="node16" href="$d1/d9e/elf_8h.html" title=" " alt="" coords="123,304,173,331"/>
+<area shape="rect" id="node17" href="$df/d1f/panic_8h.html" title=" " alt="" coords="799,80,868,107"/>
+<area shape="rect" id="node6" href="$d2/d4d/file_8h.html" title=" " alt="" coords="177,229,231,256"/>
+<area shape="rect" id="node8" href="$d4/dca/devsw_8h.html" title=" " alt="" coords="5,379,80,405"/>
+<area shape="rect" id="node9" title=" " alt="" coords="7,453,78,480"/>
+<area shape="rect" id="node13" title=" " alt="" coords="605,155,680,181"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="exit" name="exit">
+<area shape="rect" id="node1" title=" " alt="" coords="5,31,52,57"/>
+<area shape="rect" id="node2" href="$df/d03/proc_8h.html#abc96bd69b58b2deaddb484478d911c1b" title=" " alt="" coords="100,31,155,57"/>
+<area shape="rect" id="node3" href="$d2/d4d/file_8h.html#aa126418263f281c0581ca7bb06a992ca" title=" " alt="" coords="203,5,263,32"/>
+<area shape="rect" id="node7" href="$d1/d4e/riscv_8h.html#a781ed1f79c2a7a0a7d1b1c30bfaaa798" title=" " alt="" coords="209,56,256,83"/>
+<area shape="rect" id="node4" href="$df/d1f/panic_8h.html#a92ad17d19a46880dd5e6c99143666b4a" title=" " alt="" coords="311,5,368,32"/>
+<area shape="rect" id="node5" href="$d2/d86/uart_8h.html#aa1f548a14c782ece5290f74e607adee3" title=" " alt="" coords="416,5,499,32"/>
+<area shape="rect" id="node6" href="$d1/d87/uart_8c.html#aea92973e3d3e2fb34fba39c5fc4b253a" title=" " alt="" coords="547,5,651,32"/>
+</map>

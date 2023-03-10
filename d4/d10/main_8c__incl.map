@@ -1,0 +1,20 @@
+<map id="kernel/main.c" name="kernel/main.c">
+<area shape="rect" id="node1" title=" " alt="" coords="329,5,439,32"/>
+<area shape="rect" id="node2" href="$d1/d4e/riscv_8h.html" title=" " alt="" coords="97,229,161,256"/>
+<area shape="rect" id="node3" href="$d9/d49/types_8h.html" title=" " alt="" coords="183,453,279,480"/>
+<area shape="rect" id="node4" href="$df/d03/proc_8h.html" title=" " alt="" coords="178,155,241,181"/>
+<area shape="rect" id="node6" href="$df/d26/fs_8h.html" title=" " alt="" coords="238,304,285,331"/>
+<area shape="rect" id="node9" href="$d2/d86/uart_8h.html" title=" " alt="" coords="473,80,533,107"/>
+<area shape="rect" id="node10" href="$da/d0a/vm_8h.html" title=" " alt="" coords="43,155,98,181"/>
+<area shape="rect" id="node11" href="$da/d66/string_8h.html" title=" " alt="" coords="557,80,627,107"/>
+<area shape="rect" id="node13" href="$db/d11/printk_8h.html" title=" " alt="" coords="652,80,724,107"/>
+<area shape="rect" id="node14" href="$da/da9/os1_8h.html" title=" " alt="" coords="749,80,806,107"/>
+<area shape="rect" id="node15" href="$d5/dd0/timer_8h.html" title=" " alt="" coords="830,80,898,107"/>
+<area shape="rect" id="node16" href="$d7/d00/sched_8h.html" title=" " alt="" coords="224,80,296,107"/>
+<area shape="rect" id="node17" href="$d7/dcd/virtio_8h.html" title=" " alt="" coords="418,379,486,405"/>
+<area shape="rect" id="node18" href="$d6/d6d/buf_8h.html" title=" " alt="" coords="329,304,383,331"/>
+<area shape="rect" id="node5" href="$d2/d4d/file_8h.html" title=" " alt="" coords="186,229,241,256"/>
+<area shape="rect" id="node7" href="$d4/dca/devsw_8h.html" title=" " alt="" coords="319,379,393,405"/>
+<area shape="rect" id="node8" title=" " alt="" coords="321,453,391,480"/>
+<area shape="rect" id="node12" title=" " alt="" coords="555,155,629,181"/>
+</map>

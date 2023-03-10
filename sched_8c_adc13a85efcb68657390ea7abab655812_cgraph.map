@@ -1,6 +1,0 @@
-<map id="sched" name="sched">
-<area shape="rect" id="node1" title=" " alt="" coords="5,56,65,83"/>
-<area shape="rect" id="node2" href="$riscv_8h.html#a781ed1f79c2a7a0a7d1b1c30bfaaa798" title=" " alt="" coords="120,5,167,32"/>
-<area shape="rect" id="node3" href="$sched_8c.html#aa1559f2bb08f486bdd3452f752e23bee" title=" " alt="" coords="113,56,173,83"/>
-<area shape="rect" id="node4" href="$riscv_8h.html#a9625bfcd7df9cb3f7376321b4f2023ee" title=" " alt="" coords="114,107,173,133"/>
-</map>

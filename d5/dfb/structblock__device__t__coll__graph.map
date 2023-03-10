@@ -1,0 +1,8 @@
+<map id="block_device_t" name="block_device_t">
+<area shape="rect" id="node1" title=" " alt="" coords="199,344,318,421"/>
+<area shape="rect" id="node2" href="$dc/d3a/structvirtq__avail.html" title=" " alt="" coords="5,160,117,281"/>
+<area shape="rect" id="node3" href="$d6/d4d/structvirtio__blk__req.html" title=" " alt="" coords="142,167,253,274"/>
+<area shape="rect" id="node4" href="$d7/d7a/structvirtq__desc.html" title=" " alt="" coords="277,160,366,281"/>
+<area shape="rect" id="node5" href="$d3/daa/structvirtq__used.html" title=" " alt="" coords="390,167,503,274"/>
+<area shape="rect" id="node6" href="$db/d2b/structvirtq__used__elem.html" title=" " alt="" coords="381,5,512,97"/>
+</map>

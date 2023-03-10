@@ -1,6 +1,4 @@
 name: 'Doxygen deploy to GitHub pages'
-author: 'Chihiro Koyama'
-description: 'Deploy Doxygen genrated documentations to GitHub pages'
 
 on:
   push:

@@ -225,7 +225,7 @@ struct inode *ialloc(dev_t dev) {
 	struct buf *buf;
 
 	sb = getfs(dev);
-	offset = SUPERBLOCK + 1;
+	offset = IMAP(sb);
 
 	for(u64 i = 0; i < (sb->imap_blocks / sizeof(u8)); i++) {
 		buf = bread(dev, (offset*BLOCKSIZE)/SECTORSIZE);

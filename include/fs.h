@@ -143,7 +143,7 @@ u64 writei(struct inode *ip, char *src, u64 offset, u64 size);
 
 #define ROOT 1								//!< Inode number of root directory.
 #define SUPERBLOCK 2						//!< Block number of super block.
-#define IMAP(sb) (3)						//!< Block number of first inode map.
+#define IMAP(sb) (SUPERBLOCK-1)						//!< Block number of first inode map.
 #define ZMAP(sb) (IMAP(sb)+sb->imap_blocks)	//!< Block number of first zone map.
 
 #define I_TYPE          0170000				//!< Bit mask for type of file.

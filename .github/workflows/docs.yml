@@ -8,13 +8,14 @@ on:
       - master
 
 jobs:
-  runs-on: ubuntu-latest
   prepare:
+    runs-on: ubuntu-latest
     steps:
       - name: "Install Doxygen"
         run: sudo apt install -y doxygen graphviz
         shell: bash
   build:
+    runs-on: ubuntu-latest
     steps:
       - name: "Checkout"
         uses: actions/checkout@v3
@@ -24,6 +25,7 @@ jobs:
         run: doxygen
         shell: bash
   deploy:
+    runs-on: ubuntu-latest
     steps:
       - name: "create .nojekyll"
         run: touch docs/html/.nojekyll

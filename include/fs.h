@@ -1,11 +1,11 @@
-#ifndef _FS_H
-#define _FS_H
-
 /**
  * @file fs.h
  * @brief Structures and function prototypes for low-level
  * 			access to minix3 filesystem.
+ * @author ckoyama(koyamanX)
  */
+#ifndef _FS_H
+#define _FS_H
 
 #include <sys/types.h>
 #include <devsw.h>

@@ -93,11 +93,6 @@ struct inode *namei(char *path);
 struct inode *diri(struct inode *ip, char *name);
 
 /**
- * bmapget
- */
-u8 bmapget(u64 bmap, u64 inum);
-
-/**
  * zmap
  */
 u64 zmap(struct inode *ip, u64 zone);

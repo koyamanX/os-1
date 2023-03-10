@@ -224,17 +224,6 @@ void iupdate(struct inode *ip) {
 	bwrite(buf);
 }
 
-u8 bmapget(u64 bmap, u64 inum) {
-	struct buf *buf;
-	u64 offset;
-	u8 bitmap;
-
-	offset = bmap + (inum / (BLOCKSIZE * 8));
-	buf = bread(rootdev, (offset*BLOCKSIZE)/SECTORSIZE);
-	bitmap = buf->data[inum % BLOCKSIZE];
-
-	return bitmap;
-}
 void iput(struct inode *ip) {
 	if(ip->count == 1) {
 		iupdate(ip);

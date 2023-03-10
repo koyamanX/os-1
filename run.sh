@@ -38,6 +38,7 @@ COMMANDS
 		info
 		warn
 		release
+	format
 	gdb
 	clean
 EOF
@@ -127,5 +128,14 @@ if [ "$CMD" = "gdb" ]; then
 	run -S -gdb $QEMU_GDB_PORT
 	exit 0
 fi
+
+CMD=$1
+if [ "$CMD" = "format" ]; then
+	shift
+	find . -name '*.c' -exec clang-format -i {} \;
+	find . -name '*.h' -exec clang-format -i {} \;
+	exit 0
+fi
+
 
 usage

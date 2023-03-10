@@ -5,3 +5,4 @@ rootfs.img
 os1/*
 init
 _build
+docs/*

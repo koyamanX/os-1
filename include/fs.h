@@ -133,11 +133,11 @@ u64 writei(struct inode *ip, char *src, u64 offset, u64 size);
 #define ZMAP(sb) (IMAP(sb)+sb->imap_blocks)	//!< Block number of first zone map.
 
 #define I_TYPE          0170000				//!< Bit mask for type of file.
-#define I_REGULAR       0100000				//!< Regular file.
-#define I_BLOCK_SPECIAL 0060000				//!< Block special device.
-#define I_DIRECTORY     0040000				//!< Direcotry.
-#define I_CHAR_SPECIAL  0020000				//!< Character special device.
-#define I_NAMED_PIPE    0010000				//!< Named pipe.
+#define I_REGULAR       0100000				//!< Inode type of regular file.
+#define I_BLOCK_SPECIAL 0060000				//!< Inode type of block special device.
+#define I_DIRECTORY     0040000				//!< Inode type of direcotry.
+#define I_CHAR_SPECIAL  0020000				//!< Inode type of character special device.
+#define I_NAMED_PIPE    0010000				//!< Inode type of named pipe.
 #define I_SET_UID_BIT   0004000				//!< Set-uid bit.
 #define I_SET_GID_BIT   0002000				//!< Set-gid bit.
 #define ALL_MODES       0006777				//!< All modes.

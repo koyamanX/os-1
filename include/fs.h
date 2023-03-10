@@ -8,31 +8,31 @@
 #ifndef _FS_H
 #define _FS_H
 
-#include <sys/types.h>
 #include <devsw.h>
+#include <sys/types.h>
 
 /**
  * @brief Struct for minix3 filesystem superblock.
  * @detail Contains in-disk superblock of minix3 filesystem.
  */
 struct super_block {
-	u32 ninodes;		//!< Number of available inodes.
-	u16 nzones;			//!< Number of available zones.
-	u16 imap_blocks;	//!< Number of blocks used by inode bit map.
-	u16 zmap_blocks;	//!< Number of blocks used by zone bit map.
-	u16 firstdatazone;	//!< Number of first data zone.
-	u16 log_zone_size;	//!< Log2 of block/zone.
-	u16 pad;			//!< Padding.
-	u32 max_size;		//!< Max file size.
-	u32 zones;			//!< Number of zones
-	u16 magic;			//!< Magic number
-	u16 pad2;			//!< Padding
-	u16 block_size;		//!< Block size in bytes
-	u8 disk_version;	//!< Filesystem version
+    u32 ninodes;        //!< Number of available inodes.
+    u16 nzones;         //!< Number of available zones.
+    u16 imap_blocks;    //!< Number of blocks used by inode bit map.
+    u16 zmap_blocks;    //!< Number of blocks used by zone bit map.
+    u16 firstdatazone;  //!< Number of first data zone.
+    u16 log_zone_size;  //!< Log2 of block/zone.
+    u16 pad;            //!< Padding.
+    u32 max_size;       //!< Max file size.
+    u32 zones;          //!< Number of zones
+    u16 magic;          //!< Magic number
+    u16 pad2;           //!< Padding
+    u16 block_size;     //!< Block size in bytes
+    u8 disk_version;    //!< Filesystem version
 };
 
-#define NINODE 16 		//!< Size of inode in one block
-#define INODE_SIZE 64	//!< Size of on disk inode
+#define NINODE 16      //!< Size of inode in one block
+#define INODE_SIZE 64  //!< Size of on disk inode
 
 /**
  * @brief Struct for minix3 inode.
@@ -40,19 +40,20 @@ struct super_block {
  * 		followed by on-memory structure.
  */
 struct inode {
-	u16 mode;			//!< File type, protection, etc. (On-disk)
-	u16 nlinks;			//!< Number of links of this file. (On-disk)
-	u16 uid;			//!< User id. (On-disk)
-	u16 gid;			//!< Group id. (On-disk)
-	u32 size;			//!< Size in bytes. (On-disk)
-	u32 atime;			//!< Last access time. (On-disk)
-	u32 mtime;			//!< Modification time of file contents. (On-disk)
-	u32 ctime;			//!< Changed time of inode. (On-disk)
-	u32 zone[10];		//!< Zones, first 8 are direct zone,
-						//!< next one is indirect zone, last one is triple indirect zone. (On-disk)
-	dev_t dev;			//!< Device on this inode exist. (On-memory)
-	ino_t inum;			//!< Inode number of this inode. (On-memory)
-	u64 count;			//!< Reference count of this inode. (On-memory)
+    u16 mode;      //!< File type, protection, etc. (On-disk)
+    u16 nlinks;    //!< Number of links of this file. (On-disk)
+    u16 uid;       //!< User id. (On-disk)
+    u16 gid;       //!< Group id. (On-disk)
+    u32 size;      //!< Size in bytes. (On-disk)
+    u32 atime;     //!< Last access time. (On-disk)
+    u32 mtime;     //!< Modification time of file contents. (On-disk)
+    u32 ctime;     //!< Changed time of inode. (On-disk)
+    u32 zone[10];  //!< Zones, first 8 are direct zone,
+                   //!< next one is indirect zone, last one is triple indirect
+                   //!< zone. (On-disk)
+    dev_t dev;     //!< Device on this inode exist. (On-memory)
+    ino_t inum;    //!< Inode number of this inode. (On-memory)
+    u64 count;     //!< Reference count of this inode. (On-memory)
 };
 
 /**
@@ -124,7 +125,8 @@ void iput(struct inode *ip);
 /**
  *	Read content of inode zone from disk.
  *	@param[in] ip pointer to inode to obtain content of.
- *	@param[out] dest pointer to memory location to fill the content obtained.
+ *	@param[out] dest pointer to memory location to fill the content
+ *obtained.
  *	@param[in] offset offset of inode zone to read.
  *	@param[in] size size in bytes to read.
  *	@return size read.
@@ -134,46 +136,49 @@ u64 readi(struct inode *ip, char *dest, u64 offset, u64 size);
 /**
  *	Write content of inode zone to disk.
  *	@param[in] ip pointer to inode to write content to.
- *	@param[out] dest pointer to memory location to read the content to write.
+ *	@param[out] dest pointer to memory location to read the content to
+ *write.
  *	@param[in] offset offset of inode zone to write.
  *	@param[in] size size in bytes to write.
  *	@return size written.
  */
 u64 writei(struct inode *ip, char *src, u64 offset, u64 size);
 
-#define ROOT 1								//!< Inode number of root directory.
-#define SUPERBLOCK 2						//!< Block number of super block.
-#define IMAP(sb) (SUPERBLOCK-1)						//!< Block number of first inode map.
-#define ZMAP(sb) (IMAP(sb)+sb->imap_blocks)	//!< Block number of first zone map.
+#define ROOT 1                     //!< Inode number of root directory.
+#define SUPERBLOCK 2               //!< Block number of super block.
+#define IMAP(sb) (SUPERBLOCK - 1)  //!< Block number of first inode map.
+#define ZMAP(sb) \
+    (IMAP(sb) + sb->imap_blocks)  //!< Block number of first zone map.
 
-#define I_TYPE          0170000				//!< Bit mask for type of file.
-#define I_REGULAR       0100000				//!< Inode type of regular file.
-#define I_BLOCK_SPECIAL 0060000				//!< Inode type of block special device.
-#define I_DIRECTORY     0040000				//!< Inode type of direcotry.
-#define I_CHAR_SPECIAL  0020000				//!< Inode type of character special device.
-#define I_NAMED_PIPE    0010000				//!< Inode type of named pipe.
-#define I_SET_UID_BIT   0004000				//!< Set-uid bit.
-#define I_SET_GID_BIT   0002000				//!< Set-gid bit.
-#define ALL_MODES       0006777				//!< All modes.
-#define RWX_MODES       0000777				//!< Read/Write/Execute for all.
-#define R_BIT           0000004				//!< Read bit.
-#define W_BIT           0000002				//!< Write bit.
-#define X_BIT           0000001				//!< Execute bit.
-#define I_FREE  	    0000000				//!< Free.
+#define I_TYPE 0170000           //!< Bit mask for type of file.
+#define I_REGULAR 0100000        //!< Inode type of regular file.
+#define I_BLOCK_SPECIAL 0060000  //!< Inode type of block special device.
+#define I_DIRECTORY 0040000      //!< Inode type of direcotry.
+#define I_CHAR_SPECIAL 0020000   //!< Inode type of character special device.
+#define I_NAMED_PIPE 0010000     //!< Inode type of named pipe.
+#define I_SET_UID_BIT 0004000    //!< Set-uid bit.
+#define I_SET_GID_BIT 0002000    //!< Set-gid bit.
+#define ALL_MODES 0006777        //!< All modes.
+#define RWX_MODES 0000777        //!< Read/Write/Execute for all.
+#define R_BIT 0000004            //!< Read bit.
+#define W_BIT 0000002            //!< Write bit.
+#define X_BIT 0000001            //!< Execute bit.
+#define I_FREE 0000000           //!< Free.
 
-#define DIRSIZ 60							//!< Size of directory name.
+#define DIRSIZ 60  //!< Size of directory name.
 
 /**
  * @brief Struct for directory entry.
  * @detail On-disk structure of directory entry.
  */
 struct direct {
-	u32 ino;								//!< Inode number this direct entry associated with.
-	char name[DIRSIZ];						//!< Name of file.
+    u32 ino;            //!< Inode number this direct entry associated with.
+    char name[DIRSIZ];  //!< Name of file.
 };
 
-#define NSUPERBLK 1							//!< Size of on-memory superblock cache.
-extern struct super_block sb[];				//!< Superblock cache, only superblock of minix 3 filesystem is supported.
-extern struct inode inode[NINODE];			//!< On-memory inode cache.
+#define NSUPERBLK 1              //!< Size of on-memory superblock cache.
+extern struct super_block sb[];  //!< Superblock cache, only superblock of minix
+                                 //!< 3 filesystem is supported.
+extern struct inode inode[NINODE];  //!< On-memory inode cache.
 
-#endif	/* _FS_H */
+#endif /* _FS_H */

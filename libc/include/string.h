@@ -2,7 +2,10 @@
 #define STRING_H
 
 #include <stddef.h>
+
+#ifndef NULL
 #define NULL ((void *)0)
+#endif
 
 char *strcpy(char *dest, const char *src);
 void *memset(void *s, int c, size_t sz);

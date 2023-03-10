@@ -3,11 +3,11 @@
 
 int printk(const char *format, ...);
 
-#define VERBOSE		0
-#define DEBUG		1
-#define INFO		2
-#define WARN		3
-#define RELEASE		15
+#define VERBOSE 0
+#define DEBUG 1
+#define INFO 2
+#define WARN 3
+#define RELEASE 15
 
 #ifndef LOG_LEVEL
 #define LOG_LEVEL RELEASE

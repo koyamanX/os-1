@@ -1,57 +1,56 @@
-#include <riscv.h>
-#include <proc.h>
-#include <uart.h>
-#include <sys/types.h>
-#include <vm.h>
-#include <string.h>
-#include <printk.h>
-#include <os1.h>
-#include <timer.h>
-#include <sched.h>
-#include <virtio.h>
-#include <fs.h>
 #include <buf.h>
+#include <fs.h>
+#include <os1.h>
+#include <printk.h>
+#include <proc.h>
+#include <riscv.h>
+#include <sched.h>
+#include <string.h>
+#include <sys/types.h>
+#include <timer.h>
+#include <uart.h>
+#include <virtio.h>
+#include <vm.h>
 
-__attribute__ ((aligned (16))) char stack[PAGE_SIZE*4];
+__attribute__((aligned(16))) char stack[PAGE_SIZE * 4];
 
 void kinit(void) {
-	u64 mstatus;
+    u64 mstatus;
 
-	mstatus = r_mstatus();
-	mstatus &= MSTATUS_MPP_MASK;
-	mstatus |= MSTATUS_MPP_S_MODE;
-	w_mstatus(mstatus);
+    mstatus = r_mstatus();
+    mstatus &= MSTATUS_MPP_MASK;
+    mstatus |= MSTATUS_MPP_S_MODE;
+    w_mstatus(mstatus);
 
-	w_satp(0);
+    w_satp(0);
 
-	init_timer();
+    init_timer();
 
-	w_mepc((u64)((u64 *)&kmain));
+    w_mepc((u64)((u64 *)&kmain));
 
-	w_stvec((u64)((u64 *)&kernelvec));
-	w_sstatus(r_sstatus() | 1<<1);
+    w_stvec((u64)((u64 *)&kernelvec));
+    w_sstatus(r_sstatus() | 1 << 1);
 
-	asm volatile("mret");
+    asm volatile("mret");
 }
 
 void kmain(void) {
-	pagetable_t kpgtbl;
+    pagetable_t kpgtbl;
 
-	uart_init();
-	INFO_PRINTK("kernel starts\n");
-	kpgtbl = kvminit();
-	kvmstart(kpgtbl);
-	INFO_PRINTK("enable paging\n");
-	initcpu();
-	initproc();
-	virtio_init();
-	binit();
-	fsinit();
-	userinit();
-	scheduler();
+    uart_init();
+    INFO_PRINTK("kernel starts\n");
+    kpgtbl = kvminit();
+    kvmstart(kpgtbl);
+    INFO_PRINTK("enable paging\n");
+    initcpu();
+    initproc();
+    virtio_init();
+    binit();
+    fsinit();
+    userinit();
+    scheduler();
 
-	while(1) {
-		asm volatile("nop");
-	}
+    while (1) {
+        asm volatile("nop");
+    }
 }
-

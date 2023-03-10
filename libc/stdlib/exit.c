@@ -2,5 +2,5 @@
 #include <unistd.h>
 
 void exit(int status) {
-	_exit(status);
+    _exit(status);
 }

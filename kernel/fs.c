@@ -321,6 +321,7 @@ int open(const char *pathname, int flags, mode_t mode) {
 		offset -= sizeof(struct direct);
 		writei(ip, (char *)&dir, offset, sizeof(struct direct));
 	}
+
 	return fd;
 }
 int creat(const char *pathname, mode_t mode) {
@@ -383,5 +384,6 @@ int mknod(const char *pathname, mode_t mode, dev_t dev) {
 	VERBOSE_PRINTK("%x\n", offset);
 	offset -= sizeof(struct direct);
 	writei(ip, (char *)&dir, offset, sizeof(struct direct));
+
 	return fd;
 }

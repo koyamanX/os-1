@@ -20,7 +20,7 @@ struct cdevsw {
 
 struct mount {
 	dev_t dev;			// device
-	char *sb;			// pointer to superblock
+	struct super_block *sb;			// pointer to superblock
 	struct inode *ip;	// pointer to mounted i-node
 };
 

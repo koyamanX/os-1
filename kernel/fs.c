@@ -33,15 +33,14 @@ void fsinit(void) {
 	memset(&inode, 0, sizeof(struct inode)*NINODE);
 
 	mount[0].dev = rootdev;
-	// TODO:
-	mount[0].sb = (char*)&sb;
+	mount[0].sb = sb;
 	mount[0].ip = namei(rootdir);
 }
 
 struct super_block *getfs(dev_t dev) {
 	for(struct mount *p = &mount[0]; p < &mount[NMOUNT]; p++) {
 		if(p->dev.major == dev.major && p->dev.minor == dev.minor) {
-			return (struct super_block *)p->sb;
+			return p->sb;
 		}
 	}
 	panic("no fs\n");

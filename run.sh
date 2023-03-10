@@ -39,6 +39,7 @@ COMMANDS
 		warn
 		release
 	format
+	docs
 	gdb
 	clean
 EOF
@@ -137,5 +138,11 @@ if [ "$CMD" = "format" ]; then
 	exit 0
 fi
 
+CMD=$1
+if [ "$CMD" = "docs" ]; then
+	shift
+	doxygen
+	exit 0
+fi
 
 usage

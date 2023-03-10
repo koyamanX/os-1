@@ -51,3 +51,11 @@ RISC-V toolchain, qemu for RISC-V and minix3 kernel module is required to run os
 ```bash
 ./run.sh clean
 ```
+## Help
+```bash
+./run.sh help
+```
+
+# Documentation
+
+[Internal documentaions](https://koyamanx.github.io/os-1/)

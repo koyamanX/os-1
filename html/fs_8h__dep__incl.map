@@ -1,0 +1,13 @@
+<map id="include/fs.h" name="include/fs.h">
+<area shape="rect" id="node1" title=" " alt="" coords="281,5,379,32"/>
+<area shape="rect" id="node2" href="$file_8h.html" title=" " alt="" coords="215,80,320,107"/>
+<area shape="rect" id="node5" href="$main_8c.html" title=" " alt="" coords="5,304,116,331"/>
+<area shape="rect" id="node6" href="$proc_8c.html" title=" " alt="" coords="553,304,659,331"/>
+<area shape="rect" id="node11" href="$fs_8c.html" title=" " alt="" coords="340,155,429,181"/>
+<area shape="rect" id="node3" href="$proc_8h.html" title=" " alt="" coords="203,155,316,181"/>
+<area shape="rect" id="node10" href="$fio_8c.html" title=" " alt="" coords="53,229,146,256"/>
+<area shape="rect" id="node4" href="$sched_8h.html" title=" " alt="" coords="322,229,445,256"/>
+<area shape="rect" id="node7" href="$sched_8c.html" title=" " alt="" coords="141,304,255,331"/>
+<area shape="rect" id="node8" href="$syscall_8c.html" title=" " alt="" coords="279,304,402,331"/>
+<area shape="rect" id="node9" href="$trap_8c.html" title=" " alt="" coords="427,304,529,331"/>
+</map>

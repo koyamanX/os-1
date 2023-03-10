@@ -1,0 +1,17 @@
+<map id="include/riscv.h" name="include/riscv.h">
+<area shape="rect" id="node1" title=" " alt="" coords="660,5,775,32"/>
+<area shape="rect" id="node2" href="$proc_8h.html" title=" " alt="" coords="366,80,479,107"/>
+<area shape="rect" id="node4" href="$main_8c.html" title=" " alt="" coords="145,229,255,256"/>
+<area shape="rect" id="node5" href="$proc_8c.html" title=" " alt="" coords="427,229,533,256"/>
+<area shape="rect" id="node8" href="$trap_8c.html" title=" " alt="" coords="557,229,659,256"/>
+<area shape="rect" id="node9" href="$fio_8c.html" title=" " alt="" coords="536,155,629,181"/>
+<area shape="rect" id="node10" href="$vm_8h.html" title=" " alt="" coords="755,155,861,181"/>
+<area shape="rect" id="node12" href="$fs_8c.html" title=" " alt="" coords="939,229,1029,256"/>
+<area shape="rect" id="node14" href="$vm_8c.html" title=" " alt="" coords="1053,229,1152,256"/>
+<area shape="rect" id="node15" href="$timer_8c.html" title=" " alt="" coords="987,80,1098,107"/>
+<area shape="rect" id="node3" href="$sched_8h.html" title=" " alt="" coords="237,155,360,181"/>
+<area shape="rect" id="node6" href="$sched_8c.html" title=" " alt="" coords="5,229,120,256"/>
+<area shape="rect" id="node7" href="$syscall_8c.html" title=" " alt="" coords="280,229,403,256"/>
+<area shape="rect" id="node11" href="$bio_8c.html" title=" " alt="" coords="818,229,915,256"/>
+<area shape="rect" id="node13" href="$virtio_8c.html" title=" " alt="" coords="683,229,794,256"/>
+</map>

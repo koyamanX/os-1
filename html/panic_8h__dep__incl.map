@@ -1,0 +1,10 @@
+<map id="include/panic.h" name="include/panic.h">
+<area shape="rect" id="node1" title=" " alt="" coords="365,5,485,32"/>
+<area shape="rect" id="node2" href="$fio_8c.html" title=" " alt="" coords="5,80,99,107"/>
+<area shape="rect" id="node3" href="$fs_8c.html" title=" " alt="" coords="123,80,213,107"/>
+<area shape="rect" id="node4" href="$panic_8c.html" title=" " alt="" coords="237,80,349,107"/>
+<area shape="rect" id="node5" href="$proc_8c.html" title=" " alt="" coords="373,80,478,107"/>
+<area shape="rect" id="node6" href="$syscall_8c.html" title=" " alt="" coords="503,80,625,107"/>
+<area shape="rect" id="node7" href="$trap_8c.html" title=" " alt="" coords="650,80,753,107"/>
+<area shape="rect" id="node8" href="$virtio_8c.html" title=" " alt="" coords="777,80,887,107"/>
+</map>

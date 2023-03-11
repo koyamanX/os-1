@@ -88,10 +88,16 @@ void virtio_init(void) {
     *VIRTIO_OFFSET(STATUS) = *VIRTIO_OFFSET(STATUS) | VIRTIO_STATUS_DRIVER_OK;
 }
 
-int virtio_req(char *buf, u64 sector, u8 write) {
+int virtio_req(char *buf, u64 blkno, u8 write) {
     struct virtq_desc *desc;
     struct virtq_avail *avail;
+    u64 sector;
 
+    // Block size is 1KB, Sector size is 512B,
+    // So block number 0 is mapped to sector number 0,1
+    // and block number 1 is mapped to sector number 2,3
+    // and so on. so multiply blkno by 2 is sector number.
+    sector = blkno * 2;
     block_device.request[0].type = (write) ? VIRTIO_BKL_T_OUT : VIRTIO_BKL_T_IN;
     block_device.request[0].sector = sector;
     desc = block_device.desc;

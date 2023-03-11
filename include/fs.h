@@ -145,8 +145,8 @@ u64 readi(struct inode *ip, char *dest, u64 offset, u64 size);
 u64 writei(struct inode *ip, char *src, u64 offset, u64 size);
 
 #define ROOT 1                     //!< Inode number of root directory.
-#define SUPERBLOCK 2               //!< Block number of super block.
-#define IMAP(sb) (SUPERBLOCK - 1)  //!< Block number of first inode map.
+#define SUPERBLOCK 1               //!< Block number of super block.
+#define IMAP(sb) (2)               //!< Block number of first inode map.
 #define ZMAP(sb) \
     (IMAP(sb) + sb->imap_blocks)  //!< Block number of first zone map.
 

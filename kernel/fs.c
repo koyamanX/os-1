@@ -74,8 +74,8 @@ struct inode *iget(dev_t dev, u64 inum) {
      * so subtract by 1 to map block number.
      */
     inum--;
-    offset = (SUPERBLOCK + sb->imap_blocks + sb->zmap_blocks + (inum / NINODE));
-    buf = bread(dev, (offset * BLOCKSIZE) / SECTORSIZE);
+    offset = (IMAP(sb) + sb->imap_blocks + sb->zmap_blocks + (inum / NINODE));
+    buf = bread(dev, offset);
 
     for (int i = 0; i < NINODE; i++) {
         // Find unused inode cache entry.
@@ -229,7 +229,7 @@ struct inode *ialloc(dev_t dev) {
     offset = IMAP(sb);
 
     for (u64 i = 0; i < (sb->imap_blocks / sizeof(u8)); i++) {
-        buf = bread(dev, (offset * BLOCKSIZE) / SECTORSIZE);
+        buf = bread(dev, offset);
         if ((pos = ffs(~buf->data[i] & 0xff)) != 0) {
             buf->data[i] = buf->data[i] | (1 << (pos - 1));
             bwrite(buf);
@@ -250,8 +250,8 @@ void iupdate(struct inode *ip) {
     dev = ip->dev;
     sb = getfs(dev);
     offset =
-        (SUPERBLOCK + sb->imap_blocks + sb->zmap_blocks + (ip->inum / NINODE));
-    buf = bread(dev, (offset * BLOCKSIZE) / SECTORSIZE);
+        (IMAP(sb) + sb->imap_blocks + sb->zmap_blocks + (ip->inum / NINODE));
+    buf = bread(dev, offset);
     memcpy(&buf->data[(ip->inum % NINODE) * INODE_SIZE], ip, INODE_SIZE);
     bwrite(buf);
 }
@@ -271,7 +271,7 @@ u64 zmap(struct inode *ip, u64 zone) {
     if (zone >= 8) {
         panic("zmap: Indirect zone is not supported\n");
     }
-    addr = (ip->zone[zone] * BLOCKSIZE) / SECTORSIZE;
+    addr = ip->zone[zone];
 
     return addr;
 }

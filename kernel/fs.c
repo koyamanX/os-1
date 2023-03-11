@@ -99,17 +99,18 @@ struct inode *iget(dev_t dev, u64 inum) {
 struct inode *diri(struct inode *ip, char *name) {
     struct direct *dp;
     struct buf *buf;
-    u8 zone = 0;
 
-    // TODO: find directory in all zone.
-    buf = bread(rootdev, zmap(ip, zone));
-    dp = (struct direct *)buf->data;
-    for (int i = ip->size; i; i -= sizeof(struct direct)) {
-        if (strcmp(dp->name, name) == 0) {
-            return iget(rootdev, dp->ino);
+    for (u8 zone = 0; zone < DIRECTZONE; zone++) {
+        buf = bread(rootdev, zmap(ip, zone));
+        dp = (struct direct *)buf->data;
+        for (int i = ip->size; i; i -= sizeof(struct direct)) {
+            if (strcmp(dp->name, name) == 0) {
+                return iget(rootdev, dp->ino);
+            }
+            dp++;
         }
-        dp++;
     }
+    // TODO: Indirect zone
 
     return NULL;
 }
@@ -268,7 +269,7 @@ u64 zmap(struct inode *ip, u64 zone) {
     // TODO: handle indirect zone
     u64 addr;
 
-    if (zone >= 8) {
+    if (zone >= DIRECTZONE) {
         panic("zmap: Indirect zone is not supported\n");
     }
     addr = ip->zone[zone];

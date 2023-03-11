@@ -35,6 +35,9 @@ struct super_block {
 #define NICACHE 64     //!< Size of inode chache
 #define INODE_SIZE 64  //!< Size of on disk inode
 
+#define DIRECTZONE 8    //!< Direct zone number
+#define INDIRECTZONE 9  //!< Indirect zone number
+
 /**
  * @brief Struct for minix3 inode.
  * @detail First part of this struct is on-disk structure,
@@ -92,6 +95,7 @@ struct inode *namei(char *path);
  * @param[in] ip pointer to inode to search name.
  * @param[in] name of file.
  * @return Pointer to inode on success or NULL.
+ * @attention Indirect zone is not supported.
  */
 struct inode *diri(struct inode *ip, char *name);
 

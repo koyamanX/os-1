@@ -1,3 +1,4 @@
+#include <alloc.h>
 #include <buf.h>
 #include <fs.h>
 #include <os1.h>
@@ -47,6 +48,7 @@ void kmain(void) {
     virtio_init();
     binit();
     fsinit();
+    buddy_init();
     userinit();
     scheduler();
 

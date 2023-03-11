@@ -32,6 +32,7 @@ struct super_block {
 };
 
 #define NINODE 16      //!< Size of inode in one block
+#define NICACHE 64     //!< Size of inode chache
 #define INODE_SIZE 64  //!< Size of on disk inode
 
 /**
@@ -179,6 +180,6 @@ struct direct {
 #define NSUPERBLK 1              //!< Size of on-memory superblock cache.
 extern struct super_block sb[];  //!< Superblock cache, only superblock of minix
                                  //!< 3 filesystem is supported.
-extern struct inode inode[NINODE];  //!< On-memory inode cache.
+extern struct inode inode[NICACHE];  //!< On-memory inode cache.
 
 #endif /* _FS_H */

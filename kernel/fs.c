@@ -19,7 +19,7 @@
 #include <virtio.h>
 #include <vm.h>
 
-struct inode inode[NINODE];
+struct inode inode[NICACHE];
 struct super_block sb[NSUPERBLK];
 
 void fsinit(void) {
@@ -37,7 +37,7 @@ void fsinit(void) {
     // Zero clear file cache.
     memset(&file, 0, sizeof(struct file) * NFILE);
     // Zero clear inode cache.
-    memset(&inode, 0, sizeof(struct inode) * NINODE);
+    memset(&inode, 0, sizeof(struct inode) * NICACHE);
     // Zero clear mount cache.
     memset(&mount, 0, sizeof(struct mount) * NMOUNT);
 
@@ -64,7 +64,7 @@ struct super_block *getfs(dev_t dev) {
 
 struct inode *iget(dev_t dev, u64 inum) {
     struct buf *buf;
-    u64 offset;
+    u64 blkno;
     struct super_block *sb;
     struct inode *ip;
 
@@ -74,10 +74,10 @@ struct inode *iget(dev_t dev, u64 inum) {
      * so subtract by 1 to map block number.
      */
     inum--;
-    offset = (IMAP(sb) + sb->imap_blocks + sb->zmap_blocks + (inum / NINODE));
-    buf = bread(dev, offset);
+    blkno = (IMAP(sb) + sb->imap_blocks + sb->zmap_blocks + (inum / NINODE));
+    buf = bread(dev, blkno);
 
-    for (int i = 0; i < NINODE; i++) {
+    for (int i = 0; i < NICACHE; i++) {
         // Find unused inode cache entry.
         if (inode[i].count == 0) {
             // Read inode to inode cache.

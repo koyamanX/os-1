@@ -13,7 +13,7 @@
 
 /**
  * @brief Struct for minix3 filesystem superblock.
- * @detail Contains in-disk superblock of minix3 filesystem.
+ * @details Contains in-disk superblock of minix3 filesystem.
  */
 struct super_block {
     u32 ninodes;        //!< Number of available inodes.
@@ -40,7 +40,7 @@ struct super_block {
 
 /**
  * @brief Struct for minix3 inode.
- * @detail First part of this struct is on-disk structure,
+ * @details First part of this struct is on-disk structure,
  * 		followed by on-memory structure.
  */
 struct inode {
@@ -174,7 +174,7 @@ u64 writei(struct inode *ip, char *src, u64 offset, u64 size);
 
 /**
  * @brief Struct for directory entry.
- * @detail On-disk structure of directory entry.
+ * @details On-disk structure of directory entry.
  */
 struct direct {
     u32 ino;            //!< Inode number this direct entry associated with.

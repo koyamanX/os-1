@@ -3,9 +3,10 @@
 #include <printk.h>
 #include <string.h>
 
-struct buddy_header *buddy_freelist[MAX_ORDER + 1];  //<! Buddy freelist.
+struct buddy_header *buddy_freelist[MAX_ORDER + 1];  //!< Buddy freelist.
+// TODO:
 __attribute__((
-    aligned(4096))) char buddy_pool[PAGE_SIZE * 16];  //<! Buddy allocator pool.
+    aligned(4096))) char buddy_pool[PAGE_SIZE * 16];  //!< Buddy allocator pool.
 
 void buddy_init(void) {
     for (int i = 0; i < MAX_ORDER; i++) {
@@ -38,3 +39,5 @@ void *buddy_alloc(u8 order) {
     }
     return p;
 }
+
+void buddy_free(void *p, u8 order) {}

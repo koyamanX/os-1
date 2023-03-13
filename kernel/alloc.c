@@ -41,27 +41,31 @@ void *buddy_alloc(u8 order) {
 }
 
 void buddy_free(void *p, u8 order) {
-    if (order > MAX_ORDER) {
-        return;
-    }
+    void *x = NULL;
+    DEBUG_PRINTK("buddy_free: [%x] %x\n", order, p);
 
-    if (buddy_freelist[order] == NULL) {
-        DEBUG_PRINTK("return to emtpy freelist\n");
-        buddy_freelist[order] = p;
-        buddy_freelist[order]->next = 0;
+    if (order > MAX_ORDER) {
         return;
     }
 
     for (struct buddy_header *b = buddy_freelist[order]; b; b = b->next) {
         if ((((u64)p + (BSIZE << order)) == (u64)b) ||
             (((u64)p - (BSIZE << order)) == (u64)b)) {
-            DEBUG_PRINTK("Found buddy\n");
-            void *x = buddy_freelist[order + 1] = ((u64)p > (u64)b) ? p : b;
+            DEBUG_PRINTK("Found buddy: [%x] %x, %x\n", order, p, b);
+            buddy_freelist[order] = buddy_freelist[order]->next;
+            x = ((u64)p > (u64)b) ? b : p;
             buddy_free(x, order + 1);
             return;
         }
     }
-    DEBUG_PRINTK("return to freelist\n");
-    ((struct buddy_header *)p)->next = buddy_freelist[order];
-    buddy_freelist[order] = p;
+
+    if (buddy_freelist[order] == NULL) {
+        DEBUG_PRINTK("return to emtpy freelist: [%x] %x\n", order, p);
+        buddy_freelist[order] = p;
+        buddy_freelist[order]->next = NULL;
+    } else {
+        DEBUG_PRINTK("return to freelist: [%x] %x\n", order, p);
+        ((struct buddy_header *)p)->next = buddy_freelist[order];
+        buddy_freelist[order] = p;
+    }
 }

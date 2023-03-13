@@ -46,7 +46,7 @@ void buddy_free(void *p, u8 order) {
     }
 
     if (buddy_freelist[order] == NULL) {
-        printk("return to emtpy freelist\n");
+        DEBUG_PRINTK("return to emtpy freelist\n");
         buddy_freelist[order] = p;
         buddy_freelist[order]->next = 0;
         return;
@@ -55,13 +55,13 @@ void buddy_free(void *p, u8 order) {
     for (struct buddy_header *b = buddy_freelist[order]; b; b = b->next) {
         if ((((u64)p + (BSIZE << order)) == (u64)b) ||
             (((u64)p - (BSIZE << order)) == (u64)b)) {
-            printk("Found buddy\n");
+            DEBUG_PRINTK("Found buddy\n");
             void *x = buddy_freelist[order + 1] = ((u64)p > (u64)b) ? p : b;
             buddy_free(x, order + 1);
             return;
         }
     }
-    printk("return to freelist\n");
+    DEBUG_PRINTK("return to freelist\n");
     ((struct buddy_header *)p)->next = buddy_freelist[order];
     buddy_freelist[order] = p;
 }

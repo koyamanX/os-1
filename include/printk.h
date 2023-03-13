@@ -14,25 +14,25 @@ int printk(const char *format, ...);
 #endif
 
 #if LOG_LEVEL <= VERBOSE
-#define VERBOSE_PRINTK(fmt, ...) printk("[VERBOSE] " fmt, ##__VA_ARGS__)
+#define VERBOSE_PRINTK(fmt, ...) printk("[ VERBOSE ] " fmt, ##__VA_ARGS__)
 #else
 #define VERBOSE_PRINTK(fmt, ...)
 #endif
 
 #if LOG_LEVEL <= DEBUG
-#define DEBUG_PRINTK(fmt, ...) printk("[DEBUG] " fmt, ##__VA_ARGS__)
+#define DEBUG_PRINTK(fmt, ...) printk("[ DEBUG ] " fmt, ##__VA_ARGS__)
 #else
 #define DEBUG_PRINTK(fmt, ...)
 #endif
 
 #if LOG_LEVEL <= INFO
-#define INFO_PRINTK(fmt, ...) printk("[INFO] " fmt, ##__VA_ARGS__)
+#define INFO_PRINTK(fmt, ...) printk("[ INFO ] " fmt, ##__VA_ARGS__)
 #else
 #define INFO_PRINTK(fmt, ...)
 #endif
 
 #if LOG_LEVEL <= WARN
-#define WARN_PRINTK(fmt, ...) printk("[WARN] " fmt, ##__VA_ARGS__)
+#define WARN_PRINTK(fmt, ...) printk("[ WARN ] " fmt, ##__VA_ARGS__)
 #else
 #define WARN_PRINTK(fmt, ...)
 #endif

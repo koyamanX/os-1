@@ -48,7 +48,6 @@ void kmain(void) {
     virtio_init();
     binit();
     fsinit();
-    buddy_init();
     userinit();
     scheduler();
 

@@ -10,7 +10,7 @@
 #include <sys/types.h>
 
 #define BSIZE PAGE_SIZE  //!< BLOCK SIZE(minimum allocation size)
-#define MAX_ORDER 4      //!< Maximum order (2**4)
+#define MAX_ORDER 10     //!< Maximum order (2**10)
 #define MIN_ORDER 0      //!< Minimum order (2**0)
 
 /**
@@ -19,6 +19,11 @@
  */
 struct buddy_header {
     struct buddy_header *next;  //!< Next free buddy.
+};
+
+struct buddy_free_area {
+    struct buddy_header *freelist;
+    u64 nr_free;
 };
 
 /**

@@ -1,3 +1,4 @@
+#include <alloc.h>
 #include <os1.h>
 #include <printk.h>
 #include <riscv.h>
@@ -10,32 +11,15 @@
 struct kmem kmem;
 
 void kfree(void *pa) {
-    struct page *pz;
-
-    memset(pa, 0x00, PAGE_SIZE);
-    pz = (struct page *)pa;
-    pz->next = kmem.freelist;
-    kmem.freelist = pz;
-}
-
-void kfreerange(void *pa_start, void *pa_end) {
-    for (char *p = (char *)ROUNDUP(pa_start); p < (char *)pa_end;
-         p += PAGE_SIZE) {
-        kfree(p);
-    }
+    buddy_free(pa, MIN_ORDER);
 }
 
 void *kalloc(void) {
-    struct page *pz;
-
-    pz = kmem.freelist;
-    kmem.freelist = pz->next;
-
-    return (void *)pz;
+    return buddy_alloc(MIN_ORDER);
 }
 
 void kmeminit(void) {
-    kfreerange(&_end, PHYEND);
+    buddy_init();
 }
 
 pte_t *kvmalloc(pagetable_t pgtbl, u64 va) {

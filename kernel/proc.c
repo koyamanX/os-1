@@ -45,9 +45,9 @@ int newproc(void) {
     p = &procs[mpid];
     p->stat = RUNNABLE;
     p->pid = mpid;
-    p->tf = kalloc();
-    p->pgtbl = kalloc();
-    p->kstack = kalloc();
+    p->tf = alloc_page();
+    p->pgtbl = alloc_page();
+    p->kstack = alloc_page();
     memset(p->tf, 0, sizeof(trapframe_t));
     p->ctx.ra = (u64)usertrapret;
     p->ctx.sp = (u64)(p->kstack + PAGE_SIZE);
@@ -86,7 +86,7 @@ int exec(const char *file, char const **argv) {
     if (ehdr.e_phnum > 4) {
         panic("exec: load failed\n");
     }
-    phdr = kalloc();
+    phdr = alloc_page();
 
     rp = cpus[r_tp()].rp;
     readi(ip, (char *)phdr, ehdr.e_phoff, sizeof(Elf64_Phdr) * ehdr.e_phnum);
@@ -105,7 +105,7 @@ int exec(const char *file, char const **argv) {
         }
     }
 
-    kfree(phdr);
+    free_page(phdr);
 
     rp->tf->sepc = ehdr.e_entry;
     rp->tf->sp = PAGE_SIZE;
@@ -127,7 +127,7 @@ int fork(void) {
     memcpy(p->kstack, rp->kstack, PAGE_SIZE);
     p->tf->a0 = 0;
     rp->tf->a0 = pid;
-    kvmmap(p->pgtbl, 0x0, (u64)kalloc(), PAGE_SIZE,
+    kvmmap(p->pgtbl, 0x0, (u64)alloc_page(), PAGE_SIZE,
            PTE_V | PTE_W | PTE_R | PTE_X | PTE_U);
     memcpy((char *)va2pa(p->pgtbl, 0x0), (char *)va2pa(rp->pgtbl, 0x0),
            PAGE_SIZE);

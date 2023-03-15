@@ -6,7 +6,7 @@
 struct buf *blist;
 
 void binit(void) {
-    blist = (struct buf *)kalloc();
+    blist = (struct buf *)alloc_page();
     blist->valid = 0;
 }
 

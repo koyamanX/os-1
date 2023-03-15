@@ -66,9 +66,9 @@ void virtio_init(void) {
         panic("virtio: not enough queue size\n");
     }
     *VIRTIO_OFFSET(QUEUE_SEL) = 0;
-    block_device.desc = kalloc();
-    block_device.avail = kalloc();
-    block_device.used = kalloc();
+    block_device.desc = alloc_page();
+    block_device.avail = alloc_page();
+    block_device.used = alloc_page();
     memset(block_device.desc, 0, PAGE_SIZE);
     memset(block_device.avail, 0, PAGE_SIZE);
     memset(block_device.used, 0, PAGE_SIZE);

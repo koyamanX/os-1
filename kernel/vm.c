@@ -8,11 +8,11 @@
 #include <virtio.h>
 #include <vm.h>
 
-void kfree(void *pa) {
-    buddy_free(pa, MIN_ORDER);
+void free_pages(void *p, int order) {
+    buddy_free(p, order);
 }
 
-void *kalloc(void) {
+void *alloc_pages(int order) {
     return buddy_alloc(MIN_ORDER);
 }
 
@@ -29,7 +29,7 @@ pte_t *kvmalloc(pagetable_t pgtbl, u64 va) {
         if (*pte & PTE_V) {
             pgtbl = (pagetable_t)PTE2PA(*pte);
         } else {
-            pgtbl = (pagetable_t)kalloc();
+            pgtbl = (pagetable_t)alloc_page();
             memset(pgtbl, 0, PAGE_SIZE);
             *pte = PA2PTE(pgtbl) | PTE_V;
         }
@@ -86,7 +86,7 @@ pagetable_t kvminit(void) {
     pagetable_t kpgtbl;
 
     kmeminit();
-    kpgtbl = kalloc();
+    kpgtbl = alloc_page();
     memset(kpgtbl, 0, PAGE_SIZE);
     kvmmap(kpgtbl, (u64)TRAMPOLINE, (u64)trampoline, PAGE_SIZE,
            PTE_R | PTE_X | PTE_V);

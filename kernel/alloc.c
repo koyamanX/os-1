@@ -5,10 +5,6 @@
 #include <vm.h>
 
 struct buddy_free_area buddy_free_area[MAX_ORDER + 1];  //!< Buddy freelist.
-// TODO:
-#define SIZE PAGE_SIZE * 1024
-__attribute__((
-    aligned(4096))) char buddy_pool[SIZE];  //!< Buddy allocator pool.
 
 void buddy_init(void *start, void *end) {
     size_t size;

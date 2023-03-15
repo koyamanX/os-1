@@ -61,10 +61,6 @@ typedef u64 pte_t;
 struct page {
     struct page *next;
 };
-struct kmem {
-    struct page *freelist;
-    // TODO: lock
-};
 
 #define SV39 (8UL << 60)
 #define SATP(pgtbl) (SV39 | ((u64)pgtbl) >> 12)

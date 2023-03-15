@@ -2,6 +2,7 @@
 #include <panic.h>
 #include <printk.h>
 #include <string.h>
+#include <vm.h>
 
 struct buddy_free_area buddy_free_area[MAX_ORDER + 1];  //!< Buddy freelist.
 // TODO:
@@ -9,14 +10,19 @@ struct buddy_free_area buddy_free_area[MAX_ORDER + 1];  //!< Buddy freelist.
 __attribute__((
     aligned(4096))) char buddy_pool[SIZE];  //!< Buddy allocator pool.
 
-void buddy_init(void) {
+void buddy_init(void *start, void *end) {
+    size_t size;
+    char *p;
+
+    start = (void *)ROUNDUP(start);
+    end = (void *)ROUNDDOWN(end);
+    size = ((u64)end) - ((u64)start);
+    p = (char *)start;
+
     for (int i = 0; i <= MAX_ORDER; i++) {
         buddy_free_area[i].freelist = NULL;
         buddy_free_area[i].nr_free = 0;
     }
-    // Split pool by 2**MAX_ORDER and link all
-    size_t size = (u64)&buddy_pool[(SIZE)] - (u64)&buddy_pool[0];
-    char *p = buddy_pool;
     INFO_PRINTK("buddy_init: size:%x\n", size);
     for (int order = MAX_ORDER; order; order--) {
         size_t s = size;

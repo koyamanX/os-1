@@ -29,8 +29,12 @@ struct buddy_free_area {
 /**
  * @brief Initialize buddy allocator.
  * @details Initialize buddy allocator before using.
+ * @param[in] start Start of address range.
+ * @param[in] end End of address range.
+ * @attention start is internally ROUNDUP to PAGE_SIZE and end
+ * is ROUNDDOWN to PAGE_SIZE alignments.
  */
-void buddy_init(void);
+void buddy_init(void *start, void *end);
 
 /**
  * @brief Allocate memory region.

@@ -8,8 +8,6 @@
 #include <virtio.h>
 #include <vm.h>
 
-struct kmem kmem;
-
 void kfree(void *pa) {
     buddy_free(pa, MIN_ORDER);
 }
@@ -19,7 +17,7 @@ void *kalloc(void) {
 }
 
 void kmeminit(void) {
-    buddy_init();
+    buddy_init(&_end, PHYEND);
 }
 
 pte_t *kvmalloc(pagetable_t pgtbl, u64 va) {

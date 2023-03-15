@@ -20,7 +20,7 @@ void buddy_init(void *start, void *end) {
         buddy_free_area[i].nr_free = 0;
     }
     INFO_PRINTK("buddy_init: size:%x\n", size);
-    for (int order = MAX_ORDER; order; order--) {
+    for (int order = MAX_ORDER; order >= 0; order--) {
         size_t s = size;
         for (int i = 0; i < (s / (BSIZE << order)); i++) {
             VERBOSE_PRINTK("buddy_init: order: %x, %x\n", order, i);

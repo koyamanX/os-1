@@ -3,13 +3,19 @@
 #include <stddef.h>
 #include <vm.h>
 
-static struct slob_header arena = {.next = &arena, .units = 1};
-static struct slob_header *freelist = &arena;
+static struct slob_header arena = {.next = &arena,
+                                   .units = 1};  //!< Slob freelist head base.
+static struct slob_header *freelist = &arena;    //!< Slob freelist.
 
 void *kmalloc(size_t size) {
     u64 units;
     struct slob_header *cur;
     struct slob_header *prev;
+
+    // size larger than PAGE_SIZE is not supported yet.
+    if (size >= PAGE_SIZE) {
+        return NULL;
+    }
 
     // Data size(aligned to slob_header) + one slob_header.
     units =

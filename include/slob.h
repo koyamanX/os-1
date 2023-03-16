@@ -15,6 +15,7 @@
  * alloc_pages.
  * @param[in] size size to allocate.
  * @return pointer to allocated area.
+ * @attention size larger than PAGE_SIZE is not supported.
  */
 void *kmalloc(size_t size);
 
@@ -22,6 +23,7 @@ void *kmalloc(size_t size);
  * @brief Free memory area allocated by kmalloc.
  * @detail Free memory area allocated by kmalloc.
  * @param[in] p pointer to memory area to free.
+ * @attention size larger than PAGE_SIZE is not supported.
  */
 void kfree(void *p);
 
@@ -34,7 +36,11 @@ void kfree(void *p);
  * slob_header is propery aligned in allocated memory.
  */
 struct slob_header {
-    u64 units;
+    u64 units;  //!< If slob_header appears any where in memory region it might
+                //!< cause misaligned exceptions
+                // Since field in slob_header is not propery aligned, to avoid
+                // this, we need allocate area not by its requested size but
+                // size(units) multiples to slob_header to align in memory area.
     struct slob_header *next;
 };
 

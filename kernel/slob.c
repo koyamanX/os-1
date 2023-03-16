@@ -1,12 +1,45 @@
-#include <alloc.h>
 #include <printk.h>
 #include <slob.h>
 #include <stddef.h>
+#include <vm.h>
 
-static struct slob_header arena = {.next = &arena, .size = 0};
+static struct slob_header arena = {.next = &arena, .units = 1};
 static struct slob_header *freelist = &arena;
 
 void *kmalloc(size_t size) {
+    u64 units;
+    struct slob_header *cur;
+    struct slob_header *prev;
+
+    // Data size(aligned to slob_header) + one slob_header.
+    units =
+        ((size + sizeof(struct slob_header) - 1) / sizeof(struct slob_header)) +
+        1;
+
+    prev = freelist;
+    for (cur = prev->next;; prev = cur, cur = cur->next) {
+        if (cur->units >= units) {
+            // Enough room.
+            if (cur->units == units) {
+                // Exact fit.
+                prev->next = cur->next;
+            } else {
+                // Split.
+                prev->next = cur + units;
+                prev->next->units = cur->units - units;
+                prev->next->next = cur->next;
+                cur->units = units;
+            }
+            freelist = prev;
+            return cur;
+        }
+        if (cur == freelist) {
+            cur = (struct slob_header *)alloc_page();
+            kfree(cur);
+            cur = freelist;
+        }
+    }
+    // Not reachable.
     return NULL;
 }
 
@@ -28,16 +61,16 @@ void kfree(void *p) {
 
     for (cur = freelist; !(cur < b && b < cur->next); cur = cur->next) {
         /* block to be freed is not in between the block in freelist.*/
-        if (cur->next <= cur && (b < cur || b < cur->next)) {
+        if (cur->next <= cur && (b > cur || b < cur->next)) {
             // freed block is either at start or end.
             break;
         }
     }
 
     // Insertion point: block to be freed is younger than next block.
-    if ((b + b->size) == (cur->next)) {
+    if ((b + b->units) == (cur->next)) {
         // Merge block to be freed(b) and cur->next.
-        b->size += cur->next->size;
+        b->units += cur->next->units;
         b->next = cur->next->next;
     } else {
         b->next = cur->next;
@@ -45,7 +78,7 @@ void kfree(void *p) {
 
     // Insertion point: block to be freed is older than next block.
     if ((cur + (u64)cur->next) == b) {
-        cur->size += b->size;
+        cur->units += b->units;
         cur->next = b->next;
     } else {
         cur->next = b;

@@ -30,10 +30,11 @@ void kfree(void *p);
  * @details header is maintained in following format.
  * There is no data field, area followed by slob_header is used as data area.
  * | slob_header | data |
- * Actual size of data allocated is sizeof(struct slob_header) + ALIGN(data).
+ * Actual size of data allocated is multiples of slob_header to ensure
+ * slob_header is propery aligned in allocated memory.
  */
 struct slob_header {
-    u64 size;
+    u64 units;
     struct slob_header *next;
 };
 

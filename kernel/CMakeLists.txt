@@ -17,6 +17,7 @@ set(KERNEL_SOURCE
 	devsw.c
 	fio.c
 	alloc.c
+	slob.c
 	swtch.S)
 
 set(KERNEL_LINKER_SCRIPT ${CMAKE_CURRENT_SOURCE_DIR}/kernel.ldS)

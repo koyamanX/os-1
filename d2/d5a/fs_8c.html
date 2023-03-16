@@ -73,42 +73,46 @@ $(function() {
 <div class="title">fs.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="../../d7/dcd/virtio_8h_source.html">virtio.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="../../d9/d49/types_8h_source.html">sys/types.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="../../da/d66/string_8h_source.html">string.h</a>&gt;</code><br />
+
+<p>Implementation of minix 3 filesystem.  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &lt;<a class="el" href="../../d6/d6d/buf_8h_source.html">buf.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../d4/dca/devsw_8h_source.html">devsw.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../d7/d9f/fcntl_8h_source.html">fcntl.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../d2/d4d/file_8h_source.html">file.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../df/d26/fs_8h_source.html">fs.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../d0/dc6/libgen_8h_source.html">libgen.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../df/d1f/panic_8h_source.html">panic.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="../../db/d11/printk_8h_source.html">printk.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="../../d1/d4e/riscv_8h_source.html">riscv.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="../../d6/d6d/buf_8h_source.html">buf.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="../../df/d1f/panic_8h_source.html">panic.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="../../da/d0a/vm_8h_source.html">vm.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="../../d4/dca/devsw_8h_source.html">devsw.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="../../df/d26/fs_8h_source.html">fs.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="../../d2/d4d/file_8h_source.html">file.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="../../d7/d9f/fcntl_8h_source.html">fcntl.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="../../d0/dc6/libgen_8h_source.html">libgen.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../da/d66/string_8h_source.html">string.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="../../d2/d1b/stat_8h_source.html">sys/stat.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../d9/d49/types_8h_source.html">sys/types.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../d7/dcd/virtio_8h_source.html">virtio.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../da/d0a/vm_8h_source.html">vm.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for fs.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d4/d4f/fs_8c__incl.png" border="0" usemap="#akernel_2fs_8c" alt=""/></div>
 <map name="akernel_2fs_8c" id="akernel_2fs_8c">
-<area shape="rect" title=" " alt="" coords="339,5,428,32"/>
-<area shape="rect" href="../../d7/dcd/virtio_8h.html" title=" " alt="" coords="109,229,177,256"/>
-<area shape="rect" href="../../d9/d49/types_8h.html" title=" " alt="" coords="218,304,314,331"/>
-<area shape="rect" href="../../da/d66/string_8h.html" title=" " alt="" coords="556,80,627,107"/>
-<area shape="rect" href="../../db/d11/printk_8h.html" title=" " alt="" coords="651,80,723,107"/>
-<area shape="rect" href="../../d1/d4e/riscv_8h.html" title=" " alt="" coords="165,155,229,181"/>
-<area shape="rect" href="../../d6/d6d/buf_8h.html" title=" " alt="" coords="304,155,359,181"/>
-<area shape="rect" href="../../d4/dca/devsw_8h.html" title=" " alt="" coords="405,229,479,256"/>
-<area shape="rect" href="../../df/d1f/panic_8h.html" title=" " alt="" coords="747,80,817,107"/>
-<area shape="rect" href="../../da/d0a/vm_8h.html" title=" " alt="" coords="193,80,248,107"/>
-<area shape="rect" href="../../df/d26/fs_8h.html" title=" " alt="" coords="383,155,429,181"/>
-<area shape="rect" href="../../d2/d4d/file_8h.html" title=" " alt="" coords="324,80,379,107"/>
-<area shape="rect" href="../../d7/d9f/fcntl_8h.html" title=" " alt="" coords="23,229,85,256"/>
-<area shape="rect" href="../../d0/dc6/libgen_8h.html" title=" " alt="" coords="841,80,915,107"/>
-<area shape="rect" href="../../d2/d1b/stat_8h.html" title=" " alt="" coords="503,229,589,256"/>
-<area shape="rect" title=" " alt="" coords="555,155,630,181"/>
-<area shape="rect" title=" " alt="" coords="407,304,477,331"/>
+<area shape="rect" title="Implementation of minix 3 filesystem." alt="" coords="361,5,450,32"/>
+<area shape="rect" href="../../d6/d6d/buf_8h.html" title=" " alt="" coords="55,155,110,181"/>
+<area shape="rect" href="../../d4/dca/devsw_8h.html" title=" " alt="" coords="5,229,80,256"/>
+<area shape="rect" href="../../d9/d49/types_8h.html" title=" " alt="" coords="256,304,352,331"/>
+<area shape="rect" href="../../d7/d9f/fcntl_8h.html" title=" " alt="" coords="307,229,370,256"/>
+<area shape="rect" href="../../d2/d4d/file_8h.html" title=" " alt="" coords="178,80,233,107"/>
+<area shape="rect" href="../../df/d26/fs_8h.html" title="Structures and function prototypes for low&#45;level access to minix3 filesystem." alt="" coords="134,155,181,181"/>
+<area shape="rect" href="../../d0/dc6/libgen_8h.html" title=" " alt="" coords="592,80,667,107"/>
+<area shape="rect" href="../../df/d1f/panic_8h.html" title=" " alt="" coords="691,80,760,107"/>
+<area shape="rect" href="../../db/d11/printk_8h.html" title=" " alt="" coords="784,80,856,107"/>
+<area shape="rect" href="../../d1/d4e/riscv_8h.html" title=" " alt="" coords="395,229,459,256"/>
+<area shape="rect" href="../../da/d66/string_8h.html" title=" " alt="" coords="881,80,951,107"/>
+<area shape="rect" href="../../d2/d1b/stat_8h.html" title=" " alt="" coords="533,229,619,256"/>
+<area shape="rect" href="../../d7/dcd/virtio_8h.html" title=" " alt="" coords="613,155,681,181"/>
+<area shape="rect" href="../../da/d0a/vm_8h.html" title=" " alt="" coords="411,80,466,107"/>
+<area shape="rect" title=" " alt="" coords="7,304,78,331"/>
+<area shape="rect" title=" " alt="" coords="879,155,953,181"/>
+<area shape="rect" href="../../d2/dfe/alloc_8h.html" title="Buddy allocator." alt="" coords="462,155,527,181"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -134,8 +138,6 @@ Functions</h2></td></tr>
 <tr class="separator:a8379fc33406a014a1e8b899fe9dc814a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7220afa8e5f4bea540eb95879ea7df6e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d5a/fs_8c.html#a7220afa8e5f4bea540eb95879ea7df6e">iupdate</a> (struct <a class="el" href="../../d0/df8/structinode.html">inode</a> *ip)</td></tr>
 <tr class="separator:a7220afa8e5f4bea540eb95879ea7df6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e8d51bde1bf882cba93f3f7ab451e6a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d49/types_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d5a/fs_8c.html#a8e8d51bde1bf882cba93f3f7ab451e6a">bmapget</a> (<a class="el" href="../../d9/d49/types_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a> bmap, <a class="el" href="../../d9/d49/types_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a> inum)</td></tr>
-<tr class="separator:a8e8d51bde1bf882cba93f3f7ab451e6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3c447f135c68e4c3c1f8d5866f6e77b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d5a/fs_8c.html#ab3c447f135c68e4c3c1f8d5866f6e77b">iput</a> (struct <a class="el" href="../../d0/df8/structinode.html">inode</a> *ip)</td></tr>
 <tr class="separator:ab3c447f135c68e4c3c1f8d5866f6e77b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3faf776bb14363fd149b07904e252884"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d49/types_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d5a/fs_8c.html#a3faf776bb14363fd149b07904e252884">zmap</a> (struct <a class="el" href="../../d0/df8/structinode.html">inode</a> *ip, <a class="el" href="../../d9/d49/types_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a> zone)</td></tr>
@@ -151,50 +153,16 @@ Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a6baaf26dd83b71b8d684c5d54a709e31"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="../../d0/df8/structinode.html">inode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d5a/fs_8c.html#a6baaf26dd83b71b8d684c5d54a709e31">inode</a> [<a class="el" href="../../df/d26/fs_8h.html#adabafa10c7951be7c875cd2ee212be85">NINODE</a>]</td></tr>
-<tr class="separator:a6baaf26dd83b71b8d684c5d54a709e31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a6226ddba0421b40a23806c2bcdf33d"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="../../d0/df8/structinode.html">inode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d5a/fs_8c.html#a5a6226ddba0421b40a23806c2bcdf33d">inode</a> [<a class="el" href="../../df/d26/fs_8h.html#ab7bfbb645a4de33aa45e85624aab6684">NICACHE</a>]</td></tr>
+<tr class="memdesc:a5a6226ddba0421b40a23806c2bcdf33d"><td class="mdescLeft">&#160;</td><td class="mdescRight">On-memory inode cache.  <a href="../../d2/d5a/fs_8c.html#a5a6226ddba0421b40a23806c2bcdf33d">More...</a><br /></td></tr>
+<tr class="separator:a5a6226ddba0421b40a23806c2bcdf33d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af95f8fb16d21e42f8f576e40a8c5d34f"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="../../de/d37/structsuper__block.html">super_block</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d5a/fs_8c.html#af95f8fb16d21e42f8f576e40a8c5d34f">sb</a> [<a class="el" href="../../df/d26/fs_8h.html#ae5218d37159981302683f61dd74e3c94">NSUPERBLK</a>]</td></tr>
 <tr class="separator:af95f8fb16d21e42f8f576e40a8c5d34f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="a8e8d51bde1bf882cba93f3f7ab451e6a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8e8d51bde1bf882cba93f3f7ab451e6a">&#9670;&nbsp;</a></span>bmapget()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../d9/d49/types_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> bmapget </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d9/d49/types_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a>&#160;</td>
-          <td class="paramname"><em>bmap</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d9/d49/types_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a>&#160;</td>
-          <td class="paramname"><em>inum</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../d2/d5a/fs_8c_a8e8d51bde1bf882cba93f3f7ab451e6a_cgraph.png" border="0" usemap="#ad2/d5a/fs_8c_a8e8d51bde1bf882cba93f3f7ab451e6a_cgraph" alt=""/></div>
-<map name="ad2/d5a/fs_8c_a8e8d51bde1bf882cba93f3f7ab451e6a_cgraph" id="ad2/d5a/fs_8c_a8e8d51bde1bf882cba93f3f7ab451e6a_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,85,32"/>
-<area shape="rect" href="../../d6/d6d/buf_8h.html#a698c2e69ee3a6a76b6adfd479397969b" title=" " alt="" coords="133,5,192,32"/>
-<area shape="rect" href="../../dc/de6/bio_8c.html#aa118b4fa3c1c5d061e04fc824f9d1891" title=" " alt="" coords="240,5,303,32"/>
-</map>
-</div>
-
-</div>
-</div>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Implementation of minix 3 filesystem. </p>
+<dl class="section author"><dt>Author</dt><dd>ckoyama(koyamanX) </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a0c7518235c1384debeb9e38b04623417"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0c7518235c1384debeb9e38b04623417">&#9670;&nbsp;</a></span>creat()</h2>
 
@@ -227,8 +195,8 @@ Here is the call graph for this function:</div>
 <map name="ad2/d5a/fs_8c_a0c7518235c1384debeb9e38b04623417_cgraph" id="ad2/d5a/fs_8c_a0c7518235c1384debeb9e38b04623417_cgraph">
 <area shape="rect" title=" " alt="" coords="5,427,60,453"/>
 <area shape="rect" href="../../d2/d5a/fs_8c.html#a4e522854927c8a3a43847c39fe999391" title=" " alt="" coords="108,427,163,453"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#aa14fc3333d84f41eacc023626687aebd" title=" " alt="" coords="335,5,425,32"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#ab1b6028f4625caec30c1020e737216e2" title=" " alt="" coords="211,56,287,83"/>
+<area shape="rect" href="../../d0/dc6/libgen_8h.html#aa14fc3333d84f41eacc023626687aebd" title=" " alt="" coords="335,5,425,32"/>
+<area shape="rect" href="../../d0/dc6/libgen_8h.html#ab1b6028f4625caec30c1020e737216e2" title=" " alt="" coords="211,56,287,83"/>
 <area shape="rect" href="../../d2/d4d/file_8h.html#a952c06132c0fe469e8aa14bdfc2dd0c9" title=" " alt="" coords="219,715,278,741"/>
 <area shape="rect" href="../../d2/d5a/fs_8c.html#a8379fc33406a014a1e8b899fe9dc814a" title=" " alt="" coords="351,372,409,399"/>
 <area shape="rect" href="../../d2/d5a/fs_8c.html#a7220afa8e5f4bea540eb95879ea7df6e" title=" " alt="" coords="473,512,544,539"/>
@@ -285,6 +253,15 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get inode of name in ip. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">ip</td><td>pointer to inode to search name. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">name</td><td>of file. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to inode on success or NULL. </dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>Indirect zone is not supported. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -393,6 +370,7 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Initialize minix3 filesystem. </p><dl class="section attention"><dt>Attention</dt><dd>Call before using filesystem. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -445,6 +423,14 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get superblock of device pointed by dev structure. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">dev</td><td>device to obtain superblock. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to superblock or NULL. </dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>It allocate super block cache, <a class="el" href="../../d2/d5a/fs_8c.html#af95f8fb16d21e42f8f576e40a8c5d34f">sb</a>. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -502,6 +488,13 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Allocate new inode on dev. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">dev</td><td>device to allocate inode on. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>newly allocated inode or NULL on failure. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -568,6 +561,15 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get inode of inum on dev. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">dev</td><td>device to obtain inode. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">inum</td><td>inode nubmer. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>inode or NULL. </dd></dl>
+<p>Inode number starts from 1, however block number starts with 0, so subtract by 1 to map block number.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -626,6 +628,12 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Put inode into disk if it is last reference and decrement reference counter. If last reference, remove ip. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">ip</td><td>Pointer to inode to put into disk. </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -661,6 +669,12 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Update inode pointed by ip. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">ip</td><td>inode to update. </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -733,8 +747,8 @@ Here is the call graph for this function:</div>
 <map name="ad2/d5a/fs_8c_aee98bbe743c2d14dbaa67f01c3fb9ed5_cgraph" id="ad2/d5a/fs_8c_aee98bbe743c2d14dbaa67f01c3fb9ed5_cgraph">
 <area shape="rect" title=" " alt="" coords="5,427,65,453"/>
 <area shape="rect" href="../../d2/d5a/fs_8c.html#a4e522854927c8a3a43847c39fe999391" title=" " alt="" coords="113,427,168,453"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#aa14fc3333d84f41eacc023626687aebd" title=" " alt="" coords="340,5,431,32"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#ab1b6028f4625caec30c1020e737216e2" title=" " alt="" coords="216,56,292,83"/>
+<area shape="rect" href="../../d0/dc6/libgen_8h.html#aa14fc3333d84f41eacc023626687aebd" title=" " alt="" coords="340,5,431,32"/>
+<area shape="rect" href="../../d0/dc6/libgen_8h.html#ab1b6028f4625caec30c1020e737216e2" title=" " alt="" coords="216,56,292,83"/>
 <area shape="rect" href="../../d2/d4d/file_8h.html#a952c06132c0fe469e8aa14bdfc2dd0c9" title=" " alt="" coords="225,715,283,741"/>
 <area shape="rect" href="../../d2/d5a/fs_8c.html#a8379fc33406a014a1e8b899fe9dc814a" title=" " alt="" coords="357,372,414,399"/>
 <area shape="rect" href="../../d2/d5a/fs_8c.html#a7220afa8e5f4bea540eb95879ea7df6e" title=" " alt="" coords="479,512,549,539"/>
@@ -819,8 +833,8 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="../../d2/d5a/fs_8c_ae92589973c691560ce2a6a97043872cf_cgraph.png" border="0" usemap="#ad2/d5a/fs_8c_ae92589973c691560ce2a6a97043872cf_cgraph" alt=""/></div>
 <map name="ad2/d5a/fs_8c_ae92589973c691560ce2a6a97043872cf_cgraph" id="ad2/d5a/fs_8c_ae92589973c691560ce2a6a97043872cf_cgraph">
 <area shape="rect" title=" " alt="" coords="5,461,72,488"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#aa14fc3333d84f41eacc023626687aebd" title=" " alt="" coords="235,5,325,32"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#ab1b6028f4625caec30c1020e737216e2" title=" " alt="" coords="242,56,318,83"/>
+<area shape="rect" href="../../d0/dc6/libgen_8h.html#aa14fc3333d84f41eacc023626687aebd" title=" " alt="" coords="235,5,325,32"/>
+<area shape="rect" href="../../d0/dc6/libgen_8h.html#ab1b6028f4625caec30c1020e737216e2" title=" " alt="" coords="242,56,318,83"/>
 <area shape="rect" href="../../d2/d4d/file_8h.html#a952c06132c0fe469e8aa14bdfc2dd0c9" title=" " alt="" coords="124,765,183,792"/>
 <area shape="rect" href="../../d2/d5a/fs_8c.html#a8379fc33406a014a1e8b899fe9dc814a" title=" " alt="" coords="251,372,309,399"/>
 <area shape="rect" href="../../d2/d5a/fs_8c.html#a7220afa8e5f4bea540eb95879ea7df6e" title=" " alt="" coords="373,461,444,488"/>
@@ -884,6 +898,14 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get inode pointed by path. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">path</td><td>pathname to obtain inode of. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to inode associated with path or NULL. </dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>path is destroyed after call. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -968,8 +990,8 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="../../d2/d5a/fs_8c_a4e522854927c8a3a43847c39fe999391_cgraph.png" border="0" usemap="#ad2/d5a/fs_8c_a4e522854927c8a3a43847c39fe999391_cgraph" alt=""/></div>
 <map name="ad2/d5a/fs_8c_a4e522854927c8a3a43847c39fe999391_cgraph" id="ad2/d5a/fs_8c_a4e522854927c8a3a43847c39fe999391_cgraph">
 <area shape="rect" title=" " alt="" coords="5,427,60,453"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#aa14fc3333d84f41eacc023626687aebd" title=" " alt="" coords="232,5,323,32"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#ab1b6028f4625caec30c1020e737216e2" title=" " alt="" coords="108,56,184,83"/>
+<area shape="rect" href="../../d0/dc6/libgen_8h.html#aa14fc3333d84f41eacc023626687aebd" title=" " alt="" coords="232,5,323,32"/>
+<area shape="rect" href="../../d0/dc6/libgen_8h.html#ab1b6028f4625caec30c1020e737216e2" title=" " alt="" coords="108,56,184,83"/>
 <area shape="rect" href="../../d2/d4d/file_8h.html#a952c06132c0fe469e8aa14bdfc2dd0c9" title=" " alt="" coords="117,715,175,741"/>
 <area shape="rect" href="../../d2/d5a/fs_8c.html#a8379fc33406a014a1e8b899fe9dc814a" title=" " alt="" coords="249,372,306,399"/>
 <area shape="rect" href="../../d2/d5a/fs_8c.html#a7220afa8e5f4bea540eb95879ea7df6e" title=" " alt="" coords="371,512,441,539"/>
@@ -1056,6 +1078,17 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<pre class="fragment">Read content of inode zone from disk.
+@param[in] ip pointer to inode to obtain content of.
+@param[out] dest pointer to memory location to fill the content
+</pre><p> obtained. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">offset</td><td>offset of inode zone to read. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>size in bytes to read. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>size read. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1133,6 +1166,17 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<pre class="fragment">Write content of inode zone to disk.
+@param[in] ip pointer to inode to write content to.
+@param[out] dest pointer to memory location to read the content to
+</pre><p> write. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">offset</td><td>offset of inode zone to write. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>size in bytes to write. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>size written. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1168,7 +1212,7 @@ Here is the caller graph for this function:</div>
 <area shape="rect" href="../../d0/d29/main_8c.html#aa97e24fea4daabae6b4e5d534ac8066d" title=" " alt="" coords="5,56,112,83"/>
 <area shape="rect" href="../../d7/d9f/fcntl_8h.html#a0c7518235c1384debeb9e38b04623417" title=" " alt="" coords="789,157,843,184"/>
 <area shape="rect" href="../../d2/d1b/stat_8h.html#aee98bbe743c2d14dbaa67f01c3fb9ed5" title=" " alt="" coords="786,56,846,83"/>
-<area shape="rect" href="../../d7/dcd/virtio_8h.html#a3ed29bb144821b6d9227cbc82ebb88cc" title=" " alt="" coords="651,208,735,235"/>
+<area shape="rect" href="../../d7/dcd/virtio_8h.html#ad6b51fac330adaad6e8c3390fdbfa179" title=" " alt="" coords="651,208,735,235"/>
 </map>
 </div>
 
@@ -1199,6 +1243,14 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get block number of zone in ip. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">ip</td><td>pointer to inode to get zone of. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">zone</td><td>zone number. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>block number of zone of ip. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1236,24 +1288,26 @@ Here is the caller graph for this function:</div>
 <area shape="rect" href="../../d2/d1b/stat_8h.html#aee98bbe743c2d14dbaa67f01c3fb9ed5" title=" " alt="" coords="783,92,843,119"/>
 <area shape="rect" href="../../db/dd8/syscall_8c.html#aba50464fe1a1d83175115f6d08dd259a" title=" " alt="" coords="787,244,838,271"/>
 <area shape="rect" href="../../db/dd8/syscall_8c.html#abb39b21888372e95ad3e5c59b166f5c8" title=" " alt="" coords="785,396,840,423"/>
-<area shape="rect" href="../../d7/dcd/virtio_8h.html#a3ed29bb144821b6d9227cbc82ebb88cc" title=" " alt="" coords="651,447,735,473"/>
+<area shape="rect" href="../../d7/dcd/virtio_8h.html#ad6b51fac330adaad6e8c3390fdbfa179" title=" " alt="" coords="651,447,735,473"/>
 </map>
 </div>
 
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a id="a6baaf26dd83b71b8d684c5d54a709e31"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6baaf26dd83b71b8d684c5d54a709e31">&#9670;&nbsp;</a></span>inode</h2>
+<a id="a5a6226ddba0421b40a23806c2bcdf33d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a6226ddba0421b40a23806c2bcdf33d">&#9670;&nbsp;</a></span>inode</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">struct <a class="el" href="../../d0/df8/structinode.html">inode</a> <a class="el" href="../../d0/df8/structinode.html">inode</a>[<a class="el" href="../../df/d26/fs_8h.html#adabafa10c7951be7c875cd2ee212be85">NINODE</a>]</td>
+          <td class="memname">struct <a class="el" href="../../d0/df8/structinode.html">inode</a> <a class="el" href="../../d0/df8/structinode.html">inode</a>[<a class="el" href="../../df/d26/fs_8h.html#ab7bfbb645a4de33aa45e85624aab6684">NICACHE</a>]</td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>On-memory inode cache. </p>
 
 </div>
 </div>
@@ -1268,6 +1322,7 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Superblock cache, only superblock of minix 3 filesystem is supported. </p>
 
 </div>
 </div>

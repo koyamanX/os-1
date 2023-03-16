@@ -1,5 +1,6 @@
 <map id="include/vm.h" name="include/vm.h">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,112,32"/>
-<area shape="rect" id="node2" href="$d1/d4e/riscv_8h.html" title=" " alt="" coords="27,80,91,107"/>
-<area shape="rect" id="node3" href="$d9/d49/types_8h.html" title=" " alt="" coords="11,155,107,181"/>
+<area shape="rect" id="node1" title=" " alt="" coords="17,5,124,32"/>
+<area shape="rect" id="node2" href="$d2/dfe/alloc_8h.html" title="Buddy allocator." alt="" coords="74,80,139,107"/>
+<area shape="rect" id="node3" href="$d1/d4e/riscv_8h.html" title=" " alt="" coords="5,155,69,181"/>
+<area shape="rect" id="node4" href="$d9/d49/types_8h.html" title=" " alt="" coords="24,229,120,256"/>
 </map>

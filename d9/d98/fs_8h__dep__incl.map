@@ -1,9 +1,9 @@
 <map id="include/fs.h" name="include/fs.h">
-<area shape="rect" id="node1" title=" " alt="" coords="281,5,379,32"/>
+<area shape="rect" id="node1" title="Structures and function prototypes for low&#45;level access to minix3 filesystem." alt="" coords="281,5,379,32"/>
 <area shape="rect" id="node2" href="$d2/d4d/file_8h.html" title=" " alt="" coords="215,80,320,107"/>
 <area shape="rect" id="node5" href="$d0/d29/main_8c.html" title=" " alt="" coords="5,304,116,331"/>
 <area shape="rect" id="node6" href="$d3/dda/proc_8c.html" title=" " alt="" coords="553,304,659,331"/>
-<area shape="rect" id="node11" href="$d2/d5a/fs_8c.html" title=" " alt="" coords="340,155,429,181"/>
+<area shape="rect" id="node11" href="$d2/d5a/fs_8c.html" title="Implementation of minix 3 filesystem." alt="" coords="340,155,429,181"/>
 <area shape="rect" id="node3" href="$df/d03/proc_8h.html" title=" " alt="" coords="203,155,316,181"/>
 <area shape="rect" id="node10" href="$d9/dc3/fio_8c.html" title=" " alt="" coords="53,229,146,256"/>
 <area shape="rect" id="node4" href="$d7/d00/sched_8h.html" title=" " alt="" coords="322,229,445,256"/>

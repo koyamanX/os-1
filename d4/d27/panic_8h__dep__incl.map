@@ -1,10 +1,11 @@
 <map id="include/panic.h" name="include/panic.h">
-<area shape="rect" id="node1" title=" " alt="" coords="365,5,485,32"/>
-<area shape="rect" id="node2" href="$d9/dc3/fio_8c.html" title=" " alt="" coords="5,80,99,107"/>
-<area shape="rect" id="node3" href="$d2/d5a/fs_8c.html" title=" " alt="" coords="123,80,213,107"/>
-<area shape="rect" id="node4" href="$d2/daf/panic_8c.html" title=" " alt="" coords="237,80,349,107"/>
-<area shape="rect" id="node5" href="$d3/dda/proc_8c.html" title=" " alt="" coords="373,80,478,107"/>
-<area shape="rect" id="node6" href="$db/dd8/syscall_8c.html" title=" " alt="" coords="503,80,625,107"/>
-<area shape="rect" id="node7" href="$dc/d6f/trap_8c.html" title=" " alt="" coords="650,80,753,107"/>
-<area shape="rect" id="node8" href="$dc/dce/virtio_8c.html" title=" " alt="" coords="777,80,887,107"/>
+<area shape="rect" id="node1" title=" " alt="" coords="431,5,551,32"/>
+<area shape="rect" id="node2" href="$d9/d39/alloc_8c.html" title=" " alt="" coords="5,80,113,107"/>
+<area shape="rect" id="node3" href="$d9/dc3/fio_8c.html" title=" " alt="" coords="138,80,231,107"/>
+<area shape="rect" id="node4" href="$d2/d5a/fs_8c.html" title="Implementation of minix 3 filesystem." alt="" coords="256,80,345,107"/>
+<area shape="rect" id="node5" href="$d2/daf/panic_8c.html" title=" " alt="" coords="370,80,482,107"/>
+<area shape="rect" id="node6" href="$d3/dda/proc_8c.html" title=" " alt="" coords="505,80,611,107"/>
+<area shape="rect" id="node7" href="$db/dd8/syscall_8c.html" title=" " alt="" coords="635,80,758,107"/>
+<area shape="rect" id="node8" href="$dc/d6f/trap_8c.html" title=" " alt="" coords="783,80,885,107"/>
+<area shape="rect" id="node9" href="$dc/dce/virtio_8c.html" title=" " alt="" coords="909,80,1020,107"/>
 </map>

@@ -73,23 +73,24 @@ $(function() {
 <div class="title">virtio.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="../../d7/dcd/virtio_8h_source.html">virtio.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="../../df/d1f/panic_8h_source.html">panic.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="../../da/d0a/vm_8h_source.html">vm.h</a>&gt;</code><br />
+<div class="textblock"><code>#include &lt;<a class="el" href="../../df/d1f/panic_8h_source.html">panic.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="../../da/d66/string_8h_source.html">string.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../d7/dcd/virtio_8h_source.html">virtio.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../da/d0a/vm_8h_source.html">vm.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for virtio.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d7/df6/virtio_8c__incl.png" border="0" usemap="#akernel_2virtio_8c" alt=""/></div>
 <map name="akernel_2virtio_8c" id="akernel_2virtio_8c">
-<area shape="rect" title=" " alt="" coords="83,5,193,32"/>
-<area shape="rect" href="../../d7/dcd/virtio_8h.html" title=" " alt="" coords="5,155,73,181"/>
-<area shape="rect" href="../../df/d1f/panic_8h.html" title=" " alt="" coords="61,80,130,107"/>
-<area shape="rect" href="../../da/d0a/vm_8h.html" title=" " alt="" coords="155,80,209,107"/>
-<area shape="rect" href="../../da/d66/string_8h.html" title=" " alt="" coords="233,80,304,107"/>
-<area shape="rect" href="../../d9/d49/types_8h.html" title=" " alt="" coords="37,229,133,256"/>
-<area shape="rect" href="../../d1/d4e/riscv_8h.html" title=" " alt="" coords="129,155,193,181"/>
-<area shape="rect" title=" " alt="" coords="231,155,306,181"/>
+<area shape="rect" title=" " alt="" coords="115,5,226,32"/>
+<area shape="rect" href="../../df/d1f/panic_8h.html" title=" " alt="" coords="5,80,75,107"/>
+<area shape="rect" href="../../da/d66/string_8h.html" title=" " alt="" coords="99,80,170,107"/>
+<area shape="rect" href="../../d7/dcd/virtio_8h.html" title=" " alt="" coords="174,229,242,256"/>
+<area shape="rect" href="../../da/d0a/vm_8h.html" title=" " alt="" coords="251,80,306,107"/>
+<area shape="rect" title=" " alt="" coords="96,155,171,181"/>
+<area shape="rect" href="../../d9/d49/types_8h.html" title=" " alt="" coords="232,304,328,331"/>
+<area shape="rect" href="../../d2/dfe/alloc_8h.html" title="Buddy allocator." alt="" coords="246,155,311,181"/>
+<area shape="rect" href="../../d1/d4e/riscv_8h.html" title=" " alt="" coords="317,229,381,256"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -97,8 +98,8 @@ Include dependency graph for virtio.c:</div>
 Functions</h2></td></tr>
 <tr class="memitem:a90c9d3888cc255a6b0ce0edf6f829634"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dce/virtio_8c.html#a90c9d3888cc255a6b0ce0edf6f829634">virtio_init</a> (void)</td></tr>
 <tr class="separator:a90c9d3888cc255a6b0ce0edf6f829634"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ed29bb144821b6d9227cbc82ebb88cc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dce/virtio_8c.html#a3ed29bb144821b6d9227cbc82ebb88cc">virtio_req</a> (char *<a class="el" href="../../d9/dd0/structbuf.html">buf</a>, <a class="el" href="../../d9/d49/types_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a> sector, <a class="el" href="../../d9/d49/types_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> <a class="el" href="../../da/d6f/unistd_8h.html#abb39b21888372e95ad3e5c59b166f5c8">write</a>)</td></tr>
-<tr class="separator:a3ed29bb144821b6d9227cbc82ebb88cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6b51fac330adaad6e8c3390fdbfa179"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dce/virtio_8c.html#ad6b51fac330adaad6e8c3390fdbfa179">virtio_req</a> (char *<a class="el" href="../../d9/dd0/structbuf.html">buf</a>, <a class="el" href="../../d9/d49/types_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a> blkno, <a class="el" href="../../d9/d49/types_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> <a class="el" href="../../da/d6f/unistd_8h.html#abb39b21888372e95ad3e5c59b166f5c8">write</a>)</td></tr>
+<tr class="separator:ad6b51fac330adaad6e8c3390fdbfa179"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -126,12 +127,11 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../dc/dce/virtio_8c_a90c9d3888cc255a6b0ce0edf6f829634_cgraph.png" border="0" usemap="#adc/dce/virtio_8c_a90c9d3888cc255a6b0ce0edf6f829634_cgraph" alt=""/></div>
 <map name="adc/dce/virtio_8c_a90c9d3888cc255a6b0ce0edf6f829634_cgraph" id="adc/dce/virtio_8c_a90c9d3888cc255a6b0ce0edf6f829634_cgraph">
-<area shape="rect" title=" " alt="" coords="5,56,89,83"/>
-<area shape="rect" href="../../da/d0a/vm_8h.html#af658009c259f67b7051fe3542bd05b1e" title=" " alt="" coords="145,5,205,32"/>
-<area shape="rect" href="../../da/d66/string_8h.html#aaca5c21d6f783f0d2b75936ae54b7f66" title=" " alt="" coords="137,56,213,83"/>
-<area shape="rect" href="../../df/d1f/panic_8h.html#a92ad17d19a46880dd5e6c99143666b4a" title=" " alt="" coords="147,107,204,133"/>
-<area shape="rect" href="../../d2/d86/uart_8h.html#aa1f548a14c782ece5290f74e607adee3" title=" " alt="" coords="261,107,344,133"/>
-<area shape="rect" href="../../d1/d87/uart_8c.html#aea92973e3d3e2fb34fba39c5fc4b253a" title=" " alt="" coords="392,107,496,133"/>
+<area shape="rect" title=" " alt="" coords="5,31,89,57"/>
+<area shape="rect" href="../../da/d66/string_8h.html#aaca5c21d6f783f0d2b75936ae54b7f66" title=" " alt="" coords="137,5,213,32"/>
+<area shape="rect" href="../../df/d1f/panic_8h.html#a92ad17d19a46880dd5e6c99143666b4a" title=" " alt="" coords="147,56,204,83"/>
+<area shape="rect" href="../../d2/d86/uart_8h.html#aa1f548a14c782ece5290f74e607adee3" title=" " alt="" coords="261,56,344,83"/>
+<area shape="rect" href="../../d1/d87/uart_8c.html#aea92973e3d3e2fb34fba39c5fc4b253a" title=" " alt="" coords="392,56,496,83"/>
 </map>
 </div>
 <div class="dynheader">
@@ -147,8 +147,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a3ed29bb144821b6d9227cbc82ebb88cc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3ed29bb144821b6d9227cbc82ebb88cc">&#9670;&nbsp;</a></span>virtio_req()</h2>
+<a id="ad6b51fac330adaad6e8c3390fdbfa179"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6b51fac330adaad6e8c3390fdbfa179">&#9670;&nbsp;</a></span>virtio_req()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -163,7 +163,7 @@ Here is the caller graph for this function:</div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="../../d9/d49/types_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a>&#160;</td>
-          <td class="paramname"><em>sector</em>, </td>
+          <td class="paramname"><em>blkno</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -181,8 +181,8 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../dc/dce/virtio_8c_a3ed29bb144821b6d9227cbc82ebb88cc_cgraph.png" border="0" usemap="#adc/dce/virtio_8c_a3ed29bb144821b6d9227cbc82ebb88cc_cgraph" alt=""/></div>
-<map name="adc/dce/virtio_8c_a3ed29bb144821b6d9227cbc82ebb88cc_cgraph" id="adc/dce/virtio_8c_a3ed29bb144821b6d9227cbc82ebb88cc_cgraph">
+<div class="center"><img src="../../dc/dce/virtio_8c_ad6b51fac330adaad6e8c3390fdbfa179_cgraph.png" border="0" usemap="#adc/dce/virtio_8c_ad6b51fac330adaad6e8c3390fdbfa179_cgraph" alt=""/></div>
+<map name="adc/dce/virtio_8c_ad6b51fac330adaad6e8c3390fdbfa179_cgraph" id="adc/dce/virtio_8c_ad6b51fac330adaad6e8c3390fdbfa179_cgraph">
 <area shape="rect" title=" " alt="" coords="5,31,89,57"/>
 <area shape="rect" href="../../db/dd8/syscall_8c.html#abb39b21888372e95ad3e5c59b166f5c8" title=" " alt="" coords="137,31,192,57"/>
 <area shape="rect" href="../../df/d1f/panic_8h.html#a92ad17d19a46880dd5e6c99143666b4a" title=" " alt="" coords="476,5,533,32"/>

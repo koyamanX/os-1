@@ -75,17 +75,20 @@ $(function() {
 <div class="title">fs.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="../../d9/d49/types_8h_source.html">sys/types.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="../../d4/dca/devsw_8h_source.html">devsw.h</a>&gt;</code><br />
+
+<p>Structures and function prototypes for low-level access to minix3 filesystem.  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &lt;<a class="el" href="../../d4/dca/devsw_8h_source.html">devsw.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../d9/d49/types_8h_source.html">sys/types.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for fs.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d8/de1/fs_8h__incl.png" border="0" usemap="#ainclude_2fs_8h" alt=""/></div>
 <map name="ainclude_2fs_8h" id="ainclude_2fs_8h">
-<area shape="rect" title=" " alt="" coords="42,5,139,32"/>
-<area shape="rect" href="../../d9/d49/types_8h.html" title=" " alt="" coords="5,155,101,181"/>
-<area shape="rect" href="../../d4/dca/devsw_8h.html" title=" " alt="" coords="91,80,165,107"/>
-<area shape="rect" title=" " alt="" coords="126,155,197,181"/>
+<area shape="rect" title="Structures and function prototypes for low&#45;level access to minix3 filesystem." alt="" coords="63,5,160,32"/>
+<area shape="rect" href="../../d4/dca/devsw_8h.html" title=" " alt="" coords="37,80,111,107"/>
+<area shape="rect" href="../../d9/d49/types_8h.html" title=" " alt="" coords="101,155,197,181"/>
+<area shape="rect" title=" " alt="" coords="5,155,76,181"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -93,11 +96,11 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d9/d98/fs_8h__dep__incl.png" border="0" usemap="#ainclude_2fs_8hdep" alt=""/></div>
 <map name="ainclude_2fs_8hdep" id="ainclude_2fs_8hdep">
-<area shape="rect" title=" " alt="" coords="281,5,379,32"/>
+<area shape="rect" title="Structures and function prototypes for low&#45;level access to minix3 filesystem." alt="" coords="281,5,379,32"/>
 <area shape="rect" href="../../d2/d4d/file_8h.html" title=" " alt="" coords="215,80,320,107"/>
 <area shape="rect" href="../../d0/d29/main_8c.html" title=" " alt="" coords="5,304,116,331"/>
 <area shape="rect" href="../../d3/dda/proc_8c.html" title=" " alt="" coords="553,304,659,331"/>
-<area shape="rect" href="../../d2/d5a/fs_8c.html" title=" " alt="" coords="340,155,429,181"/>
+<area shape="rect" href="../../d2/d5a/fs_8c.html" title="Implementation of minix 3 filesystem." alt="" coords="340,155,429,181"/>
 <area shape="rect" href="../../df/d03/proc_8h.html" title=" " alt="" coords="203,155,316,181"/>
 <area shape="rect" href="../../d9/dc3/fio_8c.html" title=" " alt="" coords="53,229,146,256"/>
 <area shape="rect" href="../../d7/d00/sched_8h.html" title=" " alt="" coords="322,229,445,256"/>
@@ -112,57 +115,91 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d37/structsuper__block.html">super_block</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Struct for minix3 filesystem superblock.  <a href="../../de/d37/structsuper__block.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/df8/structinode.html">inode</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Struct for minix3 inode.  <a href="../../d0/df8/structinode.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dac/structdirect.html">direct</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Struct for directory entry.  <a href="../../d5/dac/structdirect.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:adabafa10c7951be7c875cd2ee212be85"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d26/fs_8h.html#adabafa10c7951be7c875cd2ee212be85">NINODE</a>&#160;&#160;&#160;16</td></tr>
+<tr class="memdesc:adabafa10c7951be7c875cd2ee212be85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of inode in one block.  <a href="../../df/d26/fs_8h.html#adabafa10c7951be7c875cd2ee212be85">More...</a><br /></td></tr>
 <tr class="separator:adabafa10c7951be7c875cd2ee212be85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7bfbb645a4de33aa45e85624aab6684"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d26/fs_8h.html#ab7bfbb645a4de33aa45e85624aab6684">NICACHE</a>&#160;&#160;&#160;64</td></tr>
+<tr class="memdesc:ab7bfbb645a4de33aa45e85624aab6684"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of inode chache.  <a href="../../df/d26/fs_8h.html#ab7bfbb645a4de33aa45e85624aab6684">More...</a><br /></td></tr>
+<tr class="separator:ab7bfbb645a4de33aa45e85624aab6684"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a34a3a3e2e3a4bd30b993bce5b19f3d73"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d26/fs_8h.html#a34a3a3e2e3a4bd30b993bce5b19f3d73">INODE_SIZE</a>&#160;&#160;&#160;64</td></tr>
+<tr class="memdesc:a34a3a3e2e3a4bd30b993bce5b19f3d73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of on disk inode.  <a href="../../df/d26/fs_8h.html#a34a3a3e2e3a4bd30b993bce5b19f3d73">More...</a><br /></td></tr>
 <tr class="separator:a34a3a3e2e3a4bd30b993bce5b19f3d73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6303ea03f3dd2ffdf5bcbc505ea15888"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d26/fs_8h.html#a6303ea03f3dd2ffdf5bcbc505ea15888">DIRECTZONE</a>&#160;&#160;&#160;8</td></tr>
+<tr class="memdesc:a6303ea03f3dd2ffdf5bcbc505ea15888"><td class="mdescLeft">&#160;</td><td class="mdescRight">Direct zone number.  <a href="../../df/d26/fs_8h.html#a6303ea03f3dd2ffdf5bcbc505ea15888">More...</a><br /></td></tr>
+<tr class="separator:a6303ea03f3dd2ffdf5bcbc505ea15888"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac632c4df2384f37ef5ebbca7d52b491f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d26/fs_8h.html#ac632c4df2384f37ef5ebbca7d52b491f">INDIRECTZONE</a>&#160;&#160;&#160;9</td></tr>
+<tr class="memdesc:ac632c4df2384f37ef5ebbca7d52b491f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indirect zone number.  <a href="../../df/d26/fs_8h.html#ac632c4df2384f37ef5ebbca7d52b491f">More...</a><br /></td></tr>
+<tr class="separator:ac632c4df2384f37ef5ebbca7d52b491f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a77988da40e9a35da51ea0e8943ebbd4a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d26/fs_8h.html#a77988da40e9a35da51ea0e8943ebbd4a">ROOT</a>&#160;&#160;&#160;1</td></tr>
+<tr class="memdesc:a77988da40e9a35da51ea0e8943ebbd4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inode number of root directory.  <a href="../../df/d26/fs_8h.html#a77988da40e9a35da51ea0e8943ebbd4a">More...</a><br /></td></tr>
 <tr class="separator:a77988da40e9a35da51ea0e8943ebbd4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc4cb8adac167448da16a169f41dbbc4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d26/fs_8h.html#abc4cb8adac167448da16a169f41dbbc4">SUPERBLOCK</a>&#160;&#160;&#160;2</td></tr>
+<tr class="memitem:abc4cb8adac167448da16a169f41dbbc4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d26/fs_8h.html#abc4cb8adac167448da16a169f41dbbc4">SUPERBLOCK</a>&#160;&#160;&#160;1</td></tr>
+<tr class="memdesc:abc4cb8adac167448da16a169f41dbbc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Block number of super block.  <a href="../../df/d26/fs_8h.html#abc4cb8adac167448da16a169f41dbbc4">More...</a><br /></td></tr>
 <tr class="separator:abc4cb8adac167448da16a169f41dbbc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac619b247ce18496ce9fb90a2685555f4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d26/fs_8h.html#ac619b247ce18496ce9fb90a2685555f4">IMAP</a>(<a class="el" href="../../d2/d5a/fs_8c.html#af95f8fb16d21e42f8f576e40a8c5d34f">sb</a>)&#160;&#160;&#160;(2)</td></tr>
+<tr class="memdesc:ac619b247ce18496ce9fb90a2685555f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Block number of first inode map.  <a href="../../df/d26/fs_8h.html#ac619b247ce18496ce9fb90a2685555f4">More...</a><br /></td></tr>
 <tr class="separator:ac619b247ce18496ce9fb90a2685555f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa177297260c91f71f5075211b3d549f9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d26/fs_8h.html#aa177297260c91f71f5075211b3d549f9">ZMAP</a>(<a class="el" href="../../d2/d5a/fs_8c.html#af95f8fb16d21e42f8f576e40a8c5d34f">sb</a>)&#160;&#160;&#160;(2+<a class="el" href="../../d2/d5a/fs_8c.html#af95f8fb16d21e42f8f576e40a8c5d34f">sb</a>-&gt;imap_blocks)</td></tr>
+<tr class="memitem:aa177297260c91f71f5075211b3d549f9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d26/fs_8h.html#aa177297260c91f71f5075211b3d549f9">ZMAP</a>(<a class="el" href="../../d2/d5a/fs_8c.html#af95f8fb16d21e42f8f576e40a8c5d34f">sb</a>)&#160;&#160;&#160;    (<a class="el" href="../../df/d26/fs_8h.html#ac619b247ce18496ce9fb90a2685555f4">IMAP</a>(<a class="el" href="../../d2/d5a/fs_8c.html#af95f8fb16d21e42f8f576e40a8c5d34f">sb</a>) + <a class="el" href="../../d2/d5a/fs_8c.html#af95f8fb16d21e42f8f576e40a8c5d34f">sb</a>-&gt;imap_blocks)</td></tr>
+<tr class="memdesc:aa177297260c91f71f5075211b3d549f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Block number of first zone map.  <a href="../../df/d26/fs_8h.html#aa177297260c91f71f5075211b3d549f9">More...</a><br /></td></tr>
 <tr class="separator:aa177297260c91f71f5075211b3d549f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a685813f758ad8fb6fad67c0084c5ca09"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d26/fs_8h.html#a685813f758ad8fb6fad67c0084c5ca09">I_TYPE</a>&#160;&#160;&#160;0170000</td></tr>
+<tr class="memdesc:a685813f758ad8fb6fad67c0084c5ca09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bit mask for type of file.  <a href="../../df/d26/fs_8h.html#a685813f758ad8fb6fad67c0084c5ca09">More...</a><br /></td></tr>
 <tr class="separator:a685813f758ad8fb6fad67c0084c5ca09"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa62245ebe1e107a93d9b7ffe55617dff"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d26/fs_8h.html#aa62245ebe1e107a93d9b7ffe55617dff">I_REGULAR</a>&#160;&#160;&#160;0100000</td></tr>
+<tr class="memdesc:aa62245ebe1e107a93d9b7ffe55617dff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inode type of regular file.  <a href="../../df/d26/fs_8h.html#aa62245ebe1e107a93d9b7ffe55617dff">More...</a><br /></td></tr>
 <tr class="separator:aa62245ebe1e107a93d9b7ffe55617dff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf74e096c057529d56e123cf3ee32e6b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d26/fs_8h.html#aaf74e096c057529d56e123cf3ee32e6b">I_BLOCK_SPECIAL</a>&#160;&#160;&#160;0060000</td></tr>
+<tr class="memdesc:aaf74e096c057529d56e123cf3ee32e6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inode type of block special device.  <a href="../../df/d26/fs_8h.html#aaf74e096c057529d56e123cf3ee32e6b">More...</a><br /></td></tr>
 <tr class="separator:aaf74e096c057529d56e123cf3ee32e6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8980abd9f689b9d999b02a6ba2811271"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d26/fs_8h.html#a8980abd9f689b9d999b02a6ba2811271">I_DIRECTORY</a>&#160;&#160;&#160;0040000</td></tr>
+<tr class="memdesc:a8980abd9f689b9d999b02a6ba2811271"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inode type of direcotry.  <a href="../../df/d26/fs_8h.html#a8980abd9f689b9d999b02a6ba2811271">More...</a><br /></td></tr>
 <tr class="separator:a8980abd9f689b9d999b02a6ba2811271"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a23e504d0635915405e9ca6266b03d518"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d26/fs_8h.html#a23e504d0635915405e9ca6266b03d518">I_CHAR_SPECIAL</a>&#160;&#160;&#160;0020000</td></tr>
+<tr class="memdesc:a23e504d0635915405e9ca6266b03d518"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inode type of character special device.  <a href="../../df/d26/fs_8h.html#a23e504d0635915405e9ca6266b03d518">More...</a><br /></td></tr>
 <tr class="separator:a23e504d0635915405e9ca6266b03d518"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a41fd7c0a825a0efb3ebfaeacb783afa3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d26/fs_8h.html#a41fd7c0a825a0efb3ebfaeacb783afa3">I_NAMED_PIPE</a>&#160;&#160;&#160;0010000</td></tr>
+<tr class="memdesc:a41fd7c0a825a0efb3ebfaeacb783afa3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inode type of named pipe.  <a href="../../df/d26/fs_8h.html#a41fd7c0a825a0efb3ebfaeacb783afa3">More...</a><br /></td></tr>
 <tr class="separator:a41fd7c0a825a0efb3ebfaeacb783afa3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0d63be4fb2e6b5c08117a178c4060b4d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d26/fs_8h.html#a0d63be4fb2e6b5c08117a178c4060b4d">I_SET_UID_BIT</a>&#160;&#160;&#160;0004000</td></tr>
+<tr class="memdesc:a0d63be4fb2e6b5c08117a178c4060b4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set-uid bit.  <a href="../../df/d26/fs_8h.html#a0d63be4fb2e6b5c08117a178c4060b4d">More...</a><br /></td></tr>
 <tr class="separator:a0d63be4fb2e6b5c08117a178c4060b4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86f06cd68513adcfe2c0faf6c7ba1179"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d26/fs_8h.html#a86f06cd68513adcfe2c0faf6c7ba1179">I_SET_GID_BIT</a>&#160;&#160;&#160;0002000</td></tr>
+<tr class="memdesc:a86f06cd68513adcfe2c0faf6c7ba1179"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set-gid bit.  <a href="../../df/d26/fs_8h.html#a86f06cd68513adcfe2c0faf6c7ba1179">More...</a><br /></td></tr>
 <tr class="separator:a86f06cd68513adcfe2c0faf6c7ba1179"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac4aaf8a745a61f7f5b4e3eacae87e5f9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d26/fs_8h.html#ac4aaf8a745a61f7f5b4e3eacae87e5f9">ALL_MODES</a>&#160;&#160;&#160;0006777</td></tr>
+<tr class="memdesc:ac4aaf8a745a61f7f5b4e3eacae87e5f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">All modes.  <a href="../../df/d26/fs_8h.html#ac4aaf8a745a61f7f5b4e3eacae87e5f9">More...</a><br /></td></tr>
 <tr class="separator:ac4aaf8a745a61f7f5b4e3eacae87e5f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a260f520d0d9b1f550db7700606abdb8f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d26/fs_8h.html#a260f520d0d9b1f550db7700606abdb8f">RWX_MODES</a>&#160;&#160;&#160;0000777</td></tr>
+<tr class="memdesc:a260f520d0d9b1f550db7700606abdb8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read/Write/Execute for all.  <a href="../../df/d26/fs_8h.html#a260f520d0d9b1f550db7700606abdb8f">More...</a><br /></td></tr>
 <tr class="separator:a260f520d0d9b1f550db7700606abdb8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a32058e947273e1f3ded05448cc2c7e1c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d26/fs_8h.html#a32058e947273e1f3ded05448cc2c7e1c">R_BIT</a>&#160;&#160;&#160;0000004</td></tr>
+<tr class="memdesc:a32058e947273e1f3ded05448cc2c7e1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read bit.  <a href="../../df/d26/fs_8h.html#a32058e947273e1f3ded05448cc2c7e1c">More...</a><br /></td></tr>
 <tr class="separator:a32058e947273e1f3ded05448cc2c7e1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e76cd1165bfc216f2999326e7702cff"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d26/fs_8h.html#a3e76cd1165bfc216f2999326e7702cff">W_BIT</a>&#160;&#160;&#160;0000002</td></tr>
+<tr class="memdesc:a3e76cd1165bfc216f2999326e7702cff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write bit.  <a href="../../df/d26/fs_8h.html#a3e76cd1165bfc216f2999326e7702cff">More...</a><br /></td></tr>
 <tr class="separator:a3e76cd1165bfc216f2999326e7702cff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec0bc59d5a41922a041476c8dae2930b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d26/fs_8h.html#aec0bc59d5a41922a041476c8dae2930b">X_BIT</a>&#160;&#160;&#160;0000001</td></tr>
+<tr class="memdesc:aec0bc59d5a41922a041476c8dae2930b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute bit.  <a href="../../df/d26/fs_8h.html#aec0bc59d5a41922a041476c8dae2930b">More...</a><br /></td></tr>
 <tr class="separator:aec0bc59d5a41922a041476c8dae2930b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4736ffdbc4d42e579b8ecd4b3b2186b8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d26/fs_8h.html#a4736ffdbc4d42e579b8ecd4b3b2186b8">I_FREE</a>&#160;&#160;&#160;0000000</td></tr>
+<tr class="memdesc:a4736ffdbc4d42e579b8ecd4b3b2186b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free.  <a href="../../df/d26/fs_8h.html#a4736ffdbc4d42e579b8ecd4b3b2186b8">More...</a><br /></td></tr>
 <tr class="separator:a4736ffdbc4d42e579b8ecd4b3b2186b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a48246fb9e5cb7f6a71ebc9ebc2f06562"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d26/fs_8h.html#a48246fb9e5cb7f6a71ebc9ebc2f06562">DIRSIZ</a>&#160;&#160;&#160;60</td></tr>
+<tr class="memdesc:a48246fb9e5cb7f6a71ebc9ebc2f06562"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of directory name.  <a href="../../df/d26/fs_8h.html#a48246fb9e5cb7f6a71ebc9ebc2f06562">More...</a><br /></td></tr>
 <tr class="separator:a48246fb9e5cb7f6a71ebc9ebc2f06562"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5218d37159981302683f61dd74e3c94"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d26/fs_8h.html#ae5218d37159981302683f61dd74e3c94">NSUPERBLK</a>&#160;&#160;&#160;1</td></tr>
+<tr class="memdesc:ae5218d37159981302683f61dd74e3c94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of on-memory superblock cache.  <a href="../../df/d26/fs_8h.html#ae5218d37159981302683f61dd74e3c94">More...</a><br /></td></tr>
 <tr class="separator:ae5218d37159981302683f61dd74e3c94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -177,14 +214,8 @@ Functions</h2></td></tr>
 <tr class="separator:a9baba030d5bc6e9e20cf8b7d181edf35"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a1907f2aabd7c9145b3c2beed1beb63"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="../../d0/df8/structinode.html">inode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d26/fs_8h.html#a6a1907f2aabd7c9145b3c2beed1beb63">diri</a> (struct <a class="el" href="../../d0/df8/structinode.html">inode</a> *ip, char *name)</td></tr>
 <tr class="separator:a6a1907f2aabd7c9145b3c2beed1beb63"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e8d51bde1bf882cba93f3f7ab451e6a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d49/types_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d26/fs_8h.html#a8e8d51bde1bf882cba93f3f7ab451e6a">bmapget</a> (<a class="el" href="../../d9/d49/types_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a> bmap, <a class="el" href="../../d9/d49/types_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a> inum)</td></tr>
-<tr class="separator:a8e8d51bde1bf882cba93f3f7ab451e6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3faf776bb14363fd149b07904e252884"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d49/types_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d26/fs_8h.html#a3faf776bb14363fd149b07904e252884">zmap</a> (struct <a class="el" href="../../d0/df8/structinode.html">inode</a> *ip, <a class="el" href="../../d9/d49/types_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a> zone)</td></tr>
 <tr class="separator:a3faf776bb14363fd149b07904e252884"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab1b6028f4625caec30c1020e737216e2"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d26/fs_8h.html#ab1b6028f4625caec30c1020e737216e2">dirname</a> (char *path)</td></tr>
-<tr class="separator:ab1b6028f4625caec30c1020e737216e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa14fc3333d84f41eacc023626687aebd"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d26/fs_8h.html#aa14fc3333d84f41eacc023626687aebd">basename</a> (char *path)</td></tr>
-<tr class="separator:aa14fc3333d84f41eacc023626687aebd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8379fc33406a014a1e8b899fe9dc814a"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="../../d0/df8/structinode.html">inode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d26/fs_8h.html#a8379fc33406a014a1e8b899fe9dc814a">ialloc</a> (<a class="el" href="../../d2/dd6/structdev__t.html">dev_t</a> dev)</td></tr>
 <tr class="separator:a8379fc33406a014a1e8b899fe9dc814a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7220afa8e5f4bea540eb95879ea7df6e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d26/fs_8h.html#a7220afa8e5f4bea540eb95879ea7df6e">iupdate</a> (struct <a class="el" href="../../d0/df8/structinode.html">inode</a> *ip)</td></tr>
@@ -200,10 +231,14 @@ Functions</h2></td></tr>
 Variables</h2></td></tr>
 <tr class="memitem:aac4d12839e3f8d9b2423a8902468f82b"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="../../de/d37/structsuper__block.html">super_block</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d26/fs_8h.html#aac4d12839e3f8d9b2423a8902468f82b">sb</a> []</td></tr>
 <tr class="separator:aac4d12839e3f8d9b2423a8902468f82b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6baaf26dd83b71b8d684c5d54a709e31"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="../../d0/df8/structinode.html">inode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d26/fs_8h.html#a6baaf26dd83b71b8d684c5d54a709e31">inode</a> [<a class="el" href="../../df/d26/fs_8h.html#adabafa10c7951be7c875cd2ee212be85">NINODE</a>]</td></tr>
-<tr class="separator:a6baaf26dd83b71b8d684c5d54a709e31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a6226ddba0421b40a23806c2bcdf33d"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="../../d0/df8/structinode.html">inode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d26/fs_8h.html#a5a6226ddba0421b40a23806c2bcdf33d">inode</a> [<a class="el" href="../../df/d26/fs_8h.html#ab7bfbb645a4de33aa45e85624aab6684">NICACHE</a>]</td></tr>
+<tr class="memdesc:a5a6226ddba0421b40a23806c2bcdf33d"><td class="mdescLeft">&#160;</td><td class="mdescRight">On-memory inode cache.  <a href="../../df/d26/fs_8h.html#a5a6226ddba0421b40a23806c2bcdf33d">More...</a><br /></td></tr>
+<tr class="separator:a5a6226ddba0421b40a23806c2bcdf33d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Structures and function prototypes for low-level access to minix3 filesystem. </p>
+<dl class="section author"><dt>Author</dt><dd>ckoyama(koyamanX) </dd></dl>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="ac4aaf8a745a61f7f5b4e3eacae87e5f9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac4aaf8a745a61f7f5b4e3eacae87e5f9">&#9670;&nbsp;</a></span>ALL_MODES</h2>
 
@@ -215,6 +250,24 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>All modes. </p>
+
+</div>
+</div>
+<a id="a6303ea03f3dd2ffdf5bcbc505ea15888"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6303ea03f3dd2ffdf5bcbc505ea15888">&#9670;&nbsp;</a></span>DIRECTZONE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DIRECTZONE&#160;&#160;&#160;8</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Direct zone number. </p>
 
 </div>
 </div>
@@ -230,6 +283,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Size of directory name. </p>
+
 </div>
 </div>
 <a id="aaf74e096c057529d56e123cf3ee32e6b"></a>
@@ -243,6 +298,8 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Inode type of block special device. </p>
 
 </div>
 </div>
@@ -258,6 +315,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Inode type of character special device. </p>
+
 </div>
 </div>
 <a id="a8980abd9f689b9d999b02a6ba2811271"></a>
@@ -271,6 +330,8 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Inode type of direcotry. </p>
 
 </div>
 </div>
@@ -286,6 +347,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Free. </p>
+
 </div>
 </div>
 <a id="a41fd7c0a825a0efb3ebfaeacb783afa3"></a>
@@ -299,6 +362,8 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Inode type of named pipe. </p>
 
 </div>
 </div>
@@ -314,6 +379,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Inode type of regular file. </p>
+
 </div>
 </div>
 <a id="a86f06cd68513adcfe2c0faf6c7ba1179"></a>
@@ -327,6 +394,8 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Set-gid bit. </p>
 
 </div>
 </div>
@@ -342,6 +411,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Set-uid bit. </p>
+
 </div>
 </div>
 <a id="a685813f758ad8fb6fad67c0084c5ca09"></a>
@@ -355,6 +426,8 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Bit mask for type of file. </p>
 
 </div>
 </div>
@@ -374,6 +447,24 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Block number of first inode map. </p>
+
+</div>
+</div>
+<a id="ac632c4df2384f37ef5ebbca7d52b491f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac632c4df2384f37ef5ebbca7d52b491f">&#9670;&nbsp;</a></span>INDIRECTZONE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define INDIRECTZONE&#160;&#160;&#160;9</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Indirect zone number. </p>
+
 </div>
 </div>
 <a id="a34a3a3e2e3a4bd30b993bce5b19f3d73"></a>
@@ -387,6 +478,24 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Size of on disk inode. </p>
+
+</div>
+</div>
+<a id="ab7bfbb645a4de33aa45e85624aab6684"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7bfbb645a4de33aa45e85624aab6684">&#9670;&nbsp;</a></span>NICACHE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NICACHE&#160;&#160;&#160;64</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Size of inode chache. </p>
 
 </div>
 </div>
@@ -402,6 +511,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Size of inode in one block. </p>
+
 </div>
 </div>
 <a id="ae5218d37159981302683f61dd74e3c94"></a>
@@ -415,6 +526,8 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Size of on-memory superblock cache. </p>
 
 </div>
 </div>
@@ -430,6 +543,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Read bit. </p>
+
 </div>
 </div>
 <a id="a77988da40e9a35da51ea0e8943ebbd4a"></a>
@@ -443,6 +558,8 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Inode number of root directory. </p>
 
 </div>
 </div>
@@ -458,6 +575,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Read/Write/Execute for all. </p>
+
 </div>
 </div>
 <a id="abc4cb8adac167448da16a169f41dbbc4"></a>
@@ -467,10 +586,12 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define SUPERBLOCK&#160;&#160;&#160;2</td>
+          <td class="memname">#define SUPERBLOCK&#160;&#160;&#160;1</td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Block number of super block. </p>
 
 </div>
 </div>
@@ -486,6 +607,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Write bit. </p>
+
 </div>
 </div>
 <a id="aec0bc59d5a41922a041476c8dae2930b"></a>
@@ -500,6 +623,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Execute bit. </p>
+
 </div>
 </div>
 <a id="aa177297260c91f71f5075211b3d549f9"></a>
@@ -513,99 +638,16 @@ Variables</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><a class="el" href="../../d2/d5a/fs_8c.html#af95f8fb16d21e42f8f576e40a8c5d34f">sb</a></td><td>)</td>
-          <td>&#160;&#160;&#160;(2+<a class="el" href="../../d2/d5a/fs_8c.html#af95f8fb16d21e42f8f576e40a8c5d34f">sb</a>-&gt;imap_blocks)</td>
+          <td>&#160;&#160;&#160;    (<a class="el" href="../../df/d26/fs_8h.html#ac619b247ce18496ce9fb90a2685555f4">IMAP</a>(<a class="el" href="../../d2/d5a/fs_8c.html#af95f8fb16d21e42f8f576e40a8c5d34f">sb</a>) + <a class="el" href="../../d2/d5a/fs_8c.html#af95f8fb16d21e42f8f576e40a8c5d34f">sb</a>-&gt;imap_blocks)</td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Block number of first zone map. </p>
 
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="aa14fc3333d84f41eacc023626687aebd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa14fc3333d84f41eacc023626687aebd">&#9670;&nbsp;</a></span>basename()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">char* basename </td>
-          <td>(</td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>path</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../df/d26/fs_8h_aa14fc3333d84f41eacc023626687aebd_cgraph.png" border="0" usemap="#adf/d26/fs_8h_aa14fc3333d84f41eacc023626687aebd_cgraph" alt=""/></div>
-<map name="adf/d26/fs_8h_aa14fc3333d84f41eacc023626687aebd_cgraph" id="adf/d26/fs_8h_aa14fc3333d84f41eacc023626687aebd_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,96,32"/>
-<area shape="rect" href="../../da/d66/string_8h.html#ab0bbf26e71ce67713b8c1121f38ff7cd" title=" " alt="" coords="144,5,203,32"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../df/d26/fs_8h_aa14fc3333d84f41eacc023626687aebd_icgraph.png" border="0" usemap="#adf/d26/fs_8h_aa14fc3333d84f41eacc023626687aebd_icgraph" alt=""/></div>
-<map name="adf/d26/fs_8h_aa14fc3333d84f41eacc023626687aebd_icgraph" id="adf/d26/fs_8h_aa14fc3333d84f41eacc023626687aebd_icgraph">
-<area shape="rect" title=" " alt="" coords="983,56,1073,83"/>
-<area shape="rect" href="../../d2/d1b/stat_8h.html#ae92589973c691560ce2a6a97043872cf" title=" " alt="" coords="765,5,832,32"/>
-<area shape="rect" href="../../d7/d9f/fcntl_8h.html#a4e522854927c8a3a43847c39fe999391" title=" " alt="" coords="880,81,935,108"/>
-<area shape="rect" href="../../d8/d60/init_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="164,31,219,57"/>
-<area shape="rect" href="../../db/dd8/syscall_8c.html#a068ed63a10c4dd229deb2ec36497d3ac" title=" " alt="" coords="651,56,717,83"/>
-<area shape="rect" href="../../d7/d0b/trap_8h.html#aed543a44247cc3ccdb7d0f9bba224549" title=" " alt="" coords="515,107,603,133"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#a95e901259bd8697ecfbd661cfe5ac26f" title=" " alt="" coords="389,107,467,133"/>
-<area shape="rect" href="../../d3/dda/proc_8c.html#acd2e1ded4bb6fce4500438bf928330f4" title=" " alt="" coords="282,56,330,83"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#a81c8a6a0cae413bc81aa223f7f7b7205" title=" " alt="" coords="271,107,341,133"/>
-<area shape="rect" href="../../da/da9/os1_8h.html#a406c20548822065e144564476378f8a1" title=" " alt="" coords="160,107,223,133"/>
-<area shape="rect" href="../../d0/d29/main_8c.html#aa97e24fea4daabae6b4e5d534ac8066d" title=" " alt="" coords="5,107,112,133"/>
-<area shape="rect" href="../../d7/d9f/fcntl_8h.html#a0c7518235c1384debeb9e38b04623417" title=" " alt="" coords="771,157,826,184"/>
-<area shape="rect" href="../../d2/d1b/stat_8h.html#aee98bbe743c2d14dbaa67f01c3fb9ed5" title=" " alt="" coords="769,56,829,83"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a8e8d51bde1bf882cba93f3f7ab451e6a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8e8d51bde1bf882cba93f3f7ab451e6a">&#9670;&nbsp;</a></span>bmapget()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../d9/d49/types_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> bmapget </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d9/d49/types_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a>&#160;</td>
-          <td class="paramname"><em>bmap</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d9/d49/types_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a>&#160;</td>
-          <td class="paramname"><em>inum</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../df/d26/fs_8h_a8e8d51bde1bf882cba93f3f7ab451e6a_cgraph.png" border="0" usemap="#adf/d26/fs_8h_a8e8d51bde1bf882cba93f3f7ab451e6a_cgraph" alt=""/></div>
-<map name="adf/d26/fs_8h_a8e8d51bde1bf882cba93f3f7ab451e6a_cgraph" id="adf/d26/fs_8h_a8e8d51bde1bf882cba93f3f7ab451e6a_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,85,32"/>
-<area shape="rect" href="../../d6/d6d/buf_8h.html#a698c2e69ee3a6a76b6adfd479397969b" title=" " alt="" coords="133,5,192,32"/>
-<area shape="rect" href="../../dc/de6/bio_8c.html#aa118b4fa3c1c5d061e04fc824f9d1891" title=" " alt="" coords="240,5,303,32"/>
-</map>
-</div>
-
-</div>
-</div>
 <a id="a6a1907f2aabd7c9145b3c2beed1beb63"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6a1907f2aabd7c9145b3c2beed1beb63">&#9670;&nbsp;</a></span>diri()</h2>
 
@@ -631,6 +673,15 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get inode of name in ip. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">ip</td><td>pointer to inode to search name. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">name</td><td>of file. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to inode on success or NULL. </dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>Indirect zone is not supported. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -677,53 +728,6 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="ab1b6028f4625caec30c1020e737216e2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab1b6028f4625caec30c1020e737216e2">&#9670;&nbsp;</a></span>dirname()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">char* dirname </td>
-          <td>(</td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>path</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../df/d26/fs_8h_ab1b6028f4625caec30c1020e737216e2_cgraph.png" border="0" usemap="#adf/d26/fs_8h_ab1b6028f4625caec30c1020e737216e2_cgraph" alt=""/></div>
-<map name="adf/d26/fs_8h_ab1b6028f4625caec30c1020e737216e2_cgraph" id="adf/d26/fs_8h_ab1b6028f4625caec30c1020e737216e2_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,81,32"/>
-<area shape="rect" href="../../da/d66/string_8h.html#ab0bbf26e71ce67713b8c1121f38ff7cd" title=" " alt="" coords="129,5,188,32"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../df/d26/fs_8h_ab1b6028f4625caec30c1020e737216e2_icgraph.png" border="0" usemap="#adf/d26/fs_8h_ab1b6028f4625caec30c1020e737216e2_icgraph" alt=""/></div>
-<map name="adf/d26/fs_8h_ab1b6028f4625caec30c1020e737216e2_icgraph" id="adf/d26/fs_8h_ab1b6028f4625caec30c1020e737216e2_icgraph">
-<area shape="rect" title=" " alt="" coords="983,56,1059,83"/>
-<area shape="rect" href="../../d2/d1b/stat_8h.html#ae92589973c691560ce2a6a97043872cf" title=" " alt="" coords="765,5,832,32"/>
-<area shape="rect" href="../../d7/d9f/fcntl_8h.html#a4e522854927c8a3a43847c39fe999391" title=" " alt="" coords="880,81,935,108"/>
-<area shape="rect" href="../../d8/d60/init_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="164,31,219,57"/>
-<area shape="rect" href="../../db/dd8/syscall_8c.html#a068ed63a10c4dd229deb2ec36497d3ac" title=" " alt="" coords="651,56,717,83"/>
-<area shape="rect" href="../../d7/d0b/trap_8h.html#aed543a44247cc3ccdb7d0f9bba224549" title=" " alt="" coords="515,107,603,133"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#a95e901259bd8697ecfbd661cfe5ac26f" title=" " alt="" coords="389,107,467,133"/>
-<area shape="rect" href="../../d3/dda/proc_8c.html#acd2e1ded4bb6fce4500438bf928330f4" title=" " alt="" coords="282,56,330,83"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#a81c8a6a0cae413bc81aa223f7f7b7205" title=" " alt="" coords="271,107,341,133"/>
-<area shape="rect" href="../../da/da9/os1_8h.html#a406c20548822065e144564476378f8a1" title=" " alt="" coords="160,107,223,133"/>
-<area shape="rect" href="../../d0/d29/main_8c.html#aa97e24fea4daabae6b4e5d534ac8066d" title=" " alt="" coords="5,107,112,133"/>
-<area shape="rect" href="../../d7/d9f/fcntl_8h.html#a0c7518235c1384debeb9e38b04623417" title=" " alt="" coords="771,157,826,184"/>
-<area shape="rect" href="../../d2/d1b/stat_8h.html#aee98bbe743c2d14dbaa67f01c3fb9ed5" title=" " alt="" coords="769,56,829,83"/>
-</map>
-</div>
-
-</div>
-</div>
 <a id="a8fe154ec483a85a863311ef072a47c76"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8fe154ec483a85a863311ef072a47c76">&#9670;&nbsp;</a></span>fsinit()</h2>
 
@@ -739,6 +743,7 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Initialize minix3 filesystem. </p><dl class="section attention"><dt>Attention</dt><dd>Call before using filesystem. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -791,6 +796,14 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get superblock of device pointed by dev structure. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">dev</td><td>device to obtain superblock. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to superblock or NULL. </dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>It allocate super block cache, <a class="el" href="../../d2/d5a/fs_8c.html#af95f8fb16d21e42f8f576e40a8c5d34f">sb</a>. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -848,6 +861,13 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Allocate new inode on dev. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">dev</td><td>device to allocate inode on. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>newly allocated inode or NULL on failure. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -914,6 +934,15 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get inode of inum on dev. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">dev</td><td>device to obtain inode. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">inum</td><td>inode nubmer. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>inode or NULL. </dd></dl>
+<p>Inode number starts from 1, however block number starts with 0, so subtract by 1 to map block number.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -972,6 +1001,12 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Put inode into disk if it is last reference and decrement reference counter. If last reference, remove ip. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">ip</td><td>Pointer to inode to put into disk. </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1007,6 +1042,12 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Update inode pointed by ip. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">ip</td><td>inode to update. </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1062,6 +1103,14 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get inode pointed by path. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">path</td><td>pathname to obtain inode of. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to inode associated with path or NULL. </dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>path is destroyed after call. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1146,6 +1195,17 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<pre class="fragment">Read content of inode zone from disk.
+@param[in] ip pointer to inode to obtain content of.
+@param[out] dest pointer to memory location to fill the content
+</pre><p> obtained. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">offset</td><td>offset of inode zone to read. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>size in bytes to read. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>size read. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1223,6 +1283,17 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<pre class="fragment">Write content of inode zone to disk.
+@param[in] ip pointer to inode to write content to.
+@param[out] dest pointer to memory location to read the content to
+</pre><p> write. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">offset</td><td>offset of inode zone to write. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>size in bytes to write. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>size written. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1258,7 +1329,7 @@ Here is the caller graph for this function:</div>
 <area shape="rect" href="../../d0/d29/main_8c.html#aa97e24fea4daabae6b4e5d534ac8066d" title=" " alt="" coords="5,56,112,83"/>
 <area shape="rect" href="../../d7/d9f/fcntl_8h.html#a0c7518235c1384debeb9e38b04623417" title=" " alt="" coords="789,157,843,184"/>
 <area shape="rect" href="../../d2/d1b/stat_8h.html#aee98bbe743c2d14dbaa67f01c3fb9ed5" title=" " alt="" coords="786,56,846,83"/>
-<area shape="rect" href="../../d7/dcd/virtio_8h.html#a3ed29bb144821b6d9227cbc82ebb88cc" title=" " alt="" coords="651,208,735,235"/>
+<area shape="rect" href="../../d7/dcd/virtio_8h.html#ad6b51fac330adaad6e8c3390fdbfa179" title=" " alt="" coords="651,208,735,235"/>
 </map>
 </div>
 
@@ -1289,6 +1360,14 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get block number of zone in ip. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">ip</td><td>pointer to inode to get zone of. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">zone</td><td>zone number. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>block number of zone of ip. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1326,15 +1405,15 @@ Here is the caller graph for this function:</div>
 <area shape="rect" href="../../d2/d1b/stat_8h.html#aee98bbe743c2d14dbaa67f01c3fb9ed5" title=" " alt="" coords="783,92,843,119"/>
 <area shape="rect" href="../../db/dd8/syscall_8c.html#aba50464fe1a1d83175115f6d08dd259a" title=" " alt="" coords="787,244,838,271"/>
 <area shape="rect" href="../../db/dd8/syscall_8c.html#abb39b21888372e95ad3e5c59b166f5c8" title=" " alt="" coords="785,396,840,423"/>
-<area shape="rect" href="../../d7/dcd/virtio_8h.html#a3ed29bb144821b6d9227cbc82ebb88cc" title=" " alt="" coords="651,447,735,473"/>
+<area shape="rect" href="../../d7/dcd/virtio_8h.html#ad6b51fac330adaad6e8c3390fdbfa179" title=" " alt="" coords="651,447,735,473"/>
 </map>
 </div>
 
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a id="a6baaf26dd83b71b8d684c5d54a709e31"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6baaf26dd83b71b8d684c5d54a709e31">&#9670;&nbsp;</a></span>inode</h2>
+<a id="a5a6226ddba0421b40a23806c2bcdf33d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a6226ddba0421b40a23806c2bcdf33d">&#9670;&nbsp;</a></span>inode</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1343,7 +1422,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">struct <a class="el" href="../../d0/df8/structinode.html">inode</a> <a class="el" href="../../d0/df8/structinode.html">inode</a>[<a class="el" href="../../df/d26/fs_8h.html#adabafa10c7951be7c875cd2ee212be85">NINODE</a>]</td>
+          <td class="memname">struct <a class="el" href="../../d0/df8/structinode.html">inode</a> <a class="el" href="../../d0/df8/structinode.html">inode</a>[<a class="el" href="../../df/d26/fs_8h.html#ab7bfbb645a4de33aa45e85624aab6684">NICACHE</a>]</td>
         </tr>
       </table>
   </td>
@@ -1352,6 +1431,8 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>On-memory inode cache. </p>
 
 </div>
 </div>
@@ -1374,6 +1455,7 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Superblock cache, only superblock of minix 3 filesystem is supported. </p>
 
 </div>
 </div>

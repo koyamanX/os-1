@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['panic_716',['panic',['../df/d1f/panic_8h.html#a92ad17d19a46880dd5e6c99143666b4a',1,'panic(char *msg):&#160;panic.c'],['../d2/daf/panic_8c.html#a92ad17d19a46880dd5e6c99143666b4a',1,'panic(char *msg):&#160;panic.c']]],
-  ['printk_717',['printk',['../db/d11/printk_8h.html#a36fe4a3ea4506cb4d128b11f93187f71',1,'printk(const char *format,...):&#160;printk.c'],['../dc/d57/printk_8c.html#a36fe4a3ea4506cb4d128b11f93187f71',1,'printk(const char *format,...):&#160;printk.c']]]
+  ['open_746',['open',['../d7/d9f/fcntl_8h.html#a4e522854927c8a3a43847c39fe999391',1,'open(const char *pathname, int flags, mode_t mode):&#160;fs.c'],['../d2/d5a/fs_8c.html#a4e522854927c8a3a43847c39fe999391',1,'open(const char *pathname, int flags, mode_t mode):&#160;fs.c']]],
+  ['openi_747',['openi',['../d2/d4d/file_8h.html#ad8536352138953346cca56ec5576eb89',1,'openi(struct inode *ip):&#160;fio.c'],['../d9/dc3/fio_8c.html#ad8536352138953346cca56ec5576eb89',1,'openi(struct inode *ip):&#160;fio.c']]]
 ];

@@ -73,11 +73,11 @@ $(function() {
 <a href="../../d7/d9f/fcntl_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef FCNTL_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define FCNTL_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="../../d7/d9f/fcntl_8h.html#a1cf6b1de1fffedaa1d26b189e9a8d2cc">    4</a></span>&#160;<span class="preprocessor">#define O_CREAT        00100</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="../../d7/d9f/fcntl_8h.html#ad1d67e453fb3031f40f8cd3403773813">    5</a></span>&#160;<span class="preprocessor">#define O_TRUNC        01000</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="../../d7/d9f/fcntl_8h.html#a7a68c9ffaac7dbcd652225dd7c06a54b">    6</a></span>&#160;<span class="preprocessor">#define O_RDONLY           0</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="../../d7/d9f/fcntl_8h.html#a11b644a8526139c4cc1850dac1271ced">    7</a></span>&#160;<span class="preprocessor">#define O_WRONLY           1</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="../../d7/d9f/fcntl_8h.html#abb0586253488ee61072b73557eeb873b">    8</a></span>&#160;<span class="preprocessor">#define O_RDWR             2</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="../../d7/d9f/fcntl_8h.html#a1cf6b1de1fffedaa1d26b189e9a8d2cc">    4</a></span>&#160;<span class="preprocessor">#define O_CREAT 00100</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="../../d7/d9f/fcntl_8h.html#ad1d67e453fb3031f40f8cd3403773813">    5</a></span>&#160;<span class="preprocessor">#define O_TRUNC 01000</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="../../d7/d9f/fcntl_8h.html#a7a68c9ffaac7dbcd652225dd7c06a54b">    6</a></span>&#160;<span class="preprocessor">#define O_RDONLY 0</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="../../d7/d9f/fcntl_8h.html#a11b644a8526139c4cc1850dac1271ced">    7</a></span>&#160;<span class="preprocessor">#define O_WRONLY 1</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="../../d7/d9f/fcntl_8h.html#abb0586253488ee61072b73557eeb873b">    8</a></span>&#160;<span class="preprocessor">#define O_RDWR 2</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d9/d49/types_8h.html">sys/types.h</a>&gt;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
@@ -85,8 +85,8 @@ $(function() {
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d7/d9f/fcntl_8h.html#a0c7518235c1384debeb9e38b04623417">creat</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *pathname, <a class="code" href="../../d9/d49/types_8h.html#a51b5bca3280ca743227e9b07c4f839a1">mode_t</a> mode);</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="afcntl_8h_html_a0c7518235c1384debeb9e38b04623417"><div class="ttname"><a href="../../d7/d9f/fcntl_8h.html#a0c7518235c1384debeb9e38b04623417">creat</a></div><div class="ttdeci">int creat(const char *pathname, mode_t mode)</div><div class="ttdef"><b>Definition:</b> fs.c:306</div></div>
-<div class="ttc" id="afcntl_8h_html_a4e522854927c8a3a43847c39fe999391"><div class="ttname"><a href="../../d7/d9f/fcntl_8h.html#a4e522854927c8a3a43847c39fe999391">open</a></div><div class="ttdeci">int open(const char *pathname, int flags, mode_t mode)</div><div class="ttdef"><b>Definition:</b> fs.c:256</div></div>
+<div class="ttc" id="afcntl_8h_html_a0c7518235c1384debeb9e38b04623417"><div class="ttname"><a href="../../d7/d9f/fcntl_8h.html#a0c7518235c1384debeb9e38b04623417">creat</a></div><div class="ttdeci">int creat(const char *pathname, mode_t mode)</div><div class="ttdef"><b>Definition:</b> fs.c:330</div></div>
+<div class="ttc" id="afcntl_8h_html_a4e522854927c8a3a43847c39fe999391"><div class="ttname"><a href="../../d7/d9f/fcntl_8h.html#a4e522854927c8a3a43847c39fe999391">open</a></div><div class="ttdeci">int open(const char *pathname, int flags, mode_t mode)</div><div class="ttdef"><b>Definition:</b> fs.c:279</div></div>
 <div class="ttc" id="atypes_8h_html"><div class="ttname"><a href="../../d9/d49/types_8h.html">types.h</a></div></div>
 <div class="ttc" id="atypes_8h_html_a51b5bca3280ca743227e9b07c4f839a1"><div class="ttname"><a href="../../d9/d49/types_8h.html#a51b5bca3280ca743227e9b07c4f839a1">mode_t</a></div><div class="ttdeci">unsigned short mode_t</div><div class="ttdef"><b>Definition:</b> types.h:15</div></div>
 </div><!-- fragment --></div><!-- contents -->

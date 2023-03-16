@@ -1,12 +1,13 @@
 <map id="kernel/vm.c" name="kernel/vm.c">
 <area shape="rect" id="node1" title=" " alt="" coords="189,5,288,32"/>
-<area shape="rect" id="node2" href="$d1/d4e/riscv_8h.html" title=" " alt="" coords="16,155,80,181"/>
-<area shape="rect" id="node3" href="$d9/d49/types_8h.html" title=" " alt="" coords="69,229,165,256"/>
-<area shape="rect" id="node4" href="$da/d0a/vm_8h.html" title=" " alt="" coords="25,80,79,107"/>
-<area shape="rect" id="node5" href="$da/d66/string_8h.html" title=" " alt="" coords="155,80,226,107"/>
-<area shape="rect" id="node7" href="$db/d11/printk_8h.html" title=" " alt="" coords="251,80,323,107"/>
-<area shape="rect" id="node8" href="$d2/d86/uart_8h.html" title=" " alt="" coords="347,80,407,107"/>
-<area shape="rect" id="node9" href="$da/da9/os1_8h.html" title=" " alt="" coords="431,80,489,107"/>
-<area shape="rect" id="node10" href="$d7/dcd/virtio_8h.html" title=" " alt="" coords="373,155,441,181"/>
-<area shape="rect" id="node6" title=" " alt="" coords="155,155,229,181"/>
+<area shape="rect" id="node2" href="$d2/dfe/alloc_8h.html" title="Buddy allocator." alt="" coords="174,155,239,181"/>
+<area shape="rect" id="node3" href="$d1/d4e/riscv_8h.html" title=" " alt="" coords="104,229,168,256"/>
+<area shape="rect" id="node4" href="$d9/d49/types_8h.html" title=" " alt="" coords="88,304,184,331"/>
+<area shape="rect" id="node5" href="$da/da9/os1_8h.html" title=" " alt="" coords="22,229,79,256"/>
+<area shape="rect" id="node6" href="$db/d11/printk_8h.html" title=" " alt="" coords="202,80,274,107"/>
+<area shape="rect" id="node7" href="$da/d66/string_8h.html" title=" " alt="" coords="434,80,504,107"/>
+<area shape="rect" id="node9" href="$d2/d86/uart_8h.html" title=" " alt="" coords="350,80,410,107"/>
+<area shape="rect" id="node10" href="$d7/dcd/virtio_8h.html" title=" " alt="" coords="508,155,576,181"/>
+<area shape="rect" id="node11" href="$da/d0a/vm_8h.html" title=" " alt="" coords="123,80,178,107"/>
+<area shape="rect" id="node8" title=" " alt="" coords="409,155,484,181"/>
 </map>

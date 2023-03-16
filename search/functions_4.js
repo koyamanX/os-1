@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['exec_678',['exec',['../df/d03/proc_8h.html#aa53d427e0341b41d6dfa1081b1fcdc0b',1,'exec(const char *file, char const **argv):&#160;proc.c'],['../d3/dda/proc_8c.html#aa53d427e0341b41d6dfa1081b1fcdc0b',1,'exec(const char *file, char const **argv):&#160;proc.c'],['../da/d6f/unistd_8h.html#af8950427da00bae36f496cf5a92ebefe',1,'exec(const char *pathname, const char *argv[]):&#160;unistd.h']]],
-  ['exit_679',['exit',['../dc/d9c/stdlib_8h.html#a55e99c539cf7723ec15e856b7e0a8cee',1,'exit(int status):&#160;exit.c'],['../d1/d85/exit_8c.html#a55e99c539cf7723ec15e856b7e0a8cee',1,'exit(int status):&#160;exit.c']]]
+  ['diri_707',['diri',['../df/d26/fs_8h.html#a6a1907f2aabd7c9145b3c2beed1beb63',1,'diri(struct inode *ip, char *name):&#160;fs.c'],['../d2/d5a/fs_8c.html#a6a1907f2aabd7c9145b3c2beed1beb63',1,'diri(struct inode *ip, char *name):&#160;fs.c']]],
+  ['dirname_708',['dirname',['../d0/dc6/libgen_8h.html#ab1b6028f4625caec30c1020e737216e2',1,'dirname(char *path):&#160;dirname.c'],['../d9/df0/dirname_8c.html#ab1b6028f4625caec30c1020e737216e2',1,'dirname(char *path):&#160;dirname.c']]],
+  ['dup_709',['dup',['../db/dd8/syscall_8c.html#a6363aa4e42f01c8c657effa91abfa421',1,'dup(int fildes):&#160;syscall.c'],['../da/d6f/unistd_8h.html#a6363aa4e42f01c8c657effa91abfa421',1,'dup(int fildes):&#160;syscall.c']]]
 ];

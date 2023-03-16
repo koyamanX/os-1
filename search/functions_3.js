@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['diri_675',['diri',['../df/d26/fs_8h.html#a6a1907f2aabd7c9145b3c2beed1beb63',1,'diri(struct inode *ip, char *name):&#160;fs.c'],['../d2/d5a/fs_8c.html#a6a1907f2aabd7c9145b3c2beed1beb63',1,'diri(struct inode *ip, char *name):&#160;fs.c']]],
-  ['dirname_676',['dirname',['../df/d26/fs_8h.html#ab1b6028f4625caec30c1020e737216e2',1,'dirname(char *path):&#160;dirname.c'],['../d0/dc6/libgen_8h.html#ab1b6028f4625caec30c1020e737216e2',1,'dirname(char *path):&#160;dirname.c'],['../d9/df0/dirname_8c.html#ab1b6028f4625caec30c1020e737216e2',1,'dirname(char *path):&#160;dirname.c']]],
-  ['dup_677',['dup',['../db/dd8/syscall_8c.html#a6363aa4e42f01c8c657effa91abfa421',1,'dup(int fildes):&#160;syscall.c'],['../da/d6f/unistd_8h.html#a6363aa4e42f01c8c657effa91abfa421',1,'dup(int fildes):&#160;syscall.c']]]
+  ['closei_705',['closei',['../d2/d4d/file_8h.html#aa126418263f281c0581ca7bb06a992ca',1,'closei(struct inode *ip):&#160;fio.c'],['../d9/dc3/fio_8c.html#aa126418263f281c0581ca7bb06a992ca',1,'closei(struct inode *ip):&#160;fio.c']]],
+  ['creat_706',['creat',['../d7/d9f/fcntl_8h.html#a0c7518235c1384debeb9e38b04623417',1,'creat(const char *pathname, mode_t mode):&#160;fs.c'],['../d2/d5a/fs_8c.html#a0c7518235c1384debeb9e38b04623417',1,'creat(const char *pathname, mode_t mode):&#160;fs.c']]]
 ];

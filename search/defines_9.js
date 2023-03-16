@@ -1,13 +1,12 @@
 var searchData=
 [
-  ['nbdevsw_1054',['NBDEVSW',['../d4/dca/devsw_8h.html#a7c9b10562f34a0ea8bc223be29682757',1,'devsw.h']]],
-  ['ncdevsw_1055',['NCDEVSW',['../d4/dca/devsw_8h.html#ac59265ba3166b8123f48b6ed4b0dc802',1,'devsw.h']]],
-  ['ncpus_1056',['NCPUS',['../df/d03/proc_8h.html#a1e1e0a2717788848aae0ca35c216e8fc',1,'proc.h']]],
-  ['nfile_1057',['NFILE',['../d2/d4d/file_8h.html#a8485f4e81de2537e6a0935626167a775',1,'file.h']]],
-  ['ninode_1058',['NINODE',['../df/d26/fs_8h.html#adabafa10c7951be7c875cd2ee212be85',1,'fs.h']]],
-  ['nmount_1059',['NMOUNT',['../d4/dca/devsw_8h.html#af2480000a8e6897710a0060633edf162',1,'devsw.h']]],
-  ['nofile_1060',['NOFILE',['../df/d03/proc_8h.html#a80bacbaea8dd6aecf216d85d981bcb21',1,'proc.h']]],
-  ['nprocs_1061',['NPROCS',['../df/d03/proc_8h.html#a0ea0920e8f676392a537fbeca28362e7',1,'proc.h']]],
-  ['nsuperblk_1062',['NSUPERBLK',['../df/d26/fs_8h.html#ae5218d37159981302683f61dd74e3c94',1,'fs.h']]],
-  ['null_1063',['NULL',['../d1/d4e/riscv_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4',1,'NULL():&#160;riscv.h'],['../da/d66/string_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4',1,'NULL():&#160;string.h']]]
+  ['max_5forder_1089',['MAX_ORDER',['../d2/dfe/alloc_8h.html#ab08dffec08ac450d78d4c062b571939e',1,'alloc.h']]],
+  ['mie_5fmeie_1090',['MIE_MEIE',['../d1/d4e/riscv_8h.html#ab4e2e4b72ec1e13b315dcdc910f5595b',1,'riscv.h']]],
+  ['mie_5fmsie_1091',['MIE_MSIE',['../d1/d4e/riscv_8h.html#acdb82cffb46911d1a236dcf651b24b05',1,'riscv.h']]],
+  ['mie_5fmtie_1092',['MIE_MTIE',['../d1/d4e/riscv_8h.html#a88f0c7a5a13f0570ecbaa43b912b0fe4',1,'riscv.h']]],
+  ['min_5forder_1093',['MIN_ORDER',['../d2/dfe/alloc_8h.html#a23bae2b7cd4008c90256be146e21cccf',1,'alloc.h']]],
+  ['mstatus_5fmie_1094',['MSTATUS_MIE',['../d1/d4e/riscv_8h.html#a225cb34e3b991318fa87f090cfc3fc5f',1,'riscv.h']]],
+  ['mstatus_5fmpp_5fm_5fmode_1095',['MSTATUS_MPP_M_MODE',['../d1/d4e/riscv_8h.html#a59067c8f9e91bca1c8725fde0b421b48',1,'riscv.h']]],
+  ['mstatus_5fmpp_5fmask_1096',['MSTATUS_MPP_MASK',['../d1/d4e/riscv_8h.html#a16d6d0c403a36d5c6be7915bb7b830b7',1,'riscv.h']]],
+  ['mstatus_5fmpp_5fs_5fmode_1097',['MSTATUS_MPP_S_MODE',['../d1/d4e/riscv_8h.html#a8693603c448862407f3da35e9d19c254',1,'riscv.h']]]
 ];

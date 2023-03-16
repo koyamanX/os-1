@@ -1,0 +1,10 @@
+<map id="kernel/slob.c" name="kernel/slob.c">
+<area shape="rect" id="node1" title=" " alt="" coords="100,5,204,32"/>
+<area shape="rect" id="node2" href="$db/d11/printk_8h.html" title=" " alt="" coords="5,80,77,107"/>
+<area shape="rect" id="node3" href="$de/d37/slob_8h.html" title="Slob allocator." alt="" coords="87,155,148,181"/>
+<area shape="rect" id="node5" title=" " alt="" coords="152,80,227,107"/>
+<area shape="rect" id="node6" href="$da/d0a/vm_8h.html" title=" " alt="" coords="251,80,306,107"/>
+<area shape="rect" id="node4" href="$d9/d49/types_8h.html" title=" " alt="" coords="149,304,245,331"/>
+<area shape="rect" id="node7" href="$d2/dfe/alloc_8h.html" title="Buddy allocator." alt="" coords="175,155,241,181"/>
+<area shape="rect" id="node8" href="$d1/d4e/riscv_8h.html" title=" " alt="" coords="235,229,299,256"/>
+</map>

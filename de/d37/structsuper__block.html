@@ -69,46 +69,65 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Struct for minix3 filesystem superblock.  
+ <a href="../../de/d37/structsuper__block.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="../../df/d26/fs_8h_source.html">fs.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for super_block:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d1/d6c/structsuper__block__coll__graph.png" border="0" usemap="#asuper__block_coll__map" alt="Collaboration graph"/></div>
 <map name="asuper__block_coll__map" id="asuper__block_coll__map">
-<area shape="rect" title=" " alt="" coords="5,5,133,259"/>
+<area shape="rect" title="Struct for minix3 filesystem superblock." alt="" coords="5,5,133,259"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
 <tr class="memitem:a1cad00122dbbf36bc95ac630530a26be"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d49/types_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d37/structsuper__block.html#a1cad00122dbbf36bc95ac630530a26be">ninodes</a></td></tr>
+<tr class="memdesc:a1cad00122dbbf36bc95ac630530a26be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of available inodes.  <a href="../../de/d37/structsuper__block.html#a1cad00122dbbf36bc95ac630530a26be">More...</a><br /></td></tr>
 <tr class="separator:a1cad00122dbbf36bc95ac630530a26be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ebc538e291f898636a89ecf0cff329e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d49/types_8h.html#a9e6c91d77e24643b888dbd1a1a590054">u16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d37/structsuper__block.html#a4ebc538e291f898636a89ecf0cff329e">nzones</a></td></tr>
+<tr class="memdesc:a4ebc538e291f898636a89ecf0cff329e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of available zones.  <a href="../../de/d37/structsuper__block.html#a4ebc538e291f898636a89ecf0cff329e">More...</a><br /></td></tr>
 <tr class="separator:a4ebc538e291f898636a89ecf0cff329e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91d298451d781d2d17d290d334a3bd60"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d49/types_8h.html#a9e6c91d77e24643b888dbd1a1a590054">u16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d37/structsuper__block.html#a91d298451d781d2d17d290d334a3bd60">imap_blocks</a></td></tr>
+<tr class="memdesc:a91d298451d781d2d17d290d334a3bd60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of blocks used by inode bit map.  <a href="../../de/d37/structsuper__block.html#a91d298451d781d2d17d290d334a3bd60">More...</a><br /></td></tr>
 <tr class="separator:a91d298451d781d2d17d290d334a3bd60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab7a2054b0027286d382d159efaec5dad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d49/types_8h.html#a9e6c91d77e24643b888dbd1a1a590054">u16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d37/structsuper__block.html#ab7a2054b0027286d382d159efaec5dad">zmap_blocks</a></td></tr>
+<tr class="memdesc:ab7a2054b0027286d382d159efaec5dad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of blocks used by zone bit map.  <a href="../../de/d37/structsuper__block.html#ab7a2054b0027286d382d159efaec5dad">More...</a><br /></td></tr>
 <tr class="separator:ab7a2054b0027286d382d159efaec5dad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a79d1ec8eb4255ab5e7a2a1a6c84df00d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d49/types_8h.html#a9e6c91d77e24643b888dbd1a1a590054">u16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d37/structsuper__block.html#a79d1ec8eb4255ab5e7a2a1a6c84df00d">firstdatazone</a></td></tr>
+<tr class="memdesc:a79d1ec8eb4255ab5e7a2a1a6c84df00d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of first data zone.  <a href="../../de/d37/structsuper__block.html#a79d1ec8eb4255ab5e7a2a1a6c84df00d">More...</a><br /></td></tr>
 <tr class="separator:a79d1ec8eb4255ab5e7a2a1a6c84df00d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acee82b83fa28609596fa273a342ba317"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d49/types_8h.html#a9e6c91d77e24643b888dbd1a1a590054">u16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d37/structsuper__block.html#acee82b83fa28609596fa273a342ba317">log_zone_size</a></td></tr>
+<tr class="memdesc:acee82b83fa28609596fa273a342ba317"><td class="mdescLeft">&#160;</td><td class="mdescRight">Log2 of block/zone.  <a href="../../de/d37/structsuper__block.html#acee82b83fa28609596fa273a342ba317">More...</a><br /></td></tr>
 <tr class="separator:acee82b83fa28609596fa273a342ba317"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a609d7780bdc5c935a37a030070d66373"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d49/types_8h.html#a9e6c91d77e24643b888dbd1a1a590054">u16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d37/structsuper__block.html#a609d7780bdc5c935a37a030070d66373">pad</a></td></tr>
+<tr class="memdesc:a609d7780bdc5c935a37a030070d66373"><td class="mdescLeft">&#160;</td><td class="mdescRight">Padding.  <a href="../../de/d37/structsuper__block.html#a609d7780bdc5c935a37a030070d66373">More...</a><br /></td></tr>
 <tr class="separator:a609d7780bdc5c935a37a030070d66373"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a450199bdac7fb70d19da7006a7477d7e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d49/types_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d37/structsuper__block.html#a450199bdac7fb70d19da7006a7477d7e">max_size</a></td></tr>
+<tr class="memdesc:a450199bdac7fb70d19da7006a7477d7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Max file size.  <a href="../../de/d37/structsuper__block.html#a450199bdac7fb70d19da7006a7477d7e">More...</a><br /></td></tr>
 <tr class="separator:a450199bdac7fb70d19da7006a7477d7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2414ea87246267c4c4712f3b8ac0b23a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d49/types_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d37/structsuper__block.html#a2414ea87246267c4c4712f3b8ac0b23a">zones</a></td></tr>
+<tr class="memdesc:a2414ea87246267c4c4712f3b8ac0b23a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of zones.  <a href="../../de/d37/structsuper__block.html#a2414ea87246267c4c4712f3b8ac0b23a">More...</a><br /></td></tr>
 <tr class="separator:a2414ea87246267c4c4712f3b8ac0b23a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a766c4d372a97fc1b1977005ffa30b3b4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d49/types_8h.html#a9e6c91d77e24643b888dbd1a1a590054">u16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d37/structsuper__block.html#a766c4d372a97fc1b1977005ffa30b3b4">magic</a></td></tr>
+<tr class="memdesc:a766c4d372a97fc1b1977005ffa30b3b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Magic number.  <a href="../../de/d37/structsuper__block.html#a766c4d372a97fc1b1977005ffa30b3b4">More...</a><br /></td></tr>
 <tr class="separator:a766c4d372a97fc1b1977005ffa30b3b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa64481c24305f00d84be8651450c4114"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d49/types_8h.html#a9e6c91d77e24643b888dbd1a1a590054">u16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d37/structsuper__block.html#aa64481c24305f00d84be8651450c4114">pad2</a></td></tr>
+<tr class="memdesc:aa64481c24305f00d84be8651450c4114"><td class="mdescLeft">&#160;</td><td class="mdescRight">Padding.  <a href="../../de/d37/structsuper__block.html#aa64481c24305f00d84be8651450c4114">More...</a><br /></td></tr>
 <tr class="separator:aa64481c24305f00d84be8651450c4114"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a504ae9cf51ea606ff9b4730b5c052699"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d49/types_8h.html#a9e6c91d77e24643b888dbd1a1a590054">u16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d37/structsuper__block.html#a504ae9cf51ea606ff9b4730b5c052699">block_size</a></td></tr>
+<tr class="memdesc:a504ae9cf51ea606ff9b4730b5c052699"><td class="mdescLeft">&#160;</td><td class="mdescRight">Block size in bytes.  <a href="../../de/d37/structsuper__block.html#a504ae9cf51ea606ff9b4730b5c052699">More...</a><br /></td></tr>
 <tr class="separator:a504ae9cf51ea606ff9b4730b5c052699"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae9e2fc07701ada6c378261fa49cd0c95"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d49/types_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d37/structsuper__block.html#ae9e2fc07701ada6c378261fa49cd0c95">disk_version</a></td></tr>
+<tr class="memdesc:ae9e2fc07701ada6c378261fa49cd0c95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filesystem version.  <a href="../../de/d37/structsuper__block.html#ae9e2fc07701ada6c378261fa49cd0c95">More...</a><br /></td></tr>
 <tr class="separator:ae9e2fc07701ada6c378261fa49cd0c95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Field Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Struct for minix3 filesystem superblock. </p>
+<p>Contains in-disk superblock of minix3 filesystem. </p>
+</div><h2 class="groupheader">Field Documentation</h2>
 <a id="a504ae9cf51ea606ff9b4730b5c052699"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a504ae9cf51ea606ff9b4730b5c052699">&#9670;&nbsp;</a></span>block_size</h2>
 
@@ -120,6 +139,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Block size in bytes. </p>
 
 </div>
 </div>
@@ -135,6 +156,8 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Filesystem version. </p>
+
 </div>
 </div>
 <a id="a79d1ec8eb4255ab5e7a2a1a6c84df00d"></a>
@@ -148,6 +171,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Number of first data zone. </p>
 
 </div>
 </div>
@@ -163,6 +188,8 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Number of blocks used by inode bit map. </p>
+
 </div>
 </div>
 <a id="acee82b83fa28609596fa273a342ba317"></a>
@@ -176,6 +203,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Log2 of block/zone. </p>
 
 </div>
 </div>
@@ -191,6 +220,8 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Magic number. </p>
+
 </div>
 </div>
 <a id="a450199bdac7fb70d19da7006a7477d7e"></a>
@@ -204,6 +235,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Max file size. </p>
 
 </div>
 </div>
@@ -219,6 +252,8 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Number of available inodes. </p>
+
 </div>
 </div>
 <a id="a4ebc538e291f898636a89ecf0cff329e"></a>
@@ -232,6 +267,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Number of available zones. </p>
 
 </div>
 </div>
@@ -247,6 +284,8 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Padding. </p>
+
 </div>
 </div>
 <a id="aa64481c24305f00d84be8651450c4114"></a>
@@ -260,6 +299,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Padding. </p>
 
 </div>
 </div>
@@ -275,6 +316,8 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Number of blocks used by zone bit map. </p>
+
 </div>
 </div>
 <a id="a2414ea87246267c4c4712f3b8ac0b23a"></a>
@@ -288,6 +331,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Number of zones. </p>
 
 </div>
 </div>

@@ -1,12 +1,11 @@
 #include <string.h>
 
 char *strcpy(char *dest, const char *src) {
-	char *p = dest;
+    char *p = dest;
 
-	while(*src) {
-		*dest++ = *src++;
-	}
-	*dest = '\0';
-	return p;
+    while (*src) {
+        *dest++ = *src++;
+    }
+    *dest = '\0';
+    return p;
 }
-

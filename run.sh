@@ -38,6 +38,8 @@ COMMANDS
 		info
 		warn
 		release
+	format
+	docs
 	gdb
 	clean
 EOF
@@ -125,6 +127,21 @@ if [ "$CMD" = "gdb" ]; then
 	[ ! -d "$BUILD_DIR" ] && build
 	[ ! -d "$IMAGE_NAME" ] && create_image
 	run -S -gdb $QEMU_GDB_PORT
+	exit 0
+fi
+
+CMD=$1
+if [ "$CMD" = "format" ]; then
+	shift
+	find . -name '*.c' -exec clang-format -i {} \;
+	find . -name '*.h' -exec clang-format -i {} \;
+	exit 0
+fi
+
+CMD=$1
+if [ "$CMD" = "docs" ]; then
+	shift
+	doxygen
 	exit 0
 fi
 

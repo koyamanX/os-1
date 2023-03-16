@@ -12,10 +12,10 @@ int bwrite(struct buf *bp);
 int bflush(dev_t dev);
 
 struct buf {
-	int valid;
-	dev_t dev;
-	u64 blkno;
-	char data[BUFSIZ];
+    int valid;
+    dev_t dev;
+    u64 blkno;
+    char data[BUFSIZ];
 };
 
 extern struct buf *blist;

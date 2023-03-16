@@ -44,7 +44,7 @@ struct slob_header {
     struct slob_header *next;
 };
 
-struct big_slob_header {
+struct slob_big_header {
     int order;
     void *page;
     struct big_slob_header *next;

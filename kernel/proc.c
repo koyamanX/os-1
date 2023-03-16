@@ -6,6 +6,7 @@
 #include <proc.h>
 #include <riscv.h>
 #include <sched.h>
+#include <slob.h>
 #include <string.h>
 #include <sys/types.h>
 #include <trap.h>
@@ -86,7 +87,7 @@ int exec(const char *file, char const **argv) {
     if (ehdr.e_phnum > 4) {
         panic("exec: load failed\n");
     }
-    phdr = alloc_page();
+    phdr = kmalloc(sizeof(Elf64_Phdr));
 
     rp = cpus[r_tp()].rp;
     readi(ip, (char *)phdr, ehdr.e_phoff, sizeof(Elf64_Phdr) * ehdr.e_phnum);
@@ -105,7 +106,7 @@ int exec(const char *file, char const **argv) {
         }
     }
 
-    free_page(phdr);
+    kfree(phdr);
 
     rp->tf->sepc = ehdr.e_entry;
     rp->tf->sp = PAGE_SIZE;

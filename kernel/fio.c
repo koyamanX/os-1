@@ -70,7 +70,7 @@ void closei(struct inode *ip) {
             bdevsw[ip->dev.major].close();
             break;
         default:
-            panic("openi: unsupported device\n");
+            panic("closei: unsupported device\n");
             break;
     }
 }

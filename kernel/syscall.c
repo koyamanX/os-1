@@ -83,8 +83,8 @@ ssize_t read(int fd, const void *buf, size_t count) {
 
     rp = cpus[r_tp()].rp;
     fp = rp->ofile[fd];
-    // TODO: fp->offset
-    ret = readi(fp->ip, (char *)buf, 0, count);
+    ret = readi(fp->ip, (char *)buf, fp->offset[0], count);
+    fp->offset[0] += count;
 
     return ret;
 }

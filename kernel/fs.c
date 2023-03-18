@@ -40,6 +40,7 @@ void fsinit(void) {
     memset(&inode, 0, sizeof(struct inode) * NICACHE);
     // Zero clear mount cache.
     memset(&mount, 0, sizeof(struct mount) * NMOUNT);
+    brelse(bp);
 
     // Create mount point for root directory.
     mount[0].dev = rootdev;

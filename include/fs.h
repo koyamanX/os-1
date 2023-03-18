@@ -32,7 +32,7 @@ struct super_block {
 };
 
 #define NINODE 16      //!< Size of inode in one block
-#define NICACHE 64     //!< Size of inode chache
+#define NICACHE 128    //!< Size of inode chache
 #define INODE_SIZE 64  //!< Size of on disk inode
 
 #define DIRECTZONE 8    //!< Direct zone number

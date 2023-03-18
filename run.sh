@@ -80,6 +80,7 @@ create_image() {
 }
 
 run() {
+	clear
 	$QEMU $QEMU_OPTS $@
 }
 

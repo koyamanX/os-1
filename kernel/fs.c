@@ -174,12 +174,14 @@ u64 readi(struct inode *ip, char *dest, u64 offset, u64 size) {
         }
         buf = bread(rootdev, zmap(ip, zone));
         memcpy(dest, &buf->data[(offset % BLOCKSIZE)], size - total);
+        brelse(buf);
         total = total + (size - total);
     }
 
     while (total < size) {
         buf = bread(rootdev, zmap(ip, zone));
         memcpy(dest, buf->data, size - total);
+        brelse(buf);
         zone++;
         total = total + (size - total);
     }
@@ -205,6 +207,7 @@ u64 writei(struct inode *ip, char *src, u64 offset, u64 size) {
         buf = bread(rootdev, zmap(ip, zone));
         memcpy(&buf->data[(offset % BLOCKSIZE)], src, size - total);
         bwrite(buf);
+        brelse(buf);
         total = total + (size - total);
     }
     while (total < size) {
@@ -212,6 +215,7 @@ u64 writei(struct inode *ip, char *src, u64 offset, u64 size) {
         buf = bread(rootdev, zmap(ip, zone));
         memcpy(buf->data, src, size - total);
         bwrite(buf);
+        brelse(buf);
         zone++;
         total = total + (size - total);
     }
@@ -245,6 +249,7 @@ struct inode *ialloc(dev_t dev) {
         if ((pos = ffs(~buf->data[i] & 0xff)) != 0) {
             buf->data[i] = buf->data[i] | (1 << (pos - 1));
             bwrite(buf);
+            brelse(buf);
             ip = iget(dev, i * 8 + (7 - pos));
             break;
         }
@@ -266,6 +271,7 @@ void iupdate(struct inode *ip) {
     buf = bread(dev, offset);
     memcpy(&buf->data[(ip->inum % NINODE) * INODE_SIZE], ip, INODE_SIZE);
     bwrite(buf);
+    brelse(buf);
 }
 
 void iput(struct inode *ip) {

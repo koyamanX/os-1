@@ -18,6 +18,7 @@
 #include <sys/types.h>
 #include <virtio.h>
 #include <vm.h>
+#include <slob.h>
 
 struct inode inode[NICACHE];
 struct super_block sb[NSUPERBLK];
@@ -286,57 +287,70 @@ u64 zmap(struct inode *ip, u64 zone) {
 
     return addr;
 }
+
 int open(const char *pathname, int flags, mode_t mode) {
-    struct inode *ip;
-    struct direct dir;
-    struct file *fp;
-    int fd = -1;
-    char buf[128];   // TODO:
-    char buf1[128];  // TODO:
+	int fd = -1;
+	struct inode *ip;
+	char *save;
     char *basedir;
     char *filename;
+	char *path;
+	u64 offset = 0;
+    struct direct dir;
+    struct file *fp;
 
-    // dirname, basename destroy 'str' argument.
-    strcpy(buf, pathname);
-    strcpy(buf1, pathname);
-    basedir = dirname(buf);
-    filename = basename(buf1);
-    if (strncmp(basedir, ".", 2) == 0) {
+	path = (char *)pathname;
+
+	save = kmalloc(strlen(path));
+	strcpy(save, path);
+
+    if (strncmp(path, ".", 2) == 0) {
         // TODO: CWD is not supported for now
         basedir = "/";
-    }
-    VERBOSE_PRINTK("basedir: %s, filename: %s\n", basedir, filename);
-    if (flags & O_CREAT) {
-        ip = namei(basedir);
+    } else {
+		basedir = dirname(path);
+		strcpy(path, save);
+	}
+	filename = basename(path);
+	strcpy(path, save);
+
+	ip = namei(path);
+	if(ip == NULL) {
+		if(!(flags & O_CREAT)) {
+			goto free_and_exit;
+		}
+		ip = namei(basedir);
         if (ip == NULL) {
-            return -1;
+			goto free_and_exit;
         }
         ip->size += sizeof(struct direct);
         iupdate(ip);
-        u64 offset = 0;
         do {
             readi(ip, (char *)&dir, offset, sizeof(struct direct));
             offset += sizeof(struct direct);
             VERBOSE_PRINTK("lookup: %s:%x\n", dir.name, dir.ino);
         } while (!(strcmp(dir.name, "") == 0) && dir.ino != 0);
-        fd = ufalloc();
-        fp = falloc();
-        fp->flags = mode;
-        fp->ip = ialloc(ip->dev);
-        fp->ip->mode = mode;
-        fp->ip->nlinks++;
-        fp->ip->size = 0x0;
-        iupdate(fp->ip);
-        strcpy(dir.name, filename);
-        dir.ino = fp->ip->inum + 1;
-        VERBOSE_PRINTK("%s:%x\n", dir.name, dir.ino);
-        VERBOSE_PRINTK("%x\n", offset);
+		ip = ialloc(ip->dev);
+		ip->mode = mode;
+		ip->size = 0x0;
+		iupdate(ip);
+		strcpy(dir.name, filename);
+		dir.ino = ip->inum + 1;
         offset -= sizeof(struct direct);
         writei(ip, (char *)&dir, offset, sizeof(struct direct));
-    }
+	}
+	fd = ufalloc();
+	fp = falloc();
+	fp->flags = mode;
+	fp->ip = ip;
+	fp->ip->mode = mode;
+	fp->ip->nlinks++;
 
-    return fd;
+free_and_exit:
+	kfree(save);
+	return fd;
 }
+
 int creat(const char *pathname, mode_t mode) {
     return open(pathname, (O_WRONLY | O_CREAT | O_TRUNC), mode);
 }

@@ -305,10 +305,11 @@ int open(const char *pathname, int flags, mode_t mode) {
     struct direct dir;
     struct file *fp;
 
-	path = (char *)pathname;
-
-	save = kmalloc(strlen(path));
-	strcpy(save, path);
+    // Remove const qualifier
+    path = (char *)pathname;
+    // Back up original path, since namei destroy it.
+    save = kmalloc(strlen(path));
+    strcpy(save, path);
 
     if (strncmp(path, ".", 2) == 0) {
         // TODO: CWD is not supported for now
@@ -322,31 +323,46 @@ int open(const char *pathname, int flags, mode_t mode) {
 
 	ip = namei(path);
 	if(ip == NULL) {
-		if(!(flags & O_CREAT)) {
-			goto free_and_exit;
+            // If not exsit.
+            if (!(flags & O_CREAT)) {
+                // If not exists and O_CREAT is not set.
+                goto free_and_exit;
 		}
-		ip = namei(basedir);
+                // Get inode of basedir.
+                ip = namei(basedir);
         if (ip == NULL) {
-			goto free_and_exit;
+            // If basedir is not exists,
+            // TODO: currect behaviour is creating direcotry structure first.
+            goto free_and_exit;
         }
+        // Create new direct entry in direcotry.
         ip->size += sizeof(struct direct);
         iupdate(ip);
+        // Read until free slot found.
         do {
             readi(ip, (char *)&dir, offset, sizeof(struct direct));
             offset += sizeof(struct direct);
             VERBOSE_PRINTK("lookup: %s:%x\n", dir.name, dir.ino);
         } while (!(strcmp(dir.name, "") == 0) && dir.ino != 0);
-		ip = ialloc(ip->dev);
-		ip->mode = mode;
-		ip->size = 0x0;
-		iupdate(ip);
-		strcpy(dir.name, filename);
-		dir.ino = ip->inum + 1;
         offset -= sizeof(struct direct);
+        // Allocate new inode.
+        ip = ialloc(ip->dev);
+        // Set mode and size.
+        ip->mode = mode;
+        // TODO: always trunc.
+        ip->size = 0x0;
+        // Update newly create inode.
+        iupdate(ip);
+        // Set newly created filename and its ino to empty direct entry.
+        strcpy(dir.name, filename);
+        dir.ino = ip->inum + 1;
+        // Write direct entry.
         writei(ip, (char *)&dir, offset, sizeof(struct direct));
 	}
-	fd = ufalloc();
-	fp = falloc();
+        // Allocate file descriptor.
+        fd = ufalloc();
+        // Allocate file structure.
+        fp = falloc();
 	fp->flags = mode;
 	fp->ip = ip;
 	fp->ip->mode = mode;

@@ -89,9 +89,11 @@ struct inode *iget(dev_t dev, u64 inum) {
             ip->count++;
             ip->dev = dev;
             ip->inum = inum;
+			brelse(buf);
             return ip;
         }
     }
+	brelse(buf);
     panic("No empty inode cache entry\n");
 
     return NULL;

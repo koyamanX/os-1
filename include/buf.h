@@ -74,6 +74,6 @@ struct buf *getblk(dev_t dev, u64 blkno);
  * @details Release buffer cache from device active list, if it is dirty, flush
  * to device, then return to freelist.
  */
-void brelese(struct buf *bp);
+void brelse(struct buf *bp);
 
 #endif  // _BUF_H

@@ -59,29 +59,14 @@ void bflush(dev_t dev) {
     }
 }
 
-/**
- * @brief Get a buffer from the buffer cache for a given device and block
- * number.
- * @details If a buffer with the given device and block number already exists in
- * the buffer cache, return it. Otherwise, return a new buffer from the buffer
- * cache that can be associated with the device and block number.
- * @param dev Device identifier.
- * @param blkno Block number.
- * @return Pointer to the buffer for the given device and block number, or NULL
- * if no buffers are available.
- */
 struct buf *getblk(dev_t dev, u64 blkno) {
     struct buf *bp;
 
-    // Search for a free bpfer in the bpfer cache
     for (bp = bfreelist; bp != NULL; bp = bp->next) {
         if (bp->valid == 0) {
-            // Found a free bpfer, remove it from the free list
             if (bp == bfreelist) {
                 bfreelist = bp->next;
             } else {
-                // Find the previous bpfer in the list and link it to the next
-                // bpfer
                 struct buf *prev = bfreelist;
                 while (prev->next != bp) {
                     prev = prev->next;
@@ -92,33 +77,23 @@ struct buf *getblk(dev_t dev, u64 blkno) {
         }
     }
 
-    // If no free bpfer was found, pick one from the active list and flush its
-    // contents
     if (bp == NULL) {
         struct bdevsw *bdev = &bdevsw[dev.major];
         bp = bdev->bactivelist;
         if (bp == NULL) {
-            // No bpfers available, return NULL
             return NULL;
         }
         bwrite(bp);
     }
 
-    // Set bpfer fields to new values
     bp->valid = 1;
     bp->dev = dev;
     bp->blkno = blkno;
     bp->dirty = 0;
 
-    // Return the bpfer
     return bp;
 }
 
-/**
- * Release a buffer back to the buffer cache.
- *
- * @param bp The buffer to release.
- */
 void brelse(struct buf *bp) {
     if (!bp) {
         // Do nothing if the buffer pointer is null.

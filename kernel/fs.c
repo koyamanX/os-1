@@ -12,13 +12,14 @@
 #include <libgen.h>
 #include <panic.h>
 #include <printk.h>
+#include <proc.h>
 #include <riscv.h>
+#include <slob.h>
 #include <string.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <virtio.h>
 #include <vm.h>
-#include <slob.h>
 
 struct inode inode[NICACHE];
 struct super_block sb[NSUPERBLK];
@@ -435,4 +436,20 @@ int mknod(const char *pathname, mode_t mode, dev_t dev) {
     writei(ip, (char *)&dir, offset, sizeof(struct direct));
 
     return fd;
+}
+
+int close(int fd) {
+    struct proc *rp;
+    struct inode *ip;
+    struct file *fp;
+
+    rp = cpus[r_tp()].rp;
+    fp = rp->ofile[fd];
+    ip = fp->ip;
+    if (fp == NULL || ip == NULL) {
+        return -1;
+    }
+    closei(ip);
+
+    return 0;
 }

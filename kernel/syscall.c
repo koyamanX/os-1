@@ -50,6 +50,9 @@ int syscall(struct proc *rp) {
             extern void swtch(context_t * old, context_t * new);
             swtch(&rp->ctx, &cpus[r_tp()].ctx);
             break;
+        case __NR_CLOSE:
+            ret = close(a0);
+            break;
         default:
             panic("invalid syscall\n");
             break;

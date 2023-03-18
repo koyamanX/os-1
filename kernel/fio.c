@@ -1,5 +1,6 @@
 #include <file.h>
 #include <panic.h>
+#include <printk.h>
 #include <proc.h>
 #include <riscv.h>
 #include <stddef.h>
@@ -70,7 +71,7 @@ void closei(struct inode *ip) {
             bdevsw[ip->dev.major].close();
             break;
         default:
-            panic("closei: unsupported device\n");
+            VERBOSE_PRINTK("closei: unsupported device\n");
             break;
     }
 }

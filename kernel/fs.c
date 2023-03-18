@@ -169,6 +169,11 @@ u64 readi(struct inode *ip, char *dest, u64 offset, u64 size) {
         return size;
     }
 
+    if (offset == ip->size) {
+        // EOF
+        return 0;
+    }
+
     if (offset > 0) {
         for (u64 i = BLOCKSIZE; i <= offset; i += BLOCKSIZE) {
             zone++;

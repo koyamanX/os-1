@@ -112,6 +112,7 @@ struct inode *diri(struct inode *ip, char *name) {
             }
             dp++;
         }
+        brelse(buf);
     }
     // TODO: Indirect zone
 

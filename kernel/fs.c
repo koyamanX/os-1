@@ -91,11 +91,11 @@ struct inode *iget(dev_t dev, u64 inum) {
             ip->count++;
             ip->dev = dev;
             ip->inum = inum;
-			brelse(buf);
+            brelse(buf);
             return ip;
         }
     }
-	brelse(buf);
+    brelse(buf);
     panic("No empty inode cache entry\n");
 
     return NULL;
@@ -301,13 +301,13 @@ u64 zmap(struct inode *ip, u64 zone) {
 }
 
 int open(const char *pathname, int flags, mode_t mode) {
-	int fd = -1;
-	struct inode *ip;
-	char *save;
+    int fd = -1;
+    struct inode *ip;
+    char *save;
     char *basedir;
     char *filename;
-	char *path;
-	u64 offset = 0;
+    char *path;
+    u64 offset = 0;
     struct direct dir;
     struct file *fp;
 
@@ -321,21 +321,21 @@ int open(const char *pathname, int flags, mode_t mode) {
         // TODO: CWD is not supported for now
         basedir = "/";
     } else {
-		basedir = dirname(path);
-		strcpy(path, save);
-	}
-	filename = basename(path);
-	strcpy(path, save);
+        basedir = dirname(path);
+        strcpy(path, save);
+    }
+    filename = basename(path);
+    strcpy(path, save);
 
-	ip = namei(path);
-	if(ip == NULL) {
-            // If not exsit.
-            if (!(flags & O_CREAT)) {
-                // If not exists and O_CREAT is not set.
-                goto free_and_exit;
-		}
-                // Get inode of basedir.
-                ip = namei(basedir);
+    ip = namei(path);
+    if (ip == NULL) {
+        // If not exsit.
+        if (!(flags & O_CREAT)) {
+            // If not exists and O_CREAT is not set.
+            goto free_and_exit;
+        }
+        // Get inode of basedir.
+        ip = namei(basedir);
         if (ip == NULL) {
             // If basedir is not exists,
             // TODO: currect behaviour is creating direcotry structure first.
@@ -364,19 +364,19 @@ int open(const char *pathname, int flags, mode_t mode) {
         dir.ino = ip->inum + 1;
         // Write direct entry.
         writei(ip, (char *)&dir, offset, sizeof(struct direct));
-	}
-        // Allocate file descriptor.
-        fd = ufalloc();
-        // Allocate file structure.
-        fp = falloc();
-	fp->flags = mode;
-	fp->ip = ip;
-	fp->ip->mode = mode;
-	fp->ip->nlinks++;
+    }
+    // Allocate file descriptor.
+    fd = ufalloc();
+    // Allocate file structure.
+    fp = falloc();
+    fp->flags = mode;
+    fp->ip = ip;
+    fp->ip->mode = mode;
+    fp->ip->nlinks++;
 
 free_and_exit:
-	kfree(save);
-	return fd;
+    kfree(save);
+    return fd;
 }
 
 int creat(const char *pathname, mode_t mode) {

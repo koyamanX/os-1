@@ -20,7 +20,7 @@ struct super_block {
     u16 nzones;         //!< Number of available zones.
     u16 imap_blocks;    //!< Number of blocks used by inode bit map.
     u16 zmap_blocks;    //!< Number of blocks used by zone bit map.
-    u16 firstdatazone;  //!< Number of first data zone.
+    u16 first_data_zone;  //!< Number of first data zone.
     u16 log_zone_size;  //!< Log2 of block/zone.
     u16 pad;            //!< Padding.
     u32 max_size;       //!< Max file size.

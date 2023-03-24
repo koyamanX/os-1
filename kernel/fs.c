@@ -104,15 +104,23 @@ struct inode *iget(dev_t dev, u64 inum) {
 struct inode *diri(struct inode *ip, char *name) {
     struct direct *dp;
     struct buf *buf;
+    struct super_block *sb;
 
+    sb = getfs(ip->dev);
+    int size = ip->size;
     for (u8 zone = 0; zone < DIRECTZONE; zone++) {
         buf = bread(rootdev, zmap(ip, zone));
         dp = (struct direct *)buf->data;
-        for (int i = ip->size; i; i -= sizeof(struct direct)) {
+        for (int i = 0; i < sb->block_size; i += sizeof(struct direct)) {
+            if (size == 0) {
+                return NULL;
+            }
             if (strcmp(dp->name, name) == 0) {
+                brelse(buf);
                 return iget(rootdev, dp->ino);
             }
             dp++;
+            size -= sizeof(struct direct);
         }
         brelse(buf);
     }

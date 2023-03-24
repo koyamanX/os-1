@@ -71,18 +71,18 @@ struct inode *iget(dev_t dev, u64 inum) {
     struct super_block *sb;
     struct inode *ip;
 
-    sb = getfs(dev);
-    /**
-     * Inode number starts from 1, however block number starts with 0,
-     * so subtract by 1 to map block number.
-     */
-    inum--;
-    blkno = (IMAP(sb) + sb->imap_blocks + sb->zmap_blocks + (inum / NINODE));
-    buf = bread(dev, blkno);
-
     for (int i = 0; i < NICACHE; i++) {
         // Find unused inode cache entry.
         if (inode[i].count == 0) {
+            sb = getfs(dev);
+            /**
+             * Inode number starts from 1, however block number starts with 0,
+             * so subtract by 1 to map block number.
+             */
+            inum--;
+            blkno = (IMAP(sb) + sb->imap_blocks + sb->zmap_blocks +
+                     (inum / NINODE));
+            buf = bread(dev, blkno);
             // Read inode to inode cache.
             memcpy(&inode[i], (buf->data + ((inum % NINODE) * INODE_SIZE)),
                    INODE_SIZE);
@@ -92,10 +92,10 @@ struct inode *iget(dev_t dev, u64 inum) {
             ip->dev = dev;
             ip->inum = inum;
             brelse(buf);
+
             return ip;
         }
     }
-    brelse(buf);
     panic("No empty inode cache entry\n");
 
     return NULL;

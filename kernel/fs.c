@@ -254,25 +254,30 @@ static int ffs(int x) {
 struct inode *ialloc(dev_t dev) {
     struct super_block *sb;
     struct inode *ip = NULL;
-    u64 offset;
     u8 pos;
     struct buf *buf;
+	u64 inum;
 
     sb = getfs(dev);
-    offset = IMAP(sb);
+    for (u64 blkoff = 0; blkoff < sb->imap_blocks; blkoff++) {
+        buf = bread(dev, IMAP(sb)+blkoff);
+		for(u64 byteoff = 0; byteoff < sb->block_size; byteoff++) {
+			u8 byte = buf->data[byteoff];
+			if((byte != 0) && ((pos = ffs(~byte & 0xff)) != 0)) {
+				byte |= (1 << (pos - 1));
+				buf->data[byteoff] = byte;
+				bwrite(buf);
+				brelse(buf);
+				inum = (blkoff * sb->block_size) + (byteoff * sizeof(u8)) + (pos - 1);
+				ip = iget(dev, inum);
 
-    for (u64 i = 0; i < (sb->imap_blocks / sizeof(u8)); i++) {
-        buf = bread(dev, offset);
-        if ((pos = ffs(~buf->data[i] & 0xff)) != 0) {
-            buf->data[i] = buf->data[i] | (1 << (pos - 1));
-            bwrite(buf);
-            brelse(buf);
-            ip = iget(dev, i * 8 + (7 - pos));
-            break;
-        }
-        offset++;
+				return ip;
+			}
+		}
+		brelse(buf);
     }
-    return ip;
+	panic("No empty inode\n");
+    return NULL;
 }
 
 void iupdate(struct inode *ip) {

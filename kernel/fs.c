@@ -24,6 +24,8 @@
 struct inode inode[NICACHE];
 struct super_block sb[NSUPERBLK];
 
+static int ffs(int x);
+
 void fsinit(void) {
     struct buf *bp;
     char rootdir[] = "/";

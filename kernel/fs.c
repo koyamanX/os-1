@@ -251,16 +251,28 @@ static int ffs(int x) {
     return bit;
 }
 
-struct inode *ialloc(dev_t dev) {
+static u64 alloc_bit(dev_t dev, int map) {
     struct super_block *sb;
-    struct inode *ip = NULL;
-    u8 pos;
     struct buf *buf;
 	u64 inum;
+    u8 pos;
+	u64 last_block;
+	u64 map_offset;
 
-    sb = getfs(dev);
-    for (u64 blkoff = 0; blkoff < sb->imap_blocks; blkoff++) {
-        buf = bread(dev, IMAP(sb)+blkoff);
+ 	sb = getfs(dev);
+	if(map == 0) {
+		// IMAP
+		last_block = sb->imap_blocks;
+		map_offset = IMAP(sb);
+	} else if(map == 1){
+		// ZMAP
+		last_block = sb->zmap_blocks;
+		map_offset = IMAP(sb) + sb->imap_blocks;
+	} else {
+		panic("Unknown map");
+	}
+    for (u64 blkoff = 0; blkoff < last_block; blkoff++) {
+        buf = bread(dev, map_offset+blkoff);
 		for(u64 byteoff = 0; byteoff < sb->block_size; byteoff++) {
 			u8 byte = buf->data[byteoff];
 			if((byte != 0) && ((pos = ffs(~byte & 0xff)) != 0)) {
@@ -269,15 +281,25 @@ struct inode *ialloc(dev_t dev) {
 				bwrite(buf);
 				brelse(buf);
 				inum = (blkoff * sb->block_size) + (byteoff * sizeof(u8)) + (pos - 1);
-				ip = iget(dev, inum);
 
-				return ip;
+				return inum;
 			}
 		}
 		brelse(buf);
     }
-	panic("No empty inode\n");
-    return NULL;
+	panic("No free slots in bitmap\n");
+
+	return -1;
+}
+
+struct inode *ialloc(dev_t dev) {
+    struct inode *ip = NULL;
+	u64 inum;
+
+	inum = alloc_bit(dev, 0);
+	ip = iget(dev, inum);
+
+	return ip;
 }
 
 void iupdate(struct inode *ip) {

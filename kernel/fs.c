@@ -105,9 +105,10 @@ struct inode *diri(struct inode *ip, char *name) {
     struct direct *dp;
     struct buf *buf;
     struct super_block *sb;
+    int size;
 
     sb = getfs(ip->dev);
-    int size = ip->size;
+    size = ip->size;
     for (u8 zone = 0; zone < DIRECTZONE; zone++) {
         buf = bread(rootdev, zmap(ip, zone));
         dp = (struct direct *)buf->data;

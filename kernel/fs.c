@@ -26,6 +26,7 @@ struct super_block sb[NSUPERBLK];
 
 static int ffs(int x);
 static u64 alloc_bit(dev_t dev, int map);
+static u8 has_bit(dev_t dev, int map, u64 n);
 
 void fsinit(void) {
     struct buf *bp;
@@ -69,7 +70,6 @@ struct super_block *getfs(dev_t dev) {
 }
 
 struct inode *iget(dev_t dev, u64 inum) {
-    struct buf *buf;
     u64 blkno;
     struct super_block *sb;
     struct inode *ip;
@@ -85,16 +85,19 @@ struct inode *iget(dev_t dev, u64 inum) {
             inum--;
             blkno = (IMAP(sb) + sb->imap_blocks + sb->zmap_blocks +
                      (inum / NINODE));
-            buf = bread(dev, blkno);
-            // Read inode to inode cache.
-            memcpy(&inode[i], (buf->data + ((inum % NINODE) * INODE_SIZE)),
-                   INODE_SIZE);
+			if(!has_bit(dev, 0, inum)) {
+				struct buf *buf;
+				buf = bread(dev, blkno);
+				// Read inode to inode cache.
+				memcpy(&inode[i], (buf->data + ((inum % NINODE) * INODE_SIZE)),
+					   INODE_SIZE);
+				brelse(buf);
+			}
             // Create on-memory inode entry.
             ip = &inode[i];
             ip->count++;
             ip->dev = dev;
             ip->inum = inum;
-            brelse(buf);
 
             return ip;
         }
@@ -292,6 +295,31 @@ static u64 alloc_bit(dev_t dev, int map) {
     panic("No free slots in bitmap\n");
 
     return -1;
+}
+static u8 has_bit(dev_t dev, int map, u64 n) {
+	u64 blkoff;
+	u64 byteoff;
+	u8 bitoff;
+	u8 byte;
+	u8 bit;
+	struct super_block *sb;
+	struct buf *buf;
+
+	sb = getfs(dev);
+	if(map == 1) {
+		panic("Not supported yet\n");
+	}
+
+	blkoff = n / (sb->block_size * 8);
+	byteoff = (n / 8) % sb->block_size;
+	bitoff = n % 8;
+
+	buf = bread(dev, blkoff);
+	byte = buf->data[byteoff];
+	bit =  byte & (1 << bitoff);
+	brelse(buf);	
+
+	return bit;
 }
 
 struct inode *ialloc(dev_t dev) {

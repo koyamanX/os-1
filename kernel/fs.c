@@ -255,20 +255,26 @@ u64 writei(struct inode *ip, char *src, u64 offset, u64 size) {
             zone++;
         }
         buf = bread(rootdev, zmap(ip, zone));
+        printk("@@@ writei: zone:%x:%x\n", zone, zmap(ip, zone));
         memcpy(&buf->data[(offset % BLOCKSIZE)], src, size - total);
         bwrite(buf);
         brelse(buf);
+        ip->size += (size - total);
         total = total + (size - total);
     }
     while (total < size) {
         // TODO: allocate zone bit map.
         buf = bread(rootdev, zmap(ip, zone));
+        printk("@@@ writei: zone:%x:%x\n", zone, zmap(ip, zone));
         memcpy(buf->data, src, size - total);
         bwrite(buf);
         brelse(buf);
         zone++;
+        ip->size += (size - total);
         total = total + (size - total);
     }
+    iupdate(ip);
+
     return total;
 }
 
@@ -300,7 +306,7 @@ static u64 alloc_bit(dev_t dev, int map) {
     } else if (map == 1) {
         // ZMAP
         last_block = sb->zmap_blocks;
-        map_offset = IMAP(sb) + sb->imap_blocks;
+        map_offset = ZMAP(sb);
     } else {
         panic("Unknown map");
     }
@@ -454,6 +460,15 @@ int open(const char *pathname, int flags, mode_t mode) {
         ip->mode = mode | I_REGULAR;
         // TODO: always trunc.
         ip->size = 0x0;
+        struct super_block *sb;
+        sb = getfs(ip->dev);
+        ip->zone[0] =
+            ((sb->first_data_zone) + alloc_bit(ip->dev, 1)) * BLOCKSIZE;
+        ip->zone[1] =
+            ((sb->first_data_zone) + alloc_bit(ip->dev, 1)) * BLOCKSIZE;
+        ip->zone[2] =
+            ((sb->first_data_zone) + alloc_bit(ip->dev, 1)) * BLOCKSIZE;
+
         // Update newly create inode.
         iupdate(ip);
         // Set newly created filename and its ino to empty direct entry.
@@ -470,19 +485,11 @@ int open(const char *pathname, int flags, mode_t mode) {
     fp->ip = ip;
     fp->ip->mode |= mode;
     fp->ip->nlinks++;
-	fp->ip->uid = 0;
-	fp->ip->gid = 0;
-	fp->ip->atime = 0;
-	fp->ip->mtime = 0;
-	fp->ip->ctime = 0;
-	fp->ip->zone[0] = 0;
-	fp->ip->zone[1] = 0;
-	fp->ip->zone[2] = 0;
-	fp->ip->zone[3] = 0;
-	fp->ip->zone[4] = 0;
-	fp->ip->zone[5] = 0;
-	fp->ip->zone[6] = 0;
-	fp->ip->zone[7] = 0;
+    fp->ip->uid = 0;
+    fp->ip->gid = 0;
+    fp->ip->atime = 0;
+    fp->ip->mtime = 0;
+    fp->ip->ctime = 0;
     iupdate(fp->ip);
 
 free_and_exit:

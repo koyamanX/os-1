@@ -313,8 +313,7 @@ static u64 alloc_bit(dev_t dev, int map) {
                 buf->data[byteoff] = byte;
                 bwrite(buf);
                 brelse(buf);
-                inum = (blkoff * sb->block_size) + (byteoff * 8) +
-                       (pos-1);
+                inum = (blkoff * sb->block_size) + (byteoff * 8) + (pos - 1);
 
                 return inum;
             }
@@ -400,6 +399,7 @@ u64 zmap(struct inode *ip, u64 zone) {
 int open(const char *pathname, int flags, mode_t mode) {
     int fd = -1;
     struct inode *ip;
+    struct inode *dip;
     char *save;
     char *basedir;
     char *filename;
@@ -432,24 +432,24 @@ int open(const char *pathname, int flags, mode_t mode) {
             goto free_and_exit;
         }
         // Get inode of basedir.
-        ip = namei(basedir);
-        if (ip == NULL) {
+        dip = namei(basedir);
+        if (dip == NULL) {
             // If basedir is not exists,
             // TODO: currect behaviour is creating direcotry structure first.
             goto free_and_exit;
         }
         // Create new direct entry in direcotry.
-        ip->size += sizeof(struct direct);
-        iupdate(ip);
+        dip->size += sizeof(struct direct);
+        iupdate(dip);
         // Read until free slot found.
         do {
-            readi(ip, (char *)&dir, offset, sizeof(struct direct));
+            readi(dip, (char *)&dir, offset, sizeof(struct direct));
             offset += sizeof(struct direct);
             VERBOSE_PRINTK("lookup: %s:%x\n", dir.name, dir.ino);
         } while (!(strcmp(dir.name, "") == 0) && dir.ino != 0);
         offset -= sizeof(struct direct);
         // Allocate new inode.
-        ip = ialloc(ip->dev);
+        ip = ialloc(dip->dev);
         // Set mode and size.
         ip->mode = mode | I_REGULAR;
         // TODO: always trunc.
@@ -460,7 +460,7 @@ int open(const char *pathname, int flags, mode_t mode) {
         strcpy(dir.name, filename);
         dir.ino = ip->inum + 1;
         // Write direct entry.
-        writei(ip, (char *)&dir, offset, sizeof(struct direct));
+        writei(dip, (char *)&dir, offset, sizeof(struct direct));
     }
     // Allocate file descriptor.
     fd = ufalloc();
@@ -469,8 +469,21 @@ int open(const char *pathname, int flags, mode_t mode) {
     fp->flags = mode;
     fp->ip = ip;
     fp->ip->mode |= mode;
-    iupdate(fp->ip);
     fp->ip->nlinks++;
+	fp->ip->uid = 0;
+	fp->ip->gid = 0;
+	fp->ip->atime = 0;
+	fp->ip->mtime = 0;
+	fp->ip->ctime = 0;
+	fp->ip->zone[0] = 0;
+	fp->ip->zone[1] = 0;
+	fp->ip->zone[2] = 0;
+	fp->ip->zone[3] = 0;
+	fp->ip->zone[4] = 0;
+	fp->ip->zone[5] = 0;
+	fp->ip->zone[6] = 0;
+	fp->ip->zone[7] = 0;
+    iupdate(fp->ip);
 
 free_and_exit:
     kfree(save);

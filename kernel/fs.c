@@ -142,7 +142,6 @@ struct inode *namei(char *path) {
     struct inode *dirp;
     struct inode *ip;
 
-    printk("@@@ namei START: %s\n", path);
     save = kmalloc(strlen(path) + 1);
     strcpy(save, path);
 
@@ -309,13 +308,13 @@ static u64 alloc_bit(dev_t dev, int map) {
         buf = bread(dev, map_offset + blkoff);
         for (u64 byteoff = 0; byteoff < sb->block_size; byteoff++) {
             u8 byte = buf->data[byteoff];
-            if ((byte != 0) && ((pos = ffs(~byte & 0xff)) != 0)) {
+            if ((~byte != 0) && ((pos = ffs(~byte & 0xff)) != 0)) {
                 byte |= (1 << (pos - 1));
                 buf->data[byteoff] = byte;
                 bwrite(buf);
                 brelse(buf);
-                inum = (blkoff * sb->block_size) + (byteoff * sizeof(u8)) +
-                       (pos - 1);
+                inum = (blkoff * sb->block_size) + (byteoff * 8) +
+                       (pos-1);
 
                 return inum;
             }

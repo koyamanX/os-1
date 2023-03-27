@@ -137,10 +137,39 @@ struct inode *diri(struct inode *ip, char *name) {
 }
 
 struct inode *namei(char *path) {
+	char *save;
+	char *name;
+	struct inode *dirp;
+	struct inode *ip;
+
+	printk("@@@ namei START: %s\n", path);
+    save = kmalloc(strlen(path)+1);
+	strcpy(save, path);
+	
+	dirp = iget(rootdev, ROOT);
+
+	if(*path != '/') {
+		panic("Relative path is not supported yet\n");
+	}
+
+	name = strtok(path, "/");
+	if(name == NULL || !*name) {
+		kfree(save);
+		return dirp;
+	}
+	do {
+		ip = diri(dirp, name);
+		name = strtok(NULL, "/");
+		dirp = ip;
+	} while(name);
+	kfree(save);
+
+	return ip;
+
+#if 0
     struct inode *ip;
     char *name;
     struct inode *p;
-
     VERBOSE_PRINTK("namei: START\n");
     if (*path == '/') {
         VERBOSE_PRINTK("namei: %s\n", path);
@@ -167,6 +196,7 @@ struct inode *namei(char *path) {
     VERBOSE_PRINTK("namei: END\n");
 
     return ip;
+#endif
 }
 
 // read content pointed by ip to dest, for size bytes start from offset.

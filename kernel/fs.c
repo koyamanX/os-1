@@ -137,34 +137,34 @@ struct inode *diri(struct inode *ip, char *name) {
 }
 
 struct inode *namei(char *path) {
-	char *save;
-	char *name;
-	struct inode *dirp;
-	struct inode *ip;
+    char *save;
+    char *name;
+    struct inode *dirp;
+    struct inode *ip;
 
-	printk("@@@ namei START: %s\n", path);
-    save = kmalloc(strlen(path)+1);
-	strcpy(save, path);
-	
-	dirp = iget(rootdev, ROOT);
+    printk("@@@ namei START: %s\n", path);
+    save = kmalloc(strlen(path) + 1);
+    strcpy(save, path);
 
-	if(*path != '/') {
-		panic("Relative path is not supported yet\n");
-	}
+    dirp = iget(rootdev, ROOT);
 
-	name = strtok(path, "/");
-	if(name == NULL || !*name) {
-		kfree(save);
-		return dirp;
-	}
-	do {
-		ip = diri(dirp, name);
-		name = strtok(NULL, "/");
-		dirp = ip;
-	} while(name);
-	kfree(save);
+    if (*path != '/') {
+        panic("Relative path is not supported yet\n");
+    }
 
-	return ip;
+    name = strtok(path, "/");
+    if (name == NULL || !*name) {
+        kfree(save);
+        return dirp;
+    }
+    do {
+        ip = diri(dirp, name);
+        name = strtok(NULL, "/");
+        dirp = ip;
+    } while (name);
+    kfree(save);
+
+    return ip;
 
 #if 0
     struct inode *ip;
@@ -452,7 +452,7 @@ int open(const char *pathname, int flags, mode_t mode) {
         // Allocate new inode.
         ip = ialloc(ip->dev);
         // Set mode and size.
-        ip->mode = mode;
+        ip->mode = mode | I_REGULAR;
         // TODO: always trunc.
         ip->size = 0x0;
         // Update newly create inode.
@@ -469,7 +469,8 @@ int open(const char *pathname, int flags, mode_t mode) {
     fp = falloc();
     fp->flags = mode;
     fp->ip = ip;
-    fp->ip->mode = mode;
+    fp->ip->mode |= mode;
+    iupdate(fp->ip);
     fp->ip->nlinks++;
 
 free_and_exit:

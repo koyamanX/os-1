@@ -26,6 +26,7 @@ struct super_block sb[NSUPERBLK];
 
 static int ffs(int x);
 static u64 alloc_bit(dev_t dev, int map);
+static void free_bit(dev_t dev, int map, u64 pos);
 static u8 has_bit(dev_t dev, int map, u64 n);
 
 void fsinit(void) {
@@ -328,6 +329,37 @@ static u64 alloc_bit(dev_t dev, int map) {
 
     return -1;
 }
+
+static void free_bit(dev_t dev, int map, u64 pos) {
+    struct super_block *sb;
+    struct buf *buf;
+    u64 blkoff;
+    u64 byteoff;
+    u64 bitoff;
+    u64 map_offset;
+
+    sb = getfs(dev);
+    if (map == 0) {
+        // IMAP
+        map_offset = IMAP(sb);
+        pos--;
+    } else if (map == 1) {
+        // ZMAP
+        map_offset = ZMAP(sb);
+    } else {
+        panic("Unknown map");
+    }
+    byteoff = (pos % (sb->block_size * 8));
+    blkoff = pos / sb->block_size;
+    bitoff = pos % 8;
+    buf = bread(dev, map_offset + blkoff);
+    u8 byte = buf->data[byteoff];
+    byte &= (1 << bitoff);
+    buf->data[byteoff] = byte;
+    bwrite(buf);
+    brelse(buf);
+}
+
 static u8 has_bit(dev_t dev, int map, u64 n) {
     u64 blkoff;
     u64 byteoff;
@@ -490,6 +522,25 @@ int open(const char *pathname, int flags, mode_t mode) {
     fp->ip->atime = 0;
     fp->ip->mtime = 0;
     fp->ip->ctime = 0;
+    if (flags & O_TRUNC) {
+        fp->ip->size = 0;
+        free_bit(fp->ip->dev, 1, fp->ip->zone[0]);
+        free_bit(fp->ip->dev, 1, fp->ip->zone[1]);
+        free_bit(fp->ip->dev, 1, fp->ip->zone[2]);
+        free_bit(fp->ip->dev, 1, fp->ip->zone[3]);
+        free_bit(fp->ip->dev, 1, fp->ip->zone[4]);
+        free_bit(fp->ip->dev, 1, fp->ip->zone[5]);
+        free_bit(fp->ip->dev, 1, fp->ip->zone[6]);
+        free_bit(fp->ip->dev, 1, fp->ip->zone[7]);
+        fp->ip->zone[0] = ((sb->first_data_zone) + alloc_bit(fp->ip->dev, 1));
+        fp->ip->zone[1] = ((sb->first_data_zone) + alloc_bit(fp->ip->dev, 1));
+        fp->ip->zone[2] = ((sb->first_data_zone) + alloc_bit(fp->ip->dev, 1));
+        fp->ip->zone[3] = ((sb->first_data_zone) + alloc_bit(fp->ip->dev, 1));
+        fp->ip->zone[4] = ((sb->first_data_zone) + alloc_bit(fp->ip->dev, 1));
+        fp->ip->zone[5] = ((sb->first_data_zone) + alloc_bit(fp->ip->dev, 1));
+        fp->ip->zone[6] = ((sb->first_data_zone) + alloc_bit(fp->ip->dev, 1));
+        fp->ip->zone[7] = ((sb->first_data_zone) + alloc_bit(fp->ip->dev, 1));
+    }
     iupdate(fp->ip);
 
 free_and_exit:

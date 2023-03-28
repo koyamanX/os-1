@@ -250,11 +250,6 @@ u64 writei(struct inode *ip, char *src, u64 offset, u64 size) {
         return size;
     }
 
-    if (offset == ip->size) {
-        // EOF
-        return 0;
-    }
-
     if (offset > 0) {
         for (u64 i = BLOCKSIZE; i <= offset; i += BLOCKSIZE) {
             zone++;

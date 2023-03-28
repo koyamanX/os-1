@@ -354,7 +354,7 @@ static void free_bit(dev_t dev, int map, u64 pos) {
     bitoff = pos % 8;
     buf = bread(dev, map_offset + blkoff);
     u8 byte = buf->data[byteoff];
-    byte &= (1 << bitoff);
+    byte &= ~(1 << bitoff);
     buf->data[byteoff] = byte;
     bwrite(buf);
     brelse(buf);

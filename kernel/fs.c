@@ -623,7 +623,11 @@ int close(int fd) {
     if (fp == NULL || ip == NULL) {
         return -1;
     }
+    if (fp->count == 0) {
+        panic("Closing unused file\n");
+    }
     closei(ip);
+    rp->ofile[fd] = NULL;
 
     return 0;
 }

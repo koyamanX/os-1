@@ -71,7 +71,7 @@ void closei(struct inode *ip) {
             bdevsw[ip->dev.major].close();
             break;
         default:
-            VERBOSE_PRINTK("closei: unsupported device\n");
+            iput(ip);
             break;
     }
 }

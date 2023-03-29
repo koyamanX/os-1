@@ -165,38 +165,6 @@ struct inode *namei(char *path) {
     kfree(save);
 
     return ip;
-
-#if 0
-    struct inode *ip;
-    char *name;
-    struct inode *p;
-    VERBOSE_PRINTK("namei: START\n");
-    if (*path == '/') {
-        VERBOSE_PRINTK("namei: %s\n", path);
-        ip = iget(rootdev, ROOT);
-        path++;
-    }
-
-    name = strtok(path, "/");
-    if (name) {
-        VERBOSE_PRINTK("namei: %s\n", name);
-        p = diri(ip, name);
-        if (p != NULL) {
-            ip = p;
-        }
-    }
-    while ((name = strtok(NULL, "/")) != NULL) {
-        VERBOSE_PRINTK("namei: %s\n", name);
-        p = diri(ip, name);
-        if (p != NULL) {
-            ip = p;
-        }
-    }
-
-    VERBOSE_PRINTK("namei: END\n");
-
-    return ip;
-#endif
 }
 
 // read content pointed by ip to dest, for size bytes start from offset.

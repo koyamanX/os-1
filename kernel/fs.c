@@ -140,13 +140,13 @@ struct inode *diri(struct inode *ip, char *name) {
 struct inode *namei(char *path) {
     char *save;
     char *name;
-    struct inode *dirp;
+    struct inode *dp;
     struct inode *ip;
 
     save = kmalloc(strlen(path) + 1);
     strcpy(save, path);
 
-    dirp = iget(rootdev, ROOT);
+    dp = iget(rootdev, ROOT);
 
     if (*path != '/') {
         panic("Relative path is not supported yet\n");
@@ -155,12 +155,12 @@ struct inode *namei(char *path) {
     name = strtok(path, "/");
     if (name == NULL || !*name) {
         kfree(save);
-        return dirp;
+        return dp;
     }
     do {
-        ip = diri(dirp, name);
+        ip = diri(dp, name);
         name = strtok(NULL, "/");
-        dirp = ip;
+        dp = ip;
     } while (name);
     kfree(save);
 

@@ -15,7 +15,7 @@ QEMU_OPTS="$QEMU_OPTS -drive file=$IMAGE_NAME,if=none,format=raw,id=x0 -device v
 QEMU_GDB_PORT=tcp::12345
 CLEAN_LISTS=*.log
 declare -A LOG_LEVELS=( [verbose]=0 [debug]=1 [info]=2 [warn]=3 [release]=15 )
-LOG_LEVEL="verbose"
+LOG_LEVEL=${LOG_LEVELS["verbose"]}
 
 usage() {
 	cat <<EOF
@@ -47,7 +47,7 @@ EOF
 }
 
 build() {
-	if [ "$1" = "verbose" ] || [ "$1" = "debug" ] || [ "$1" = "info"] || [ "$1" = "warn" ] || [ "$1" = "release" ]; then
+	if [ "$1" = "verbose" ] || [ "$1" = "debug" ] || [ "$1" = "info" ] || [ "$1" = "warn" ] || [ "$1" = "release" ]; then
 		LOG_LEVEL=${LOG_LEVELS[$1]}
 		shift
 	fi
@@ -117,7 +117,9 @@ fi
 CMD=$1
 if [ "$CMD" = "run" ]; then
 	shift
-	[ ! -d "$BUILD_DIR" ] && build $1
+	if [ ! -d "$BUILD_DIR" ] ; then
+		build $1
+	fi
 	[ ! -d "$IMAGE_NAME" ] && create_image
 	run
 	exit 0

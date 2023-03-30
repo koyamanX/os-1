@@ -1,10 +1,12 @@
 <map id="readi" name="readi">
-<area shape="rect" id="node1" title=" " alt="" coords="5,56,60,83"/>
-<area shape="rect" id="node2" href="$d6/d6d/buf_8h.html#a698c2e69ee3a6a76b6adfd479397969b" title=" " alt="" coords="118,5,177,32"/>
-<area shape="rect" id="node4" href="$da/d66/string_8h.html#a14938524dcbeb59d7117ba5e151ad1b1" title=" " alt="" coords="108,56,187,83"/>
-<area shape="rect" id="node5" href="$d2/d5a/fs_8c.html#a3faf776bb14363fd149b07904e252884" title=" " alt="" coords="118,107,177,133"/>
-<area shape="rect" id="node3" href="$dc/de6/bio_8c.html#aa118b4fa3c1c5d061e04fc824f9d1891" title=" " alt="" coords="235,5,297,32"/>
-<area shape="rect" id="node6" href="$df/d1f/panic_8h.html#a92ad17d19a46880dd5e6c99143666b4a" title=" " alt="" coords="237,107,295,133"/>
-<area shape="rect" id="node7" href="$d2/d86/uart_8h.html#aa1f548a14c782ece5290f74e607adee3" title=" " alt="" coords="345,107,428,133"/>
-<area shape="rect" id="node8" href="$d1/d87/uart_8c.html#aea92973e3d3e2fb34fba39c5fc4b253a" title=" " alt="" coords="476,107,580,133"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,81,60,108"/>
+<area shape="rect" id="node2" href="$d6/d6d/buf_8h.html#a698c2e69ee3a6a76b6adfd479397969b" title="Read block from disk." alt="" coords="118,5,177,32"/>
+<area shape="rect" id="node5" href="$d6/d6d/buf_8h.html#af154613de80f6b640872720a3cc4ec92" title="Release buffer cache, flush if dirty." alt="" coords="235,56,297,83"/>
+<area shape="rect" id="node6" href="$da/d66/string_8h.html#a14938524dcbeb59d7117ba5e151ad1b1" title=" " alt="" coords="108,107,187,133"/>
+<area shape="rect" id="node7" href="$d2/d5a/fs_8c.html#a3faf776bb14363fd149b07904e252884" title=" " alt="" coords="118,157,177,184"/>
+<area shape="rect" id="node3" href="$dc/de6/bio_8c.html#ab13e6197ba8af3d7add9fb17a5440344" title="Get new buffer cache entry." alt="" coords="235,5,297,32"/>
+<area shape="rect" id="node4" href="$dc/de6/bio_8c.html#a40ae6d4f407ff644aef7b7320c55aebb" title="Write block to disk." alt="" coords="355,31,418,57"/>
+<area shape="rect" id="node8" href="$df/d1f/panic_8h.html#a92ad17d19a46880dd5e6c99143666b4a" title=" " alt="" coords="237,157,295,184"/>
+<area shape="rect" id="node9" href="$d2/d86/uart_8h.html#aa1f548a14c782ece5290f74e607adee3" title=" " alt="" coords="345,157,428,184"/>
+<area shape="rect" id="node10" href="$d1/d87/uart_8c.html#aea92973e3d3e2fb34fba39c5fc4b253a" title=" " alt="" coords="476,157,580,184"/>
 </map>

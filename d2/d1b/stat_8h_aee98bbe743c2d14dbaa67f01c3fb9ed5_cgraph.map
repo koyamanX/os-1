@@ -1,32 +1,40 @@
 <map id="mkdir" name="mkdir">
-<area shape="rect" id="node1" title=" " alt="" coords="5,427,65,453"/>
-<area shape="rect" id="node2" href="$d2/d5a/fs_8c.html#a4e522854927c8a3a43847c39fe999391" title=" " alt="" coords="113,427,168,453"/>
-<area shape="rect" id="node3" href="$d0/dc6/libgen_8h.html#aa14fc3333d84f41eacc023626687aebd" title=" " alt="" coords="340,5,431,32"/>
-<area shape="rect" id="node5" href="$d0/dc6/libgen_8h.html#ab1b6028f4625caec30c1020e737216e2" title=" " alt="" coords="216,56,292,83"/>
-<area shape="rect" id="node6" href="$d2/d4d/file_8h.html#a952c06132c0fe469e8aa14bdfc2dd0c9" title=" " alt="" coords="225,715,283,741"/>
-<area shape="rect" id="node12" href="$d2/d5a/fs_8c.html#a8379fc33406a014a1e8b899fe9dc814a" title=" " alt="" coords="357,372,414,399"/>
-<area shape="rect" id="node20" href="$d2/d5a/fs_8c.html#a7220afa8e5f4bea540eb95879ea7df6e" title=" " alt="" coords="479,512,549,539"/>
-<area shape="rect" id="node21" href="$d2/d5a/fs_8c.html#a9baba030d5bc6e9e20cf8b7d181edf35" title=" " alt="" coords="223,289,285,316"/>
-<area shape="rect" id="node23" href="$da/d66/string_8h.html#a11bd144d7d44914099a3aeddf1c8567d" title=" " alt="" coords="481,107,547,133"/>
-<area shape="rect" id="node24" href="$da/d66/string_8h.html#a07f4a84c11c106e95c32b6ab509346ef" title=" " alt="" coords="599,132,674,159"/>
-<area shape="rect" id="node27" href="$d2/d5a/fs_8c.html#a73f693587ef4357633ceb1786d13efcd" title=" " alt="" coords="487,613,541,640"/>
-<area shape="rect" id="node28" href="$da/d66/string_8h.html#a7a82515b5d377be04817715c5465b647" title=" " alt="" coords="223,816,285,843"/>
-<area shape="rect" id="node29" href="$d2/d4d/file_8h.html#ae7c1c8f26b7361c935ff79eaa5acc597" title=" " alt="" coords="221,765,287,792"/>
-<area shape="rect" id="node30" href="$d2/d5a/fs_8c.html#a73e9346902e5d64607762adfbc611489" title=" " alt="" coords="485,563,543,589"/>
-<area shape="rect" id="node4" href="$da/d66/string_8h.html#ab0bbf26e71ce67713b8c1121f38ff7cd" title=" " alt="" coords="607,56,666,83"/>
-<area shape="rect" id="node7" href="$df/d1f/panic_8h.html#a92ad17d19a46880dd5e6c99143666b4a" title=" " alt="" coords="727,537,784,564"/>
-<area shape="rect" id="node10" href="$d1/d4e/riscv_8h.html#a781ed1f79c2a7a0a7d1b1c30bfaaa798" title=" " alt="" coords="491,816,537,843"/>
-<area shape="rect" id="node11" href="$d9/dc3/fio_8c.html#ae7c1c8f26b7361c935ff79eaa5acc597" title=" " alt="" coords="352,816,419,843"/>
-<area shape="rect" id="node8" href="$d2/d86/uart_8h.html#aa1f548a14c782ece5290f74e607adee3" title=" " alt="" coords="835,537,917,564"/>
-<area shape="rect" id="node9" href="$d1/d87/uart_8c.html#aea92973e3d3e2fb34fba39c5fc4b253a" title=" " alt="" coords="965,537,1069,564"/>
-<area shape="rect" id="node13" href="$d6/d6d/buf_8h.html#a698c2e69ee3a6a76b6adfd479397969b" title=" " alt="" coords="607,411,666,437"/>
-<area shape="rect" id="node15" href="$d6/d6d/buf_8h.html#aa118b4fa3c1c5d061e04fc824f9d1891" title=" " alt="" coords="605,512,668,539"/>
-<area shape="rect" id="node16" href="$d2/d5a/fs_8c.html#a48f84c70490f13f24ec75fa4bb8b7101" title=" " alt="" coords="495,461,533,488"/>
-<area shape="rect" id="node17" href="$d2/d5a/fs_8c.html#aec001fd653f9a666e84e3a4012aac6ac" title=" " alt="" coords="609,347,664,373"/>
-<area shape="rect" id="node18" href="$d2/d5a/fs_8c.html#a005941ed6b951de6188291c240fb00e9" title=" " alt="" coords="491,259,537,285"/>
-<area shape="rect" id="node14" href="$dc/de6/bio_8c.html#aa118b4fa3c1c5d061e04fc824f9d1891" title=" " alt="" coords="724,411,787,437"/>
-<area shape="rect" id="node19" href="$da/d66/string_8h.html#a14938524dcbeb59d7117ba5e151ad1b1" title=" " alt="" coords="597,563,676,589"/>
-<area shape="rect" id="node22" href="$d2/d5a/fs_8c.html#a6a1907f2aabd7c9145b3c2beed1beb63" title=" " alt="" coords="364,213,407,240"/>
-<area shape="rect" id="node26" href="$da/d66/string_8h.html#a8cb460f64c449f2a9b9b7a40569ce0fe" title=" " alt="" coords="355,315,415,341"/>
-<area shape="rect" id="node25" href="$d2/d5a/fs_8c.html#a3faf776bb14363fd149b07904e252884" title=" " alt="" coords="607,613,666,640"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,527,65,554"/>
+<area shape="rect" id="node2" href="$d2/d5a/fs_8c.html#a4e522854927c8a3a43847c39fe999391" title="Open a file." alt="" coords="113,527,168,554"/>
+<area shape="rect" id="node3" href="$d2/d5a/fs_8c.html#a8e8a06c5de725cb453a74a2d455b41d1" title=" " alt="" coords="592,806,669,832"/>
+<area shape="rect" id="node10" href="$d2/d5a/fs_8c.html#aec001fd653f9a666e84e3a4012aac6ac" title=" " alt="" coords="729,755,784,782"/>
+<area shape="rect" id="node14" href="$d0/dc6/libgen_8h.html#aa14fc3333d84f41eacc023626687aebd" title=" " alt="" coords="216,223,307,250"/>
+<area shape="rect" id="node15" href="$da/d66/string_8h.html#ab0bbf26e71ce67713b8c1121f38ff7cd" title=" " alt="" coords="601,274,660,300"/>
+<area shape="rect" id="node16" href="$d0/dc6/libgen_8h.html#ab1b6028f4625caec30c1020e737216e2" title=" " alt="" coords="223,172,299,199"/>
+<area shape="rect" id="node17" href="$d2/d4d/file_8h.html#a952c06132c0fe469e8aa14bdfc2dd0c9" title=" " alt="" coords="232,96,291,123"/>
+<area shape="rect" id="node20" href="$d2/d5a/fs_8c.html#a2bc7e08c189e45bb21a7f37e296e4653" title=" " alt="" coords="595,1008,667,1035"/>
+<area shape="rect" id="node21" href="$d2/d5a/fs_8c.html#a8379fc33406a014a1e8b899fe9dc814a" title=" " alt="" coords="363,932,421,959"/>
+<area shape="rect" id="node25" href="$d2/d5a/fs_8c.html#a7220afa8e5f4bea540eb95879ea7df6e" title=" " alt="" coords="595,1059,666,1086"/>
+<area shape="rect" id="node26" href="$de/d37/slob_8h.html#af7105034bf054e37218d6ade20db4684" title="Free memory area allocated by kmalloc. @detail Free memory area allocated by kmalloc." alt="" coords="364,476,420,503"/>
+<area shape="rect" id="node27" href="$de/d37/slob_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocate size bytes from kernel heap." alt="" coords="355,324,429,351"/>
+<area shape="rect" id="node29" href="$d2/d5a/fs_8c.html#a9baba030d5bc6e9e20cf8b7d181edf35" title=" " alt="" coords="230,578,293,604"/>
+<area shape="rect" id="node31" href="$da/d66/string_8h.html#a11bd144d7d44914099a3aeddf1c8567d" title=" " alt="" coords="477,426,544,452"/>
+<area shape="rect" id="node32" href="$da/d66/string_8h.html#a07f4a84c11c106e95c32b6ab509346ef" title=" " alt="" coords="593,439,668,466"/>
+<area shape="rect" id="node34" href="$da/d66/string_8h.html#a7a82515b5d377be04817715c5465b647" title=" " alt="" coords="361,882,423,908"/>
+<area shape="rect" id="node36" href="$d2/d5a/fs_8c.html#a73f693587ef4357633ceb1786d13efcd" title=" " alt="" coords="603,1363,658,1390"/>
+<area shape="rect" id="node37" href="$d2/d4d/file_8h.html#ae7c1c8f26b7361c935ff79eaa5acc597" title=" " alt="" coords="228,8,295,35"/>
+<area shape="rect" id="node38" href="$d2/d5a/fs_8c.html#a73e9346902e5d64607762adfbc611489" title=" " alt="" coords="481,1135,540,1162"/>
+<area shape="rect" id="node4" href="$d6/d6d/buf_8h.html#a698c2e69ee3a6a76b6adfd479397969b" title="Read block from disk." alt="" coords="727,932,786,959"/>
+<area shape="rect" id="node7" href="$d6/d6d/buf_8h.html#af154613de80f6b640872720a3cc4ec92" title="Release buffer cache, flush if dirty." alt="" coords="725,1084,788,1111"/>
+<area shape="rect" id="node8" href="$d6/d6d/buf_8h.html#a40ae6d4f407ff644aef7b7320c55aebb" title="Write block to disk." alt="" coords="725,1034,788,1060"/>
+<area shape="rect" id="node9" href="$d2/d5a/fs_8c.html#a48f84c70490f13f24ec75fa4bb8b7101" title=" " alt="" coords="737,856,776,883"/>
+<area shape="rect" id="node11" href="$df/d1f/panic_8h.html#a92ad17d19a46880dd5e6c99143666b4a" title=" " alt="" coords="847,730,904,756"/>
+<area shape="rect" id="node5" href="$dc/de6/bio_8c.html#ab13e6197ba8af3d7add9fb17a5440344" title="Get new buffer cache entry." alt="" coords="844,958,907,984"/>
+<area shape="rect" id="node6" href="$dc/de6/bio_8c.html#a40ae6d4f407ff644aef7b7320c55aebb" title="Write block to disk." alt="" coords="965,1008,1027,1035"/>
+<area shape="rect" id="node12" href="$d2/d86/uart_8h.html#aa1f548a14c782ece5290f74e607adee3" title=" " alt="" coords="955,730,1037,756"/>
+<area shape="rect" id="node13" href="$d1/d87/uart_8c.html#aea92973e3d3e2fb34fba39c5fc4b253a" title=" " alt="" coords="1085,730,1189,756"/>
+<area shape="rect" id="node18" href="$d1/d4e/riscv_8h.html#a781ed1f79c2a7a0a7d1b1c30bfaaa798" title=" " alt="" coords="487,20,534,47"/>
+<area shape="rect" id="node19" href="$d9/dc3/fio_8c.html#ae7c1c8f26b7361c935ff79eaa5acc597" title=" " alt="" coords="359,20,425,47"/>
+<area shape="rect" id="node22" href="$d2/d5a/fs_8c.html#a005941ed6b951de6188291c240fb00e9" title=" " alt="" coords="487,831,534,858"/>
+<area shape="rect" id="node23" href="$d2/d5a/fs_8c.html#aedcebf5c9883811f75eddb545846c536" title=" " alt="" coords="596,755,665,782"/>
+<area shape="rect" id="node24" href="$da/d66/string_8h.html#a14938524dcbeb59d7117ba5e151ad1b1" title=" " alt="" coords="717,1414,796,1440"/>
+<area shape="rect" id="node28" href="$d7/db3/slob_8c.html#af7105034bf054e37218d6ade20db4684" title="Free memory area allocated by kmalloc. @detail Free memory area allocated by kmalloc." alt="" coords="483,324,539,351"/>
+<area shape="rect" id="node30" href="$d2/d5a/fs_8c.html#a6a1907f2aabd7c9145b3c2beed1beb63" title=" " alt="" coords="371,831,413,858"/>
+<area shape="rect" id="node35" href="$da/d66/string_8h.html#a8cb460f64c449f2a9b9b7a40569ce0fe" title=" " alt="" coords="362,628,422,655"/>
+<area shape="rect" id="node33" href="$d2/d5a/fs_8c.html#a3faf776bb14363fd149b07904e252884" title=" " alt="" coords="727,1312,786,1339"/>
 </map>

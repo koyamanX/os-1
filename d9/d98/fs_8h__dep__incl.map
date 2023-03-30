@@ -1,13 +1,13 @@
 <map id="include/fs.h" name="include/fs.h">
-<area shape="rect" id="node1" title="Structures and function prototypes for low&#45;level access to minix3 filesystem." alt="" coords="281,5,379,32"/>
-<area shape="rect" id="node2" href="$d2/d4d/file_8h.html" title=" " alt="" coords="215,80,320,107"/>
-<area shape="rect" id="node5" href="$d0/d29/main_8c.html" title=" " alt="" coords="5,304,116,331"/>
-<area shape="rect" id="node6" href="$d3/dda/proc_8c.html" title=" " alt="" coords="553,304,659,331"/>
-<area shape="rect" id="node11" href="$d2/d5a/fs_8c.html" title="Implementation of minix 3 filesystem." alt="" coords="340,155,429,181"/>
-<area shape="rect" id="node3" href="$df/d03/proc_8h.html" title=" " alt="" coords="203,155,316,181"/>
-<area shape="rect" id="node10" href="$d9/dc3/fio_8c.html" title=" " alt="" coords="53,229,146,256"/>
-<area shape="rect" id="node4" href="$d7/d00/sched_8h.html" title=" " alt="" coords="322,229,445,256"/>
-<area shape="rect" id="node7" href="$db/dbe/sched_8c.html" title=" " alt="" coords="141,304,255,331"/>
-<area shape="rect" id="node8" href="$db/dd8/syscall_8c.html" title=" " alt="" coords="279,304,402,331"/>
-<area shape="rect" id="node9" href="$dc/d6f/trap_8c.html" title=" " alt="" coords="427,304,529,331"/>
+<area shape="rect" id="node1" title="Structures and function prototypes for low&#45;level access to minix3 filesystem." alt="" coords="575,5,672,32"/>
+<area shape="rect" id="node2" href="$d2/d4d/file_8h.html" title=" " alt="" coords="520,80,625,107"/>
+<area shape="rect" id="node5" href="$d0/d29/main_8c.html" title=" " alt="" coords="548,304,659,331"/>
+<area shape="rect" id="node6" href="$d3/dda/proc_8c.html" title=" " alt="" coords="5,304,111,331"/>
+<area shape="rect" id="node11" href="$d2/d5a/fs_8c.html" title="Implementation of minix 3 filesystem." alt="" coords="632,229,721,256"/>
+<area shape="rect" id="node3" href="$df/d03/proc_8h.html" title=" " alt="" coords="369,155,483,181"/>
+<area shape="rect" id="node10" href="$d9/dc3/fio_8c.html" title=" " alt="" coords="514,229,607,256"/>
+<area shape="rect" id="node4" href="$d7/d00/sched_8h.html" title=" " alt="" coords="266,229,389,256"/>
+<area shape="rect" id="node7" href="$db/dbe/sched_8c.html" title=" " alt="" coords="262,304,377,331"/>
+<area shape="rect" id="node8" href="$db/dd8/syscall_8c.html" title=" " alt="" coords="401,304,523,331"/>
+<area shape="rect" id="node9" href="$dc/d6f/trap_8c.html" title=" " alt="" coords="135,304,237,331"/>
 </map>

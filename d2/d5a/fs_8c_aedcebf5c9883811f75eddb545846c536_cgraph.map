@@ -1,0 +1,11 @@
+<map id="has_bit" name="has_bit">
+<area shape="rect" id="node1" title=" " alt="" coords="5,81,75,108"/>
+<area shape="rect" id="node2" href="$d6/d6d/buf_8h.html#a698c2e69ee3a6a76b6adfd479397969b" title="Read block from disk." alt="" coords="123,5,181,32"/>
+<area shape="rect" id="node5" href="$d6/d6d/buf_8h.html#af154613de80f6b640872720a3cc4ec92" title="Release buffer cache, flush if dirty." alt="" coords="229,56,292,83"/>
+<area shape="rect" id="node6" href="$d2/d5a/fs_8c.html#aec001fd653f9a666e84e3a4012aac6ac" title=" " alt="" coords="125,107,179,133"/>
+<area shape="rect" id="node7" href="$df/d1f/panic_8h.html#a92ad17d19a46880dd5e6c99143666b4a" title=" " alt="" coords="232,132,289,159"/>
+<area shape="rect" id="node3" href="$dc/de6/bio_8c.html#ab13e6197ba8af3d7add9fb17a5440344" title="Get new buffer cache entry." alt="" coords="229,5,292,32"/>
+<area shape="rect" id="node4" href="$dc/de6/bio_8c.html#a40ae6d4f407ff644aef7b7320c55aebb" title="Write block to disk." alt="" coords="350,31,413,57"/>
+<area shape="rect" id="node8" href="$d2/d86/uart_8h.html#aa1f548a14c782ece5290f74e607adee3" title=" " alt="" coords="340,132,423,159"/>
+<area shape="rect" id="node9" href="$d1/d87/uart_8c.html#aea92973e3d3e2fb34fba39c5fc4b253a" title=" " alt="" coords="471,132,575,159"/>
+</map>

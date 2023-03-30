@@ -1,0 +1,4 @@
+<map id="bflush" name="bflush">
+<area shape="rect" id="node1" title="Write active buffer associated to device." alt="" coords="5,5,67,32"/>
+<area shape="rect" id="node2" href="$dc/de6/bio_8c.html#a40ae6d4f407ff644aef7b7320c55aebb" title="Write block to disk." alt="" coords="115,5,177,32"/>
+</map>

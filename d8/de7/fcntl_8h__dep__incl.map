@@ -1,5 +1,5 @@
 <map id="include/fcntl.h" name="include/fcntl.h">
-<area shape="rect" id="node1" title=" " alt="" coords="123,5,238,32"/>
+<area shape="rect" id="node1" title="File control options." alt="" coords="123,5,238,32"/>
 <area shape="rect" id="node2" href="$d2/d5a/fs_8c.html" title="Implementation of minix 3 filesystem." alt="" coords="5,80,95,107"/>
 <area shape="rect" id="node3" href="$db/dd8/syscall_8c.html" title=" " alt="" coords="119,80,242,107"/>
 <area shape="rect" id="node4" href="$d8/d60/init_8c.html" title=" " alt="" coords="266,80,381,107"/>

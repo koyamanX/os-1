@@ -1,19 +1,26 @@
 <map id="fsinit" name="fsinit">
-<area shape="rect" id="node1" title=" " alt="" coords="5,272,60,299"/>
-<area shape="rect" id="node2" href="$d6/d6d/buf_8h.html#a698c2e69ee3a6a76b6adfd479397969b" title=" " alt="" coords="465,5,523,32"/>
-<area shape="rect" id="node4" href="$da/d66/string_8h.html#a14938524dcbeb59d7117ba5e151ad1b1" title=" " alt="" coords="455,309,533,336"/>
-<area shape="rect" id="node5" href="$da/d66/string_8h.html#aaca5c21d6f783f0d2b75936ae54b7f66" title=" " alt="" coords="108,360,184,387"/>
-<area shape="rect" id="node6" href="$d2/d5a/fs_8c.html#a9baba030d5bc6e9e20cf8b7d181edf35" title=" " alt="" coords="115,233,177,260"/>
-<area shape="rect" id="node3" href="$dc/de6/bio_8c.html#aa118b4fa3c1c5d061e04fc824f9d1891" title=" " alt="" coords="581,5,644,32"/>
-<area shape="rect" id="node7" href="$d2/d5a/fs_8c.html#a6a1907f2aabd7c9145b3c2beed1beb63" title=" " alt="" coords="241,157,283,184"/>
-<area shape="rect" id="node8" href="$d2/d5a/fs_8c.html#a005941ed6b951de6188291c240fb00e9" title=" " alt="" coords="350,208,397,235"/>
-<area shape="rect" id="node17" href="$da/d66/string_8h.html#a8cb460f64c449f2a9b9b7a40569ce0fe" title=" " alt="" coords="232,259,292,285"/>
-<area shape="rect" id="node13" href="$da/d66/string_8h.html#a11bd144d7d44914099a3aeddf1c8567d" title=" " alt="" coords="340,107,407,133"/>
-<area shape="rect" id="node16" href="$d2/d5a/fs_8c.html#a3faf776bb14363fd149b07904e252884" title=" " alt="" coords="344,157,403,184"/>
-<area shape="rect" id="node9" href="$d2/d5a/fs_8c.html#aec001fd653f9a666e84e3a4012aac6ac" title=" " alt="" coords="467,259,521,285"/>
-<area shape="rect" id="node10" href="$df/d1f/panic_8h.html#a92ad17d19a46880dd5e6c99143666b4a" title=" " alt="" coords="584,208,641,235"/>
-<area shape="rect" id="node11" href="$d2/d86/uart_8h.html#aa1f548a14c782ece5290f74e607adee3" title=" " alt="" coords="692,208,775,235"/>
-<area shape="rect" id="node12" href="$d1/d87/uart_8c.html#aea92973e3d3e2fb34fba39c5fc4b253a" title=" " alt="" coords="823,208,927,235"/>
-<area shape="rect" id="node14" href="$da/d66/string_8h.html#ab0bbf26e71ce67713b8c1121f38ff7cd" title=" " alt="" coords="465,107,523,133"/>
-<area shape="rect" id="node15" href="$da/d66/string_8h.html#a07f4a84c11c106e95c32b6ab509346ef" title=" " alt="" coords="457,56,531,83"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,97,60,123"/>
+<area shape="rect" id="node2" href="$d6/d6d/buf_8h.html#a698c2e69ee3a6a76b6adfd479397969b" title="Read block from disk." alt="" coords="598,249,657,275"/>
+<area shape="rect" id="node5" href="$d6/d6d/buf_8h.html#af154613de80f6b640872720a3cc4ec92" title="Release buffer cache, flush if dirty." alt="" coords="596,198,659,225"/>
+<area shape="rect" id="node6" href="$da/d66/string_8h.html#a14938524dcbeb59d7117ba5e151ad1b1" title=" " alt="" coords="469,97,548,123"/>
+<area shape="rect" id="node7" href="$da/d66/string_8h.html#aaca5c21d6f783f0d2b75936ae54b7f66" title=" " alt="" coords="108,147,184,174"/>
+<area shape="rect" id="node8" href="$d2/d5a/fs_8c.html#a9baba030d5bc6e9e20cf8b7d181edf35" title=" " alt="" coords="115,401,177,427"/>
+<area shape="rect" id="node3" href="$dc/de6/bio_8c.html#ab13e6197ba8af3d7add9fb17a5440344" title="Get new buffer cache entry." alt="" coords="707,249,769,275"/>
+<area shape="rect" id="node4" href="$dc/de6/bio_8c.html#a40ae6d4f407ff644aef7b7320c55aebb" title="Write block to disk." alt="" coords="827,223,890,250"/>
+<area shape="rect" id="node9" href="$d2/d5a/fs_8c.html#a6a1907f2aabd7c9145b3c2beed1beb63" title=" " alt="" coords="248,451,291,478"/>
+<area shape="rect" id="node11" href="$df/d1f/panic_8h.html#a92ad17d19a46880dd5e6c99143666b4a" title=" " alt="" coords="709,451,767,478"/>
+<area shape="rect" id="node14" href="$d2/d5a/fs_8c.html#a005941ed6b951de6188291c240fb00e9" title=" " alt="" coords="365,325,411,351"/>
+<area shape="rect" id="node17" href="$da/d66/string_8h.html#ab0bbf26e71ce67713b8c1121f38ff7cd" title=" " alt="" coords="479,654,538,681"/>
+<area shape="rect" id="node20" href="$de/d37/slob_8h.html#af7105034bf054e37218d6ade20db4684" title="Free memory area allocated by kmalloc. @detail Free memory area allocated by kmalloc." alt="" coords="241,755,297,782"/>
+<area shape="rect" id="node21" href="$de/d37/slob_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocate size bytes from kernel heap." alt="" coords="232,198,307,225"/>
+<area shape="rect" id="node23" href="$da/d66/string_8h.html#a7a82515b5d377be04817715c5465b647" title=" " alt="" coords="238,299,301,326"/>
+<area shape="rect" id="node24" href="$da/d66/string_8h.html#a8cb460f64c449f2a9b9b7a40569ce0fe" title=" " alt="" coords="239,350,299,377"/>
+<area shape="rect" id="node10" href="$d2/d5a/fs_8c.html#aec001fd653f9a666e84e3a4012aac6ac" title=" " alt="" coords="600,451,655,478"/>
+<area shape="rect" id="node16" href="$da/d66/string_8h.html#a11bd144d7d44914099a3aeddf1c8567d" title=" " alt="" coords="355,603,421,630"/>
+<area shape="rect" id="node19" href="$d2/d5a/fs_8c.html#a3faf776bb14363fd149b07904e252884" title=" " alt="" coords="598,527,657,554"/>
+<area shape="rect" id="node12" href="$d2/d86/uart_8h.html#aa1f548a14c782ece5290f74e607adee3" title=" " alt="" coords="817,451,900,478"/>
+<area shape="rect" id="node13" href="$d1/d87/uart_8c.html#aea92973e3d3e2fb34fba39c5fc4b253a" title=" " alt="" coords="948,451,1052,478"/>
+<area shape="rect" id="node15" href="$d2/d5a/fs_8c.html#aedcebf5c9883811f75eddb545846c536" title=" " alt="" coords="474,299,543,326"/>
+<area shape="rect" id="node18" href="$da/d66/string_8h.html#a07f4a84c11c106e95c32b6ab509346ef" title=" " alt="" coords="471,603,546,630"/>
+<area shape="rect" id="node22" href="$d7/db3/slob_8c.html#af7105034bf054e37218d6ade20db4684" title="Free memory area allocated by kmalloc. @detail Free memory area allocated by kmalloc." alt="" coords="360,147,416,174"/>
 </map>

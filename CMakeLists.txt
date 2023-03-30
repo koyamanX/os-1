@@ -4,9 +4,7 @@ project(OS-1 C ASM)
 
 option(LOG_LEVEL "LOG_LEVEL" 0)
 
-if(LOG_LEVEL)
-	add_definitions(-DLOG_LEVEL=${LOG_LEVEL})
-endif()
+add_definitions(-DLOG_LEVEL=${LOG_LEVEL})
 
 if(NOT "${CMAKE_BUILD_TYPE}" STREQUAL "")
 	message(FATAL_ERROR "CMAKE_BUILD_TYPE is not supported")

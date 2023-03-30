@@ -32,8 +32,7 @@ void bwrite(struct buf *bp) {
         return;
     }
 
-    if (!bp->dirty || !bp->valid) {
-        // Buffer is not dirty or not valid, no need to write
+    if (!bp->valid) {
         return;
     }
 

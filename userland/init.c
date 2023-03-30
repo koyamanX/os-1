@@ -6,8 +6,8 @@
 #include <unistd.h>
 
 int main(void) {
-    char *buf = "Hello,world from init!\n";
     dev_t dev;
+    char buf[] = "Hello from init!\n";
     int pid;
 
     dev.major = 0;
@@ -16,7 +16,16 @@ int main(void) {
           dev);
     dup(0);
     dup(0);
+    int fd = open("/hello.txt", O_RDONLY, S_IRWXU);
+    char buffer[1];
+    ssize_t bytes;
 
+    while ((bytes = read(fd, buffer, sizeof(buffer))) > 0) {
+        write(STDOUT_FILENO, buffer, bytes);
+    }
+    close(fd);
+
+    write(STDOUT_FILENO, buf, strlen(buf));
     pid = fork();
     if (pid == 0) {
         write(STDOUT_FILENO, "child\n", 6);
@@ -24,7 +33,6 @@ int main(void) {
     } else {
         write(STDOUT_FILENO, "parent\n", 7);
     }
-    write(STDOUT_FILENO, buf, strlen(buf));
 
     while (1) {
         asm volatile("nop");

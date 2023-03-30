@@ -12,7 +12,9 @@
 #include <libgen.h>
 #include <panic.h>
 #include <printk.h>
+#include <proc.h>
 #include <riscv.h>
+#include <slob.h>
 #include <string.h>
 #include <sys/stat.h>
 #include <sys/types.h>
@@ -21,6 +23,11 @@
 
 struct inode inode[NICACHE];
 struct super_block sb[NSUPERBLK];
+
+static int ffs(int x);
+static u64 alloc_bit(dev_t dev, int map);
+static void free_bit(dev_t dev, int map, u64 pos);
+static u8 has_bit(dev_t dev, int map, u64 n);
 
 void fsinit(void) {
     struct buf *bp;
@@ -64,31 +71,35 @@ struct super_block *getfs(dev_t dev) {
 }
 
 struct inode *iget(dev_t dev, u64 inum) {
-    struct buf *buf;
     u64 blkno;
     struct super_block *sb;
     struct inode *ip;
 
-    sb = getfs(dev);
-    /**
-     * Inode number starts from 1, however block number starts with 0,
-     * so subtract by 1 to map block number.
-     */
-    inum--;
-    blkno = (IMAP(sb) + sb->imap_blocks + sb->zmap_blocks + (inum / NINODE));
-    buf = bread(dev, blkno);
-
     for (int i = 0; i < NICACHE; i++) {
         // Find unused inode cache entry.
         if (inode[i].count == 0) {
-            // Read inode to inode cache.
-            memcpy(&inode[i], (buf->data + ((inum % NINODE) * INODE_SIZE)),
-                   INODE_SIZE);
+            sb = getfs(dev);
+            /**
+             * Inode number starts from 1, however block number starts with 0,
+             * so subtract by 1 to map block number.
+             */
+            inum--;
+            blkno = (IMAP(sb) + sb->imap_blocks + sb->zmap_blocks +
+                     (inum / NINODE));
+            if (!has_bit(dev, 0, inum)) {
+                struct buf *buf;
+                buf = bread(dev, blkno);
+                // Read inode to inode cache.
+                memcpy(&inode[i], (buf->data + ((inum % NINODE) * INODE_SIZE)),
+                       INODE_SIZE);
+                brelse(buf);
+            }
             // Create on-memory inode entry.
             ip = &inode[i];
             ip->count++;
             ip->dev = dev;
             ip->inum = inum;
+
             return ip;
         }
     }
@@ -100,16 +111,26 @@ struct inode *iget(dev_t dev, u64 inum) {
 struct inode *diri(struct inode *ip, char *name) {
     struct direct *dp;
     struct buf *buf;
+    struct super_block *sb;
+    int size;
 
+    sb = getfs(ip->dev);
+    size = ip->size;
     for (u8 zone = 0; zone < DIRECTZONE; zone++) {
         buf = bread(rootdev, zmap(ip, zone));
         dp = (struct direct *)buf->data;
-        for (int i = ip->size; i; i -= sizeof(struct direct)) {
+        for (int i = 0; i < sb->block_size; i += sizeof(struct direct)) {
+            if (size == 0) {
+                return NULL;
+            }
             if (strcmp(dp->name, name) == 0) {
+                brelse(buf);
                 return iget(rootdev, dp->ino);
             }
             dp++;
+            size -= sizeof(struct direct);
         }
+        brelse(buf);
     }
     // TODO: Indirect zone
 
@@ -117,28 +138,31 @@ struct inode *diri(struct inode *ip, char *name) {
 }
 
 struct inode *namei(char *path) {
-    struct inode *ip;
+    char *save;
     char *name;
-    struct inode *p;
+    struct inode *dp;
+    struct inode *ip;
 
-    if (*path == '/') {
-        ip = iget(rootdev, ROOT);
-        path++;
+    save = kmalloc(strlen(path) + 1);
+    strcpy(save, path);
+
+    dp = iget(rootdev, ROOT);
+
+    if (*path != '/') {
+        panic("Relative path is not supported yet\n");
     }
 
     name = strtok(path, "/");
-    if (name) {
-        p = diri(ip, name);
-        if (p != NULL) {
-            ip = p;
-        }
+    if (name == NULL || !*name) {
+        kfree(save);
+        return dp;
     }
-    while ((name = strtok(NULL, "/")) != NULL) {
-        p = diri(ip, name);
-        if (p != NULL) {
-            ip = p;
-        }
-    }
+    do {
+        ip = diri(dp, name);
+        name = strtok(NULL, "/");
+        dp = ip;
+    } while (name);
+    kfree(save);
 
     return ip;
 }
@@ -158,18 +182,25 @@ u64 readi(struct inode *ip, char *dest, u64 offset, u64 size) {
         return size;
     }
 
+    if (offset == ip->size) {
+        // EOF
+        return 0;
+    }
+
     if (offset > 0) {
         for (u64 i = BLOCKSIZE; i <= offset; i += BLOCKSIZE) {
             zone++;
         }
         buf = bread(rootdev, zmap(ip, zone));
         memcpy(dest, &buf->data[(offset % BLOCKSIZE)], size - total);
+        brelse(buf);
         total = total + (size - total);
     }
 
     while (total < size) {
         buf = bread(rootdev, zmap(ip, zone));
         memcpy(dest, buf->data, size - total);
+        brelse(buf);
         zone++;
         total = total + (size - total);
     }
@@ -195,6 +226,8 @@ u64 writei(struct inode *ip, char *src, u64 offset, u64 size) {
         buf = bread(rootdev, zmap(ip, zone));
         memcpy(&buf->data[(offset % BLOCKSIZE)], src, size - total);
         bwrite(buf);
+        brelse(buf);
+        ip->size += (size - total);
         total = total + (size - total);
     }
     while (total < size) {
@@ -202,9 +235,13 @@ u64 writei(struct inode *ip, char *src, u64 offset, u64 size) {
         buf = bread(rootdev, zmap(ip, zone));
         memcpy(buf->data, src, size - total);
         bwrite(buf);
+        brelse(buf);
         zone++;
+        ip->size += (size - total);
         total = total + (size - total);
     }
+    iupdate(ip);
+
     return total;
 }
 
@@ -220,26 +257,110 @@ static int ffs(int x) {
     return bit;
 }
 
-struct inode *ialloc(dev_t dev) {
+static u64 alloc_bit(dev_t dev, int map) {
     struct super_block *sb;
-    struct inode *ip = NULL;
-    u64 offset;
+    struct buf *buf;
+    u64 inum;
     u8 pos;
+    u64 last_block;
+    u64 map_offset;
+
+    sb = getfs(dev);
+    if (map == 0) {
+        // IMAP
+        last_block = sb->imap_blocks;
+        map_offset = IMAP(sb);
+    } else if (map == 1) {
+        // ZMAP
+        last_block = sb->zmap_blocks;
+        map_offset = ZMAP(sb);
+    } else {
+        panic("Unknown map");
+    }
+    for (u64 blkoff = 0; blkoff < last_block; blkoff++) {
+        buf = bread(dev, map_offset + blkoff);
+        for (u64 byteoff = 0; byteoff < sb->block_size; byteoff++) {
+            u8 byte = buf->data[byteoff];
+            if ((~byte != 0) && ((pos = ffs(~byte & 0xff)) != 0)) {
+                byte |= (1 << (pos - 1));
+                buf->data[byteoff] = byte;
+                bwrite(buf);
+                brelse(buf);
+                inum = (blkoff * sb->block_size) + (byteoff * 8) + (pos - 1);
+
+                return inum;
+            }
+        }
+        brelse(buf);
+    }
+    panic("No free slots in bitmap\n");
+
+    return -1;
+}
+
+static void free_bit(dev_t dev, int map, u64 pos) {
+    struct super_block *sb;
+    struct buf *buf;
+    u64 blkoff;
+    u64 byteoff;
+    u64 bitoff;
+    u64 map_offset;
+
+    sb = getfs(dev);
+    if (map == 0) {
+        // IMAP
+        map_offset = IMAP(sb);
+        pos--;
+    } else if (map == 1) {
+        // ZMAP
+        map_offset = ZMAP(sb);
+    } else {
+        panic("Unknown map");
+    }
+    byteoff = (pos % (sb->block_size * 8));
+    blkoff = pos / sb->block_size;
+    bitoff = pos % 8;
+    buf = bread(dev, map_offset + blkoff);
+    u8 byte = buf->data[byteoff];
+    byte &= ~(1 << bitoff);
+    buf->data[byteoff] = byte;
+    bwrite(buf);
+    brelse(buf);
+}
+
+static u8 has_bit(dev_t dev, int map, u64 n) {
+    u64 blkoff;
+    u64 byteoff;
+    u8 bitoff;
+    u8 byte;
+    u8 bit;
+    struct super_block *sb;
     struct buf *buf;
 
     sb = getfs(dev);
-    offset = IMAP(sb);
-
-    for (u64 i = 0; i < (sb->imap_blocks / sizeof(u8)); i++) {
-        buf = bread(dev, offset);
-        if ((pos = ffs(~buf->data[i] & 0xff)) != 0) {
-            buf->data[i] = buf->data[i] | (1 << (pos - 1));
-            bwrite(buf);
-            ip = iget(dev, i * 8 + (7 - pos));
-            break;
-        }
-        offset++;
+    if (map == 1) {
+        panic("Not supported yet\n");
     }
+
+    blkoff = n / (sb->block_size * 8);
+    byteoff = (n / 8) % sb->block_size;
+    bitoff = n % 8;
+
+    buf = bread(dev, blkoff);
+    byte = buf->data[byteoff];
+    bit = byte & (1 << bitoff);
+    brelse(buf);
+
+    return bit;
+}
+
+struct inode *ialloc(dev_t dev) {
+    struct inode *ip = NULL;
+    u64 inum;
+
+    inum = alloc_bit(dev, 0);
+    ip = iget(dev, inum);
+
     return ip;
 }
 
@@ -256,6 +377,7 @@ void iupdate(struct inode *ip) {
     buf = bread(dev, offset);
     memcpy(&buf->data[(ip->inum % NINODE) * INODE_SIZE], ip, INODE_SIZE);
     bwrite(buf);
+    brelse(buf);
 }
 
 void iput(struct inode *ip) {
@@ -277,57 +399,123 @@ u64 zmap(struct inode *ip, u64 zone) {
 
     return addr;
 }
+
 int open(const char *pathname, int flags, mode_t mode) {
-    struct inode *ip;
-    struct direct dir;
-    struct file *fp;
     int fd = -1;
-    char buf[128];   // TODO:
-    char buf1[128];  // TODO:
+    struct inode *ip;
+    struct inode *dip;
+    char *save;
     char *basedir;
     char *filename;
+    char *path;
+    u64 offset = 0;
+    struct direct dir;
+    struct file *fp;
 
-    // dirname, basename destroy 'str' argument.
-    strcpy(buf, pathname);
-    strcpy(buf1, pathname);
-    basedir = dirname(buf);
-    filename = basename(buf1);
-    if (strncmp(basedir, ".", 2) == 0) {
+    // Remove const qualifier
+    path = (char *)pathname;
+    // Back up original path, since namei destroy it.
+    save = kmalloc(strlen(path));
+    strcpy(save, path);
+
+    if (strncmp(path, ".", 2) == 0) {
         // TODO: CWD is not supported for now
         basedir = "/";
+    } else {
+        basedir = dirname(path);
+        strcpy(path, save);
     }
-    VERBOSE_PRINTK("basedir: %s, filename: %s\n", basedir, filename);
-    if (flags & O_CREAT) {
-        ip = namei(basedir);
-        if (ip == NULL) {
-            return -1;
+    filename = basename(path);
+    strcpy(path, save);
+
+    ip = namei(path);
+    if (ip == NULL) {
+        // If not exsit.
+        if (!(flags & O_CREAT)) {
+            // If not exists and O_CREAT is not set.
+            goto free_and_exit;
         }
-        ip->size += sizeof(struct direct);
-        iupdate(ip);
-        u64 offset = 0;
+        // Get inode of basedir.
+        dip = namei(basedir);
+        if (dip == NULL) {
+            // If basedir is not exists,
+            // TODO: currect behaviour is creating direcotry structure first.
+            goto free_and_exit;
+        }
+        // Create new direct entry in direcotry.
+        dip->size += sizeof(struct direct);
+        iupdate(dip);
+        // Read until free slot found.
         do {
-            readi(ip, (char *)&dir, offset, sizeof(struct direct));
+            readi(dip, (char *)&dir, offset, sizeof(struct direct));
             offset += sizeof(struct direct);
             VERBOSE_PRINTK("lookup: %s:%x\n", dir.name, dir.ino);
         } while (!(strcmp(dir.name, "") == 0) && dir.ino != 0);
-        fd = ufalloc();
-        fp = falloc();
-        fp->flags = mode;
-        fp->ip = ialloc(ip->dev);
-        fp->ip->mode = mode;
-        fp->ip->nlinks++;
-        fp->ip->size = 0x0;
-        iupdate(fp->ip);
-        strcpy(dir.name, filename);
-        dir.ino = fp->ip->inum + 1;
-        VERBOSE_PRINTK("%s:%x\n", dir.name, dir.ino);
-        VERBOSE_PRINTK("%x\n", offset);
         offset -= sizeof(struct direct);
-        writei(ip, (char *)&dir, offset, sizeof(struct direct));
-    }
+        // Allocate new inode.
+        ip = ialloc(dip->dev);
+        // Set mode and size.
+        ip->mode = mode | I_REGULAR;
+        // TODO: always trunc.
+        ip->size = 0x0;
+        struct super_block *sb;
+        sb = getfs(ip->dev);
+        ip->zone[0] = ((sb->first_data_zone) + alloc_bit(ip->dev, 1));
+        ip->zone[1] = ((sb->first_data_zone) + alloc_bit(ip->dev, 1));
+        ip->zone[2] = ((sb->first_data_zone) + alloc_bit(ip->dev, 1));
+        ip->zone[3] = ((sb->first_data_zone) + alloc_bit(ip->dev, 1));
+        ip->zone[4] = ((sb->first_data_zone) + alloc_bit(ip->dev, 1));
+        ip->zone[5] = ((sb->first_data_zone) + alloc_bit(ip->dev, 1));
+        ip->zone[6] = ((sb->first_data_zone) + alloc_bit(ip->dev, 1));
+        ip->zone[7] = ((sb->first_data_zone) + alloc_bit(ip->dev, 1));
 
+        // Update newly create inode.
+        iupdate(ip);
+        // Set newly created filename and its ino to empty direct entry.
+        strcpy(dir.name, filename);
+        dir.ino = ip->inum + 1;
+        // Write direct entry.
+        writei(dip, (char *)&dir, offset, sizeof(struct direct));
+    }
+    // Allocate file descriptor.
+    fd = ufalloc();
+    // Allocate file structure.
+    fp = falloc();
+    fp->flags = mode;
+    fp->ip = ip;
+    fp->ip->mode |= mode;
+    fp->ip->nlinks++;
+    fp->ip->uid = 0;
+    fp->ip->gid = 0;
+    fp->ip->atime = 0;
+    fp->ip->mtime = 0;
+    fp->ip->ctime = 0;
+    if (flags & O_TRUNC) {
+        fp->ip->size = 0;
+        free_bit(fp->ip->dev, 1, fp->ip->zone[0]);
+        free_bit(fp->ip->dev, 1, fp->ip->zone[1]);
+        free_bit(fp->ip->dev, 1, fp->ip->zone[2]);
+        free_bit(fp->ip->dev, 1, fp->ip->zone[3]);
+        free_bit(fp->ip->dev, 1, fp->ip->zone[4]);
+        free_bit(fp->ip->dev, 1, fp->ip->zone[5]);
+        free_bit(fp->ip->dev, 1, fp->ip->zone[6]);
+        free_bit(fp->ip->dev, 1, fp->ip->zone[7]);
+        fp->ip->zone[0] = ((sb->first_data_zone) + alloc_bit(fp->ip->dev, 1));
+        fp->ip->zone[1] = ((sb->first_data_zone) + alloc_bit(fp->ip->dev, 1));
+        fp->ip->zone[2] = ((sb->first_data_zone) + alloc_bit(fp->ip->dev, 1));
+        fp->ip->zone[3] = ((sb->first_data_zone) + alloc_bit(fp->ip->dev, 1));
+        fp->ip->zone[4] = ((sb->first_data_zone) + alloc_bit(fp->ip->dev, 1));
+        fp->ip->zone[5] = ((sb->first_data_zone) + alloc_bit(fp->ip->dev, 1));
+        fp->ip->zone[6] = ((sb->first_data_zone) + alloc_bit(fp->ip->dev, 1));
+        fp->ip->zone[7] = ((sb->first_data_zone) + alloc_bit(fp->ip->dev, 1));
+    }
+    iupdate(fp->ip);
+
+free_and_exit:
+    kfree(save);
     return fd;
 }
+
 int creat(const char *pathname, mode_t mode) {
     return open(pathname, (O_WRONLY | O_CREAT | O_TRUNC), mode);
 }
@@ -390,4 +578,24 @@ int mknod(const char *pathname, mode_t mode, dev_t dev) {
     writei(ip, (char *)&dir, offset, sizeof(struct direct));
 
     return fd;
+}
+
+int close(int fd) {
+    struct proc *rp;
+    struct inode *ip;
+    struct file *fp;
+
+    rp = cpus[r_tp()].rp;
+    fp = rp->ofile[fd];
+    ip = fp->ip;
+    if (fp == NULL || ip == NULL) {
+        return -1;
+    }
+    if (fp->count == 0) {
+        panic("Closing unused file\n");
+    }
+    closei(ip);
+    rp->ofile[fd] = NULL;
+
+    return 0;
 }

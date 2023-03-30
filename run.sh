@@ -72,6 +72,7 @@ create_image() {
 	mkfs.minix -3 $IMAGE_NAME
 	[ ! -d "$MOUNT_DIR" ] && mkdir $MOUNT_DIR
 	sudo mount $IMAGE_NAME $MOUNT_DIR
+	cp kernel/main.c $INSTALL_ROOT/hello.txt
 	cp -r $INSTALL_ROOT/* $MOUNT_DIR -r
 	sync
 	sudo umount $MOUNT_DIR
@@ -79,6 +80,7 @@ create_image() {
 }
 
 run() {
+	clear
 	$QEMU $QEMU_OPTS $@
 }
 

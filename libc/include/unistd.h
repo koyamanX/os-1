@@ -10,6 +10,5 @@ int dup(int fildes);
 int fork(void);
 int exec(const char *pathname, const char *argv[]);
 void _exit(int status);
-int close(int fd);
 
 #endif

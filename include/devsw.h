@@ -1,7 +1,6 @@
 #ifndef DEVSW_H
 #define DEVSW_H
 
-#include <buf.h>
 #include <stdint.h>
 #include <sys/types.h>
 
@@ -9,7 +8,6 @@ struct bdevsw {
     int (*open)(void);
     int (*close)(void);
     int (*strategy)(char *, u64, u8);
-    struct buf *bactivelist;
 };
 
 struct cdevsw {

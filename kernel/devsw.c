@@ -8,10 +8,10 @@ static int nulldev(void) {
 }
 
 struct bdevsw bdevsw[NBDEVSW] = {
-    {nulldev, nulldev, virtio_req, NULL},
-    {NULL, NULL, NULL, NULL},
-    {NULL, NULL, NULL, NULL},
-    {NULL, NULL, NULL, NULL},
+    {nulldev, nulldev, virtio_req},
+    {NULL, NULL, NULL},
+    {NULL, NULL, NULL},
+    {NULL, NULL, NULL},
 };
 
 struct cdevsw cdevsw[NCDEVSW] = {

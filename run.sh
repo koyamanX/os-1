@@ -15,7 +15,7 @@ QEMU_OPTS="$QEMU_OPTS -drive file=$IMAGE_NAME,if=none,format=raw,id=x0 -device v
 QEMU_GDB_PORT=tcp::12345
 CLEAN_LISTS=*.log
 declare -A LOG_LEVELS=( [verbose]=0 [debug]=1 [info]=2 [warn]=3 [release]=15 )
-LOG_LEVEL=${LOG_LEVELS["verbose"]}
+LOG_LEVEL="verbose"
 
 usage() {
 	cat <<EOF
@@ -47,7 +47,7 @@ EOF
 }
 
 build() {
-	if [ "$1" = "verbose" ] || [ "$1" = "debug" ] || [ "$1" = "info" ] || [ "$1" = "warn" ] || [ "$1" = "release" ]; then
+	if [ "$1" = "verbose" ] || [ "$1" = "debug" ] || [ "$1" = "info"] || [ "$1" = "warn" ] || [ "$1" = "release" ]; then
 		LOG_LEVEL=${LOG_LEVELS[$1]}
 		shift
 	fi
@@ -72,7 +72,6 @@ create_image() {
 	mkfs.minix -3 $IMAGE_NAME
 	[ ! -d "$MOUNT_DIR" ] && mkdir $MOUNT_DIR
 	sudo mount $IMAGE_NAME $MOUNT_DIR
-	cp kernel/main.c $INSTALL_ROOT/hello.txt
 	cp -r $INSTALL_ROOT/* $MOUNT_DIR -r
 	sync
 	sudo umount $MOUNT_DIR
@@ -80,7 +79,6 @@ create_image() {
 }
 
 run() {
-	clear
 	$QEMU $QEMU_OPTS $@
 }
 
@@ -117,9 +115,7 @@ fi
 CMD=$1
 if [ "$CMD" = "run" ]; then
 	shift
-	if [ ! -d "$BUILD_DIR" ] ; then
-		build $1
-	fi
+	[ ! -d "$BUILD_DIR" ] && build $1
 	[ ! -d "$IMAGE_NAME" ] && create_image
 	run
 	exit 0

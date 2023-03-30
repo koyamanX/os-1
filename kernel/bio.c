@@ -3,112 +3,44 @@
 #include <virtio.h>
 #include <vm.h>
 
-static struct buf buf[NBUF];
-static struct buf *bfreelist;
+struct buf *blist;
 
 void binit(void) {
-    // Initialize all buffer entries
-    for (int i = 0; i < NBUF; i++) {
-        buf[i].valid = 0;
-        buf[i].dirty = 0;
-        buf[i].next = (i == NBUF - 1) ? NULL : &buf[i + 1];
-    }
-
-    // Set bfreelist to the first buffer entry
-    bfreelist = &buf[0];
+    blist = (struct buf *)alloc_page();
+    blist->valid = 0;
 }
 
 struct buf *bread(dev_t dev, u64 blkno) {
-    struct buf *bp = getblk(dev, blkno);
-    // Read the block into the buffer from the device
-    (*bdevsw[dev.major].strategy)(bp->data, bp->blkno, 0);
-    bp->valid = 1;
+    if (blist->valid && blist->blkno == blkno) {
+        return blist;
+    }
+    if (blist->valid) {
+        bwrite(blist);
+    }
+    blist->valid = 1;
+    blist->dev = dev;
+    blist->blkno = blkno;
+    bdevsw[dev.major].strategy(blist->data, blist->blkno, 0);
 
-    return bp;
+    return blist;
 }
 
-void bwrite(struct buf *bp) {
-    if (bp == NULL) {
-        return;
-    }
-
+int bwrite(struct buf *bp) {
     if (!bp->valid) {
-        return;
+        return -1;
     }
-
-    struct bdevsw *dev = &bdevsw[bp->dev.major];
-
-    // Call device specific write function
-    dev->strategy(bp->data, bp->blkno, 1);
-
-    // Mark buffer as clean
-    bp->dirty = 0;
-}
-
-void bflush(dev_t dev) {
-    struct buf *bp;
-    struct bdevsw *bdev = &bdevsw[dev.major];
-
-    // Flush all bpfers associated with dev from the active list
-    for (bp = bdev->bactivelist; bp; bp = bp->next) {
-        if (bp->dev.major == dev.major && bp->dev.minor == dev.minor &&
-            bp->dirty && bp->valid) {
-            bwrite(bp);
-        }
-    }
-}
-
-struct buf *getblk(dev_t dev, u64 blkno) {
-    struct buf *bp;
-
-    for (bp = bfreelist; bp != NULL; bp = bp->next) {
-        if (bp->valid == 0) {
-            if (bp == bfreelist) {
-                bfreelist = bp->next;
-            } else {
-                struct buf *prev = bfreelist;
-                while (prev->next != bp) {
-                    prev = prev->next;
-                }
-                prev->next = bp->next;
-            }
-            break;
-        }
-    }
-
-    if (bp == NULL) {
-        struct bdevsw *bdev = &bdevsw[dev.major];
-        bp = bdev->bactivelist;
-        if (bp == NULL) {
-            return NULL;
-        }
-        bwrite(bp);
-    }
-
-    bp->valid = 1;
-    bp->dev = dev;
-    bp->blkno = blkno;
-    bp->dirty = 0;
-
-    return bp;
-}
-
-void brelse(struct buf *bp) {
-    if (!bp) {
-        // Do nothing if the buffer pointer is null.
-        return;
-    }
-
-    if (bp->dirty && bp->valid) {
-        // If the buffer is dirty and valid, write it out and mark it as not
-        // dirty.
-        bwrite(bp);     // Write the contents of the buffer to disk.
-        bp->dirty = 0;  // Clear the dirty flag to indicate that the buffer is
-                        // no longer dirty.
-    }
-
+    bdevsw[bp->dev.major].strategy(bp->data, bp->blkno, 1);
     bp->valid = 0;
-    bp->next = bfreelist;  // Set the next pointer of the buffer to the current
-                           // head of the freelist.
-    bfreelist = bp;  // Update the head of the freelist to point to the buffer.
+
+    return 0;
+}
+
+int bflush(dev_t dev) {
+    int ret = 0;
+
+    if (blist->valid && blist->dev.major == dev.major &&
+        blist->dev.minor == dev.minor) {
+        ret = bwrite(blist);
+    }
+    return ret;
 }

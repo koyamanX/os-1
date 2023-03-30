@@ -34,7 +34,7 @@ Supporting following features.
 - [ ] uptime
 - [ ] unlink
 - [ ] link
-- [x] close
+- [ ] close
 
 # How to use
 RISC-V toolchain, qemu for RISC-V and minix3 kernel module is required to run os-1.

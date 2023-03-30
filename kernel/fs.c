@@ -359,12 +359,10 @@ static u64 alloc_bit(dev_t dev, int map) {
     u64 map_offset;
 
     sb = getfs(dev);
-    if (map == 0) {
-        // IMAP
+    if (map == IMAP) {
         last_block = sb->imap_blocks;
         map_offset = IMAP_BLKNO(sb);
-    } else if (map == 1) {
-        // ZMAP
+    } else if (map == ZMAP) {
         last_block = sb->zmap_blocks;
         map_offset = ZMAP_BLKNO(sb);
     } else {
@@ -400,11 +398,11 @@ __attribute__((unused)) static void free_bit(dev_t dev, int map, u64 pos) {
     u64 map_offset;
 
     sb = getfs(dev);
-    if (map == 0) {
+    if (map == IMAP) {
         // IMAP
         map_offset = IMAP_BLKNO(sb);
         pos--;
-    } else if (map == 1) {
+    } else if (map == ZMAP) {
         // ZMAP
         map_offset = ZMAP_BLKNO(sb);
     } else {
@@ -431,7 +429,7 @@ static u8 has_bit(dev_t dev, int map, u64 n) {
     struct buf *buf;
 
     sb = getfs(dev);
-    if (map == 1) {
+    if (map == ZMAP) {
         panic("Not supported yet\n");
     }
 
@@ -451,7 +449,7 @@ struct inode *ialloc(dev_t dev) {
     struct inode *ip = NULL;
     u64 inum;
 
-    inum = alloc_bit(dev, 0);
+    inum = alloc_bit(dev, IMAP);
     ip = iget(dev, inum);
 
     return ip;
@@ -553,14 +551,14 @@ int open(const char *pathname, int flags, mode_t mode) {
         ip->size = 0x0;
         struct super_block *sb;
         sb = getfs(ip->dev);
-        ip->zone[0] = ((sb->first_data_zone) + alloc_bit(ip->dev, 1));
-        ip->zone[1] = ((sb->first_data_zone) + alloc_bit(ip->dev, 1));
-        ip->zone[2] = ((sb->first_data_zone) + alloc_bit(ip->dev, 1));
-        ip->zone[3] = ((sb->first_data_zone) + alloc_bit(ip->dev, 1));
-        ip->zone[4] = ((sb->first_data_zone) + alloc_bit(ip->dev, 1));
-        ip->zone[5] = ((sb->first_data_zone) + alloc_bit(ip->dev, 1));
-        ip->zone[6] = ((sb->first_data_zone) + alloc_bit(ip->dev, 1));
-        ip->zone[7] = ((sb->first_data_zone) + alloc_bit(ip->dev, 1));
+        ip->zone[0] = ((sb->first_data_zone) + alloc_bit(ip->dev, ZMAP));
+        ip->zone[1] = ((sb->first_data_zone) + alloc_bit(ip->dev, ZMAP));
+        ip->zone[2] = ((sb->first_data_zone) + alloc_bit(ip->dev, ZMAP));
+        ip->zone[3] = ((sb->first_data_zone) + alloc_bit(ip->dev, ZMAP));
+        ip->zone[4] = ((sb->first_data_zone) + alloc_bit(ip->dev, ZMAP));
+        ip->zone[5] = ((sb->first_data_zone) + alloc_bit(ip->dev, ZMAP));
+        ip->zone[6] = ((sb->first_data_zone) + alloc_bit(ip->dev, ZMAP));
+        ip->zone[7] = ((sb->first_data_zone) + alloc_bit(ip->dev, ZMAP));
 
         // Update newly create inode.
         iupdate(ip);

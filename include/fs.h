@@ -38,6 +38,9 @@ struct super_block {
 #define DIRECTZONE 8    //!< Direct zone number
 #define INDIRECTZONE 9  //!< Indirect zone number
 
+#define IMAP 0  //!< IMAP number for alloc/free_bit
+#define ZMAP 1  //!< ZMAP number for alloc/free_bit
+
 /**
  * @brief Struct for minix3 inode.
  * @details First part of this struct is on-disk structure,

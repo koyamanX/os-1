@@ -38,7 +38,7 @@ void fsinit(void) {
         bdevsw[rootdev.major].open();
     }
     // Read Superblock.
-    bp = bread(rootdev, SUPERBLOCK);
+    bp = bread(rootdev, SUPERBLOCK_BLKNO);
     // Copy superblock to superblock cache.
     memcpy(&sb, bp->data, sizeof(struct super_block));
     // Zero clear file cache.
@@ -84,7 +84,7 @@ struct inode *iget(dev_t dev, u64 inum) {
              * so subtract by 1 to map block number.
              */
             inum--;
-            blkno = (IMAP(sb) + sb->imap_blocks + sb->zmap_blocks +
+            blkno = (IMAP_BLKNO(sb) + sb->imap_blocks + sb->zmap_blocks +
                      (inum / NINODE));
             if (!has_bit(dev, 0, inum)) {
                 struct buf *buf;
@@ -362,11 +362,11 @@ static u64 alloc_bit(dev_t dev, int map) {
     if (map == 0) {
         // IMAP
         last_block = sb->imap_blocks;
-        map_offset = IMAP(sb);
+        map_offset = IMAP_BLKNO(sb);
     } else if (map == 1) {
         // ZMAP
         last_block = sb->zmap_blocks;
-        map_offset = ZMAP(sb);
+        map_offset = ZMAP_BLKNO(sb);
     } else {
         panic("Unknown map");
     }
@@ -402,11 +402,11 @@ __attribute__((unused)) static void free_bit(dev_t dev, int map, u64 pos) {
     sb = getfs(dev);
     if (map == 0) {
         // IMAP
-        map_offset = IMAP(sb);
+        map_offset = IMAP_BLKNO(sb);
         pos--;
     } else if (map == 1) {
         // ZMAP
-        map_offset = ZMAP(sb);
+        map_offset = ZMAP_BLKNO(sb);
     } else {
         panic("Unknown map");
     }
@@ -465,8 +465,8 @@ void iupdate(struct inode *ip) {
 
     dev = ip->dev;
     sb = getfs(dev);
-    offset =
-        (IMAP(sb) + sb->imap_blocks + sb->zmap_blocks + (ip->inum / NINODE));
+    offset = (IMAP_BLKNO(sb) + sb->imap_blocks + sb->zmap_blocks +
+              (ip->inum / NINODE));
     buf = bread(dev, offset);
     memcpy(&buf->data[(ip->inum % NINODE) * INODE_SIZE], ip, INODE_SIZE);
     bwrite(buf);

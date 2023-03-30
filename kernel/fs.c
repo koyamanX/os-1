@@ -338,6 +338,11 @@ u64 writei(struct inode *ip, char *src, u64 offset, u64 size) {
     return total;
 }
 
+/**
+ *	@brief Find first set bit.
+ *	@param[in] bit to search.
+ *	@return position of first set bit.
+ */
 static int ffs(int x) {
     int bit;
 
@@ -350,6 +355,13 @@ static int ffs(int x) {
     return bit;
 }
 
+/**
+ * @brief Allocate new entry from map.
+ * @details Allocate new entry from map.
+ * @param[in] dev device to allocate bit map.
+ * @param[in] map IMAP for inode map, ZMAP for zone map.
+ * @return number of zone or inode entry.
+ */
 static u64 alloc_bit(dev_t dev, int map) {
     struct super_block *sb;
     struct buf *buf;
@@ -389,6 +401,13 @@ static u64 alloc_bit(dev_t dev, int map) {
     return -1;
 }
 
+/**
+ * @brief Free entry to map.
+ * @details Free entry to map.
+ * @param[in] dev device to free bit map.
+ * @param[in] map IMAP for inode map, ZMAP for zone map.
+ * @param[in] pos number of zone or inode entry to free.
+ */
 __attribute__((unused)) static void free_bit(dev_t dev, int map, u64 pos) {
     struct super_block *sb;
     struct buf *buf;
@@ -419,6 +438,15 @@ __attribute__((unused)) static void free_bit(dev_t dev, int map, u64 pos) {
     brelse(buf);
 }
 
+/**
+ * @brief Find n in map is used or not.
+ * @details Find n in map is used or not.
+ * @param[in] dev device to free bit map.
+ * @param[in] map IMAP for inode map, ZMAP for zone map.
+ * @param[in] n number of zone or inode entry to search.
+ * @return true if used, false if unused.
+ * @attention ZMAP is not supported yet.
+ */
 static u8 has_bit(dev_t dev, int map, u64 n) {
     u64 blkoff;
     u64 byteoff;

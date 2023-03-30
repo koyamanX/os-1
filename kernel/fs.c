@@ -298,7 +298,7 @@ static u64 alloc_bit(dev_t dev, int map) {
     return -1;
 }
 
-static void free_bit(dev_t dev, int map, u64 pos) {
+__attribute__((unused)) static void free_bit(dev_t dev, int map, u64 pos) {
     struct super_block *sb;
     struct buf *buf;
     u64 blkoff;
@@ -492,22 +492,6 @@ int open(const char *pathname, int flags, mode_t mode) {
     fp->ip->ctime = 0;
     if (flags & O_TRUNC) {
         fp->ip->size = 0;
-        free_bit(fp->ip->dev, 1, fp->ip->zone[0]);
-        free_bit(fp->ip->dev, 1, fp->ip->zone[1]);
-        free_bit(fp->ip->dev, 1, fp->ip->zone[2]);
-        free_bit(fp->ip->dev, 1, fp->ip->zone[3]);
-        free_bit(fp->ip->dev, 1, fp->ip->zone[4]);
-        free_bit(fp->ip->dev, 1, fp->ip->zone[5]);
-        free_bit(fp->ip->dev, 1, fp->ip->zone[6]);
-        free_bit(fp->ip->dev, 1, fp->ip->zone[7]);
-        fp->ip->zone[0] = ((sb->first_data_zone) + alloc_bit(fp->ip->dev, 1));
-        fp->ip->zone[1] = ((sb->first_data_zone) + alloc_bit(fp->ip->dev, 1));
-        fp->ip->zone[2] = ((sb->first_data_zone) + alloc_bit(fp->ip->dev, 1));
-        fp->ip->zone[3] = ((sb->first_data_zone) + alloc_bit(fp->ip->dev, 1));
-        fp->ip->zone[4] = ((sb->first_data_zone) + alloc_bit(fp->ip->dev, 1));
-        fp->ip->zone[5] = ((sb->first_data_zone) + alloc_bit(fp->ip->dev, 1));
-        fp->ip->zone[6] = ((sb->first_data_zone) + alloc_bit(fp->ip->dev, 1));
-        fp->ip->zone[7] = ((sb->first_data_zone) + alloc_bit(fp->ip->dev, 1));
     }
     iupdate(fp->ip);
 

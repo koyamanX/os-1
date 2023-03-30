@@ -167,81 +167,174 @@ struct inode *namei(char *path) {
     return ip;
 }
 
-// read content pointed by ip to dest, for size bytes start from offset.
-// TODO: implement offset.
 u64 readi(struct inode *ip, char *dest, u64 offset, u64 size) {
     u64 total = 0;
     int zone = 0;
     struct buf *buf;
+    size_t sz;
+    size_t off;
 
     if ((ip->mode & S_IFMT) == S_IFCHR) {
         VERBOSE_PRINTK("readi: S_IFCHR\n");
         for (u64 i = 0; i < size; i++) {
+            // If character device read one by one.
             dest[i] = cdevsw[ip->dev.major].read();
         }
         return size;
     }
 
-    if (offset == ip->size) {
+    if (offset >= ip->size) {
         // EOF
         return 0;
     }
 
     if (offset > 0) {
+        // TODO: Indirect zone.
+        // TODO: Allocate zone if not used.
         for (u64 i = BLOCKSIZE; i <= offset; i += BLOCKSIZE) {
+            // Find zone which is ranged of an offset.
             zone++;
         }
+        // Read the zone.
         buf = bread(rootdev, zmap(ip, zone));
-        memcpy(dest, &buf->data[(offset % BLOCKSIZE)], size - total);
+        // Offset in block is offset % BLOCKSIZE.
+        off = offset % BLOCKSIZE;
+        sz = size % BLOCKSIZE;
+        // Write data to dest for sz bytes.
+        memcpy(dest, &buf->data[off], sz);
         brelse(buf);
-        total = total + (size - total);
+        total += sz;
+        size -= sz;
+        // Advance dest pointer by size for next write.
+        dest = &dest[sz];
     }
 
-    while (total < size) {
+    for (int i = size / BLOCKSIZE; i; i--) {
+        sz = BLOCKSIZE;
         buf = bread(rootdev, zmap(ip, zone));
-        memcpy(dest, buf->data, size - total);
+        memcpy(dest, buf->data, sz);
         brelse(buf);
+        // Update corresponding inode's size.
+        total += sz;
+        size -= sz;
+        // Advance dest pointer by size for next write.
+        dest = &dest[sz];
+        // Size of each read for non-last zone is BLOCKSIZE,
+        // So advance zone by one.
+        // Only last read is non-BLOCKSIZE read.
         zone++;
-        total = total + (size - total);
     }
+
+    if (size) {
+        // TODO: Indirect zone.
+        // TODO: Allocate zone if not used.
+        buf = bread(rootdev, zmap(ip, zone));
+        // If we can read BLOCKSIZE.
+        // Wrap around BLOCKSIZE, since access unit is BLOCKSIZE.
+        // In this case, it is last block to read.
+        sz = size % BLOCKSIZE;
+        // Write data to dest for sz bytes.
+        // Offset is handled before, so we can ignore offset.
+        memcpy(dest, buf->data, sz);
+        brelse(buf);
+        // Update corresponding inode's size.
+        total += sz;
+        size -= sz;
+        // Advance dest pointer by size for next write.
+        dest = &dest[sz];
+        // Size of each read for non-last zone is BLOCKSIZE,
+        // So advance zone by one.
+        // Only last read is non-BLOCKSIZE read.
+        zone++;
+    }
+
     return total;
 }
+
 u64 writei(struct inode *ip, char *src, u64 offset, u64 size) {
     u64 total = 0;
     int zone = 0;
     struct buf *buf;
+    size_t sz;
+    size_t off;
 
     if ((ip->mode & S_IFMT) == S_IFCHR) {
         VERBOSE_PRINTK("writei: S_IFCHR\n");
+        // There is no offset in Character device.
         for (u64 i = 0; i < size; i++) {
+            // Character device accept data to be written one byte one.
             cdevsw[ip->dev.major].write(src[i]);
         }
         return size;
     }
 
     if (offset > 0) {
+        // TODO: Indirect zone.
+        // TODO: Allocate zone if not used.
         for (u64 i = BLOCKSIZE; i <= offset; i += BLOCKSIZE) {
+            // Find zone which is ranged of an offset.
             zone++;
         }
+        // Read the zone.
         buf = bread(rootdev, zmap(ip, zone));
-        memcpy(&buf->data[(offset % BLOCKSIZE)], src, size - total);
+        // Offset in block is offset % BLOCKSIZE.
+        off = offset % BLOCKSIZE;
+        sz = size % BLOCKSIZE;
+        // Write data from src for sz bytes.
+        memcpy(&buf->data[off], src, sz);
         bwrite(buf);
         brelse(buf);
-        ip->size += (size - total);
-        total = total + (size - total);
+        ip->size += sz;
+        total += sz;
+        size -= sz;
     }
-    while (total < size) {
-        // TODO: allocate zone bit map.
+
+    for (int i = size / BLOCKSIZE; i; i--) {
+        // TODO: Indirect zone.
+        // TODO: Allocate zone if not used.
         buf = bread(rootdev, zmap(ip, zone));
-        memcpy(buf->data, src, size - total);
+        // If we can write BLOCKSIZE.
+        sz = BLOCKSIZE;
+        // Write data from src for sz bytes.
+        // Offset is handled before, so we can ignore offset.
+        memcpy(buf->data, src, sz);
         bwrite(buf);
         brelse(buf);
+        // Update corresponding inode's size.
+        ip->size += sz;
+        total += sz;
+        size -= sz;
+        // Size of each write for non-last zone is BLOCKSIZE,
+        // So advance zone by one.
+        // Only last write is non-BLOCKSIZE write.
         zone++;
-        ip->size += (size - total);
-        total = total + (size - total);
     }
+
+    if (size) {
+        // TODO: Indirect zone.
+        // TODO: Allocate zone if not used.
+        buf = bread(rootdev, zmap(ip, zone));
+        // Wrap around BLOCKSIZE, since access unit is BLOCKSIZE.
+        // In this case, it is last block to write.
+        sz = size % BLOCKSIZE;
+        // Write data from src for sz bytes.
+        // Offset is handled before, so we can ignore offset.
+        memcpy(buf->data, src, sz);
+        bwrite(buf);
+        brelse(buf);
+        // Update corresponding inode's size.
+        ip->size += sz;
+        total += sz;
+        size -= sz;
+        // Size of each write for non-last zone is BLOCKSIZE,
+        // So advance zone by one.
+        // Only last write is non-BLOCKSIZE write.
+        zone++;
+    }
+    // Write out inode.
     iupdate(ip);
 
+    // Return total bytes written.
     return total;
 }
 

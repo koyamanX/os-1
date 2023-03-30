@@ -7,13 +7,18 @@
 #ifndef _FCNTL_H
 #define _FCNTL_H
 
-#define O_CREAT 00100
-#define O_TRUNC 01000
-#define O_RDONLY 0
-#define O_WRONLY 1
-#define O_RDWR 2
-
 #include <sys/types.h>
+
+#define O_CREAT \
+    00100  //!< Create file, set user id and group id to effective uid/gid.
+#define O_TRUNC \
+    01000  //!< If regular file exists, and opened O_RDWR or O_WRONLY, set its
+           //!< length to 0, mode unchanged. Opening file with O_RDONLY &
+           //!< O_TRUNC is undefined.
+#define O_APPEND 02000  //!< Set the file offset to the end of the file.
+#define O_RDONLY 0      //!< Open for reading only.
+#define O_WRONLY 1      //!< Open for writing only.
+#define O_RDWR 2        //!< Open for reading and writing.
 
 /**
  * @brief Open a file.

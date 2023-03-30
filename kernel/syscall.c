@@ -50,6 +50,9 @@ int syscall(struct proc *rp) {
             extern void swtch(context_t * old, context_t * new);
             swtch(&rp->ctx, &cpus[r_tp()].ctx);
             break;
+        case __NR_CLOSE:
+            ret = close(a0);
+            break;
         default:
             panic("invalid syscall\n");
             break;
@@ -69,7 +72,8 @@ ssize_t write(int fd, const void *buf, size_t count) {
     if (fp == NULL) {
         panic("No file opened\n");
     }
-    ret = writei(fp->ip, (char *)buf, 0, count);
+    ret = writei(fp->ip, (char *)buf, fp->offset[1], count);
+    fp->offset[1] += count;
 
     return ret;
 }
@@ -80,8 +84,8 @@ ssize_t read(int fd, const void *buf, size_t count) {
 
     rp = cpus[r_tp()].rp;
     fp = rp->ofile[fd];
-    // TODO: fp->offset
-    ret = readi(fp->ip, (char *)buf, 0, count);
+    ret = readi(fp->ip, (char *)buf, fp->offset[0], count);
+    fp->offset[0] += count;
 
     return ret;
 }

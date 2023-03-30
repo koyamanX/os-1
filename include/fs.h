@@ -16,23 +16,23 @@
  * @details Contains in-disk superblock of minix3 filesystem.
  */
 struct super_block {
-    u32 ninodes;        //!< Number of available inodes.
-    u16 nzones;         //!< Number of available zones.
-    u16 imap_blocks;    //!< Number of blocks used by inode bit map.
-    u16 zmap_blocks;    //!< Number of blocks used by zone bit map.
-    u16 firstdatazone;  //!< Number of first data zone.
-    u16 log_zone_size;  //!< Log2 of block/zone.
-    u16 pad;            //!< Padding.
-    u32 max_size;       //!< Max file size.
-    u32 zones;          //!< Number of zones
-    u16 magic;          //!< Magic number
-    u16 pad2;           //!< Padding
-    u16 block_size;     //!< Block size in bytes
-    u8 disk_version;    //!< Filesystem version
+    u32 ninodes;          //!< Number of available inodes.
+    u16 nzones;           //!< Number of available zones.
+    u16 imap_blocks;      //!< Number of blocks used by inode bit map.
+    u16 zmap_blocks;      //!< Number of blocks used by zone bit map.
+    u16 first_data_zone;  //!< Number of first data zone.
+    u16 log_zone_size;    //!< Log2 of block/zone.
+    u16 pad;              //!< Padding.
+    u32 max_size;         //!< Max file size.
+    u32 zones;            //!< Number of zones
+    u16 magic;            //!< Magic number
+    u16 pad2;             //!< Padding
+    u16 block_size;       //!< Block size in bytes
+    u8 disk_version;      //!< Filesystem version
 };
 
 #define NINODE 16      //!< Size of inode in one block
-#define NICACHE 64     //!< Size of inode chache
+#define NICACHE 128    //!< Size of inode chache
 #define INODE_SIZE 64  //!< Size of on disk inode
 
 #define DIRECTZONE 8    //!< Direct zone number

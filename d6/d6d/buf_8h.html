@@ -69,14 +69,12 @@ $(function() {
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">buf.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p>Buffer cache for disk I/O operations.  
-<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;<a class="el" href="../../d4/dca/devsw_8h_source.html">devsw.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="../../d9/d49/types_8h_source.html">sys/types.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -84,7 +82,7 @@ Include dependency graph for buf.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../db/d16/buf_8h__incl.png" border="0" usemap="#ainclude_2buf_8h" alt=""/></div>
 <map name="ainclude_2buf_8h" id="ainclude_2buf_8h">
-<area shape="rect" title="Buffer cache for disk I/O operations." alt="" coords="21,5,127,32"/>
+<area shape="rect" title=" " alt="" coords="59,5,164,32"/>
 <area shape="rect" href="../../d4/dca/devsw_8h.html" title=" " alt="" coords="37,80,111,107"/>
 <area shape="rect" href="../../d9/d49/types_8h.html" title=" " alt="" coords="101,155,197,181"/>
 <area shape="rect" title=" " alt="" coords="5,155,76,181"/>
@@ -95,21 +93,10 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../db/dec/buf_8h__dep__incl.png" border="0" usemap="#ainclude_2buf_8hdep" alt=""/></div>
 <map name="ainclude_2buf_8hdep" id="ainclude_2buf_8hdep">
-<area shape="rect" title="Buffer cache for disk I/O operations." alt="" coords="141,5,246,32"/>
-<area shape="rect" href="../../d4/dca/devsw_8h.html" title=" " alt="" coords="130,80,257,107"/>
-<area shape="rect" href="../../d0/d29/main_8c.html" title=" " alt="" coords="86,453,197,480"/>
-<area shape="rect" href="../../d2/d5a/fs_8c.html" title="Implementation of minix 3 filesystem." alt="" coords="153,379,242,405"/>
-<area shape="rect" href="../../dc/de6/bio_8c.html" title=" " alt="" coords="409,155,506,181"/>
-<area shape="rect" href="../../df/d26/fs_8h.html" title="Structures and function prototypes for low&#45;level access to minix3 filesystem." alt="" coords="145,155,242,181"/>
-<area shape="rect" href="../../d4/d5b/devsw_8c.html" title=" " alt="" coords="266,155,385,181"/>
-<area shape="rect" href="../../d2/d4d/file_8h.html" title=" " alt="" coords="302,229,407,256"/>
-<area shape="rect" href="../../d3/dda/proc_8c.html" title=" " alt="" coords="661,453,766,480"/>
-<area shape="rect" href="../../df/d03/proc_8h.html" title=" " alt="" coords="325,304,438,331"/>
-<area shape="rect" href="../../d9/dc3/fio_8c.html" title=" " alt="" coords="667,379,760,405"/>
-<area shape="rect" href="../../d7/d00/sched_8h.html" title=" " alt="" coords="419,379,541,405"/>
-<area shape="rect" href="../../db/dbe/sched_8c.html" title=" " alt="" coords="521,453,636,480"/>
-<area shape="rect" href="../../db/dd8/syscall_8c.html" title=" " alt="" coords="247,453,369,480"/>
-<area shape="rect" href="../../dc/d6f/trap_8c.html" title=" " alt="" coords="394,453,497,480"/>
+<area shape="rect" title=" " alt="" coords="119,5,224,32"/>
+<area shape="rect" href="../../dc/de6/bio_8c.html" title=" " alt="" coords="5,80,103,107"/>
+<area shape="rect" href="../../d2/d5a/fs_8c.html" title="Implementation of minix 3 filesystem." alt="" coords="127,80,216,107"/>
+<area shape="rect" href="../../d0/d29/main_8c.html" title=" " alt="" coords="240,80,351,107"/>
 </map>
 </div>
 </div>
@@ -118,43 +105,30 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dd0/structbuf.html">buf</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Struct for buffer cache.  <a href="../../d9/dd0/structbuf.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a72a591cf0a96cf23c63df5c78712dabe"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d6d/buf_8h.html#a72a591cf0a96cf23c63df5c78712dabe">BUFSIZ</a>&#160;&#160;&#160;1024</td></tr>
-<tr class="memdesc:a72a591cf0a96cf23c63df5c78712dabe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buffer size.  <a href="../../d6/d6d/buf_8h.html#a72a591cf0a96cf23c63df5c78712dabe">More...</a><br /></td></tr>
 <tr class="separator:a72a591cf0a96cf23c63df5c78712dabe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad51e2f8dffd163c263ec676a268d0f0a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d6d/buf_8h.html#ad51e2f8dffd163c263ec676a268d0f0a">NBUF</a>&#160;&#160;&#160;32</td></tr>
-<tr class="memdesc:ad51e2f8dffd163c263ec676a268d0f0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of buffer.  <a href="../../d6/d6d/buf_8h.html#ad51e2f8dffd163c263ec676a268d0f0a">More...</a><br /></td></tr>
-<tr class="separator:ad51e2f8dffd163c263ec676a268d0f0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a53cca0ddc98c5f1de37124eca2575a59"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d6d/buf_8h.html#a53cca0ddc98c5f1de37124eca2575a59">binit</a> (void)</td></tr>
-<tr class="memdesc:a53cca0ddc98c5f1de37124eca2575a59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize buffer cache.  <a href="../../d6/d6d/buf_8h.html#a53cca0ddc98c5f1de37124eca2575a59">More...</a><br /></td></tr>
 <tr class="separator:a53cca0ddc98c5f1de37124eca2575a59"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a698c2e69ee3a6a76b6adfd479397969b"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="../../d9/dd0/structbuf.html">buf</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d6d/buf_8h.html#a698c2e69ee3a6a76b6adfd479397969b">bread</a> (<a class="el" href="../../d2/dd6/structdev__t.html">dev_t</a> dev, <a class="el" href="../../d9/d49/types_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a> blkno)</td></tr>
-<tr class="memdesc:a698c2e69ee3a6a76b6adfd479397969b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read block from disk.  <a href="../../d6/d6d/buf_8h.html#a698c2e69ee3a6a76b6adfd479397969b">More...</a><br /></td></tr>
 <tr class="separator:a698c2e69ee3a6a76b6adfd479397969b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a40ae6d4f407ff644aef7b7320c55aebb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d6d/buf_8h.html#a40ae6d4f407ff644aef7b7320c55aebb">bwrite</a> (struct <a class="el" href="../../d9/dd0/structbuf.html">buf</a> *bp)</td></tr>
-<tr class="memdesc:a40ae6d4f407ff644aef7b7320c55aebb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write block to disk.  <a href="../../d6/d6d/buf_8h.html#a40ae6d4f407ff644aef7b7320c55aebb">More...</a><br /></td></tr>
-<tr class="separator:a40ae6d4f407ff644aef7b7320c55aebb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a682247ce4171a3a58a5379a2941584cd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d6d/buf_8h.html#a682247ce4171a3a58a5379a2941584cd">bflush</a> (<a class="el" href="../../d2/dd6/structdev__t.html">dev_t</a> dev)</td></tr>
-<tr class="memdesc:a682247ce4171a3a58a5379a2941584cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write active buffer associated to device.  <a href="../../d6/d6d/buf_8h.html#a682247ce4171a3a58a5379a2941584cd">More...</a><br /></td></tr>
-<tr class="separator:a682247ce4171a3a58a5379a2941584cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab13e6197ba8af3d7add9fb17a5440344"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="../../d9/dd0/structbuf.html">buf</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d6d/buf_8h.html#ab13e6197ba8af3d7add9fb17a5440344">getblk</a> (<a class="el" href="../../d2/dd6/structdev__t.html">dev_t</a> dev, <a class="el" href="../../d9/d49/types_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a> blkno)</td></tr>
-<tr class="memdesc:ab13e6197ba8af3d7add9fb17a5440344"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get new buffer cache entry.  <a href="../../d6/d6d/buf_8h.html#ab13e6197ba8af3d7add9fb17a5440344">More...</a><br /></td></tr>
-<tr class="separator:ab13e6197ba8af3d7add9fb17a5440344"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af154613de80f6b640872720a3cc4ec92"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d6d/buf_8h.html#af154613de80f6b640872720a3cc4ec92">brelse</a> (struct <a class="el" href="../../d9/dd0/structbuf.html">buf</a> *bp)</td></tr>
-<tr class="memdesc:af154613de80f6b640872720a3cc4ec92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Release buffer cache, flush if dirty.  <a href="../../d6/d6d/buf_8h.html#af154613de80f6b640872720a3cc4ec92">More...</a><br /></td></tr>
-<tr class="separator:af154613de80f6b640872720a3cc4ec92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa118b4fa3c1c5d061e04fc824f9d1891"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d6d/buf_8h.html#aa118b4fa3c1c5d061e04fc824f9d1891">bwrite</a> (struct <a class="el" href="../../d9/dd0/structbuf.html">buf</a> *bp)</td></tr>
+<tr class="separator:aa118b4fa3c1c5d061e04fc824f9d1891"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47340ad032ee4559cfcdaf99ed7bdc5c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d6d/buf_8h.html#a47340ad032ee4559cfcdaf99ed7bdc5c">bflush</a> (<a class="el" href="../../d2/dd6/structdev__t.html">dev_t</a> dev)</td></tr>
+<tr class="separator:a47340ad032ee4559cfcdaf99ed7bdc5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a87de12a8539c1fa7e4ced185f991d02b"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="../../d9/dd0/structbuf.html">buf</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d6d/buf_8h.html#a87de12a8539c1fa7e4ced185f991d02b">blist</a></td></tr>
+<tr class="separator:a87de12a8539c1fa7e4ced185f991d02b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Buffer cache for disk I/O operations. </p>
-<dl class="section author"><dt>Author</dt><dd>ckoyama(koyamanX) </dd></dl>
-</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a72a591cf0a96cf23c63df5c78712dabe"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a72a591cf0a96cf23c63df5c78712dabe">&#9670;&nbsp;</a></span>BUFSIZ</h2>
 
@@ -167,35 +141,17 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Buffer size. </p>
-
-</div>
-</div>
-<a id="ad51e2f8dffd163c263ec676a268d0f0a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad51e2f8dffd163c263ec676a268d0f0a">&#9670;&nbsp;</a></span>NBUF</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define NBUF&#160;&#160;&#160;32</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Number of buffer. </p>
-
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a682247ce4171a3a58a5379a2941584cd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a682247ce4171a3a58a5379a2941584cd">&#9670;&nbsp;</a></span>bflush()</h2>
+<a id="a47340ad032ee4559cfcdaf99ed7bdc5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47340ad032ee4559cfcdaf99ed7bdc5c">&#9670;&nbsp;</a></span>bflush()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void bflush </td>
+          <td class="memname">int bflush </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../d2/dd6/structdev__t.html">dev_t</a>&#160;</td>
           <td class="paramname"><em>dev</em></td><td>)</td>
@@ -203,21 +159,13 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Write active buffer associated to device. </p>
-<p>Write active buffer associated to device. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">dev</td><td>device. </td></tr>
-  </table>
-  </dd>
-</dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../d6/d6d/buf_8h_a682247ce4171a3a58a5379a2941584cd_cgraph.png" border="0" usemap="#ad6/d6d/buf_8h_a682247ce4171a3a58a5379a2941584cd_cgraph" alt=""/></div>
-<map name="ad6/d6d/buf_8h_a682247ce4171a3a58a5379a2941584cd_cgraph" id="ad6/d6d/buf_8h_a682247ce4171a3a58a5379a2941584cd_cgraph">
-<area shape="rect" title="Write active buffer associated to device." alt="" coords="5,5,67,32"/>
-<area shape="rect" href="../../dc/de6/bio_8c.html#a40ae6d4f407ff644aef7b7320c55aebb" title="Write block to disk." alt="" coords="115,5,177,32"/>
+<div class="center"><img src="../../d6/d6d/buf_8h_a47340ad032ee4559cfcdaf99ed7bdc5c_cgraph.png" border="0" usemap="#ad6/d6d/buf_8h_a47340ad032ee4559cfcdaf99ed7bdc5c_cgraph" alt=""/></div>
+<map name="ad6/d6d/buf_8h_a47340ad032ee4559cfcdaf99ed7bdc5c_cgraph" id="ad6/d6d/buf_8h_a47340ad032ee4559cfcdaf99ed7bdc5c_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,67,32"/>
+<area shape="rect" href="../../dc/de6/bio_8c.html#aa118b4fa3c1c5d061e04fc824f9d1891" title=" " alt="" coords="115,5,177,32"/>
 </map>
 </div>
 
@@ -238,15 +186,12 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Initialize buffer cache. </p>
-<p>Initialize buffer cache. </p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d6/d6d/buf_8h_a53cca0ddc98c5f1de37124eca2575a59_icgraph.png" border="0" usemap="#ad6/d6d/buf_8h_a53cca0ddc98c5f1de37124eca2575a59_icgraph" alt=""/></div>
 <map name="ad6/d6d/buf_8h_a53cca0ddc98c5f1de37124eca2575a59_icgraph" id="ad6/d6d/buf_8h_a53cca0ddc98c5f1de37124eca2575a59_icgraph">
-<area shape="rect" title="Initialize buffer cache." alt="" coords="271,5,321,32"/>
+<area shape="rect" title=" " alt="" coords="271,5,321,32"/>
 <area shape="rect" href="../../da/da9/os1_8h.html#a406c20548822065e144564476378f8a1" title=" " alt="" coords="160,5,223,32"/>
 <area shape="rect" href="../../d0/d29/main_8c.html#aa97e24fea4daabae6b4e5d534ac8066d" title=" " alt="" coords="5,5,112,32"/>
 </map>
@@ -279,24 +224,13 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Read block from disk. </p>
-<p>Read block number (blikno) at device (dev), allocate new buffer. If buffer is not available in freelist, free one of entry in device's active list. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">dev</td><td>device. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">blkno</td><td>block number to read. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to buffer read. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d6/d6d/buf_8h_a698c2e69ee3a6a76b6adfd479397969b_cgraph.png" border="0" usemap="#ad6/d6d/buf_8h_a698c2e69ee3a6a76b6adfd479397969b_cgraph" alt=""/></div>
 <map name="ad6/d6d/buf_8h_a698c2e69ee3a6a76b6adfd479397969b_cgraph" id="ad6/d6d/buf_8h_a698c2e69ee3a6a76b6adfd479397969b_cgraph">
-<area shape="rect" title="Read block from disk." alt="" coords="5,5,64,32"/>
-<area shape="rect" href="../../dc/de6/bio_8c.html#ab13e6197ba8af3d7add9fb17a5440344" title="Get new buffer cache entry." alt="" coords="112,5,175,32"/>
-<area shape="rect" href="../../dc/de6/bio_8c.html#a40ae6d4f407ff644aef7b7320c55aebb" title="Write block to disk." alt="" coords="223,5,285,32"/>
+<area shape="rect" title=" " alt="" coords="5,5,64,32"/>
+<area shape="rect" href="../../dc/de6/bio_8c.html#aa118b4fa3c1c5d061e04fc824f9d1891" title=" " alt="" coords="112,5,175,32"/>
 </map>
 </div>
 <div class="dynheader">
@@ -304,52 +238,45 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d6/d6d/buf_8h_a698c2e69ee3a6a76b6adfd479397969b_icgraph.png" border="0" usemap="#ad6/d6d/buf_8h_a698c2e69ee3a6a76b6adfd479397969b_icgraph" alt=""/></div>
 <map name="ad6/d6d/buf_8h_a698c2e69ee3a6a76b6adfd479397969b_icgraph" id="ad6/d6d/buf_8h_a698c2e69ee3a6a76b6adfd479397969b_icgraph">
-<area shape="rect" title="Read block from disk." alt="" coords="1479,310,1537,337"/>
-<area shape="rect" href="../../d2/d5a/fs_8c.html#a8e8a06c5de725cb453a74a2d455b41d1" title=" " alt="" coords="1116,259,1193,286"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#a6a1907f2aabd7c9145b3c2beed1beb63" title=" " alt="" coords="1133,462,1176,489"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#a8fe154ec483a85a863311ef072a47c76" title=" " alt="" coords="897,513,951,539"/>
-<area shape="rect" href="../../d2/d5a/fs_8c.html#a2bc7e08c189e45bb21a7f37e296e4653" title=" " alt="" coords="1241,209,1313,235"/>
-<area shape="rect" href="../../d2/d5a/fs_8c.html#aedcebf5c9883811f75eddb545846c536" title=" " alt="" coords="1361,361,1431,387"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#a005941ed6b951de6188291c240fb00e9" title=" " alt="" coords="1254,411,1301,438"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#a7220afa8e5f4bea540eb95879ea7df6e" title=" " alt="" coords="1119,158,1190,185"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#a73e9346902e5d64607762adfbc611489" title=" " alt="" coords="1007,107,1066,134"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#a73f693587ef4357633ceb1786d13efcd" title=" " alt="" coords="1009,411,1064,438"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#a8379fc33406a014a1e8b899fe9dc814a" title=" " alt="" coords="1008,361,1065,387"/>
-<area shape="rect" href="../../d7/d9f/fcntl_8h.html#a4e522854927c8a3a43847c39fe999391" title="Open a file." alt="" coords="897,259,951,286"/>
-<area shape="rect" href="../../d2/d1b/stat_8h.html#ae92589973c691560ce2a6a97043872cf" title=" " alt="" coords="891,361,957,387"/>
-<area shape="rect" href="../../d8/d60/init_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="164,234,219,261"/>
-<area shape="rect" href="../../db/dd8/syscall_8c.html#a068ed63a10c4dd229deb2ec36497d3ac" title=" " alt="" coords="659,209,726,235"/>
-<area shape="rect" href="../../d7/d0b/trap_8h.html#aed543a44247cc3ccdb7d0f9bba224549" title=" " alt="" coords="515,259,603,286"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#a95e901259bd8697ecfbd661cfe5ac26f" title=" " alt="" coords="389,259,467,286"/>
-<area shape="rect" href="../../d3/dda/proc_8c.html#acd2e1ded4bb6fce4500438bf928330f4" title=" " alt="" coords="282,234,330,261"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#a81c8a6a0cae413bc81aa223f7f7b7205" title=" " alt="" coords="271,462,341,489"/>
-<area shape="rect" href="../../da/da9/os1_8h.html#a406c20548822065e144564476378f8a1" title=" " alt="" coords="160,513,223,539"/>
-<area shape="rect" href="../../d0/d29/main_8c.html#aa97e24fea4daabae6b4e5d534ac8066d" title=" " alt="" coords="5,513,112,539"/>
-<area shape="rect" href="../../d7/d9f/fcntl_8h.html#a0c7518235c1384debeb9e38b04623417" title="Create a new file or rewrite an existing one." alt="" coords="785,259,840,286"/>
-<area shape="rect" href="../../d2/d1b/stat_8h.html#aee98bbe743c2d14dbaa67f01c3fb9ed5" title=" " alt="" coords="783,209,843,235"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#a9baba030d5bc6e9e20cf8b7d181edf35" title=" " alt="" coords="1005,462,1068,489"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#aa53d427e0341b41d6dfa1081b1fcdc0b" title=" " alt="" coords="898,462,950,489"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#ab3c447f135c68e4c3c1f8d5866f6e77b" title=" " alt="" coords="1013,57,1060,83"/>
-<area shape="rect" href="../../d2/d4d/file_8h.html#aa126418263f281c0581ca7bb06a992ca" title=" " alt="" coords="894,57,954,83"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#abc96bd69b58b2deaddb484478d911c1b" title=" " alt="" coords="785,6,840,33"/>
-<area shape="rect" href="../../d2/d5a/fs_8c.html#aafbcde67669a1b96577e735ddebd8634" title=" " alt="" coords="785,57,841,83"/>
-<area shape="rect" href="../../dc/d9c/stdlib_8h.html#a55e99c539cf7723ec15e856b7e0a8cee" title=" " alt="" coords="535,6,582,33"/>
-<area shape="rect" href="../../db/dd8/syscall_8c.html#abb39b21888372e95ad3e5c59b166f5c8" title=" " alt="" coords="785,107,840,134"/>
-<area shape="rect" href="../../d7/dcd/virtio_8h.html#ad6b51fac330adaad6e8c3390fdbfa179" title=" " alt="" coords="651,158,735,185"/>
-<area shape="rect" href="../../db/dd8/syscall_8c.html#aba50464fe1a1d83175115f6d08dd259a" title=" " alt="" coords="787,411,838,438"/>
+<area shape="rect" title=" " alt="" coords="1324,259,1383,285"/>
+<area shape="rect" href="../../df/d26/fs_8h.html#a6a1907f2aabd7c9145b3c2beed1beb63" title=" " alt="" coords="1131,309,1174,336"/>
+<area shape="rect" href="../../df/d26/fs_8h.html#a8fe154ec483a85a863311ef072a47c76" title=" " alt="" coords="897,411,951,437"/>
+<area shape="rect" href="../../df/d26/fs_8h.html#a8379fc33406a014a1e8b899fe9dc814a" title=" " alt="" coords="1124,208,1181,235"/>
+<area shape="rect" href="../../df/d26/fs_8h.html#a005941ed6b951de6188291c240fb00e9" title=" " alt="" coords="1229,259,1276,285"/>
+<area shape="rect" href="../../df/d26/fs_8h.html#a7220afa8e5f4bea540eb95879ea7df6e" title=" " alt="" coords="1005,360,1076,387"/>
+<area shape="rect" href="../../df/d26/fs_8h.html#a73f693587ef4357633ceb1786d13efcd" title=" " alt="" coords="1013,107,1068,133"/>
+<area shape="rect" href="../../df/d26/fs_8h.html#a73e9346902e5d64607762adfbc611489" title=" " alt="" coords="1011,157,1070,184"/>
+<area shape="rect" href="../../df/d26/fs_8h.html#a9baba030d5bc6e9e20cf8b7d181edf35" title=" " alt="" coords="1009,309,1072,336"/>
+<area shape="rect" href="../../df/d03/proc_8h.html#aa53d427e0341b41d6dfa1081b1fcdc0b" title=" " alt="" coords="898,107,950,133"/>
+<area shape="rect" href="../../d2/d1b/stat_8h.html#ae92589973c691560ce2a6a97043872cf" title=" " alt="" coords="891,309,957,336"/>
+<area shape="rect" href="../../d7/d9f/fcntl_8h.html#a4e522854927c8a3a43847c39fe999391" title=" " alt="" coords="897,208,951,235"/>
+<area shape="rect" href="../../db/dd8/syscall_8c.html#a068ed63a10c4dd229deb2ec36497d3ac" title=" " alt="" coords="659,157,726,184"/>
+<area shape="rect" href="../../d7/d0b/trap_8h.html#aed543a44247cc3ccdb7d0f9bba224549" title=" " alt="" coords="515,208,603,235"/>
+<area shape="rect" href="../../df/d03/proc_8h.html#a95e901259bd8697ecfbd661cfe5ac26f" title=" " alt="" coords="389,208,467,235"/>
+<area shape="rect" href="../../d3/dda/proc_8c.html#acd2e1ded4bb6fce4500438bf928330f4" title=" " alt="" coords="282,183,330,209"/>
+<area shape="rect" href="../../df/d03/proc_8h.html#a81c8a6a0cae413bc81aa223f7f7b7205" title=" " alt="" coords="271,411,341,437"/>
+<area shape="rect" href="../../d8/d60/init_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="164,183,219,209"/>
+<area shape="rect" href="../../da/da9/os1_8h.html#a406c20548822065e144564476378f8a1" title=" " alt="" coords="160,436,223,463"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#aa97e24fea4daabae6b4e5d534ac8066d" title=" " alt="" coords="5,436,112,463"/>
+<area shape="rect" href="../../d7/d9f/fcntl_8h.html#a0c7518235c1384debeb9e38b04623417" title=" " alt="" coords="785,208,840,235"/>
+<area shape="rect" href="../../d2/d1b/stat_8h.html#aee98bbe743c2d14dbaa67f01c3fb9ed5" title=" " alt="" coords="783,259,843,285"/>
+<area shape="rect" href="../../df/d26/fs_8h.html#ab3c447f135c68e4c3c1f8d5866f6e77b" title=" " alt="" coords="901,360,947,387"/>
+<area shape="rect" href="../../db/dd8/syscall_8c.html#aba50464fe1a1d83175115f6d08dd259a" title=" " alt="" coords="787,56,838,83"/>
+<area shape="rect" href="../../db/dd8/syscall_8c.html#abb39b21888372e95ad3e5c59b166f5c8" title=" " alt="" coords="785,5,840,32"/>
+<area shape="rect" href="../../d7/dcd/virtio_8h.html#ad6b51fac330adaad6e8c3390fdbfa179" title=" " alt="" coords="651,56,735,83"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="af154613de80f6b640872720a3cc4ec92"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af154613de80f6b640872720a3cc4ec92">&#9670;&nbsp;</a></span>brelse()</h2>
+<a id="aa118b4fa3c1c5d061e04fc824f9d1891"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa118b4fa3c1c5d061e04fc824f9d1891">&#9670;&nbsp;</a></span>bwrite()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void brelse </td>
+          <td class="memname">int bwrite </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="../../d9/dd0/structbuf.html">buf</a> *&#160;</td>
           <td class="paramname"><em>bp</em></td><td>)</td>
@@ -357,217 +284,64 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Release buffer cache, flush if dirty. </p>
-<p>Release buffer cache from device active list, if it is dirty, flush to device, then return to freelist. </p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../d6/d6d/buf_8h_af154613de80f6b640872720a3cc4ec92_cgraph.png" border="0" usemap="#ad6/d6d/buf_8h_af154613de80f6b640872720a3cc4ec92_cgraph" alt=""/></div>
-<map name="ad6/d6d/buf_8h_af154613de80f6b640872720a3cc4ec92_cgraph" id="ad6/d6d/buf_8h_af154613de80f6b640872720a3cc4ec92_cgraph">
-<area shape="rect" title="Release buffer cache, flush if dirty." alt="" coords="5,5,68,32"/>
-<area shape="rect" href="../../dc/de6/bio_8c.html#a40ae6d4f407ff644aef7b7320c55aebb" title="Write block to disk." alt="" coords="116,5,179,32"/>
-</map>
-</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../d6/d6d/buf_8h_af154613de80f6b640872720a3cc4ec92_icgraph.png" border="0" usemap="#ad6/d6d/buf_8h_af154613de80f6b640872720a3cc4ec92_icgraph" alt=""/></div>
-<map name="ad6/d6d/buf_8h_af154613de80f6b640872720a3cc4ec92_icgraph" id="ad6/d6d/buf_8h_af154613de80f6b640872720a3cc4ec92_icgraph">
-<area shape="rect" title="Release buffer cache, flush if dirty." alt="" coords="1479,310,1541,337"/>
-<area shape="rect" href="../../d2/d5a/fs_8c.html#a8e8a06c5de725cb453a74a2d455b41d1" title=" " alt="" coords="1116,259,1193,286"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#a6a1907f2aabd7c9145b3c2beed1beb63" title=" " alt="" coords="1133,462,1176,489"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#a8fe154ec483a85a863311ef072a47c76" title=" " alt="" coords="897,513,951,539"/>
-<area shape="rect" href="../../d2/d5a/fs_8c.html#a2bc7e08c189e45bb21a7f37e296e4653" title=" " alt="" coords="1241,209,1313,235"/>
-<area shape="rect" href="../../d2/d5a/fs_8c.html#aedcebf5c9883811f75eddb545846c536" title=" " alt="" coords="1361,361,1431,387"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#a005941ed6b951de6188291c240fb00e9" title=" " alt="" coords="1254,411,1301,438"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#a7220afa8e5f4bea540eb95879ea7df6e" title=" " alt="" coords="1119,158,1190,185"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#a73e9346902e5d64607762adfbc611489" title=" " alt="" coords="1007,107,1066,134"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#a73f693587ef4357633ceb1786d13efcd" title=" " alt="" coords="1009,411,1064,438"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#a8379fc33406a014a1e8b899fe9dc814a" title=" " alt="" coords="1008,361,1065,387"/>
-<area shape="rect" href="../../d7/d9f/fcntl_8h.html#a4e522854927c8a3a43847c39fe999391" title="Open a file." alt="" coords="897,259,951,286"/>
-<area shape="rect" href="../../d2/d1b/stat_8h.html#ae92589973c691560ce2a6a97043872cf" title=" " alt="" coords="891,361,957,387"/>
-<area shape="rect" href="../../d8/d60/init_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="164,234,219,261"/>
-<area shape="rect" href="../../db/dd8/syscall_8c.html#a068ed63a10c4dd229deb2ec36497d3ac" title=" " alt="" coords="659,209,726,235"/>
-<area shape="rect" href="../../d7/d0b/trap_8h.html#aed543a44247cc3ccdb7d0f9bba224549" title=" " alt="" coords="515,259,603,286"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#a95e901259bd8697ecfbd661cfe5ac26f" title=" " alt="" coords="389,259,467,286"/>
-<area shape="rect" href="../../d3/dda/proc_8c.html#acd2e1ded4bb6fce4500438bf928330f4" title=" " alt="" coords="282,234,330,261"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#a81c8a6a0cae413bc81aa223f7f7b7205" title=" " alt="" coords="271,462,341,489"/>
-<area shape="rect" href="../../da/da9/os1_8h.html#a406c20548822065e144564476378f8a1" title=" " alt="" coords="160,513,223,539"/>
-<area shape="rect" href="../../d0/d29/main_8c.html#aa97e24fea4daabae6b4e5d534ac8066d" title=" " alt="" coords="5,513,112,539"/>
-<area shape="rect" href="../../d7/d9f/fcntl_8h.html#a0c7518235c1384debeb9e38b04623417" title="Create a new file or rewrite an existing one." alt="" coords="785,259,840,286"/>
-<area shape="rect" href="../../d2/d1b/stat_8h.html#aee98bbe743c2d14dbaa67f01c3fb9ed5" title=" " alt="" coords="783,209,843,235"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#a9baba030d5bc6e9e20cf8b7d181edf35" title=" " alt="" coords="1005,462,1068,489"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#aa53d427e0341b41d6dfa1081b1fcdc0b" title=" " alt="" coords="898,462,950,489"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#ab3c447f135c68e4c3c1f8d5866f6e77b" title=" " alt="" coords="1013,57,1060,83"/>
-<area shape="rect" href="../../d2/d4d/file_8h.html#aa126418263f281c0581ca7bb06a992ca" title=" " alt="" coords="894,57,954,83"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#abc96bd69b58b2deaddb484478d911c1b" title=" " alt="" coords="785,6,840,33"/>
-<area shape="rect" href="../../d2/d5a/fs_8c.html#aafbcde67669a1b96577e735ddebd8634" title=" " alt="" coords="785,57,841,83"/>
-<area shape="rect" href="../../dc/d9c/stdlib_8h.html#a55e99c539cf7723ec15e856b7e0a8cee" title=" " alt="" coords="535,6,582,33"/>
-<area shape="rect" href="../../db/dd8/syscall_8c.html#abb39b21888372e95ad3e5c59b166f5c8" title=" " alt="" coords="785,107,840,134"/>
-<area shape="rect" href="../../d7/dcd/virtio_8h.html#ad6b51fac330adaad6e8c3390fdbfa179" title=" " alt="" coords="651,158,735,185"/>
-<area shape="rect" href="../../db/dd8/syscall_8c.html#aba50464fe1a1d83175115f6d08dd259a" title=" " alt="" coords="787,411,838,438"/>
+<div class="center"><img src="../../d6/d6d/buf_8h_aa118b4fa3c1c5d061e04fc824f9d1891_icgraph.png" border="0" usemap="#ad6/d6d/buf_8h_aa118b4fa3c1c5d061e04fc824f9d1891_icgraph" alt=""/></div>
+<map name="ad6/d6d/buf_8h_aa118b4fa3c1c5d061e04fc824f9d1891_icgraph" id="ad6/d6d/buf_8h_aa118b4fa3c1c5d061e04fc824f9d1891_icgraph">
+<area shape="rect" title=" " alt="" coords="1449,208,1512,235"/>
+<area shape="rect" href="../../d6/d6d/buf_8h.html#a47340ad032ee4559cfcdaf99ed7bdc5c" title=" " alt="" coords="1340,5,1401,32"/>
+<area shape="rect" href="../../d6/d6d/buf_8h.html#a698c2e69ee3a6a76b6adfd479397969b" title=" " alt="" coords="1341,284,1400,311"/>
+<area shape="rect" href="../../df/d26/fs_8h.html#a8379fc33406a014a1e8b899fe9dc814a" title=" " alt="" coords="1116,208,1173,235"/>
+<area shape="rect" href="../../df/d26/fs_8h.html#a7220afa8e5f4bea540eb95879ea7df6e" title=" " alt="" coords="1221,411,1292,437"/>
+<area shape="rect" href="../../df/d26/fs_8h.html#a73e9346902e5d64607762adfbc611489" title=" " alt="" coords="1007,107,1066,133"/>
+<area shape="rect" href="../../df/d26/fs_8h.html#a6a1907f2aabd7c9145b3c2beed1beb63" title=" " alt="" coords="1123,309,1166,336"/>
+<area shape="rect" href="../../df/d26/fs_8h.html#a8fe154ec483a85a863311ef072a47c76" title=" " alt="" coords="897,461,951,488"/>
+<area shape="rect" href="../../df/d26/fs_8h.html#a005941ed6b951de6188291c240fb00e9" title=" " alt="" coords="1233,309,1280,336"/>
+<area shape="rect" href="../../df/d26/fs_8h.html#a73f693587ef4357633ceb1786d13efcd" title=" " alt="" coords="1009,259,1064,285"/>
+<area shape="rect" href="../../df/d26/fs_8h.html#a9baba030d5bc6e9e20cf8b7d181edf35" title=" " alt="" coords="1005,360,1068,387"/>
+<area shape="rect" href="../../df/d03/proc_8h.html#aa53d427e0341b41d6dfa1081b1fcdc0b" title=" " alt="" coords="898,309,950,336"/>
+<area shape="rect" href="../../d2/d1b/stat_8h.html#ae92589973c691560ce2a6a97043872cf" title=" " alt="" coords="891,360,957,387"/>
+<area shape="rect" href="../../d7/d9f/fcntl_8h.html#a4e522854927c8a3a43847c39fe999391" title=" " alt="" coords="897,208,951,235"/>
+<area shape="rect" href="../../db/dd8/syscall_8c.html#a068ed63a10c4dd229deb2ec36497d3ac" title=" " alt="" coords="659,208,726,235"/>
+<area shape="rect" href="../../d7/d0b/trap_8h.html#aed543a44247cc3ccdb7d0f9bba224549" title=" " alt="" coords="515,259,603,285"/>
+<area shape="rect" href="../../df/d03/proc_8h.html#a95e901259bd8697ecfbd661cfe5ac26f" title=" " alt="" coords="389,259,467,285"/>
+<area shape="rect" href="../../d3/dda/proc_8c.html#acd2e1ded4bb6fce4500438bf928330f4" title=" " alt="" coords="282,233,330,260"/>
+<area shape="rect" href="../../df/d03/proc_8h.html#a81c8a6a0cae413bc81aa223f7f7b7205" title=" " alt="" coords="271,335,341,361"/>
+<area shape="rect" href="../../d8/d60/init_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="164,233,219,260"/>
+<area shape="rect" href="../../da/da9/os1_8h.html#a406c20548822065e144564476378f8a1" title=" " alt="" coords="160,385,223,412"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#aa97e24fea4daabae6b4e5d534ac8066d" title=" " alt="" coords="5,385,112,412"/>
+<area shape="rect" href="../../d7/d9f/fcntl_8h.html#a0c7518235c1384debeb9e38b04623417" title=" " alt="" coords="785,259,840,285"/>
+<area shape="rect" href="../../d2/d1b/stat_8h.html#aee98bbe743c2d14dbaa67f01c3fb9ed5" title=" " alt="" coords="783,157,843,184"/>
+<area shape="rect" href="../../df/d26/fs_8h.html#ab3c447f135c68e4c3c1f8d5866f6e77b" title=" " alt="" coords="1121,461,1168,488"/>
+<area shape="rect" href="../../db/dd8/syscall_8c.html#aba50464fe1a1d83175115f6d08dd259a" title=" " alt="" coords="787,107,838,133"/>
+<area shape="rect" href="../../db/dd8/syscall_8c.html#abb39b21888372e95ad3e5c59b166f5c8" title=" " alt="" coords="785,56,840,83"/>
+<area shape="rect" href="../../d7/dcd/virtio_8h.html#ad6b51fac330adaad6e8c3390fdbfa179" title=" " alt="" coords="651,107,735,133"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="a40ae6d4f407ff644aef7b7320c55aebb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a40ae6d4f407ff644aef7b7320c55aebb">&#9670;&nbsp;</a></span>bwrite()</h2>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a87de12a8539c1fa7e4ced185f991d02b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87de12a8539c1fa7e4ced185f991d02b">&#9670;&nbsp;</a></span>blist</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void bwrite </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="../../d9/dd0/structbuf.html">buf</a> *&#160;</td>
-          <td class="paramname"><em>bp</em></td><td>)</td>
-          <td></td>
+          <td class="memname">struct <a class="el" href="../../d9/dd0/structbuf.html">buf</a>* blist</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
-
-<p>Write block to disk. </p>
-<p>Write block to device associated to buffer. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">bp</td><td>pointer to buffer cache to be written. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section attention"><dt>Attention</dt><dd>bwrite does not free written buffer. </dd></dl>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../d6/d6d/buf_8h_a40ae6d4f407ff644aef7b7320c55aebb_icgraph.png" border="0" usemap="#ad6/d6d/buf_8h_a40ae6d4f407ff644aef7b7320c55aebb_icgraph" alt=""/></div>
-<map name="ad6/d6d/buf_8h_a40ae6d4f407ff644aef7b7320c55aebb_icgraph" id="ad6/d6d/buf_8h_a40ae6d4f407ff644aef7b7320c55aebb_icgraph">
-<area shape="rect" title="Write block to disk." alt="" coords="1676,284,1739,311"/>
-<area shape="rect" href="../../d2/d5a/fs_8c.html#a8e8a06c5de725cb453a74a2d455b41d1" title=" " alt="" coords="1329,284,1407,311"/>
-<area shape="rect" href="../../d6/d6d/buf_8h.html#a682247ce4171a3a58a5379a2941584cd" title="Write active buffer associated to device." alt="" coords="1566,81,1627,108"/>
-<area shape="rect" href="../../d6/d6d/buf_8h.html#af154613de80f6b640872720a3cc4ec92" title="Release buffer cache, flush if dirty." alt="" coords="1455,664,1517,691"/>
-<area shape="rect" href="../../d2/d5a/fs_8c.html#a2bc7e08c189e45bb21a7f37e296e4653" title=" " alt="" coords="1332,537,1404,564"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#a7220afa8e5f4bea540eb95879ea7df6e" title=" " alt="" coords="1116,81,1187,108"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#a73e9346902e5d64607762adfbc611489" title=" " alt="" coords="1007,157,1066,184"/>
-<area shape="rect" href="../../d6/d6d/buf_8h.html#ab13e6197ba8af3d7add9fb17a5440344" title="Get new buffer cache entry." alt="" coords="1565,347,1628,373"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#a8379fc33406a014a1e8b899fe9dc814a" title=" " alt="" coords="1123,284,1180,311"/>
-<area shape="rect" href="../../d7/d9f/fcntl_8h.html#a4e522854927c8a3a43847c39fe999391" title="Open a file." alt="" coords="897,309,951,336"/>
-<area shape="rect" href="../../d2/d1b/stat_8h.html#ae92589973c691560ce2a6a97043872cf" title=" " alt="" coords="891,208,957,235"/>
-<area shape="rect" href="../../d8/d60/init_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="164,208,219,235"/>
-<area shape="rect" href="../../db/dd8/syscall_8c.html#a068ed63a10c4dd229deb2ec36497d3ac" title=" " alt="" coords="659,360,726,387"/>
-<area shape="rect" href="../../d7/d0b/trap_8h.html#aed543a44247cc3ccdb7d0f9bba224549" title=" " alt="" coords="515,385,603,412"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#a95e901259bd8697ecfbd661cfe5ac26f" title=" " alt="" coords="389,385,467,412"/>
-<area shape="rect" href="../../d3/dda/proc_8c.html#acd2e1ded4bb6fce4500438bf928330f4" title=" " alt="" coords="282,335,330,361"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#a81c8a6a0cae413bc81aa223f7f7b7205" title=" " alt="" coords="271,397,341,424"/>
-<area shape="rect" href="../../da/da9/os1_8h.html#a406c20548822065e144564476378f8a1" title=" " alt="" coords="160,499,223,525"/>
-<area shape="rect" href="../../d0/d29/main_8c.html#aa97e24fea4daabae6b4e5d534ac8066d" title=" " alt="" coords="5,499,112,525"/>
-<area shape="rect" href="../../d7/d9f/fcntl_8h.html#a0c7518235c1384debeb9e38b04623417" title="Create a new file or rewrite an existing one." alt="" coords="785,309,840,336"/>
-<area shape="rect" href="../../d2/d1b/stat_8h.html#aee98bbe743c2d14dbaa67f01c3fb9ed5" title=" " alt="" coords="783,411,843,437"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#a6a1907f2aabd7c9145b3c2beed1beb63" title=" " alt="" coords="1130,585,1173,612"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#a8fe154ec483a85a863311ef072a47c76" title=" " alt="" coords="897,537,951,564"/>
-<area shape="rect" href="../../d2/d5a/fs_8c.html#aedcebf5c9883811f75eddb545846c536" title=" " alt="" coords="1333,639,1403,665"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#a005941ed6b951de6188291c240fb00e9" title=" " alt="" coords="1235,588,1281,615"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#a73f693587ef4357633ceb1786d13efcd" title=" " alt="" coords="1009,411,1064,437"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#a9baba030d5bc6e9e20cf8b7d181edf35" title=" " alt="" coords="1005,461,1068,488"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#aa53d427e0341b41d6dfa1081b1fcdc0b" title=" " alt="" coords="898,461,950,488"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#ab3c447f135c68e4c3c1f8d5866f6e77b" title=" " alt="" coords="1013,5,1060,32"/>
-<area shape="rect" href="../../d2/d4d/file_8h.html#aa126418263f281c0581ca7bb06a992ca" title=" " alt="" coords="894,5,954,32"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#abc96bd69b58b2deaddb484478d911c1b" title=" " alt="" coords="785,5,840,32"/>
-<area shape="rect" href="../../d2/d5a/fs_8c.html#aafbcde67669a1b96577e735ddebd8634" title=" " alt="" coords="785,56,841,83"/>
-<area shape="rect" href="../../dc/d9c/stdlib_8h.html#a55e99c539cf7723ec15e856b7e0a8cee" title=" " alt="" coords="535,5,582,32"/>
-<area shape="rect" href="../../db/dd8/syscall_8c.html#abb39b21888372e95ad3e5c59b166f5c8" title=" " alt="" coords="785,107,840,133"/>
-<area shape="rect" href="../../d7/dcd/virtio_8h.html#ad6b51fac330adaad6e8c3390fdbfa179" title=" " alt="" coords="651,157,735,184"/>
-<area shape="rect" href="../../db/dd8/syscall_8c.html#aba50464fe1a1d83175115f6d08dd259a" title=" " alt="" coords="787,512,838,539"/>
-<area shape="rect" href="../../d6/d6d/buf_8h.html#a698c2e69ee3a6a76b6adfd479397969b" title="Read block from disk." alt="" coords="1457,360,1515,387"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="ab13e6197ba8af3d7add9fb17a5440344"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab13e6197ba8af3d7add9fb17a5440344">&#9670;&nbsp;</a></span>getblk()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct <a class="el" href="../../d9/dd0/structbuf.html">buf</a>* getblk </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d2/dd6/structdev__t.html">dev_t</a>&#160;</td>
-          <td class="paramname"><em>dev</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d9/d49/types_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a>&#160;</td>
-          <td class="paramname"><em>blkno</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get new buffer cache entry. </p>
-<p>Get new buffer cache entry. If none is found in freelist, then flush one of entry in active list assocaiated to device, and return freed entry. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">dev</td><td>device to assocaiate buffer cache with. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">blkno</td><td>block number to assocaiate buffer cache with. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to buffer. </dd></dl>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../d6/d6d/buf_8h_ab13e6197ba8af3d7add9fb17a5440344_cgraph.png" border="0" usemap="#ad6/d6d/buf_8h_ab13e6197ba8af3d7add9fb17a5440344_cgraph" alt=""/></div>
-<map name="ad6/d6d/buf_8h_ab13e6197ba8af3d7add9fb17a5440344_cgraph" id="ad6/d6d/buf_8h_ab13e6197ba8af3d7add9fb17a5440344_cgraph">
-<area shape="rect" title="Get new buffer cache entry." alt="" coords="5,5,68,32"/>
-<area shape="rect" href="../../dc/de6/bio_8c.html#a40ae6d4f407ff644aef7b7320c55aebb" title="Write block to disk." alt="" coords="116,5,179,32"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../d6/d6d/buf_8h_ab13e6197ba8af3d7add9fb17a5440344_icgraph.png" border="0" usemap="#ad6/d6d/buf_8h_ab13e6197ba8af3d7add9fb17a5440344_icgraph" alt=""/></div>
-<map name="ad6/d6d/buf_8h_ab13e6197ba8af3d7add9fb17a5440344_icgraph" id="ad6/d6d/buf_8h_ab13e6197ba8af3d7add9fb17a5440344_icgraph">
-<area shape="rect" title="Get new buffer cache entry." alt="" coords="1585,310,1648,337"/>
-<area shape="rect" href="../../d6/d6d/buf_8h.html#a698c2e69ee3a6a76b6adfd479397969b" title="Read block from disk." alt="" coords="1479,310,1537,337"/>
-<area shape="rect" href="../../d2/d5a/fs_8c.html#a8e8a06c5de725cb453a74a2d455b41d1" title=" " alt="" coords="1116,259,1193,286"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#a6a1907f2aabd7c9145b3c2beed1beb63" title=" " alt="" coords="1133,462,1176,489"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#a8fe154ec483a85a863311ef072a47c76" title=" " alt="" coords="897,513,951,539"/>
-<area shape="rect" href="../../d2/d5a/fs_8c.html#a2bc7e08c189e45bb21a7f37e296e4653" title=" " alt="" coords="1241,209,1313,235"/>
-<area shape="rect" href="../../d2/d5a/fs_8c.html#aedcebf5c9883811f75eddb545846c536" title=" " alt="" coords="1361,361,1431,387"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#a005941ed6b951de6188291c240fb00e9" title=" " alt="" coords="1254,411,1301,438"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#a7220afa8e5f4bea540eb95879ea7df6e" title=" " alt="" coords="1119,158,1190,185"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#a73e9346902e5d64607762adfbc611489" title=" " alt="" coords="1007,107,1066,134"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#a73f693587ef4357633ceb1786d13efcd" title=" " alt="" coords="1009,411,1064,438"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#a8379fc33406a014a1e8b899fe9dc814a" title=" " alt="" coords="1008,361,1065,387"/>
-<area shape="rect" href="../../d7/d9f/fcntl_8h.html#a4e522854927c8a3a43847c39fe999391" title="Open a file." alt="" coords="897,259,951,286"/>
-<area shape="rect" href="../../d2/d1b/stat_8h.html#ae92589973c691560ce2a6a97043872cf" title=" " alt="" coords="891,361,957,387"/>
-<area shape="rect" href="../../d8/d60/init_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="164,234,219,261"/>
-<area shape="rect" href="../../db/dd8/syscall_8c.html#a068ed63a10c4dd229deb2ec36497d3ac" title=" " alt="" coords="659,209,726,235"/>
-<area shape="rect" href="../../d7/d0b/trap_8h.html#aed543a44247cc3ccdb7d0f9bba224549" title=" " alt="" coords="515,259,603,286"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#a95e901259bd8697ecfbd661cfe5ac26f" title=" " alt="" coords="389,259,467,286"/>
-<area shape="rect" href="../../d3/dda/proc_8c.html#acd2e1ded4bb6fce4500438bf928330f4" title=" " alt="" coords="282,234,330,261"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#a81c8a6a0cae413bc81aa223f7f7b7205" title=" " alt="" coords="271,462,341,489"/>
-<area shape="rect" href="../../da/da9/os1_8h.html#a406c20548822065e144564476378f8a1" title=" " alt="" coords="160,513,223,539"/>
-<area shape="rect" href="../../d0/d29/main_8c.html#aa97e24fea4daabae6b4e5d534ac8066d" title=" " alt="" coords="5,513,112,539"/>
-<area shape="rect" href="../../d7/d9f/fcntl_8h.html#a0c7518235c1384debeb9e38b04623417" title="Create a new file or rewrite an existing one." alt="" coords="785,259,840,286"/>
-<area shape="rect" href="../../d2/d1b/stat_8h.html#aee98bbe743c2d14dbaa67f01c3fb9ed5" title=" " alt="" coords="783,209,843,235"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#a9baba030d5bc6e9e20cf8b7d181edf35" title=" " alt="" coords="1005,462,1068,489"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#aa53d427e0341b41d6dfa1081b1fcdc0b" title=" " alt="" coords="898,462,950,489"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#ab3c447f135c68e4c3c1f8d5866f6e77b" title=" " alt="" coords="1013,57,1060,83"/>
-<area shape="rect" href="../../d2/d4d/file_8h.html#aa126418263f281c0581ca7bb06a992ca" title=" " alt="" coords="894,57,954,83"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#abc96bd69b58b2deaddb484478d911c1b" title=" " alt="" coords="785,6,840,33"/>
-<area shape="rect" href="../../d2/d5a/fs_8c.html#aafbcde67669a1b96577e735ddebd8634" title=" " alt="" coords="785,57,841,83"/>
-<area shape="rect" href="../../dc/d9c/stdlib_8h.html#a55e99c539cf7723ec15e856b7e0a8cee" title=" " alt="" coords="535,6,582,33"/>
-<area shape="rect" href="../../db/dd8/syscall_8c.html#abb39b21888372e95ad3e5c59b166f5c8" title=" " alt="" coords="785,107,840,134"/>
-<area shape="rect" href="../../d7/dcd/virtio_8h.html#ad6b51fac330adaad6e8c3390fdbfa179" title=" " alt="" coords="651,158,735,185"/>
-<area shape="rect" href="../../db/dd8/syscall_8c.html#aba50464fe1a1d83175115f6d08dd259a" title=" " alt="" coords="787,411,838,438"/>
-</map>
-</div>
 
 </div>
 </div>

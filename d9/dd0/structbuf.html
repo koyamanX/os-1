@@ -69,16 +69,13 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Struct for buffer cache.  
- <a href="../../d9/dd0/structbuf.html#details">More...</a></p>
-
 <p><code>#include &lt;<a class="el" href="../../d6/d6d/buf_8h_source.html">buf.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for buf:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d6/d72/structbuf__coll__graph.png" border="0" usemap="#abuf_coll__map" alt="Collaboration graph"/></div>
 <map name="abuf_coll__map" id="abuf_coll__map">
-<area shape="rect" title="Struct for buffer cache." alt="" coords="6,160,79,281"/>
+<area shape="rect" title=" " alt="" coords="6,160,79,267"/>
 <area shape="rect" href="../../d2/dd6/structdev__t.html" title=" " alt="" coords="5,5,80,97"/>
 </map>
 </div>
@@ -86,28 +83,15 @@ Collaboration diagram for buf:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
 <tr class="memitem:a8983733a2501c7d03a45c7de7057116a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dd0/structbuf.html#a8983733a2501c7d03a45c7de7057116a">valid</a></td></tr>
-<tr class="memdesc:a8983733a2501c7d03a45c7de7057116a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is this entry valid?  <a href="../../d9/dd0/structbuf.html#a8983733a2501c7d03a45c7de7057116a">More...</a><br /></td></tr>
 <tr class="separator:a8983733a2501c7d03a45c7de7057116a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a172a6df910355838fa9a08d5e69b6256"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d2/dd6/structdev__t.html">dev_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dd0/structbuf.html#a172a6df910355838fa9a08d5e69b6256">dev</a></td></tr>
-<tr class="memdesc:a172a6df910355838fa9a08d5e69b6256"><td class="mdescLeft">&#160;</td><td class="mdescRight">Block device associated to this entry.  <a href="../../d9/dd0/structbuf.html#a172a6df910355838fa9a08d5e69b6256">More...</a><br /></td></tr>
 <tr class="separator:a172a6df910355838fa9a08d5e69b6256"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c5240cd4da1c4ad10ee270a3c97865d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d49/types_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dd0/structbuf.html#a4c5240cd4da1c4ad10ee270a3c97865d">blkno</a></td></tr>
-<tr class="memdesc:a4c5240cd4da1c4ad10ee270a3c97865d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Block number.  <a href="../../d9/dd0/structbuf.html#a4c5240cd4da1c4ad10ee270a3c97865d">More...</a><br /></td></tr>
 <tr class="separator:a4c5240cd4da1c4ad10ee270a3c97865d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac9263a879a327688780e9e7cde1f08aa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dd0/structbuf.html#ac9263a879a327688780e9e7cde1f08aa">dirty</a></td></tr>
-<tr class="memdesc:ac9263a879a327688780e9e7cde1f08aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is this entry dirty?  <a href="../../d9/dd0/structbuf.html#ac9263a879a327688780e9e7cde1f08aa">More...</a><br /></td></tr>
-<tr class="separator:ac9263a879a327688780e9e7cde1f08aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c5df9e55e0dd385ff0f35d2ae589d04"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dd0/structbuf.html#a1c5df9e55e0dd385ff0f35d2ae589d04">data</a> [<a class="el" href="../../d6/d6d/buf_8h.html#a72a591cf0a96cf23c63df5c78712dabe">BUFSIZ</a>]</td></tr>
-<tr class="memdesc:a1c5df9e55e0dd385ff0f35d2ae589d04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Actual content only data is valid on valid is true.  <a href="../../d9/dd0/structbuf.html#a1c5df9e55e0dd385ff0f35d2ae589d04">More...</a><br /></td></tr>
 <tr class="separator:a1c5df9e55e0dd385ff0f35d2ae589d04"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab18c18abb22f07617619e9a74c71f51a"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="../../d9/dd0/structbuf.html">buf</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dd0/structbuf.html#ab18c18abb22f07617619e9a74c71f51a">next</a></td></tr>
-<tr class="memdesc:ab18c18abb22f07617619e9a74c71f51a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Next entry.  <a href="../../d9/dd0/structbuf.html#ab18c18abb22f07617619e9a74c71f51a">More...</a><br /></td></tr>
-<tr class="separator:ab18c18abb22f07617619e9a74c71f51a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Struct for buffer cache. </p>
-<p>Buffer cache, it is maintained in linked-list in either active list or freelist. </p>
-</div><h2 class="groupheader">Field Documentation</h2>
+<h2 class="groupheader">Field Documentation</h2>
 <a id="a4c5240cd4da1c4ad10ee270a3c97865d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4c5240cd4da1c4ad10ee270a3c97865d">&#9670;&nbsp;</a></span>blkno</h2>
 
@@ -119,8 +103,6 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Block number. </p>
 
 </div>
 </div>
@@ -136,8 +118,6 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Actual content only data is valid on valid is true. </p>
-
 </div>
 </div>
 <a id="a172a6df910355838fa9a08d5e69b6256"></a>
@@ -152,40 +132,6 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Block device associated to this entry. </p>
-
-</div>
-</div>
-<a id="ac9263a879a327688780e9e7cde1f08aa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac9263a879a327688780e9e7cde1f08aa">&#9670;&nbsp;</a></span>dirty</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int buf::dirty</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Is this entry dirty? </p>
-
-</div>
-</div>
-<a id="ab18c18abb22f07617619e9a74c71f51a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab18c18abb22f07617619e9a74c71f51a">&#9670;&nbsp;</a></span>next</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct <a class="el" href="../../d9/dd0/structbuf.html">buf</a>* buf::next</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Next entry. </p>
-
 </div>
 </div>
 <a id="a8983733a2501c7d03a45c7de7057116a"></a>
@@ -199,8 +145,6 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Is this entry valid? </p>
 
 </div>
 </div>

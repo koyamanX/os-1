@@ -1,12 +1,11 @@
 var searchData=
 [
-  ['basename_708',['basename',['../d3/d5a/basename_8c.html#aa14fc3333d84f41eacc023626687aebd',1,'basename(char *path):&#160;basename.c'],['../d0/dc6/libgen_8h.html#aa14fc3333d84f41eacc023626687aebd',1,'basename(char *path):&#160;basename.c']]],
-  ['bflush_709',['bflush',['../d6/d6d/buf_8h.html#a682247ce4171a3a58a5379a2941584cd',1,'bflush(dev_t dev):&#160;bio.c'],['../dc/de6/bio_8c.html#a682247ce4171a3a58a5379a2941584cd',1,'bflush(dev_t dev):&#160;bio.c']]],
-  ['binit_710',['binit',['../d6/d6d/buf_8h.html#a53cca0ddc98c5f1de37124eca2575a59',1,'binit(void):&#160;bio.c'],['../dc/de6/bio_8c.html#a53cca0ddc98c5f1de37124eca2575a59',1,'binit(void):&#160;bio.c']]],
-  ['bread_711',['bread',['../d6/d6d/buf_8h.html#a698c2e69ee3a6a76b6adfd479397969b',1,'bread(dev_t dev, u64 blkno):&#160;bio.c'],['../dc/de6/bio_8c.html#a698c2e69ee3a6a76b6adfd479397969b',1,'bread(dev_t dev, u64 blkno):&#160;bio.c']]],
-  ['brelse_712',['brelse',['../dc/de6/bio_8c.html#af154613de80f6b640872720a3cc4ec92',1,'brelse(struct buf *bp):&#160;bio.c'],['../d6/d6d/buf_8h.html#af154613de80f6b640872720a3cc4ec92',1,'brelse(struct buf *bp):&#160;bio.c']]],
-  ['buddy_5falloc_713',['buddy_alloc',['../d2/dfe/alloc_8h.html#a492d78ef609946d35518ab7090e90669',1,'buddy_alloc(u8 order):&#160;alloc.c'],['../d9/d39/alloc_8c.html#a492d78ef609946d35518ab7090e90669',1,'buddy_alloc(u8 order):&#160;alloc.c']]],
-  ['buddy_5ffree_714',['buddy_free',['../d2/dfe/alloc_8h.html#a22a6fdcb9cfeffb921e110c072a68b99',1,'buddy_free(void *p, u8 order):&#160;alloc.c'],['../d9/d39/alloc_8c.html#a22a6fdcb9cfeffb921e110c072a68b99',1,'buddy_free(void *p, u8 order):&#160;alloc.c']]],
-  ['buddy_5finit_715',['buddy_init',['../d2/dfe/alloc_8h.html#aed0eb7c3c621b7b0c8905f142b78fd5a',1,'buddy_init(void *start, void *end):&#160;alloc.c'],['../d9/d39/alloc_8c.html#aed0eb7c3c621b7b0c8905f142b78fd5a',1,'buddy_init(void *start, void *end):&#160;alloc.c']]],
-  ['bwrite_716',['bwrite',['../d6/d6d/buf_8h.html#a40ae6d4f407ff644aef7b7320c55aebb',1,'bwrite(struct buf *bp):&#160;bio.c'],['../dc/de6/bio_8c.html#a40ae6d4f407ff644aef7b7320c55aebb',1,'bwrite(struct buf *bp):&#160;bio.c']]]
+  ['basename_697',['basename',['../d0/dc6/libgen_8h.html#aa14fc3333d84f41eacc023626687aebd',1,'basename(char *path):&#160;basename.c'],['../d3/d5a/basename_8c.html#aa14fc3333d84f41eacc023626687aebd',1,'basename(char *path):&#160;basename.c']]],
+  ['bflush_698',['bflush',['../d6/d6d/buf_8h.html#a47340ad032ee4559cfcdaf99ed7bdc5c',1,'bflush(dev_t dev):&#160;bio.c'],['../dc/de6/bio_8c.html#a47340ad032ee4559cfcdaf99ed7bdc5c',1,'bflush(dev_t dev):&#160;bio.c']]],
+  ['binit_699',['binit',['../d6/d6d/buf_8h.html#a53cca0ddc98c5f1de37124eca2575a59',1,'binit(void):&#160;bio.c'],['../dc/de6/bio_8c.html#a53cca0ddc98c5f1de37124eca2575a59',1,'binit(void):&#160;bio.c']]],
+  ['bread_700',['bread',['../d6/d6d/buf_8h.html#a698c2e69ee3a6a76b6adfd479397969b',1,'bread(dev_t dev, u64 blkno):&#160;bio.c'],['../dc/de6/bio_8c.html#a698c2e69ee3a6a76b6adfd479397969b',1,'bread(dev_t dev, u64 blkno):&#160;bio.c']]],
+  ['buddy_5falloc_701',['buddy_alloc',['../d2/dfe/alloc_8h.html#a492d78ef609946d35518ab7090e90669',1,'buddy_alloc(u8 order):&#160;alloc.c'],['../d9/d39/alloc_8c.html#a492d78ef609946d35518ab7090e90669',1,'buddy_alloc(u8 order):&#160;alloc.c']]],
+  ['buddy_5ffree_702',['buddy_free',['../d2/dfe/alloc_8h.html#a22a6fdcb9cfeffb921e110c072a68b99',1,'buddy_free(void *p, u8 order):&#160;alloc.c'],['../d9/d39/alloc_8c.html#a22a6fdcb9cfeffb921e110c072a68b99',1,'buddy_free(void *p, u8 order):&#160;alloc.c']]],
+  ['buddy_5finit_703',['buddy_init',['../d2/dfe/alloc_8h.html#aed0eb7c3c621b7b0c8905f142b78fd5a',1,'buddy_init(void *start, void *end):&#160;alloc.c'],['../d9/d39/alloc_8c.html#aed0eb7c3c621b7b0c8905f142b78fd5a',1,'buddy_init(void *start, void *end):&#160;alloc.c']]],
+  ['bwrite_704',['bwrite',['../d6/d6d/buf_8h.html#aa118b4fa3c1c5d061e04fc824f9d1891',1,'bwrite(struct buf *bp):&#160;bio.c'],['../dc/de6/bio_8c.html#aa118b4fa3c1c5d061e04fc824f9d1891',1,'bwrite(struct buf *bp):&#160;bio.c']]]
 ];

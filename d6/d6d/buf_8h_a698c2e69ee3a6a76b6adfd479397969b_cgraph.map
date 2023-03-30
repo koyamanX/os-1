@@ -1,5 +1,4 @@
 <map id="bread" name="bread">
-<area shape="rect" id="node1" title="Read block from disk." alt="" coords="5,5,64,32"/>
-<area shape="rect" id="node2" href="$dc/de6/bio_8c.html#ab13e6197ba8af3d7add9fb17a5440344" title="Get new buffer cache entry." alt="" coords="112,5,175,32"/>
-<area shape="rect" id="node3" href="$dc/de6/bio_8c.html#a40ae6d4f407ff644aef7b7320c55aebb" title="Write block to disk." alt="" coords="223,5,285,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,64,32"/>
+<area shape="rect" id="node2" href="$dc/de6/bio_8c.html#aa118b4fa3c1c5d061e04fc824f9d1891" title=" " alt="" coords="112,5,175,32"/>
 </map>

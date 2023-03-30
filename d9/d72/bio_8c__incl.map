@@ -1,6 +1,6 @@
 <map id="kernel/bio.c" name="kernel/bio.c">
-<area shape="rect" id="node1" title=" " alt="" coords="149,5,247,32"/>
-<area shape="rect" id="node2" href="$d6/d6d/buf_8h.html" title="Buffer cache for disk I/O operations." alt="" coords="133,80,188,107"/>
+<area shape="rect" id="node1" title=" " alt="" coords="152,5,249,32"/>
+<area shape="rect" id="node2" href="$d6/d6d/buf_8h.html" title=" " alt="" coords="137,80,192,107"/>
 <area shape="rect" id="node3" href="$d4/dca/devsw_8h.html" title=" " alt="" coords="53,155,127,181"/>
 <area shape="rect" id="node6" href="$d7/dcd/virtio_8h.html" title=" " alt="" coords="203,155,271,181"/>
 <area shape="rect" id="node7" href="$da/d0a/vm_8h.html" title=" " alt="" coords="300,80,355,107"/>

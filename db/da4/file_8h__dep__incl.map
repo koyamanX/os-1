@@ -1,12 +1,12 @@
 <map id="include/file.h" name="include/file.h">
-<area shape="rect" id="node1" title=" " alt="" coords="547,5,652,32"/>
-<area shape="rect" id="node2" href="$df/d03/proc_8h.html" title=" " alt="" coords="408,80,521,107"/>
-<area shape="rect" id="node9" href="$d9/dc3/fio_8c.html" title=" " alt="" coords="553,155,646,181"/>
-<area shape="rect" id="node10" href="$d2/d5a/fs_8c.html" title="Implementation of minix 3 filesystem." alt="" coords="671,155,760,181"/>
-<area shape="rect" id="node3" href="$d7/d00/sched_8h.html" title=" " alt="" coords="254,155,377,181"/>
-<area shape="rect" id="node4" href="$d0/d29/main_8c.html" title=" " alt="" coords="548,229,659,256"/>
-<area shape="rect" id="node5" href="$d3/dda/proc_8c.html" title=" " alt="" coords="5,229,111,256"/>
-<area shape="rect" id="node6" href="$db/dbe/sched_8c.html" title=" " alt="" coords="135,229,250,256"/>
-<area shape="rect" id="node7" href="$db/dd8/syscall_8c.html" title=" " alt="" coords="274,229,397,256"/>
-<area shape="rect" id="node8" href="$dc/d6f/trap_8c.html" title=" " alt="" coords="421,229,524,256"/>
+<area shape="rect" id="node1" title=" " alt="" coords="499,5,605,32"/>
+<area shape="rect" id="node2" href="$df/d03/proc_8h.html" title=" " alt="" coords="357,80,470,107"/>
+<area shape="rect" id="node9" href="$d9/dc3/fio_8c.html" title=" " alt="" coords="551,155,644,181"/>
+<area shape="rect" id="node10" href="$d2/d5a/fs_8c.html" title="Implementation of minix 3 filesystem." alt="" coords="590,80,679,107"/>
+<area shape="rect" id="node3" href="$d7/d00/sched_8h.html" title=" " alt="" coords="303,155,425,181"/>
+<area shape="rect" id="node4" href="$d0/d29/main_8c.html" title=" " alt="" coords="279,229,390,256"/>
+<area shape="rect" id="node5" href="$d3/dda/proc_8c.html" title=" " alt="" coords="414,229,519,256"/>
+<area shape="rect" id="node6" href="$db/dbe/sched_8c.html" title=" " alt="" coords="544,229,659,256"/>
+<area shape="rect" id="node7" href="$db/dd8/syscall_8c.html" title=" " alt="" coords="5,229,128,256"/>
+<area shape="rect" id="node8" href="$dc/d6f/trap_8c.html" title=" " alt="" coords="153,229,255,256"/>
 </map>

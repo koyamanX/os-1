@@ -10,6 +10,7 @@ add_library(sys STATIC
 	exec.S
 	_exit.S
 	close.S
+	link.S
 	)
 
 target_include_directories(sys PUBLIC

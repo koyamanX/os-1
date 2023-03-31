@@ -53,6 +53,10 @@ int syscall(struct proc *rp) {
         case __NR_CLOSE:
             ret = close(a0);
             break;
+        case __NR_LINK:
+            ret = link((void *)va2pa(rp->pgtbl, a0),
+                       (void *)va2pa(rp->pgtbl, a1));
+            break;
         default:
             panic("invalid syscall\n");
             break;

@@ -158,6 +158,8 @@ u64 writei(struct inode *ip, char *src, u64 offset, u64 size);
 #define ZMAP_BLKNO(sb) \
     (IMAP_BLKNO(sb) + sb->imap_blocks)  //!< Block number of first zone map.
 
+#define UNUSED_ZONE 0
+
 #define I_TYPE 0170000           //!< Bit mask for type of file.
 #define I_REGULAR 0100000        //!< Inode type of regular file.
 #define I_BLOCK_SPECIAL 0060000  //!< Inode type of block special device.

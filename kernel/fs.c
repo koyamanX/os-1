@@ -273,6 +273,9 @@ u64 writei(struct inode *ip, char *src, u64 offset, u64 size) {
         // TODO: Allocate zone if not used.
         for (u64 i = BLOCKSIZE; i <= offset; i += BLOCKSIZE) {
             // Find zone which is ranged of an offset.
+            if (zmap(ip, zone) == UNUSED_ZONE) {
+                ip->zone[zone] = alloc_bit(ip->dev, ZMAP);
+            }
             zone++;
         }
         // Read the zone.
@@ -290,6 +293,9 @@ u64 writei(struct inode *ip, char *src, u64 offset, u64 size) {
     }
 
     for (int i = size / BLOCKSIZE; i; i--) {
+        if (zmap(ip, zone) == UNUSED_ZONE) {
+            ip->zone[zone] = alloc_bit(ip->dev, ZMAP);
+        }
         // TODO: Indirect zone.
         // TODO: Allocate zone if not used.
         buf = bread(rootdev, zmap(ip, zone));
@@ -311,6 +317,9 @@ u64 writei(struct inode *ip, char *src, u64 offset, u64 size) {
     }
 
     if (size) {
+        if (zmap(ip, zone) == UNUSED_ZONE) {
+            ip->zone[zone] = alloc_bit(ip->dev, ZMAP);
+        }
         // TODO: Indirect zone.
         // TODO: Allocate zone if not used.
         buf = bread(rootdev, zmap(ip, zone));
@@ -577,16 +586,6 @@ int open(const char *pathname, int flags, mode_t mode) {
         ip->mode = mode | I_REGULAR;
         // TODO: always trunc.
         ip->size = 0x0;
-        struct super_block *sb;
-        sb = getfs(ip->dev);
-        ip->zone[0] = ((sb->first_data_zone) + alloc_bit(ip->dev, ZMAP));
-        ip->zone[1] = ((sb->first_data_zone) + alloc_bit(ip->dev, ZMAP));
-        ip->zone[2] = ((sb->first_data_zone) + alloc_bit(ip->dev, ZMAP));
-        ip->zone[3] = ((sb->first_data_zone) + alloc_bit(ip->dev, ZMAP));
-        ip->zone[4] = ((sb->first_data_zone) + alloc_bit(ip->dev, ZMAP));
-        ip->zone[5] = ((sb->first_data_zone) + alloc_bit(ip->dev, ZMAP));
-        ip->zone[6] = ((sb->first_data_zone) + alloc_bit(ip->dev, ZMAP));
-        ip->zone[7] = ((sb->first_data_zone) + alloc_bit(ip->dev, ZMAP));
 
         // Update newly create inode.
         iupdate(ip);

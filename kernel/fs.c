@@ -28,6 +28,7 @@ static int ffs(int x);
 static u64 alloc_bit(dev_t dev, int map);
 static void free_bit(dev_t dev, int map, u64 pos);
 static u8 has_bit(dev_t dev, int map, u64 n);
+static char *kstrdup(const char *str);
 
 void fsinit(void) {
     struct buf *bp;
@@ -68,6 +69,15 @@ struct super_block *getfs(dev_t dev) {
     panic("No fs\n");
 
     return NULL;
+}
+
+static char *kstrdup(const char *str) {
+    char *p = NULL;
+
+    p = kmalloc(strlen(str) + 1);
+    strcpy(p, str);
+
+    return p;
 }
 
 struct inode *iget(dev_t dev, u64 inum) {
@@ -137,24 +147,22 @@ struct inode *diri(struct inode *ip, char *name) {
     return NULL;
 }
 
-struct inode *namei(char *path) {
-    char *save;
+struct inode *namei(const char *path) {
+    char *p;
     char *name;
     struct inode *dp;
     struct inode *ip;
 
-    save = kmalloc(strlen(path) + 1);
-    strcpy(save, path);
-
+    p = kstrdup(path);
     dp = iget(rootdev, ROOT);
 
     if (*path != '/') {
         panic("Relative path is not supported yet\n");
     }
 
-    name = strtok(path, "/");
+    name = strtok(p, "/");
     if (name == NULL || !*name) {
-        kfree(save);
+        kfree(p);
         return dp;
     }
     do {
@@ -162,7 +170,7 @@ struct inode *namei(char *path) {
         name = strtok(NULL, "/");
         dp = ip;
     } while (name);
-    kfree(save);
+    kfree(p);
 
     return ip;
 }

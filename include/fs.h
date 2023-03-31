@@ -89,9 +89,8 @@ struct inode *iget(dev_t dev, u64 inum);
  * Get inode pointed by path.
  * @param[in] path pathname to obtain inode of.
  * @return Pointer to inode associated with path or NULL.
- * @attention path is destroyed after call.
  */
-struct inode *namei(char *path);
+struct inode *namei(const char *path);
 
 /**
  * Get inode of name in ip.

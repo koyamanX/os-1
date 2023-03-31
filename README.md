@@ -59,3 +59,10 @@ RISC-V toolchain, qemu for RISC-V and minix3 kernel module is required to run os
 # Documentation
 
 [Internal documentaions](https://koyamanx.github.io/os-1/)
+
+# Limitations
+
+- File larger than 8KB is not supported.
+- Directory holding over 128 entries is not supported.
+- uid/gid is set to user id and group id of root which is 0.
+- Timestamp for file(atime,mtime and ctime) is not supported and always be constant 0 (1970/1/1).

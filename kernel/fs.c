@@ -536,6 +536,20 @@ u64 zmap(struct inode *ip, u64 zone) {
     return addr;
 }
 
+/**
+ * @brief Find empty direct entry in dip and return its offset in dip.
+ * @details Find empty direct entry in dip and return its offset in dip.
+ * @param[in] dip Pointer to directory inode to search.
+ * @return offset of free slot in dip.
+ */
+static u64 newdirect(struct inode *dip) {
+    // TODO: dip size is limited to 8KB for now.
+    dip->size += sizeof(struct direct);
+    iupdate(dip);
+
+    return dip->size;
+}
+
 int open(const char *pathname, int flags, mode_t mode) {
     int fd = -1;
     struct inode *ip;
@@ -579,16 +593,8 @@ int open(const char *pathname, int flags, mode_t mode) {
             // TODO: currect behaviour is creating direcotry structure first.
             goto free_and_exit;
         }
-        // Create new direct entry in direcotry.
-        dip->size += sizeof(struct direct);
-        iupdate(dip);
         // Read until free slot found.
-        do {
-            readi(dip, (char *)&dir, offset, sizeof(struct direct));
-            offset += sizeof(struct direct);
-            VERBOSE_PRINTK("lookup: %s:%x\n", dir.name, dir.ino);
-        } while (!(strcmp(dir.name, "") == 0) && dir.ino != 0);
-        offset -= sizeof(struct direct);
+        offset = newdirect(dip);
         // Allocate new inode.
         ip = ialloc(dip->dev);
         // Set mode and size.

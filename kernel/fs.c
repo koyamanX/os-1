@@ -593,8 +593,6 @@ int open(const char *pathname, int flags, mode_t mode) {
             // TODO: currect behaviour is creating direcotry structure first.
             goto free_and_exit;
         }
-        // Read until free slot found.
-        offset = newdirect(dip);
         // Allocate new inode.
         ip = ialloc(dip->dev);
         // Set mode and size.
@@ -603,8 +601,8 @@ int open(const char *pathname, int flags, mode_t mode) {
         // Zone is expanded and allocated in write system call.
         ip->size = 0x0;
 
-        // Update newly create inode.
-        iupdate(ip);
+        // find free slot.
+        offset = newdirect(dip);
         // Set newly created filename and its ino to empty direct entry.
         strcpy(dir.name, filename);
         // Inode number starts from 1.
@@ -652,56 +650,60 @@ int mknod(const char *pathname, mode_t mode, dev_t dev) {
     struct direct dir;
     struct file *fp;
     int fd = -1;
-    char buf[128];   // TODO:
-    char buf1[128];  // TODO:
+    char *basec;
+    char *dirc;
     char *basedir;
     char *filename;
+    u64 offset;
 
-    // dirname, basename destroy 'str' argument.
-    strcpy(buf, pathname);
-    strcpy(buf1, pathname);
-    basedir = dirname(buf);
-    filename = basename(buf1);
+    // Characters for basedir, since basedir may destroy original string.
+    basec = kstrdup(pathname);
+    // Characters for dirname, since dirname may destroy original string.
+    dirc = kstrdup(pathname);
+
+    basedir = dirname(dirc);
+    filename = basename(basec);
     if (strncmp(basedir, ".", 2) == 0) {
         // TODO: CWD is not supported for now
         basedir = "/";
     }
-    VERBOSE_PRINTK("basedir: %s, filename: %s\n", basedir, filename);
     ip = namei(basedir);
     if (ip == NULL) {
-        return -1;
+        goto free_and_exit;
     }
-    ip->size += sizeof(struct direct);
-    iupdate(ip);
-    u64 offset = 0;
-    do {
-        readi(ip, (char *)&dir, offset, sizeof(struct direct));
-        offset += sizeof(struct direct);
-        VERBOSE_PRINTK("lookup: %s:%x\n", dir.name, dir.ino);
-    } while (!(strcmp(dir.name, "") == 0) && dir.ino != 0);
+
+    // Allocate file descriptor.
     fd = ufalloc();
+    // Allocate file structure.
     fp = falloc();
     fp->flags = mode;
+    // Allocate inode.
     fp->ip = ialloc(ip->dev);
     fp->ip->mode = mode & RWX_MODES;
     if (S_ISBLK(mode)) {
         fp->ip->mode |= I_BLOCK_SPECIAL;
     } else if (S_ISCHR(mode)) {
-        VERBOSE_PRINTK("mknod: I_CHAR_SPECIAL\n");
         fp->ip->mode |= I_CHAR_SPECIAL;
     }
+    // Do device specific open.
     openi(fp->ip);
     fp->ip->nlinks++;
     fp->ip->size = 0x0;
     fp->ip->dev = dev;
     iupdate(fp->ip);
+
+    // find free slot.
+    offset = newdirect(ip);
+    // Set newly created filename and its ino to empty direct entry.
     strcpy(dir.name, filename);
+    // Inode number starts from 1.
     dir.ino = fp->ip->inum + 1;
-    VERBOSE_PRINTK("%s:%x\n", dir.name, dir.ino);
-    VERBOSE_PRINTK("%x\n", offset);
-    offset -= sizeof(struct direct);
+    // Write direct entry.
     writei(ip, (char *)&dir, offset, sizeof(struct direct));
 
+free_and_exit:
+    kfree(basec);
+    kfree(dirc);
     return fd;
 }
 

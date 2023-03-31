@@ -1,4 +1,4 @@
-# A toy UNIX like Operating System OS-1
+# OS-1: A toy UNIX like Operating System Version 1.
 
 # Overview
 OS-1 is a toy UNIX like operating system version 1.

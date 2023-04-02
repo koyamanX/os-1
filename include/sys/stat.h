@@ -3,23 +3,21 @@
 
 #include <sys/types.h>
 
-#if 0
 struct stat {
-	dev_t st_dev;
-	ino_t st_ino;
-	mode_t st_mode;
-	nlink_t st_nlink;
-	uid_t st_uid;
-	gid_t st_gid;
-	dev_t st_rdev;
-	off_t st_size;
-	time_t st_atime;
-	time_t st_mtime;
-	time_t st_ctime;
-	blksize_t st_blksize;
-	blkcnt_t st_blocks;
+    dev_t st_dev;          //!< Device ID of device containing file.
+    ino_t st_ino;          //!< File inode number
+    mode_t st_mode;        //!< Mode.
+    nlink_t st_nlink;      //!< Number of links.
+    uid_t st_uid;          //!< UID.
+    gid_t st_gid;          //!< GID.
+    dev_t st_rdev;         //!< Device ID. (character or block devices)
+    off_t st_size;         //!< Size of regular file.
+    time_t st_atime;       //!< Last accessed time.
+    time_t st_mtime;       //!< Last modification time.
+    time_t st_ctime;       //!< Last changed time.
+    blksize_t st_blksize;  //!< Size of each blocks.
+    blkcnt_t st_blocks;    //!< Number of blocks allocated for file.
 };
-#endif
 
 #define S_IFMT 0170000   // type of file mask
 #define S_IFBLK 0060000  // block special
@@ -65,5 +63,6 @@ mode_t umask(mode_t);
 #endif
 int mkdir(const char *pathname, mode_t mode);
 int mknod(const char *pathname, mode_t mode, dev_t dev);
+int stat(const char *path, struct stat *buf);
 
 #endif

@@ -30,5 +30,11 @@ typedef struct dev_t {
     u16 minor;
 } dev_t;
 // typedef short dev_t;
+typedef u32 time_t;
+typedef u32 uid_t;
+typedef u32 gid_t;
+typedef u32 nlink_t;
+typedef u32 blksize_t;
+typedef u32 blkcnt_t;
 
 #endif

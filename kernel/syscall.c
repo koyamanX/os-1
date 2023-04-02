@@ -60,6 +60,10 @@ int syscall(struct proc *rp) {
         case __NR_TRUNCATE:
             ret = truncate((void *)va2pa(rp->pgtbl, a0), a1);
             break;
+        case __NR_STAT:
+            ret = stat((void *)va2pa(rp->pgtbl, a0),
+                       (void *)va2pa(rp->pgtbl, a1));
+            break;
         default:
             panic("invalid syscall\n");
             break;

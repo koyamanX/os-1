@@ -13,5 +13,6 @@
 #define __NR_CLOSE 9
 #define __NR_LINK 10
 #define __NR_TRUNCATE 11
+#define __NR_STAT 12
 
 #endif

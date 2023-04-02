@@ -7,8 +7,15 @@ jobs:
       fail-fast: false
       matrix:
 #       os: [ubuntu-22.04, ubuntu-20.04, macos-latest]
-        os: [ubuntu-22.04, ubuntu-20.04]
-    name: "Build on ${{ matrix.os }}"
+        os: [ubuntu-22.04, ubuntu-20.04, ubuntu-latest] #ubuntu-latest is used for in-docker build.
+        include:
+          - os: ubuntu-22.04
+            in_docker: false
+          - os: ubuntu-20.04
+            in_docker: false
+          - os: ubuntu-latest
+            in_docker: true
+    name: "Build on ${{ matrix.os }} in docker: ${{ matrix.in_docker }}"
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
@@ -26,4 +33,8 @@ jobs:
 #         brew tap riscv-software-src/riscv
 #         brew install riscv-gnu-toolchain cmake || true
       - name: build for CI
+        if: matrix.in_docker == false
         run: ./run.sh build
+      - name: build for CI in docker
+        if: matrix.in_docker == true
+        run: ./run.sh build_in_docker

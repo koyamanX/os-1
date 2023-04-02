@@ -38,8 +38,8 @@ struct file *falloc(void) {
             fp = &file[i];
             rp->ofile[fd] = fp;
             fp->count++;
-            fp->offset[0] = 0;
-            fp->offset[1] = 0;
+            fp->offset = 0;
+            fp->offset = 0;
             fp->ip = NULL;
             return fp;
         }

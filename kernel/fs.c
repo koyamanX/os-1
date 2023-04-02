@@ -630,7 +630,7 @@ int open(const char *pathname, int flags, mode_t mode) {
         fp->ip->size = 0;
     }
     if (flags & O_APPEND) {
-        fp->offset[1] = fp->ip->size;
+        fp->offset = fp->ip->size;
     }
     // Update inode.
     iupdate(fp->ip);

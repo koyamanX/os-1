@@ -7,7 +7,7 @@
 struct file {
     u32 flags;
     u64 count;
-    u64 offset[2];
+    u64 offset;
     struct inode *ip;
 };
 

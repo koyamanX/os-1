@@ -76,8 +76,8 @@ ssize_t write(int fd, const void *buf, size_t count) {
     if (fp == NULL) {
         panic("No file opened\n");
     }
-    ret = writei(fp->ip, (char *)buf, fp->offset[1], count);
-    fp->offset[1] += count;
+    ret = writei(fp->ip, (char *)buf, fp->offset, count);
+    fp->offset += count;
 
     return ret;
 }
@@ -88,8 +88,8 @@ ssize_t read(int fd, const void *buf, size_t count) {
 
     rp = cpus[r_tp()].rp;
     fp = rp->ofile[fd];
-    ret = readi(fp->ip, (char *)buf, fp->offset[0], count);
-    fp->offset[0] += count;
+    ret = readi(fp->ip, (char *)buf, fp->offset, count);
+    fp->offset += count;
 
     return ret;
 }

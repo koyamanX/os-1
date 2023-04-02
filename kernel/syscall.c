@@ -48,7 +48,7 @@ int syscall(struct proc *rp) {
         case __NR__EXIT:
             _exit(a0);
             extern void swtch(context_t * old, context_t * new);
-            swtch(&rp->ctx, &cpus[r_tp()].ctx);
+            swtch(&rp->ctx, &this_cpu().ctx);
             break;
         case __NR_CLOSE:
             ret = close(a0);
@@ -80,7 +80,7 @@ ssize_t write(int fd, const void *buf, size_t count) {
     struct proc *rp;
     struct file *fp;
 
-    rp = cpus[r_tp()].rp;
+    rp = this_proc();
     fp = rp->ofile[fd];
     // TODO: fp->offset
     if (fp == NULL) {
@@ -96,7 +96,7 @@ ssize_t read(int fd, const void *buf, size_t count) {
     struct proc *rp;
     struct file *fp;
 
-    rp = cpus[r_tp()].rp;
+    rp = this_proc();
     fp = rp->ofile[fd];
     ret = readi(fp->ip, (char *)buf, fp->offset, count);
     fp->offset += count;
@@ -109,7 +109,7 @@ int dup(int fildes) {
     struct proc *rp;
     struct file *fp;
 
-    rp = cpus[r_tp()].rp;
+    rp = this_proc();
     fp = rp->ofile[fildes];
     fd = ufalloc();
     rp->ofile[fd] = fp;

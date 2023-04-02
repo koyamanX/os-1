@@ -83,6 +83,9 @@ struct cpu {
 #define NCPUS 1
 extern struct cpu cpus[NCPUS];
 
+#define this_cpu() (cpus[r_tp()])
+#define this_proc() (cpus[r_tp()].rp)
+
 extern struct proc procs[NPROCS];
 void initproc(void);
 void initcpu(void);

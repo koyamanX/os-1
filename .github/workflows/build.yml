@@ -3,11 +3,27 @@ name: CI
 on: [push, pull_request]
 jobs:
   build:
-
-    runs-on: ubuntu-latest
-    container: docker://koyamanx/os1_dev:v1.0
-
+    strategy:
+      fail-fast: false
+      matrix:
+#       os: [ubuntu-22.04, ubuntu-20.04, macos-latest]
+        os: [ubuntu-22.04, ubuntu-20.04]
+    name: "Build on ${{ matrix.os }}"
+    runs-on: ${{ matrix.os }}
     steps:
-    - uses: actions/checkout@v3
-    - name: build for CI
-      run: ./run.sh build
+      - uses: actions/checkout@v3
+      - name: Install tools for Linux
+        if: runner.os == 'Linux'
+        run: | 
+          sudo apt update
+          sudo apt install -y --no-install-recommends gcc-riscv64-linux-gnu cmake build-essential
+        env:
+          DEBIAN_FRONTEND: noninteractive
+#     - name: Install tools for macOS
+#       if: runner.os == 'macOS'
+#       run: |
+#         brew update --quiet || true
+#         brew tap riscv-software-src/riscv
+#         brew install riscv-gnu-toolchain cmake || true
+      - name: build for CI
+        run: ./run.sh build

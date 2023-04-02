@@ -1,6 +1,10 @@
 # OS-1: A toy UNIX like Operating System Version 1.
+[![CI](https://github.com/koyamanX/os-1/actions/workflows/build.yml/badge.svg)](https://github.com/koyamanX/os-1/actions/workflows/build.yml)
+[![Doxygen deploy to GitHub pages](https://github.com/koyamanX/os-1/actions/workflows/docs.yml/badge.svg)](https://github.com/koyamanX/os-1/actions/workflows/docs.yml)
+[![clang-format Check](https://github.com/koyamanX/os-1/actions/workflows/format.yml/badge.svg)](https://github.com/koyamanX/os-1/actions/workflows/format.yml)
 
 # Overview
+
 OS-1 is a toy UNIX like operating system version 1.
 
 OS-1 is implemented in C and assembly for RISC-V qemu.

@@ -14,6 +14,7 @@ int syscall(struct proc *rp) {
     u64 a0 = rp->tf->a0;
     u64 a1 = rp->tf->a1;
     u64 a2 = rp->tf->a2;
+	dev_t dev;
     int ret = -1;
 
     switch (syscall_num) {
@@ -31,7 +32,6 @@ int syscall(struct proc *rp) {
             ret = mkdir(((const char *)va2pa(rp->pgtbl, a0)), a1);
             break;
         case __NR_MKNOD:
-            dev_t dev;
             dev.major = (a2 >> 16) & 0xffff;
             dev.minor = a2 & 0xffff;
             ret = mknod(((const char *)va2pa(rp->pgtbl, a0)), a1, dev);

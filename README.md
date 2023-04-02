@@ -27,6 +27,9 @@ Supporting following features.
 - [x] read
 - [x] fork
 - [x] _exit
+- [x] close
+- [x] link
+- [x] truncate
 - [ ] wait
 - [ ] sleep
 - [ ] pipe
@@ -37,8 +40,6 @@ Supporting following features.
 - [ ] sbrk
 - [ ] uptime
 - [ ] unlink
-- [ ] link
-- [x] close
 
 # How to use
 RISC-V toolchain, qemu for RISC-V and minix3 kernel module is required to run os-1.

@@ -11,6 +11,7 @@ add_library(sys STATIC
 	_exit.S
 	close.S
 	link.S
+	truncate.S
 	)
 
 target_include_directories(sys PUBLIC

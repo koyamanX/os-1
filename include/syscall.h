@@ -12,5 +12,6 @@
 #define __NR__EXIT 8
 #define __NR_CLOSE 9
 #define __NR_LINK 10
+#define __NR_TRUNCATE 11
 
 #endif

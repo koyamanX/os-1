@@ -10,13 +10,13 @@ struct stat {
     nlink_t st_nlink;      //!< Number of links.
     uid_t st_uid;          //!< UID.
     gid_t st_gid;          //!< GID.
-    dev_t st_rdev;         //!< Device ID. (character or block devices)
+//TODO:    dev_t st_rdev;         //!< Device ID. (character or block devices)
     off_t st_size;         //!< Size of regular file.
     time_t st_atime;       //!< Last accessed time.
     time_t st_mtime;       //!< Last modification time.
     time_t st_ctime;       //!< Last changed time.
     blksize_t st_blksize;  //!< Size of each blocks.
-    blkcnt_t st_blocks;    //!< Number of blocks allocated for file.
+//TODO:    blkcnt_t st_blocks;    //!< Number of blocks allocated for file.
 };
 
 #define S_IFMT 0170000   // type of file mask

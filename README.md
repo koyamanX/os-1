@@ -30,10 +30,11 @@ Supporting following features.
 - [x] close
 - [x] link
 - [x] truncate
+- [x] stat
+- [x] fstat
 - [ ] wait
 - [ ] sleep
 - [ ] pipe
-- [ ] fstat
 - [ ] chdir
 - [ ] kill
 - [ ] getpid

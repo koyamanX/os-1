@@ -14,7 +14,7 @@ int syscall(struct proc *rp) {
     u64 a0 = rp->tf->a0;
     u64 a1 = rp->tf->a1;
     u64 a2 = rp->tf->a2;
-	dev_t dev;
+    dev_t dev;
     int ret = -1;
 
     switch (syscall_num) {
@@ -56,6 +56,9 @@ int syscall(struct proc *rp) {
         case __NR_LINK:
             ret = link((void *)va2pa(rp->pgtbl, a0),
                        (void *)va2pa(rp->pgtbl, a1));
+            break;
+        case __NR_TRUNCATE:
+            ret = truncate((void *)va2pa(rp->pgtbl, a0), a1);
             break;
         default:
             panic("invalid syscall\n");

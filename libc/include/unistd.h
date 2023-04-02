@@ -12,5 +12,6 @@ int exec(const char *pathname, const char *argv[]);
 void _exit(int status);
 int close(int fd);
 int link(const char *path1, const char *path2);
+int truncate(const char *path, off_t length);
 
 #endif

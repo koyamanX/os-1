@@ -31,6 +31,12 @@ COMMANDS
 		info
 		warn
 		release
+	build_in_docker
+		verbose
+		debug
+		info
+		warn
+		release
 	create_image
 	run
 		verbose
@@ -104,6 +110,14 @@ if [ "$CMD" = "build" ]; then
 	build $1
 	exit 0
 fi
+
+CMD=$1
+if [ "$CMD" = "build_in_docker" ]; then
+	shift
+	docker run --rm -v$(pwd):/work -w /work koyamanx/os1_dev:v1.1 ./run.sh build $1
+	exit 0
+fi
+
 
 CMD=$1
 if [ "$CMD" = "create_image" ]; then

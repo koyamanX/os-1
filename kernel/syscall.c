@@ -64,6 +64,9 @@ int syscall(struct proc *rp) {
             ret = stat((void *)va2pa(rp->pgtbl, a0),
                        (void *)va2pa(rp->pgtbl, a1));
             break;
+        case __NR_FSTAT:
+            ret = fstat(a0, (void *)va2pa(rp->pgtbl, a1));
+            break;
         default:
             panic("invalid syscall\n");
             break;

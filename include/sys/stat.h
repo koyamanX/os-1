@@ -64,5 +64,6 @@ mode_t umask(mode_t);
 int mkdir(const char *pathname, mode_t mode);
 int mknod(const char *pathname, mode_t mode, dev_t dev);
 int stat(const char *path, struct stat *buf);
+int fstat(int fildes, struct stat *buf);
 
 #endif

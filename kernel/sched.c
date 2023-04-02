@@ -6,7 +6,7 @@ extern void swtch(context_t *old, context_t *new);
 
 void sched(struct proc *rp) {
     w_sie(SIE_SEIE | SIE_STIE | SIE_SSIE);
-    swtch(&rp->ctx, &cpus[r_tp()].ctx);
+    swtch(&rp->ctx, &this_cpu().ctx);
 }
 
 void scheduler(void) {
@@ -21,10 +21,10 @@ void scheduler(void) {
             continue;
         }
         VERBOSE_PRINTK("scheduler: pid==%x\n", rp->pid);
-        cpus[r_tp()].rp = rp;
+        this_proc() = rp;
         rp->stat = RUNNING;
-        swtch(&cpus[r_tp()].ctx, &rp->ctx);
-        cpus[r_tp()].rp = NULL;
+        swtch(&this_cpu().ctx, &rp->ctx);
+        this_proc() = NULL;
         if (rp->stat == RUNNING) {
             rp->stat = RUNNABLE;
         }

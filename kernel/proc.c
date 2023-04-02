@@ -89,7 +89,7 @@ int exec(const char *file, char const **argv) {
     }
     phdr = kmalloc(sizeof(Elf64_Phdr));
 
-    rp = cpus[r_tp()].rp;
+    rp = this_proc();
     readi(ip, (char *)phdr, ehdr.e_phoff, sizeof(Elf64_Phdr) * ehdr.e_phnum);
     for (int i = 0; i < ehdr.e_phnum; i++) {
         if (phdr[i].p_type == PT_LOAD) {
@@ -123,7 +123,7 @@ int fork(void) {
 
     pid = newproc();
     p = &procs[pid];
-    rp = cpus[r_tp()].rp;
+    rp = this_proc();
     memcpy(p->tf, rp->tf, sizeof(trapframe_t));
     memcpy(p->kstack, rp->kstack, PAGE_SIZE);
     p->tf->a0 = 0;
@@ -140,7 +140,7 @@ int fork(void) {
 void _exit(int status) {
     struct proc *rp;
 
-    rp = cpus[r_tp()].rp;
+    rp = this_proc();
 
     for (int i = 0; i < NOFILE; i++) {
         if (rp->ofile[i] != NULL) {

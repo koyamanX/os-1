@@ -17,7 +17,7 @@ void usertrapret(void) {
     struct proc *p;
 
     w_stvec(TRAMPOLINE);
-    p = cpus[r_tp()].rp;
+    p = this_proc();
     p->tf->satp = r_satp();
     p->tf->ksp = (u64)(p->kstack + PAGE_SIZE);
     w_sstatus(((r_sstatus() & ~SSTATUS_SPP) | SSTATUS_SPIE));
@@ -30,7 +30,7 @@ void usertrapret(void) {
 int syscall(struct proc *rp);
 void kerneltrap(void) {
     struct proc *rp;
-    rp = cpus[r_tp()].rp;
+    rp = this_proc();
     u64 scause = r_scause();
 
     switch (scause) {

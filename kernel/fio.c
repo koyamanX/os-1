@@ -11,7 +11,7 @@ struct file file[NFILE];
 int ufalloc(void) {
     struct proc *rp;
 
-    rp = cpus[r_tp()].rp;
+    rp = this_proc();
 
     for (int i = 0; i < NOFILE; i++) {
         if (rp->ofile[i] == NULL) {
@@ -26,7 +26,7 @@ struct file *falloc(void) {
     struct proc *rp;
     struct file *fp;
 
-    rp = cpus[r_tp()].rp;
+    rp = this_proc();
     fd = ufalloc();
 
     if (fd < 0) {

@@ -715,7 +715,7 @@ int close(int fd) {
     struct inode *ip;
     struct file *fp;
 
-    rp = cpus[r_tp()].rp;
+    rp = this_proc();
     fp = rp->ofile[fd];
     ip = fp->ip;
     if (fp == NULL || ip == NULL) {
@@ -836,7 +836,7 @@ int fstat(int fildes, struct stat *buf) {
     struct file *fp;
     struct proc *rp;
 
-    rp = cpus[r_tp()].rp;
+    rp = this_proc();
     fp = rp->ofile[fildes];
     ip = fp->ip;
     if (ip == NULL) {

@@ -6,6 +6,7 @@
 #include <sched.h>
 #include <stddef.h>
 #include <sys/types.h>
+#include <trap.h>
 #include <uart.h>
 #include <vm.h>
 

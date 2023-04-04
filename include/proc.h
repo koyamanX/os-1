@@ -1,9 +1,19 @@
-#ifndef PROC_H
-#define PROC_H
+/**
+ * @file proc.h
+ * @brief Structures and function prototypes for process management.
+ * @author ckoyama(koyamanX)
+ */
+
+#ifndef _PROC_H
+#define _PROC_H
 
 #include <file.h>
 #include <riscv.h>
 
+/**
+ * @brief Struct for trapframe.
+ * @details It is used for saving context of interrupted process.
+ */
 typedef struct {
     u64 ra;
     u64 sp;
@@ -36,12 +46,16 @@ typedef struct {
     u64 t4;
     u64 t5;
     u64 t6;
-    u64 sepc;
-    u64 satp;
-    u64 ksp;
-    u64 trap_handler;
+    u64 sepc;          //!< supervisour exception PC, trapped address.
+    u64 satp;          //!< satp of a process.
+    u64 ksp;           //!< stack pointer for per-process kernel stack.
+    u64 trap_handler;  //!< Supervisor mode trap handler.
 } trapframe_t;
 
+/**
+ * @brief Structure for execution context of process.
+ * @details It is used for saving callee-saved registers.
+ */
 typedef struct {
     u64 ra;
     u64 sp;
@@ -59,43 +73,89 @@ typedef struct {
     u64 s11;
 } context_t;
 
-#define NPROCS 16
-#define NOFILE 8
+#define NPROCS 16  //!< Maximum number of process.
+#define NOFILE 8   //!< Maximum number of open file per process.
+
+/**
+ * @brief Process structure.
+ * @details Structure for process.
+ */
 struct proc {
-    u64 stat;
-    u64 pid;
-    trapframe_t *tf;
-    context_t ctx;
-    char name[16];
-    struct file *ofile[NOFILE];
-    pagetable_t pgtbl;
-    u8 *kstack;
+    u64 stat;                    //!< Execution status of process.
+    u64 pid;                     //!< Process IDs.
+    trapframe_t *tf;             //!< Trapframe.
+    context_t ctx;               //!< Context.
+    char name[16];               //!< Name of process.
+    struct file *ofile[NOFILE];  //!< Open files.
+    pagetable_t pgtbl;           //!< Pagetable of process.
+    u8 *kstack;                  //!< Pointer to per-process kernel stack.
 };
-#define UNUSED 0
-#define USED 1
-#define RUNNING 2
-#define RUNNABLE 3
 
+#define UNUSED 0    //!< Proc struct is unused.
+#define USED 1      //!< Proc struct is used.
+#define RUNNING 2   //!< Proc is running.
+#define RUNNABLE 3  //!< Proc is runnable.
+
+/**
+ * @brief Struct for Processors.
+ * @details It contains running process on a processor and scheduler's context.
+ */
 struct cpu {
-    struct proc *rp;
-    context_t ctx;
+    struct proc *rp;  //!< Running process.
+    context_t ctx;    //!< Context of scheduler.
 };
-#define NCPUS 1
-extern struct cpu cpus[NCPUS];
+#define NCPUS 1                 //!< Number of processor.
+extern struct cpu cpus[NCPUS];  //!< Processors kernel can run.
 
-#define this_cpu() (cpus[r_tp()])
-#define this_proc() (cpus[r_tp()].rp)
+#define this_cpu() \
+    (cpus[r_tp()])  //!< This processor's corresponding cpu struct.
+#define this_proc() \
+    (cpus[r_tp()].rp)  //!< This process's corresponding proc struct.
 
-extern struct proc procs[NPROCS];
+extern struct proc procs[NPROCS];  //!< Processes.
+
+/**
+ *	@brief Initialize proc structure.
+ *	@details Initialize proc structure.
+ */
 void initproc(void);
+/**
+ *	@brief Initialize cpu structure.
+ *	@details Initialize cpu structure.
+ */
 void initcpu(void);
+/**
+ * @brief Initialize vritual memory for first user process, init.
+ * @return Pointer to pagetable.
+ */
 pagetable_t uvminit(void);
+/**
+ * @brief Allocate new proc structure and initialize.
+ * @details Allocate new proc structure and initialize.
+ * @return Pid of newly created proc.
+ */
 int newproc(void);
-void init(void);
+/**
+ * @brief Allocate user page for first user-mode process, init
+ * @details Allocate user page for first user-mode process, init
+ */
 void userinit(void);
-extern void usertrapret(void);
-extern void userret(u64 satp);
+
+/**
+ * @brief Execute a file.
+ * @details Execute a file, load process image.
+ * @param[in] file Pointer to path of file.
+ * @param[in] argv Pointer to argument vector.
+ * @return 0 on success, -1 on failure.
+ */
 int exec(const char *file, char const **argv);
+
+/**
+ * @brief Exit process.
+ * @details Exit process, free memory, proc struct, etc, and set status as exit
+ * status.
+ * @param[in] status exit status.
+ */
 void _exit(int status);
 
-#endif
+#endif  // _PROC_H

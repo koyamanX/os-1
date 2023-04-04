@@ -13,7 +13,7 @@
 #include <vm.h>
 
 struct proc procs[NPROCS];
-u64 mpid = 1;
+u64 mpid = 1;  //!< Next pid.
 struct cpu cpus[NCPUS];
 
 void initcpu(void) {
@@ -114,7 +114,6 @@ int exec(const char *file, char const **argv) {
     return 0;
 }
 
-extern void swtch(context_t *old, context_t *new);
 // TODO: pid_t
 int fork(void) {
     int pid;

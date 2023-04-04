@@ -158,4 +158,13 @@ int exec(const char *file, char const **argv);
  */
 void _exit(int status);
 
+/**
+ * @brief switch context.
+ * @details swtich context, used for switching process and scheduler, written in
+ * asm.
+ * @param[in] old old context.
+ * @param[in] new new context.
+ */
+extern void swtch(context_t *old, context_t *new);
+
 #endif  // _PROC_H

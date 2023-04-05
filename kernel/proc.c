@@ -15,6 +15,7 @@
 struct proc procs[NPROCS];
 u64 mpid = 1;  //!< Next pid.
 struct cpu cpus[NCPUS];
+extern void init(void);
 
 void initcpu(void) {
     for (int i = 0; i < NCPUS; i++) {
@@ -30,7 +31,6 @@ void initproc(void) {
     }
 }
 
-extern void init(void);
 void userinit(void) {
     u64 pid = newproc();
     kvmmap(procs[pid].pgtbl, 0x0, (u64)init, PAGE_SIZE,
@@ -64,14 +64,12 @@ int newproc(void) {
 
 int exec(const char *file, char const **argv) {
     struct inode *ip;
-    char path[128];
     Elf64_Ehdr ehdr;
     struct proc *rp;
     char *seg;
     Elf64_Phdr *phdr = NULL;
 
-    strcpy(path, file);
-    ip = namei((char *)path);
+    ip = namei((char *)file);
     // TODO: check permission for executable file (rx)
     if (ip == NULL) {
         return -1;

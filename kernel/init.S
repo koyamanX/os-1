@@ -1,4 +1,5 @@
 #include <syscall.h>
+
 .text
 .section .userproc0
 .globl init
@@ -10,13 +11,5 @@ init:
 
 loop:
 	j loop	
-
-hello:
-.string "hello,"
-world:
-.string "world!"
-newline:
-.string "\n"
-
 file:
 .string "/usr/sbin/init"

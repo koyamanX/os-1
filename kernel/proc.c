@@ -125,7 +125,7 @@ int fork(void) {
     memcpy(p->kstack, rp->kstack, PAGE_SIZE);
     p->tf->a0 = 0;
     rp->tf->a0 = pid;
-    uvmcopy(rp->pgtbl, p->pgtbl, PAGE_SIZE);
+    uvmcopy(p->pgtbl, rp->pgtbl, PAGE_SIZE);
     memcpy((char *)p->ofile, (char *)rp->ofile, sizeof(rp->ofile));
 
     return pid;
@@ -146,12 +146,14 @@ void _exit(int status) {
     // TODO: stat should be zombie?
     rp->stat = UNUSED;
 
+#if 0
     // TODO: Release all of memory used by process, for now, just free address
     // 0.
     uvmunmap(rp->pgtbl, 0, PAGE_SIZE);
     uvmunmap(rp->pgtbl, TRAPFRAME, PAGE_SIZE);
-    uvmunmap(rp->pgtbl, TRAMPOLINE, PAGE_SIZE);
+    //uvmunmap(rp->pgtbl, TRAMPOLINE, PAGE_SIZE);
     free_page(rp->kstack);
     free_page(rp->tf);
     free_page(rp->pgtbl);
+#endif 
 }

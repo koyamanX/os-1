@@ -95,6 +95,7 @@ struct proc {
 #define USED 1      //!< Proc struct is used.
 #define RUNNING 2   //!< Proc is running.
 #define RUNNABLE 3  //!< Proc is runnable.
+#define ZOMBIE 4    //!< Proc is zombie.
 
 /**
  * @brief Struct for Processors.

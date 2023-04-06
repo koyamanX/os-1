@@ -143,6 +143,7 @@ void _exit(int status) {
         }
     }
 
+    // TODO: stat should be zombie?
     rp->stat = UNUSED;
 
     // TODO: Release all of memory used by process, for now, just free address

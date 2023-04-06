@@ -6,7 +6,8 @@ add_library(string STATIC
 	strcmp.c
 	strncmp.c
 	strtok.c
-	strcpy.c)
+	strcpy.c
+	memmove.c)
 
 target_include_directories(string PUBLIC
 	${PROJECT_SOURCE_DIR}/libc/include

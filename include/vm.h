@@ -53,6 +53,47 @@ void kvmmap(pagetable_t pgtbl, u64 va, u64 pa, u64 sz, u64 perm);
 pte_t *kvmwalk(pagetable_t pgtbl, u64 va);
 
 /**
+ * @brief Unmap a virtual address.
+ * @details This function unmaps a virtual address.
+ * @param[in] pgtbl The page table to use.
+ * @param[in] va The virtual address to unmap.
+ * @param[in] sz The size of the unmapping.
+ * @attention THis function free pages.
+ */
+void kvmunmap(pagetable_t pgtbl, u64 va, u64 sz);
+
+/**
+ * @brief Map a virtual address to a physical address for user.
+ * @details This function maps a virtual address to a physical address for user.
+ * @param[in] pgtbl The page table to use.
+ * @param[in] va The virtual address to map.
+ * @param[in] pa The physical address to map.
+ * @param[in] sz The size of the mapping.
+ * @param[in] perm The permission of the mapping.
+ */
+void uvmmap(pagetable_t pgtbl, u64 va, u64 pa, u64 sz, u64 perm);
+
+/**
+ * @brief Unmap a virtual address for user.
+ * @details This function unmaps a virtual address for user.
+ * @param[in] pgtbl The page table to use.
+ * @param[in] va The virtual address to unmap.
+ * @param[in] sz The size of the unmapping.
+ * @attention THis function free pages.
+ */
+void uvmunmap(pagetable_t pgtbl, u64 va, u64 sz);
+
+/**
+ * @brief Copy a page table.
+ * @details This function copies a page table and physical pages.
+ * @param[in] dst The destination page table.
+ * @param[in] src The source page table.
+ * @param[in] sz The size of the copy.
+ * @return success(0) or failure(-1).
+ */
+int uvmcopy(pagetable_t dst, pagetable_t src, u64 sz);
+
+/**
  * @brief Allocate a page table entry.
  * @details This function allocates a page table entry for the given virtual address.
  * @param[in] pgtbl The page table to use.

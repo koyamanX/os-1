@@ -125,10 +125,7 @@ int fork(void) {
     memcpy(p->kstack, rp->kstack, PAGE_SIZE);
     p->tf->a0 = 0;
     rp->tf->a0 = pid;
-    kvmmap(p->pgtbl, 0x0, (u64)alloc_page(), PAGE_SIZE,
-           PTE_V | PTE_W | PTE_R | PTE_X | PTE_U);
-    memcpy((char *)va2pa(p->pgtbl, 0x0), (char *)va2pa(rp->pgtbl, 0x0),
-           PAGE_SIZE);
+    uvmcopy(rp->pgtbl, p->pgtbl, PAGE_SIZE);
     memcpy((char *)p->ofile, (char *)rp->ofile, sizeof(rp->ofile));
 
     return pid;

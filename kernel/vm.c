@@ -61,6 +61,42 @@ void kvmmap(pagetable_t pgtbl, u64 va, u64 pa, u64 sz, u64 perm) {
     }
 }
 
+void kvmunmap(pagetable_t pgtbl, u64 va, u64 sz) {
+    pte_t *pte;
+
+    for (u64 i = ROUNDDOWN(va); i < ROUNDDOWN(va + sz); i += PAGE_SIZE) {
+        pte = kvmwalk(pgtbl, i);
+
+        u64 pa = PTE2PA(*pte);
+        free_page((void *)pa);
+        *pte = 0;
+    }
+}
+
+void uvmmap(pagetable_t pgtbl, u64 va, u64 pa, u64 sz, u64 perm) {
+    kvmmap(pgtbl, va, pa, sz, perm | PTE_U);
+}
+
+void uvmunmap(pagetable_t pgtbl, u64 va, u64 sz) {
+    kvmunmap(pgtbl, va, sz);
+}
+
+int uvmcopy(pagetable_t dst, pagetable_t src, u64 sz) {
+    pte_t *pte;
+    u8 *pa;
+
+    for (u64 i = 0; i < sz; i += PAGE_SIZE) {
+        pte = kvmwalk(src, i);
+        if (*pte == 0) {
+            continue;
+        }
+        pa = alloc_page();
+        memmove((void *)pa, (void *)PTE2PA(*pte), PAGE_SIZE);
+        uvmmap(dst, i, PTE2PA(*pte), PAGE_SIZE, PTE_FLAGS(*pte));
+    }
+    return 0;
+}
+
 u64 va2pa(pagetable_t pgtbl, u64 va) {
     pte_t *pte;
     u64 pa;

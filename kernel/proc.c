@@ -145,5 +145,12 @@ void _exit(int status) {
 
     rp->stat = UNUSED;
 
-    // TODO: deallocate page
+    // TODO: Release all of memory used by process, for now, just free address
+    // 0.
+    uvmunmap(rp->pgtbl, 0, PAGE_SIZE);
+    uvmunmap(rp->pgtbl, TRAPFRAME, PAGE_SIZE);
+    uvmunmap(rp->pgtbl, TRAMPOLINE, PAGE_SIZE);
+    free_page(rp->kstack);
+    free_page(rp->tf);
+    free_page(rp->pgtbl);
 }

@@ -4,6 +4,6 @@
 #include <proc.h>
 
 void scheduler(void);
-void sched(struct proc *rp);
+void sched(void);
 
 #endif

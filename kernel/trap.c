@@ -59,14 +59,14 @@ void kerneltrap(void) {
         case SMODE_SOFTWARE_INTERRUPT: {
             w_sip(0x0);
             rp->stat = RUNNABLE;
-            sched(rp);
+            sched();
             break;
         }
 #define ECALL_FROM_U_MODE 8
         case ECALL_FROM_U_MODE: {
             rp->tf->sepc += 4;
             rp->tf->a0 = syscall(rp);
-            sched(rp);
+            sched();
             break;
         }
         default: {

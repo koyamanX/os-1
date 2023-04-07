@@ -139,18 +139,28 @@ int exec(const char *file, char const **argv) {
 // TODO: pid_t
 int fork(void) {
     int pid;
-    struct proc *p;
-    struct proc *rp;
+    struct proc *child;
+    struct proc *parent;
 
+    // Allocate new proc.
     pid = newproc();
-    p = &procs[pid];
-    rp = this_proc();
-    memcpy(p->tf, rp->tf, sizeof(trapframe_t));
-    memcpy(p->kstack, rp->kstack, PAGE_SIZE);
-    p->tf->a0 = 0;
-    rp->tf->a0 = pid;
-    uvmcopy(p->pgtbl, rp->pgtbl, PAGE_SIZE);
-    memcpy((char *)p->ofile, (char *)rp->ofile, sizeof(rp->ofile));
+    child = &procs[pid];
+    if ((child == NULL) || (pid == -1)) {
+        return -1;
+    }
+    // Get parent proc.
+    parent = this_proc();
+    // Copy trapframe and kernel stack.
+    memcpy(child->tf, parent->tf, sizeof(trapframe_t));
+    memcpy(child->kstack, parent->kstack, PAGE_SIZE);
+    // Set return value for child.
+    child->tf->a0 = 0;
+    // Set return value for parent.
+    parent->tf->a0 = pid;
+    // Copy memory space.
+    uvmcopy(child->pgtbl, parent->pgtbl, PAGE_SIZE);
+    // Copy open files.
+    memcpy((char *)child->ofile, (char *)parent->ofile, sizeof(parent->ofile));
 
     return pid;
 }

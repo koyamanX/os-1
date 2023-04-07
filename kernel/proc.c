@@ -13,7 +13,6 @@
 #include <vm.h>
 
 struct proc procs[NPROCS];
-u64 mpid = 1;  //!< Next pid.
 struct cpu cpus[NCPUS];
 extern void init(void);
 
@@ -25,16 +24,22 @@ void initcpu(void) {
 }
 
 void initproc(void) {
-    mpid = 1;
     for (int i = 0; i < NPROCS; i++) {
         procs[i].stat = UNUSED;
     }
 }
 
 void userinit(void) {
-    u64 pid = newproc();
+    u64 pid;
+
+    // Allocate new proc.
+    pid = newproc();
+
+    // Load initcode at address 0.
     kvmmap(procs[pid].pgtbl, 0x0, (u64)init, PAGE_SIZE,
            PTE_V | PTE_W | PTE_R | PTE_X | PTE_U);
+
+    // Dump proc memory space.
     kvmdump(procs[pid].pgtbl, TRAPFRAME);
     kvmdump(procs[pid].pgtbl, TRAMPOLINE);
     kvmdump(procs[pid].pgtbl, 0x0);
@@ -42,24 +47,43 @@ void userinit(void) {
 
 int newproc(void) {
     struct proc *p;
+    u64 pid = 1;
 
-    p = &procs[mpid];
+    // Find unused proc from procs.
+    for (pid = 1; pid < NPROCS; pid++) {
+        if (procs[pid].stat == UNUSED) {
+            p = &procs[pid];
+            goto found;
+        }
+    }
+    return -1;
+
+found:
+    // Initialize proc.
     p->stat = RUNNABLE;
-    p->pid = mpid;
+    p->pid = pid;
+    // Allocate memory for trapframe, page table, and kernel stack.
     p->tf = alloc_page();
     p->pgtbl = alloc_page();
     p->kstack = alloc_page();
+
+    // Initialize trapframe.
     memset(p->tf, 0, sizeof(trapframe_t));
+    p->tf->sepc = 0x0;
+
+    // Initialize context.
     p->ctx.ra = (u64)usertrapret;
     p->ctx.sp = (u64)(p->kstack + PAGE_SIZE);
     p->tf->satp = SATP(p->pgtbl);
     p->tf->ksp = (u64)(p->kstack + PAGE_SIZE);
     p->tf->trap_handler = (u64)(kerneltrap);
+    // Map trapframe and trampoline to proc's memory space.
     kvmmap(p->pgtbl, TRAPFRAME, (u64)p->tf, PAGE_SIZE, PTE_V | PTE_W | PTE_R);
     kvmmap(p->pgtbl, TRAMPOLINE, (u64)trampoline, PAGE_SIZE,
            PTE_V | PTE_X | PTE_R);
 
-    return mpid++;
+    return pid;
+    ;
 }
 
 int exec(const char *file, char const **argv) {

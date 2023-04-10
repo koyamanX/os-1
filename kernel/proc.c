@@ -84,7 +84,6 @@ found:
            PTE_V | PTE_X | PTE_R);
 
     return pid;
-    ;
 }
 
 int exec(const char *file, char const **argv) {

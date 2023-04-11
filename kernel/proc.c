@@ -90,7 +90,7 @@ int exec(const char *file, char const **argv) {
     struct inode *ip;
     Elf64_Ehdr ehdr;
     struct proc *rp;
-    char *seg;
+    char *pa;
     Elf64_Phdr *phdr = NULL;
 
     ip = namei((char *)file);
@@ -120,9 +120,9 @@ int exec(const char *file, char const **argv) {
                 "%x,p_memsz: %x, p_align: %x\n",
                 phdr[i].p_offset, phdr[i].p_vaddr, phdr[i].p_paddr,
                 phdr[i].p_filesz, phdr[i].p_memsz, phdr[i].p_align);
-            seg = (char *)va2pa(rp->pgtbl, 4096);
-            memset(seg, 0, PAGE_SIZE);
-            readi(ip, (char *)seg, phdr[i].p_offset, PAGE_SIZE);
+            pa = (char *)va2pa(rp->pgtbl, 4096);
+            memset(pa, 0, PAGE_SIZE);
+            readi(ip, (char *)pa, phdr[i].p_offset, PAGE_SIZE);
             sfence_vma();  // required?
             break;         // TODO: only load first page for segment
         }

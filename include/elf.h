@@ -62,6 +62,10 @@ typedef u64 Elf64_Xword;
 #define PT_NULL 0
 #define PT_LOAD 1
 
+#define PF_X 1
+#define PF_W 2
+#define PF_R 4
+
 typedef struct elf64_hdr {
     Elf64_Byte e_ident[EI_NIDENT];
     Elf64_Half e_type;

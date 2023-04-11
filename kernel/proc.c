@@ -77,11 +77,18 @@ found:
     p->tf->satp = SATP(p->pgtbl);
     p->tf->ksp = (u64)(p->kstack + PAGE_SIZE);
     p->tf->trap_handler = (u64)(kerneltrap);
-    p->tf->sp = 4096 + PAGE_SIZE;
+    p->tf->sp = USTACK;
     // Map trapframe and trampoline to proc's memory space.
     kvmmap(p->pgtbl, TRAPFRAME, (u64)p->tf, PAGE_SIZE, PTE_V | PTE_W | PTE_R);
     kvmmap(p->pgtbl, TRAMPOLINE, (u64)trampoline, PAGE_SIZE,
            PTE_V | PTE_X | PTE_R);
+
+    for (u64 nstack = 1; nstack <= NUSTACK; nstack++) {
+        u64 stack = USTACK - (nstack * PAGE_SIZE);
+        kvmmap(p->pgtbl, stack, (u64)alloc_page(), PAGE_SIZE,
+               PTE_V | PTE_W | PTE_R | PTE_U);
+        kvmdump(p->pgtbl, stack);
+    }
 
     return pid;
 }
@@ -90,7 +97,7 @@ int exec(const char *file, char const **argv) {
     struct inode *ip;
     Elf64_Ehdr ehdr;
     struct proc *rp;
-    char *pa;
+    char *page;
     Elf64_Phdr *phdr = NULL;
 
     ip = namei((char *)file);
@@ -106,32 +113,50 @@ int exec(const char *file, char const **argv) {
         DEBUG_PRINTK("Invalid ELF\n");
     }
 
-    if (ehdr.e_phnum > 4) {
-        panic("exec: load failed\n");
-    }
     phdr = kmalloc(sizeof(Elf64_Phdr));
 
     rp = this_proc();
     readi(ip, (char *)phdr, ehdr.e_phoff, sizeof(Elf64_Phdr) * ehdr.e_phnum);
+
+    u64 prot = PTE_V | PTE_U;
     for (int i = 0; i < ehdr.e_phnum; i++) {
         if (phdr[i].p_type == PT_LOAD) {
+            u64 off = phdr[i].p_offset;
+
             INFO_PRINTK(
                 "PT_LOAD: p_offset: %x, p_vaddr: %x, p_paddr: %x, p_filesz: "
                 "%x,p_memsz: %x, p_align: %x\n",
                 phdr[i].p_offset, phdr[i].p_vaddr, phdr[i].p_paddr,
                 phdr[i].p_filesz, phdr[i].p_memsz, phdr[i].p_align);
-            pa = (char *)va2pa(rp->pgtbl, 4096);
-            memset(pa, 0, PAGE_SIZE);
-            readi(ip, (char *)pa, phdr[i].p_offset, PAGE_SIZE);
-            sfence_vma();  // required?
-            break;         // TODO: only load first page for segment
+
+            if (phdr[i].p_flags & (PF_X | PF_R)) {
+                // Text segment.
+                prot |= PTE_X | PTE_R;
+            } else if (phdr[i].p_flags & (PF_W | PF_R)) {
+                // Data segment.
+                prot |= PTE_R | PTE_W;
+            } else {
+                prot &= PTE_V;
+            }
+            for (u64 va = phdr[i].p_vaddr;
+                 va < phdr[i].p_vaddr + phdr[i].p_memsz; va += PAGE_SIZE) {
+                page = (char *)va2pa(rp->pgtbl, va);
+                if (page == NULL) {
+                    page = alloc_page();
+                    kvmmap(rp->pgtbl, va, (u64)page, PAGE_SIZE, prot);
+                }
+                readi(ip, (char *)page, off, PAGE_SIZE);
+                off += PAGE_SIZE;
+            }
+            // TODO: If memsz is grater than filesz, zero fill.
         }
     }
+    panic("");
 
     kfree(phdr);
 
     rp->tf->sepc = ehdr.e_entry;
-    rp->tf->sp = 4096 + PAGE_SIZE;
+    rp->tf->sp = USTACK;
 
     return 0;
 }

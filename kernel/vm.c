@@ -13,7 +13,7 @@ void free_pages(void *p, int order) {
 }
 
 void *alloc_pages(int order) {
-    return buddy_alloc(MIN_ORDER);
+    return buddy_alloc(order);
 }
 
 void kmeminit(void) {

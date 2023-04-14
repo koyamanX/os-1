@@ -9,13 +9,13 @@
 #include <unistd.h>
 #include <vm.h>
 
-int syscall(struct proc *rp) {
+u64 syscall(struct proc *rp) {
     u64 syscall_num = rp->tf->a7;
     u64 a0 = rp->tf->a0;
     u64 a1 = rp->tf->a1;
     u64 a2 = rp->tf->a2;
     dev_t dev;
-    int ret = -1;
+    u64 ret = -1;
 
     switch (syscall_num) {
         case __NR_WRITE:
@@ -66,6 +66,12 @@ int syscall(struct proc *rp) {
             break;
         case __NR_FSTAT:
             ret = fstat(a0, (void *)va2pa(rp->pgtbl, a1));
+            break;
+        case __NR_SBRK:
+            ret = (u64)sbrk(a0);
+            break;
+        case __NR_BRK:
+            ret = brk((void *)va2pa(rp->pgtbl, a0));
             break;
         default:
             panic("invalid syscall\n");

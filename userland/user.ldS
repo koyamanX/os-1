@@ -22,15 +22,22 @@ SECTIONS {
 		*(.data .data.*)
 	}
 
+	. = ALIGN(16);
+	_bss_start = .;
 	.bss : {
 		. = ALIGN(16);
 		*(.sbss .sbss.*)
 		*(.bss .bss.*)
 	}
+	_bss_end = .;
+	_heap_start = .;
 
 	.note : {
 		KEEP(*(.note.gnu.build-id))
 	}
 
-	PROVIDE(_end = .);
+	. = ALIGN(16);
+	_heap_end = .;
+
+	_stack_top = 0x80000000;
 }

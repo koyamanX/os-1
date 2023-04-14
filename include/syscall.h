@@ -15,5 +15,7 @@
 #define __NR_TRUNCATE 11
 #define __NR_STAT 12
 #define __NR_FSTAT 13
+#define __NR_SBRK 14
+#define __NR_BRK 15
 
 #endif

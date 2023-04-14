@@ -28,7 +28,7 @@ void usertrapret(void) {
         (u64)SATP(p->pgtbl));
 }
 
-int syscall(struct proc *rp);
+u64 syscall(struct proc *rp);
 void kerneltrap(void) {
     struct proc *rp;
     rp = this_proc();

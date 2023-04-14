@@ -14,6 +14,9 @@ add_library(sys STATIC
 	truncate.S
 	stat.S
 	fstat.S
+	_sbrk.S
+	sbrk.c
+	brk.S
 	)
 
 target_include_directories(sys PUBLIC

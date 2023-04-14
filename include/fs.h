@@ -35,8 +35,8 @@ struct super_block {
 #define NICACHE 128    //!< Size of inode chache
 #define INODE_SIZE 64  //!< Size of on disk inode
 
-#define DIRECTZONE 8    //!< Direct zone number
-#define INDIRECTZONE 9  //!< Indirect zone number
+#define DIRECTZONE 7    //!< Direct zone number
+#define INDIRECTZONE 8  //!< Indirect zone number
 
 #define IMAP 0  //!< IMAP number for alloc/free_bit
 #define ZMAP 1  //!< ZMAP number for alloc/free_bit

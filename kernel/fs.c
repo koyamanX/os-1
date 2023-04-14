@@ -126,7 +126,7 @@ struct inode *diri(struct inode *ip, char *name) {
 
     sb = getfs(ip->dev);
     size = ip->size;
-    for (u8 zone = 0; zone < DIRECTZONE; zone++) {
+    for (u8 zone = 0; zone <= DIRECTZONE; zone++) {
         buf = bread(rootdev, zmap(ip, zone));
         dp = (struct direct *)buf->data;
         for (int i = 0; i < sb->block_size; i += sizeof(struct direct)) {
@@ -528,7 +528,7 @@ u64 zmap(struct inode *ip, u64 zone) {
     // TODO: handle indirect zone
     u64 addr;
 
-    if (zone >= DIRECTZONE) {
+    if (zone > INDIRECTZONE) {
         panic("zmap: Indirect zone is not supported\n");
     }
     addr = ip->zone[zone];

@@ -119,31 +119,17 @@ struct inode *iget(dev_t dev, u64 inum) {
 }
 
 struct inode *diri(struct inode *ip, char *name) {
-    struct direct *dp;
-    struct buf *buf;
-    struct super_block *sb;
-    int size;
+    struct direct dir;
 
-    sb = getfs(ip->dev);
-    size = ip->size;
-    for (u8 zone = 0; zone <= DIRECTZONE; zone++) {
-        buf = bread(rootdev, ip->zone[zone]);
-        dp = (struct direct *)buf->data;
-        for (int i = 0; i < sb->block_size; i += sizeof(struct direct)) {
-            if (size == 0) {
-                return NULL;
-            }
-            if (strcmp(dp->name, name) == 0) {
-                brelse(buf);
-                return iget(rootdev, dp->ino);
-            }
-            dp++;
-            size -= sizeof(struct direct);
+    for (int i = 0; i < ip->size; i += sizeof(struct direct)) {
+        if (readi(ip, (char *)&dir, i, sizeof(struct direct)) !=
+            sizeof(struct direct)) {
+            return NULL;
         }
-        brelse(buf);
+        if (strcmp(dir.name, name) == 0) {
+            return iget(rootdev, dir.ino);
+        }
     }
-    // TODO: Indirect zone
-
     return NULL;
 }
 

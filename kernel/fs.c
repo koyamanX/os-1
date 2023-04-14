@@ -567,9 +567,16 @@ u64 zmap(struct inode *ip, u64 zone) {
             bwrite(buf);
         }
         brelse(buf);
+        return addr;
+    }
+    zone -= NINDIRECTZONE;
+
+    if (zone < NINDIRECTZONE) {
+        // TODO: Doubly or triply indirect zone.
+        panic("Doubly or triply indirect zone is not supported.\n");
     }
 
-    return addr;
+    return 0;
 }
 
 /**

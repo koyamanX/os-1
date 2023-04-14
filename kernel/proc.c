@@ -129,14 +129,14 @@ int exec(const char *file, char const **argv) {
                 phdr[i].p_offset, phdr[i].p_vaddr, phdr[i].p_paddr,
                 phdr[i].p_filesz, phdr[i].p_memsz, phdr[i].p_align);
 
-            if (phdr[i].p_flags & (PF_X | PF_R)) {
-                // Text segment.
-                prot |= PTE_X | PTE_R;
-            } else if (phdr[i].p_flags & (PF_W | PF_R)) {
-                // Data segment.
-                prot |= PTE_R | PTE_W;
-            } else {
-                prot &= PTE_V;
+            if (phdr[i].p_flags & PF_X) {
+                prot |= PTE_X;
+            }
+            if (phdr[i].p_flags & PF_R) {
+                prot |= PTE_R;
+            }
+            if (phdr[i].p_flags & PF_W) {
+                prot |= PTE_W;
             }
             for (u64 va = phdr[i].p_vaddr;
                  va < phdr[i].p_vaddr + phdr[i].p_memsz; va += PAGE_SIZE) {

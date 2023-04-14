@@ -36,8 +36,5 @@ SECTIONS {
 		KEEP(*(.note.gnu.build-id))
 	}
 
-	. = ALIGN(16);
-	_heap_end = .;
-
 	_stack_top = 0x80000000;
 }

@@ -214,5 +214,5 @@ void _exit(int status) {
     free_page(rp->kstack);
     free_page(rp->tf);
     free_page(rp->pgtbl);
-#endif 
+#endif
 }

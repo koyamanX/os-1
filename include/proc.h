@@ -73,8 +73,8 @@ typedef struct {
     u64 s11;
 } context_t;
 
-#define NPROCS 16  //!< Maximum number of process.
-#define NOFILE 8   //!< Maximum number of open file per process.
+#define NPROCS 16          //!< Maximum number of process.
+#define NOFILE 8           //!< Maximum number of open file per process.
 #define USTACK 0x80000000  //!< Initial stack pointer for userland.
 #define NUSTACK 16         //!< Number of user stack in page.
 

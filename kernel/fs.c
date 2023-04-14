@@ -127,7 +127,7 @@ struct inode *diri(struct inode *ip, char *name) {
     sb = getfs(ip->dev);
     size = ip->size;
     for (u8 zone = 0; zone <= DIRECTZONE; zone++) {
-        buf = bread(rootdev, zmap(ip, zone));
+        buf = bread(rootdev, ip->zone[zone]);
         dp = (struct direct *)buf->data;
         for (int i = 0; i < sb->block_size; i += sizeof(struct direct)) {
             if (size == 0) {
@@ -527,11 +527,47 @@ void iput(struct inode *ip) {
 u64 zmap(struct inode *ip, u64 zone) {
     // TODO: handle indirect zone
     u64 addr;
+    u32 *zones;
+    struct buf *buf;
 
-    if (zone > INDIRECTZONE) {
-        panic("zmap: Indirect zone is not supported\n");
+    if (zone < DIRECTZONE) {
+        addr = ip->zone[zone];
+        if (addr == UNUSED_ZONE) {
+            addr = alloc_bit(ip->dev, ZMAP);
+            if (addr == UNUSED_ZONE) {
+                panic("No empty zones\n");
+            }
+            ip->zone[zone] = addr;
+            iupdate(ip);
+        }
+        return addr;
     }
-    addr = ip->zone[zone];
+    zone -= DIRECTZONE;
+
+    if (zone < NINDIRECTZONE) {
+        addr = ip->zone[INDIRECTZONE];
+        if (addr == UNUSED_ZONE) {
+            addr = alloc_bit(ip->dev, ZMAP);
+            if (addr == UNUSED_ZONE) {
+                panic("No empty zones\n");
+            }
+            ip->zone[INDIRECTZONE] = addr;
+            iupdate(ip);
+        }
+        buf = bread(ip->dev, addr);
+        zones = (u32 *)buf->data;
+
+        addr = zones[zone];
+        if (addr == UNUSED_ZONE) {
+            addr = alloc_bit(ip->dev, ZMAP);
+            if (addr == UNUSED_ZONE) {
+                panic("No empty zones\n");
+            }
+            zones[zone] = addr;
+            bwrite(buf);
+        }
+        brelse(buf);
+    }
 
     return addr;
 }

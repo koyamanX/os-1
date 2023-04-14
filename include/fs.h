@@ -38,6 +38,10 @@ struct super_block {
 #define DIRECTZONE 7    //!< Direct zone number
 #define INDIRECTZONE 8  //!< Indirect zone number
 
+// TODO: 1024 == sb->block_size
+#define NINDIRECTZONE \
+    (1024 / sizeof(u32))  //!< Number of zones in each indirect zone.
+
 #define IMAP 0  //!< IMAP number for alloc/free_bit
 #define ZMAP 1  //!< ZMAP number for alloc/free_bit
 

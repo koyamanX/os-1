@@ -144,6 +144,7 @@ int exec(const char *file, char const **argv) {
                 if (page == NULL) {
                     page = alloc_page();
                     kvmmap(rp->pgtbl, va, (u64)page, PAGE_SIZE, prot);
+                    kvmdump(rp->pgtbl, va);
                 }
                 readi(ip, (char *)page, off, PAGE_SIZE);
                 off += PAGE_SIZE;
@@ -151,8 +152,6 @@ int exec(const char *file, char const **argv) {
             // TODO: If memsz is grater than filesz, zero fill.
         }
     }
-    panic("");
-
     kfree(phdr);
 
     rp->tf->sepc = ehdr.e_entry;

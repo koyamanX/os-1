@@ -183,8 +183,6 @@ u64 readi(struct inode *ip, char *dest, u64 offset, u64 size) {
     }
 
     if (offset > 0) {
-        // TODO: Indirect zone.
-        // TODO: Allocate zone if not used.
         for (u64 i = BLOCKSIZE; i <= offset; i += BLOCKSIZE) {
             // Find zone which is ranged of an offset.
             zone++;
@@ -220,8 +218,6 @@ u64 readi(struct inode *ip, char *dest, u64 offset, u64 size) {
     }
 
     if (size) {
-        // TODO: Indirect zone.
-        // TODO: Allocate zone if not used.
         buf = bread(rootdev, zmap(ip, zone));
         // If we can read BLOCKSIZE.
         // Wrap around BLOCKSIZE, since access unit is BLOCKSIZE.
@@ -263,8 +259,6 @@ u64 writei(struct inode *ip, char *src, u64 offset, u64 size) {
     }
 
     if (offset > 0) {
-        // TODO: Indirect zone.
-        // TODO: Allocate zone if not used.
         for (u64 i = BLOCKSIZE; i <= offset; i += BLOCKSIZE) {
             // Find zone which is ranged of an offset.
             if (zmap(ip, zone) == UNUSED_ZONE) {
@@ -290,8 +284,6 @@ u64 writei(struct inode *ip, char *src, u64 offset, u64 size) {
         if (zmap(ip, zone) == UNUSED_ZONE) {
             ip->zone[zone] = alloc_bit(ip->dev, ZMAP);
         }
-        // TODO: Indirect zone.
-        // TODO: Allocate zone if not used.
         buf = bread(rootdev, zmap(ip, zone));
         // If we can write BLOCKSIZE.
         sz = BLOCKSIZE;
@@ -314,8 +306,6 @@ u64 writei(struct inode *ip, char *src, u64 offset, u64 size) {
         if (zmap(ip, zone) == UNUSED_ZONE) {
             ip->zone[zone] = alloc_bit(ip->dev, ZMAP);
         }
-        // TODO: Indirect zone.
-        // TODO: Allocate zone if not used.
         buf = bread(rootdev, zmap(ip, zone));
         // Wrap around BLOCKSIZE, since access unit is BLOCKSIZE.
         // In this case, it is last block to write.

@@ -30,6 +30,7 @@ SECTIONS {
 		*(.bss .bss.*)
 	}
 	_bss_end = .;
+	. = ALIGN(0x1000);
 	_heap_start = .;
 
 	.note : {

@@ -182,7 +182,7 @@ int fork(void) {
     // Set return value for parent.
     parent->tf->a0 = pid;
     // Copy memory space.
-    uvmcopy(child->pgtbl, parent->pgtbl, PAGE_SIZE * 2);
+    uvmcopy(child->pgtbl, parent->pgtbl, 0x80000000);
     // Copy open files.
     memcpy((char *)child->ofile, (char *)parent->ofile, sizeof(parent->ofile));
 

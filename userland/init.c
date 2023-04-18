@@ -18,15 +18,16 @@ int main(void) {
 
     pid = fork();
     if (pid == 0) {
-        write(STDOUT_FILENO, "child\n", 6);
-        exit(0);
-    } else {
-        write(STDOUT_FILENO, "parent\n", 7);
+        exec("/usr/sbin/sh", NULL);
     }
 
     while (1) {
         asm volatile("nop");
     }
+
+    close(STDIN_FILENO);
+    close(STDOUT_FILENO);
+    close(STDERR_FILENO);
 
     return 0;
 }

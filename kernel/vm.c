@@ -92,7 +92,7 @@ int uvmcopy(pagetable_t dst, pagetable_t src, u64 sz) {
         }
         pa = alloc_page();
         memmove((void *)pa, (void *)PTE2PA(*pte), PAGE_SIZE);
-        uvmmap(dst, i, PTE2PA(*pte), PAGE_SIZE, PTE_FLAGS(*pte));
+        uvmmap(dst, i, (u64)pa, PAGE_SIZE, PTE_FLAGS(*pte));
     }
     return 0;
 }

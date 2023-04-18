@@ -9,6 +9,18 @@ target_include_directories(init
 	PUBLIC ${PROJECT_SOURCE_DIR}/libc/include
 	PUBLIC ${PROJECT_SOURCE_DIR}/include)
 target_link_libraries(init libc)
-
-
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/init" DESTINATION "${CMAKE_INSTALL_PREFIX}/usr/sbin/")
+
+add_executable(sh sh.c crt0.S)
+target_include_directories(sh
+	PUBLIC ${PROJECT_SOURCE_DIR}/libc/include
+	PUBLIC ${PROJECT_SOURCE_DIR}/include)
+target_link_libraries(sh libc)
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/sh" DESTINATION "${CMAKE_INSTALL_PREFIX}/usr/sbin/")
+
+add_executable(hello hello.c crt0.S)
+target_include_directories(hello
+	PUBLIC ${PROJECT_SOURCE_DIR}/libc/include
+	PUBLIC ${PROJECT_SOURCE_DIR}/include)
+target_link_libraries(hello libc)
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/hello" DESTINATION "${CMAKE_INSTALL_PREFIX}/usr/sbin/")

@@ -32,13 +32,13 @@ Supporting following features.
 - [x] truncate
 - [x] stat
 - [x] fstat
-- [ ] wait
+- [x] waitpid
 - [ ] sleep
 - [ ] pipe
 - [ ] chdir
 - [ ] kill
 - [ ] getpid
-- [ ] sbrk
+- [x] sbrk
 - [ ] uptime
 - [ ] unlink
 

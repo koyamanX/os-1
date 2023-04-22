@@ -92,6 +92,7 @@ struct proc {
     pagetable_t pgtbl;           //!< Pagetable of process.
     u64 heap;                    //!< Start address of heap.
     u8 *kstack;                  //!< Pointer to per-process kernel stack.
+    void *wchan;                 //!< Waiting channel.
 };
 
 #define UNUSED 0    //!< Proc struct is unused.
@@ -99,6 +100,7 @@ struct proc {
 #define RUNNING 2   //!< Proc is running.
 #define RUNNABLE 3  //!< Proc is runnable.
 #define ZOMBIE 4    //!< Proc is zombie.
+#define SLEEP 5     //!< Proc is sleeping.
 
 /**
  * @brief Struct for Processors.
@@ -161,6 +163,20 @@ int exec(const char *file, char const **argv);
  * @param[in] status exit status.
  */
 void _exit(int status);
+
+/**
+ * @brief Sleep for wait channel.
+ * @details Sleep for wait channel, process will be SLEEP.
+ * @param[in] wchan address to wait for.
+ */
+void sleep(void *wchan);
+
+/**
+ * @brief Wakeup process waitting for wchan.
+ * @details Wakeup process waitting for wchan, set RUNNABLE.
+ * @param[in] wchan address to wakeup.
+ */
+void wakeup(void *wchan);
 
 /**
  * @brief switch context.

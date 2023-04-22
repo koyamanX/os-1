@@ -232,6 +232,26 @@ void *sbrk(intptr_t increment) {
     return addr;
 }
 
+void sleep(void *wchan) {
+    struct proc *rp = this_proc();
+
+    rp->wchan = wchan;
+    rp->stat = SLEEP;
+
+    sched();
+
+    rp->wchan = NULL;
+}
+
+void wakeup(void *wchan) {
+    for (struct proc *rp = &procs[0]; rp < &procs[NPROCS]; rp++) {
+        if (rp->wchan == wchan && rp->stat == SLEEP) {
+            rp->stat = RUNNABLE;
+            rp->wchan = NULL;
+        }
+    }
+}
+
 int brk(void *addr) {
     this_proc()->heap = ROUNDUP((u64)addr);
 

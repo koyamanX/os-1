@@ -93,6 +93,7 @@ struct proc {
     u64 heap;                    //!< Start address of heap.
     u8 *kstack;                  //!< Pointer to per-process kernel stack.
     void *wchan;                 //!< Waiting channel.
+    u64 ppid;                    //!< Parent process.
 };
 
 #define UNUSED 0    //!< Proc struct is unused.

@@ -4,6 +4,7 @@
 #include <sched.h>
 #include <stddef.h>
 #include <sys/stat.h>
+#include <sys/wait.h>
 #include <syscall.h>
 #include <uart.h>
 #include <unistd.h>
@@ -72,6 +73,9 @@ u64 syscall(struct proc *rp) {
             break;
         case __NR_BRK:
             ret = brk((void *)va2pa(rp->pgtbl, a0));
+            break;
+        case __NR_WAITPID:
+            ret = waitpid(a0, (void *)va2pa(rp->pgtbl, a1), a2);
             break;
         default:
             panic("invalid syscall\n");

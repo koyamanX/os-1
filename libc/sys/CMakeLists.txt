@@ -17,6 +17,7 @@ add_library(sys STATIC
 	_sbrk.S
 	sbrk.c
 	brk.S
+	waitpid.S
 	)
 
 target_include_directories(sys PUBLIC

@@ -38,6 +38,8 @@ void userinit(void) {
     // Load initcode at address 0.
     kvmmap(procs[pid].pgtbl, 4096, (u64)init, PAGE_SIZE,
            PTE_V | PTE_W | PTE_R | PTE_X | PTE_U);
+    // Set parent to 0.
+    procs[pid].ppid = 0;
 
     // Dump proc memory space.
     kvmdump(procs[pid].pgtbl, TRAPFRAME);
@@ -174,6 +176,8 @@ int fork(void) {
     }
     // Get parent proc.
     parent = this_proc();
+    // Set parent pid.
+    child->ppid = parent->pid;
     // Copy trapframe and kernel stack.
     memcpy(child->tf, parent->tf, sizeof(trapframe_t));
     memcpy(child->kstack, parent->kstack, PAGE_SIZE);
@@ -202,7 +206,8 @@ void _exit(int status) {
     }
 
     // TODO: stat should be zombie?
-    rp->stat = UNUSED;
+    rp->stat = ZOMBIE;
+    wakeup(rp);
 
 #if 0
     // TODO: Release all of memory used by process, for now, just free address
@@ -250,6 +255,26 @@ void wakeup(void *wchan) {
             rp->wchan = NULL;
         }
     }
+}
+
+int waitpid(int pid, int *status, int options) {
+    // pid == -1 is not supported.
+    if (pid == -1) {
+        return -1;
+    }
+
+    struct proc *rp = &procs[pid];
+    if (rp->stat == UNUSED) {
+        return -1;
+    }
+
+    sleep(rp);
+
+    if (status != NULL) {
+        *status = rp->tf->a0;
+    }
+
+    return pid;
 }
 
 int brk(void *addr) {

@@ -26,6 +26,14 @@ int main(void) {
         i++;
     }
 
+    if (strcmp(input, "reten") == 0) {
+        write(1, "@DHA_DHA_DHA\n", 13);
+        return 0;
+    } else if (strcmp(input, "koyaman") == 0) {
+        write(1, "@koyamanX\n", 10);
+        return 0;
+    }
+
     // Execute command using exec system call.
     exec(input, NULL);
 

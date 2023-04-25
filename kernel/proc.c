@@ -205,20 +205,9 @@ void _exit(int status) {
         }
     }
 
-    // TODO: stat should be zombie?
     rp->stat = ZOMBIE;
     wakeup(rp);
-
-#if 0
-    // TODO: Release all of memory used by process, for now, just free address
-    // 0.
-    uvmunmap(rp->pgtbl, 0, PAGE_SIZE);
-    uvmunmap(rp->pgtbl, TRAPFRAME, PAGE_SIZE);
-    //uvmunmap(rp->pgtbl, TRAMPOLINE, PAGE_SIZE);
-    free_page(rp->kstack);
-    free_page(rp->tf);
-    free_page(rp->pgtbl);
-#endif
+    sched();
 }
 
 void *sbrk(intptr_t increment) {
@@ -272,6 +261,23 @@ int waitpid(int pid, int *status, int options) {
 
     if (status != NULL) {
         *status = rp->tf->a0;
+    }
+
+    if (rp->stat == ZOMBIE) {
+        kvmunmap(rp->pgtbl, 0x0, 0x80000000);
+        // kvmunmap(rp->pgtbl, TRAPFRAME, PAGE_SIZE);
+        if (rp->pgtbl) {
+            // CAUTION: kfree is not implemented.
+            // kfree(rp->pgtbl);
+            rp->pgtbl = NULL;
+        }
+        if (rp->kstack) {
+            // CAUTION: kfree is not implemented.
+            // kfree(rp->kstack);
+            rp->kstack = NULL;
+        }
+        // rp->tf = NULL;
+        rp->stat = UNUSED;
     }
 
     return pid;

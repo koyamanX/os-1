@@ -67,6 +67,13 @@ void kvmunmap(pagetable_t pgtbl, u64 va, u64 sz) {
     for (u64 i = ROUNDDOWN(va); i < ROUNDDOWN(va + sz); i += PAGE_SIZE) {
         pte = kvmwalk(pgtbl, i);
 
+        if (pte == NULL) {
+            continue;
+        }
+        if (*pte == 0) {
+            continue;
+        }
+
         u64 pa = PTE2PA(*pte);
         free_page((void *)pa);
         *pte = 0;

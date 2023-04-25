@@ -3,4 +3,5 @@ _start:
 .extern main
 	call main
 exit:
+	mv a0, zero
 	j _exit

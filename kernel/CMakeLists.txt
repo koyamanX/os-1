@@ -18,6 +18,7 @@ set(KERNEL_SOURCE
 	fio.c
 	alloc.c
 	slob.c
+	sleeplock.c
 	swtch.S)
 
 set(KERNEL_LINKER_SCRIPT ${CMAKE_CURRENT_SOURCE_DIR}/kernel.ldS)

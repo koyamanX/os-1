@@ -16,6 +16,7 @@ QEMU_GDB_PORT=tcp::12345
 CLEAN_LISTS=*.log
 declare -A LOG_LEVELS=( [verbose]=0 [debug]=1 [info]=2 [warn]=3 [release]=15 )
 LOG_LEVEL=${LOG_LEVELS["verbose"]}
+TOOLCHAIN_FILE=$(pwd)/riscv.cmake
 
 usage() {
 	cat <<EOF
@@ -59,7 +60,7 @@ build() {
 	fi
 	[ ! -d "$BUILD_DIR" ] && mkdir $BUILD_DIR
 	pushd $BUILD_DIR
-	[ ! -f "CMakeCache.txt" ] && cmake .. -DLOG_LEVEL=$LOG_LEVEL
+	[ ! -f "CMakeCache.txt" ] && cmake .. -DCMAKE_TOOLCHAIN_FILE=$TOOLCHAIN_FILE -DLOG_LEVEL=$LOG_LEVEL
 	make install -j$(nproc)
 	popd
 }

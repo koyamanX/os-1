@@ -21,6 +21,6 @@ void sleep_unlock(struct sleeplock *lk) {
     wakeup(lk);
 }
 
-int sleep_is_lock(struct sleeplock *lk) {
+int sleep_is_locked(struct sleeplock *lk) {
     return lk->locked && (lk->pid == this_proc()->pid);
 }

@@ -1,3 +1,4 @@
+#include <printk.h>
 #include <proc.h>
 #include <sleeplock.h>
 

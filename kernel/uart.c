@@ -1,9 +1,23 @@
+#include <printk.h>
+#include <sleeplock.h>
 #include <sys/types.h>
 #include <uart.h>
 
+char buf[10];
+int empty = 1;
+
+#define N 8
+struct ring_buffer {
+    char buffer[N];
+    int head;
+    int tail;
+    int count;
+    struct sleeplock lk;
+} rxbuf, txbuf;
+
 void uart_init(void) {
-    // Disable interrupt
-    *UART_IER = 0;
+    // Enable interrupt
+    *UART_IER = 1;
     // 38.4 K baud rate
     *UART_LCR = UART_LCR_DLAB;
     *UART_DLL = 0x3;
@@ -13,15 +27,30 @@ void uart_init(void) {
     *UART_LCR = 0x3;
     // clear and enable FIFO
     *UART_FCR = 0x3;
+
+    rxbuf.head = 0;
+    rxbuf.tail = 0;
+    rxbuf.count = 0;
+    sleep_lock_init(&rxbuf.lk, "");
+    txbuf.head = 0;
+    txbuf.tail = 0;
+    txbuf.count = 0;
+    sleep_lock_init(&txbuf.lk, "");
 }
 
 int uart_putchar(int c) {
-    while ((*UART_LSR & UART_LCR_THRE) == 0) {
-        asm volatile("nop");
+    if ((*UART_LSR & UART_LCR_THRE)) {
+        *UART_THR = (u8)c;
+        return (u8)c;
     }
-    *UART_THR = (u8)c;
+    if (txbuf.count >= N) {
+        sleep_lock(&txbuf.lk);
+    }
+    txbuf.buffer[txbuf.tail] = c;
+    txbuf.tail = (txbuf.tail + 1) % N;
+    txbuf.count++;
 
-    return (u8)c;
+    return c;
 }
 
 int uart_puts(char *str) {
@@ -32,8 +61,45 @@ int uart_puts(char *str) {
 }
 
 int uart_getc(void) {
-    while (!(*UART_LSR & 0x1)) {
-        asm volatile("nop");
+    while (rxbuf.count == 0) {
+        sleep_lock(&rxbuf.lk);
     }
-    return *UART_RBR;
+    char c = rxbuf.buffer[rxbuf.head];
+    rxbuf.head = (rxbuf.head + 1) % N;
+    rxbuf.count--;
+    return c;
+}
+
+void uart_intr(void) {
+    if (rxbuf.count >= N) {
+        printk("Ring buffer overflow\n");
+    }
+
+    while (1) {
+        if ((*UART_LSR & 0x1)) {
+            rxbuf.buffer[rxbuf.tail] = *UART_RBR;
+            rxbuf.tail = (rxbuf.tail + 1) % N;
+            rxbuf.count++;
+        } else {
+            break;
+        }
+    }
+    if (rxbuf.count) {
+        sleep_unlock(&rxbuf.lk);
+    }
+
+    if (!txbuf.count && (*UART_LSR & UART_LCR_THRE)) {
+        sleep_unlock(&txbuf.lk);
+    }
+
+    while (txbuf.count) {
+        if ((*UART_LSR & UART_LCR_THRE)) {
+            char c = txbuf.buffer[txbuf.head];
+            txbuf.head = (txbuf.head + 1) % N;
+            txbuf.count--;
+            *UART_THR = (u8)c;
+        } else {
+            return;
+        }
+    }
 }

@@ -9,6 +9,7 @@
 #define MSTATUS_MIE (0x1 << 3)
 
 #define SSTATUS_SPIE (0x1 << 5)
+#define SSTATUS_SIE (0x1 << 1)
 #define SSTATUS_SPP (0x1 << 8)
 
 #define MIE_MEIE (0x1 << 11)

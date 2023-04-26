@@ -9,7 +9,6 @@
 int main(void) {
     dev_t dev;
     int pid;
-    int wpid;
 
     dev.major = 0;
     dev.minor = 0;
@@ -25,7 +24,8 @@ int main(void) {
         }
 
         while (1) {
-            wpid = waitpid(pid, NULL, 0);
+            int wpid;
+            wpid = waitpid(pid, NULL, WNOHANG);
             if (wpid == pid) {
                 break;
             }

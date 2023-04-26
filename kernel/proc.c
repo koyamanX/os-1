@@ -9,6 +9,7 @@
 #include <slob.h>
 #include <string.h>
 #include <sys/types.h>
+#include <sys/wait.h>
 #include <trap.h>
 #include <vm.h>
 
@@ -247,17 +248,34 @@ void wakeup(void *wchan) {
 }
 
 int waitpid(int pid, int *status, int options) {
+    struct proc *rp = NULL;
+
     // pid == -1 is not supported.
     if (pid == -1) {
         return -1;
     }
 
-    struct proc *rp = &procs[pid];
+    for (struct proc *p = &procs[0]; p < &procs[NPROCS]; p++) {
+        if (p->pid == pid) {
+            rp = p;
+            break;
+        }
+    }
+    if (rp == NULL) {
+        return -1;
+    }
+
     if (rp->stat == UNUSED) {
         return -1;
     }
 
-    sleep(rp);
+    if (options == WNOHANG && rp->stat != ZOMBIE) {
+        return -1;
+    }
+
+    if (rp->stat != ZOMBIE) {
+        sleep(rp);
+    }
 
     if (status != NULL) {
         *status = rp->tf->a0;

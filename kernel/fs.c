@@ -18,6 +18,7 @@
 #include <string.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#include <uart.h>
 #include <virtio.h>
 #include <vm.h>
 
@@ -170,10 +171,18 @@ u64 readi(struct inode *ip, char *dest, u64 offset, u64 size) {
 
     if ((ip->mode & S_IFMT) == S_IFCHR) {
         VERBOSE_PRINTK("readi: S_IFCHR\n");
-        for (u64 i = 0; i < size; i++) {
+        for (u64 i = 0; i < size - 1; i++) {
             // If character device read one by one.
             dest[i] = cdevsw[ip->dev.major].read();
+            // Echo back
+            cdevsw[ip->dev.major].write(dest[i]);
+            if (dest[i] == '\r') {
+                cdevsw[ip->dev.major].write('\n');
+                dest[i] = '\0';
+                return i;
+            }
         }
+        dest[size - 1] = '\0';
         return size;
     }
 

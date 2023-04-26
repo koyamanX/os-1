@@ -14,19 +14,9 @@ int main(void) {
 
     // Read user input one by one character using read system call until new
     // line.
-    int i = 0;
-    while (1) {
-        read(0, &input[i], 1);
-        write(1, &input[i], 1);
-        if (input[i] == '\r') {
-            input[i] = '\0';
-            write(1, "\n", 1);
-            break;
-        }
-        i++;
-    }
+    read(0, input, 100);
 
-    if (strcmp(input, "reten") == 0) {
+    if (strncmp(input, "reten", 6) == 0) {
         write(1, "@DHA_DHA_DHA\n", 13);
         return 0;
     } else if (strcmp(input, "koyaman") == 0) {

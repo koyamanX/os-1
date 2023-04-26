@@ -2,6 +2,7 @@
 #include <buf.h>
 #include <fs.h>
 #include <os1.h>
+#include <plic.h>
 #include <printk.h>
 #include <proc.h>
 #include <riscv.h>
@@ -46,12 +47,9 @@ void kmain(void) {
     initcpu();
     initproc();
     virtio_init();
+    plic_init();
     binit();
     fsinit();
     userinit();
     scheduler();
-
-    while (1) {
-        asm volatile("nop");
-    }
 }

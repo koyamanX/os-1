@@ -1,5 +1,6 @@
 #include <os1.h>
 #include <panic.h>
+#include <plic.h>
 #include <printk.h>
 #include <proc.h>
 #include <riscv.h>
@@ -69,6 +70,12 @@ void kerneltrap(void) {
             sched();
             break;
         }
+#define SUPERVISOR_MODE_EXTERNAL_INTERRUPT 0x8000000000000009
+        case SUPERVISOR_MODE_EXTERNAL_INTERRUPT:
+            DEBUG_PRINTK("supervisor_mode_external_interrupt\n");
+            uart_intr();
+            plic_complete(plic_claim());
+            break;
         default: {
             DEBUG_PRINTK("trap: fault: cause: %x, epc:%x, tval:%x\n",
                          r_scause(), r_sepc(), r_stval());

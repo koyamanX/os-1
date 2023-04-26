@@ -1,5 +1,6 @@
 #include <alloc.h>
 #include <os1.h>
+#include <plic.h>
 #include <printk.h>
 #include <riscv.h>
 #include <string.h>
@@ -135,6 +136,8 @@ pagetable_t kvminit(void) {
            PTE_R | PTE_X | PTE_V);
     kvmmap(kpgtbl, 0x80000000, 0x80000000, (u64)&_etext - 0x80000000,
            PTE_R | PTE_X | PTE_V | PTE_W);
+    kvmmap(kpgtbl, PLIC_BASE_ADDR, PLIC_BASE_ADDR, 0x4000000,
+           PTE_R | PTE_V | PTE_W);
     kvmmap(kpgtbl, (u64)&_etext, (u64)&_etext, (u64)PHYEND - (u64)&_etext,
            PTE_R | PTE_V | PTE_W);
     kvmmap(kpgtbl, UART_BASE, UART_BASE, PAGE_SIZE, PTE_W | PTE_R | PTE_V);

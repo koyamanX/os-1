@@ -3,9 +3,6 @@
 #include <sys/types.h>
 #include <uart.h>
 
-char buf[10];
-int empty = 1;
-
 #define N 8
 struct ring_buffer {
     char buffer[N];

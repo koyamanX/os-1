@@ -111,13 +111,10 @@ struct cpu {
     struct proc *rp;  //!< Running process.
     context_t ctx;    //!< Context of scheduler.
 };
-#define NCPUS 1                 //!< Number of processor.
-extern struct cpu cpus[NCPUS];  //!< Processors kernel can run.
+extern struct cpu cpu;  //!< Processors kernel can run.
 
-#define this_cpu() \
-    (cpus[r_tp()])  //!< This processor's corresponding cpu struct.
-#define this_proc() \
-    (cpus[r_tp()].rp)  //!< This process's corresponding proc struct.
+#define this_cpu() (cpu)      //!< This processor's corresponding cpu struct.
+#define this_proc() (cpu.rp)  //!< This process's corresponding proc struct.
 
 extern struct proc procs[NPROCS];  //!< Processes.
 

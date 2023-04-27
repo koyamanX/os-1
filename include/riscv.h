@@ -163,10 +163,5 @@ static inline void w_stvec(u64 v) {
 static inline void sfence_vma(void) {
     asm volatile("sfence.vma");
 }
-static inline u64 r_tp(void) {
-    u64 v;
-    asm volatile("mv %0, tp" : "=r"(v));
-    return v;
-}
 
 #endif

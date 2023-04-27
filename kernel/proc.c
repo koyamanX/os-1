@@ -14,14 +14,12 @@
 #include <vm.h>
 
 struct proc procs[NPROCS];
-struct cpu cpus[NCPUS];
+struct cpu cpu;
 extern void init(void);
 
 void initcpu(void) {
-    for (int i = 0; i < NCPUS; i++) {
-        cpus[i].rp = NULL;
-        memset(&cpus[i].ctx, 0, sizeof(context_t));
-    }
+    cpu.rp = NULL;
+    memset(&cpu.ctx, 0, sizeof(context_t));
 }
 
 void initproc(void) {

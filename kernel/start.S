@@ -34,8 +34,6 @@ _clear_bss:
 	li t0, 4096
 	add sp, sp, t0
 	
-	# Set tp to mhartid
-	csrr tp, mhartid
 	# call main with s-mode
 	mret
 

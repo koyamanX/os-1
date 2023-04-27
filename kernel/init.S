@@ -13,8 +13,3 @@ loop:
 	j loop	
 file:
 .string "/usr/sbin/init"
-
-.text
-.globl idle
-idle:
-	j idle

@@ -31,7 +31,9 @@ void kinit(void) {
     w_mepc((u64)((u64 *)&kmain));
 
     w_stvec((u64)((u64 *)&kernelvec));
-    w_sstatus(r_sstatus() | 1 << 1);
+    // Calling sret enables interrupt.
+    w_sstatus(r_sstatus() | SSTATUS_SPIE);
+    w_sie(SIE_SEIE | SIE_STIE | SIE_SSIE);
 
     asm volatile("mret");
 }

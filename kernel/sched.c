@@ -5,7 +5,6 @@
 extern void swtch(context_t *old, context_t *new);
 
 void sched(void) {
-    w_sie(SIE_SEIE | SIE_STIE | SIE_SSIE);
     swtch(&this_proc()->ctx, &this_cpu().ctx);
 }
 

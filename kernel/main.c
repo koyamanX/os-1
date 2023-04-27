@@ -1,3 +1,8 @@
+/**
+ *	@file main.c
+ *	@brief Kernel main.
+ *	@author ckoyama(koyamanX)
+ */
 #include <alloc.h>
 #include <buf.h>
 #include <fs.h>

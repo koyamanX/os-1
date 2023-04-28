@@ -29,3 +29,10 @@ target_include_directories(cat
 	PUBLIC ${PROJECT_SOURCE_DIR}/include)
 target_link_libraries(cat libc)
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/cat" DESTINATION "${CMAKE_INSTALL_PREFIX}/usr/sbin/")
+
+add_executable(ls ls.c crt0.S)
+target_include_directories(ls
+	PUBLIC ${PROJECT_SOURCE_DIR}/libc/include
+	PUBLIC ${PROJECT_SOURCE_DIR}/include)
+target_link_libraries(ls libc)
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/ls" DESTINATION "${CMAKE_INSTALL_PREFIX}/usr/sbin/")

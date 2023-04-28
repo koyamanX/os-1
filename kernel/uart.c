@@ -3,7 +3,7 @@
 #include <sys/types.h>
 #include <uart.h>
 
-#define N 8
+#define N 1024
 struct ring_buffer {
     char buffer[N];
     int head;
@@ -68,20 +68,38 @@ int uart_getc(void) {
 }
 
 void uart_intr(void) {
+    int newline = 0;
+
     if (rxbuf.count >= N) {
         printk("Ring buffer overflow\n");
     }
 
     while (1) {
         if ((*UART_LSR & 0x1)) {
-            rxbuf.buffer[rxbuf.tail] = *UART_RBR;
+            int c = *UART_RBR;
+
+            if (c == '\r') {
+                newline = 1;
+            }
+            if (c == 0x7f) {
+                if (rxbuf.count == 0)
+                    continue;
+                uart_putchar('\b');
+                uart_putchar(' ');
+                uart_putchar('\b');
+                rxbuf.tail = (rxbuf.tail - 1) % N;
+                rxbuf.count--;
+                continue;
+            }
+            uart_putchar(c);
+            rxbuf.buffer[rxbuf.tail] = c;
             rxbuf.tail = (rxbuf.tail + 1) % N;
             rxbuf.count++;
         } else {
             break;
         }
     }
-    if (rxbuf.count) {
+    if (rxbuf.count && newline) {
         sleep_unlock(&rxbuf.lk);
     }
 

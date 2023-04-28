@@ -175,7 +175,7 @@ u64 readi(struct inode *ip, char *dest, u64 offset, u64 size) {
             // If character device read one by one.
             dest[i] = cdevsw[ip->dev.major].read();
             // Echo back
-            cdevsw[ip->dev.major].write(dest[i]);
+            // cdevsw[ip->dev.major].write(dest[i]);
             if (dest[i] == '\r') {
                 cdevsw[ip->dev.major].write('\n');
                 dest[i] = '\0';

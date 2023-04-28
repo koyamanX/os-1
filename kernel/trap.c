@@ -11,7 +11,7 @@
 #include <uart.h>
 #include <vm.h>
 
-void usertrap(void) {
+void kerneltrap(void) {
     asm volatile("nop");
 }
 
@@ -30,7 +30,7 @@ void usertrapret(void) {
 }
 
 u64 syscall(struct proc *rp);
-void kerneltrap(void) {
+void usertrap(void) {
     struct proc *rp;
     rp = this_proc();
     u64 scause = r_scause();

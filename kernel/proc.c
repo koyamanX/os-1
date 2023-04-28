@@ -77,7 +77,7 @@ found:
     p->ctx.sp = (u64)(p->kstack + PAGE_SIZE);
     p->tf->satp = SATP(p->pgtbl);
     p->tf->ksp = (u64)(p->kstack + PAGE_SIZE);
-    p->tf->trap_handler = (u64)(kerneltrap);
+    p->tf->trap_handler = (u64)(usertrap);
     p->tf->sp = USTACK;
     // Map trapframe and trampoline to proc's memory space.
     kvmmap(p->pgtbl, TRAPFRAME, (u64)p->tf, PAGE_SIZE, PTE_V | PTE_W | PTE_R);

@@ -47,7 +47,7 @@ struct stat {
 #define S_ISGID 0002000  // set group id on execution
 #define S_ISVTX 0001000  // sticky bit
 
-#define S_ISBLK(m) ((m & S_IFMT) == S_IFDIR)
+#define S_ISBLK(m) ((m & S_IFMT) == S_IFBLK)
 #define S_ISCHR(m) ((m & S_IFMT) == S_IFCHR)
 #define S_ISFIFO(m) ((m & S_IFMT) == S_IFIFO)
 #define S_ISREG(m) ((m & S_IFMT) == S_IFREG)

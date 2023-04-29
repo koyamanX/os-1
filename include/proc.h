@@ -136,9 +136,9 @@ pagetable_t uvminit(void);
 /**
  * @brief Allocate new proc structure and initialize.
  * @details Allocate new proc structure and initialize.
- * @return Pid of newly created proc.
+ * @return newly created proc.
  */
-int newproc(void);
+struct proc *newproc(void);
 /**
  * @brief Allocate user page for first user-mode process, init
  * @details Allocate user page for first user-mode process, init

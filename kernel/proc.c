@@ -29,40 +29,39 @@ void initproc(void) {
 }
 
 void userinit(void) {
-    u64 pid;
+    struct proc *p;
 
     // Allocate new proc.
-    pid = newproc();
+    p = newproc();
 
     // Load initcode at address 0.
-    kvmmap(procs[pid].pgtbl, 4096, (u64)init, PAGE_SIZE,
+    kvmmap(p->pgtbl, 4096, (u64)init, PAGE_SIZE,
            PTE_V | PTE_W | PTE_R | PTE_X | PTE_U);
     // Set parent to 0.
-    procs[pid].ppid = 0;
+    p->ppid = 0;
 
     // Dump proc memory space.
-    kvmdump(procs[pid].pgtbl, TRAPFRAME);
-    kvmdump(procs[pid].pgtbl, TRAMPOLINE);
-    kvmdump(procs[pid].pgtbl, 4096);
+    kvmdump(p->pgtbl, TRAPFRAME);
+    kvmdump(p->pgtbl, TRAMPOLINE);
+    kvmdump(p->pgtbl, 4096);
 }
 
-int newproc(void) {
+static u64 mpid = 0;
+struct proc *newproc(void) {
     struct proc *p;
-    u64 pid = 1;
 
-    // Find unused proc from procs.
-    for (pid = 1; pid < NPROCS; pid++) {
-        if (procs[pid].stat == UNUSED) {
-            p = &procs[pid];
+    for (p = &procs[0]; p < &procs[NPROCS]; p++) {
+        if (p->stat == UNUSED) {
+            p->stat = USED;
+            p->pid = mpid++;
             goto found;
         }
     }
-    return -1;
+    return NULL;
 
 found:
     // Initialize proc.
     p->stat = RUNNABLE;
-    p->pid = pid;
     // Allocate memory for trapframe, page table, and kernel stack.
     p->tf = alloc_page();
     p->pgtbl = alloc_page();
@@ -91,7 +90,7 @@ found:
         kvmdump(p->pgtbl, stack);
     }
 
-    return pid;
+    return p;
 }
 
 int exec(const char *file, char const **argv) {
@@ -124,7 +123,7 @@ int exec(const char *file, char const **argv) {
         if (phdr[i].p_type == PT_LOAD) {
             u64 off = phdr[i].p_offset;
 
-            INFO_PRINTK(
+            VERBOSE_PRINTK(
                 "PT_LOAD: p_offset: %x, p_vaddr: %x, p_paddr: %x, p_filesz: "
                 "%x,p_memsz: %x, p_align: %x\n",
                 phdr[i].p_offset, phdr[i].p_vaddr, phdr[i].p_paddr,
@@ -163,14 +162,12 @@ int exec(const char *file, char const **argv) {
 
 // TODO: pid_t
 int fork(void) {
-    int pid;
     struct proc *child;
     struct proc *parent;
 
     // Allocate new proc.
-    pid = newproc();
-    child = &procs[pid];
-    if ((child == NULL) || (pid == -1)) {
+    child = newproc();
+    if ((child == NULL)) {
         return -1;
     }
     // Get parent proc.
@@ -182,14 +179,12 @@ int fork(void) {
     memcpy(child->kstack, parent->kstack, PAGE_SIZE);
     // Set return value for child.
     child->tf->a0 = 0;
-    // Set return value for parent.
-    parent->tf->a0 = pid;
     // Copy memory space.
     uvmcopy(child->pgtbl, parent->pgtbl, 0x80000000);
     // Copy open files.
     memcpy((char *)child->ofile, (char *)parent->ofile, sizeof(parent->ofile));
 
-    return pid;
+    return child->pid;
 }
 
 void _exit(int status) {
@@ -284,15 +279,15 @@ int waitpid(int pid, int *status, int options) {
         // kvmunmap(rp->pgtbl, TRAPFRAME, PAGE_SIZE);
         if (rp->pgtbl) {
             // CAUTION: kfree is not implemented.
-            // kfree(rp->pgtbl);
+            kfree(rp->pgtbl);
             rp->pgtbl = NULL;
         }
         if (rp->kstack) {
             // CAUTION: kfree is not implemented.
-            // kfree(rp->kstack);
+            kfree(rp->kstack);
             rp->kstack = NULL;
         }
-        // rp->tf = NULL;
+        rp->tf = NULL;
         rp->stat = UNUSED;
     }
 

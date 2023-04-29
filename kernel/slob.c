@@ -38,7 +38,7 @@ void *kmalloc(size_t size) {
             }
             freelist = prev;
 
-			// Skip slob header
+            // Skip slob header
             return cur + sizeof(struct slob_header);
         }
         if (cur == freelist) {

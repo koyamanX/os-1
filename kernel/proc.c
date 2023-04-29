@@ -50,13 +50,13 @@ static u64 mpid = 0;
 struct proc *newproc(void) {
     struct proc *p;
 
-	for(p = &procs[0]; p < &procs[NPROCS]; p++){
-		if(p->stat == UNUSED) {
-			p->stat = USED;
-			p->pid = mpid++;
-			goto found;
-		}
-	}
+    for (p = &procs[0]; p < &procs[NPROCS]; p++) {
+        if (p->stat == UNUSED) {
+            p->stat = USED;
+            p->pid = mpid++;
+            goto found;
+        }
+    }
     return NULL;
 
 found:
@@ -168,7 +168,7 @@ int fork(void) {
     // Allocate new proc.
     child = newproc();
     if ((child == NULL)) {
-		return -1;
+        return -1;
     }
     // Get parent proc.
     parent = this_proc();

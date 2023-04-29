@@ -23,8 +23,8 @@ u64 syscall(struct proc *rp) {
             ret = write(a0, (void *)va2pa(rp->pgtbl, a1), a2);
             break;
         case __NR_EXECEV:
-            ret = exec(((const char *)va2pa(rp->pgtbl, a0)),
-                       ((char const **)va2pa(rp->pgtbl, a1)));
+            ret = execv(((const char *)va2pa(rp->pgtbl, a0)),
+                        ((char const **)va2pa(rp->pgtbl, a1)));
             break;
         case __NR_OPEN:
             ret = open(((const char *)va2pa(rp->pgtbl, a0)), a1, a2);

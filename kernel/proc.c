@@ -93,7 +93,7 @@ found:
     return p;
 }
 
-int exec(const char *file, char const **argv) {
+int execv(const char *file, char const **argv) {
     struct inode *ip;
     Elf64_Ehdr ehdr;
     struct proc *rp;

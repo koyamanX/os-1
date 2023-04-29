@@ -25,7 +25,7 @@ int main(void) {
     }
 
     // Execute command using exec system call.
-    exec(input, NULL);
+    execv(input, NULL);
 
     return 0;
 }

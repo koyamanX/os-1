@@ -20,7 +20,7 @@ int main(void) {
     while (1) {
         pid = fork();
         if (pid == 0) {
-            exec("/usr/sbin/sh", NULL);
+            execv("/usr/sbin/sh", NULL);
         }
 
         while (1) {

@@ -152,7 +152,7 @@ void userinit(void);
  * @param[in] argv Pointer to argument vector.
  * @return 0 on success, -1 on failure.
  */
-int exec(const char *file, char const **argv);
+int execv(const char *file, char const **argv);
 
 /**
  * @brief Exit process.

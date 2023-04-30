@@ -43,6 +43,8 @@ void *kmalloc(size_t size) {
         }
         if (cur == freelist) {
             cur = (struct slob_header *)alloc_page();
+            cur->units = PAGE_SIZE / sizeof(struct slob_header);
+            cur->next = NULL;
             kfree(cur);
             cur = freelist;
         }

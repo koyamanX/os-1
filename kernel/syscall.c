@@ -10,12 +10,13 @@
 #include <unistd.h>
 #include <vm.h>
 
+// TODO:
+int mknod(const char *pathname, mode_t mode, dev_t dev);
 u64 syscall(struct proc *rp) {
     u64 syscall_num = rp->tf->a7;
     u64 a0 = rp->tf->a0;
     u64 a1 = rp->tf->a1;
     u64 a2 = rp->tf->a2;
-    dev_t dev;
     u64 ret = -1;
 
     switch (syscall_num) {
@@ -33,9 +34,7 @@ u64 syscall(struct proc *rp) {
             ret = mkdir(((const char *)va2pa(rp->pgtbl, a0)), a1);
             break;
         case __NR_MKNOD:
-            dev.major = (a2 >> 16) & 0xffff;
-            dev.minor = a2 & 0xffff;
-            ret = mknod(((const char *)va2pa(rp->pgtbl, a0)), a1, dev);
+            ret = mknod(((const char *)va2pa(rp->pgtbl, a0)), a1, a2);
             break;
         case __NR_DUP:
             ret = dup((int)a0);

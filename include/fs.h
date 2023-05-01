@@ -9,7 +9,7 @@
 #define _FS_H
 
 #include <devsw.h>
-#include <sys/types.h>
+#include <riscv.h>
 
 /**
  * @brief Struct for minix3 filesystem superblock.

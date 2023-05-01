@@ -2,6 +2,7 @@
 #define DEVSW_H
 
 #include <buf.h>
+#include <riscv.h>
 #include <stdint.h>
 #include <sys/types.h>
 

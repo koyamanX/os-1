@@ -6,7 +6,7 @@
 #ifndef _SLOB_H
 #define _SLOB_H
 
-#include <sys/types.h>
+#include <riscv.h>
 
 /**
  * @brief Allocate size bytes from kernel heap.

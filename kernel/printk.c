@@ -1,6 +1,6 @@
 #include <printk.h>
+#include <riscv.h>
 #include <stdarg.h>
-#include <sys/types.h>
 #include <uart.h>
 
 char *ulltoa(u64 n, char *buffer, int radix) {

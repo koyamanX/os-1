@@ -3,6 +3,15 @@
 
 #include <sys/types.h>
 
+typedef unsigned long long u64;
+typedef long long int i64;
+typedef unsigned int u32;
+typedef int i32;
+typedef unsigned short u16;
+typedef short s16;
+typedef unsigned char u8;
+typedef signed char s8;
+
 #define MSTATUS_MPP_MASK (0x3 << 11)
 #define MSTATUS_MPP_M_MODE (0x3 << 11)
 #define MSTATUS_MPP_S_MODE (0x1 << 11)
@@ -162,6 +171,16 @@ static inline void w_stvec(u64 v) {
 }
 static inline void sfence_vma(void) {
     asm volatile("sfence.vma");
+}
+
+static inline unsigned int major(dev_t dev) {
+    return (dev & 0xffff0000) >> 16;
+}
+static inline unsigned int minor(dev_t dev) {
+    return (dev & 0xffff);
+}
+static inline dev_t makedev(int major, int minor) {
+    return ((major & 0xffff) << 16) | (minor & 0xffff);
 }
 
 #endif

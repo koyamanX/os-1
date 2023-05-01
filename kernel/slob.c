@@ -1,6 +1,7 @@
 #include <printk.h>
 #include <slob.h>
 #include <stddef.h>
+#include <stdint.h>
 #include <vm.h>
 
 static struct slob_header arena = {.next = &arena,

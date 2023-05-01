@@ -30,7 +30,8 @@ set(KERNEL_LINKER_SCRIPT ${CMAKE_CURRENT_SOURCE_DIR}/kernel.ldS)
 add_executable(kernel ${KERNEL_SOURCE})
 
 target_include_directories(kernel
-	PUBLIC ${PROJECT_SOURCE_DIR}/include)
+	PUBLIC ${PROJECT_SOURCE_DIR}/include
+	PUBLIC ${NEWLIB_INCLUDES})
 target_link_libraries(kernel sys lib)
 
 target_link_options(kernel PRIVATE LINKER:-T ${KERNEL_LINKER_SCRIPT})

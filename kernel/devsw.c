@@ -22,4 +22,4 @@ struct cdevsw cdevsw[NCDEVSW] = {
 };
 
 struct mount mount[NMOUNT];
-dev_t rootdev = {0, 0};
+dev_t rootdev = 0;

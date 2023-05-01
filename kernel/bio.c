@@ -1,5 +1,6 @@
 #include <buf.h>
 #include <devsw.h>
+#include <sys/types.h>
 #include <virtio.h>
 #include <vm.h>
 
@@ -21,7 +22,7 @@ void binit(void) {
 struct buf *bread(dev_t dev, u64 blkno) {
     struct buf *bp = getblk(dev, blkno);
     // Read the block into the buffer from the device
-    (*bdevsw[dev.major].strategy)(bp->data, bp->blkno, 0);
+    (*bdevsw[major(dev)].strategy)(bp->data, bp->blkno, 0);
     bp->valid = 1;
 
     return bp;
@@ -36,7 +37,7 @@ void bwrite(struct buf *bp) {
         return;
     }
 
-    struct bdevsw *dev = &bdevsw[bp->dev.major];
+    struct bdevsw *dev = &bdevsw[major(bp->dev)];
 
     // Call device specific write function
     dev->strategy(bp->data, bp->blkno, 1);
@@ -47,12 +48,11 @@ void bwrite(struct buf *bp) {
 
 void bflush(dev_t dev) {
     struct buf *bp;
-    struct bdevsw *bdev = &bdevsw[dev.major];
+    struct bdevsw *bdev = &bdevsw[major(dev)];
 
     // Flush all bpfers associated with dev from the active list
     for (bp = bdev->bactivelist; bp; bp = bp->next) {
-        if (bp->dev.major == dev.major && bp->dev.minor == dev.minor &&
-            bp->dirty && bp->valid) {
+        if (bp->dev == dev && bp->dirty && bp->valid) {
             bwrite(bp);
         }
     }
@@ -77,7 +77,7 @@ struct buf *getblk(dev_t dev, u64 blkno) {
     }
 
     if (bp == NULL) {
-        struct bdevsw *bdev = &bdevsw[dev.major];
+        struct bdevsw *bdev = &bdevsw[major(dev)];
         bp = bdev->bactivelist;
         if (bp == NULL) {
             return NULL;

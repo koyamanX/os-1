@@ -1,6 +1,6 @@
 #include <printk.h>
+#include <riscv.h>
 #include <sleeplock.h>
-#include <sys/types.h>
 #include <uart.h>
 
 #define N 1024

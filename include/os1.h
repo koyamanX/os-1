@@ -1,7 +1,7 @@
 #ifndef OS1_H
 #define OS1_H
 
-#include <sys/types.h>
+#include <riscv.h>
 
 extern char *_end;
 extern char *_etext;

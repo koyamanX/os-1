@@ -34,9 +34,9 @@ void fsinit(void) {
     struct buf *bp;
     char rootdir[] = "/";
 
-    if (bdevsw[rootdev.major].open) {
+    if (bdevsw[major(rootdev)].open) {
         // Call device dependent open if exist.
-        bdevsw[rootdev.major].open();
+        bdevsw[major(rootdev)].open();
     }
     // Read Superblock.
     bp = bread(rootdev, SUPERBLOCK_BLKNO);
@@ -61,7 +61,7 @@ struct super_block *getfs(dev_t dev) {
         if (p == NULL) {
             continue;
         }
-        if (p->dev.major == dev.major && p->dev.minor == dev.minor) {
+        if (p->dev == dev) {
             // If matching device found on mount point, return superblock.
             return p->sb;
         }
@@ -172,11 +172,9 @@ u64 readi(struct inode *ip, char *dest, u64 offset, u64 size) {
         VERBOSE_PRINTK("readi: S_IFCHR\n");
         for (u64 i = 0; i < size - 1; i++) {
             // If character device read one by one.
-            dest[i] = cdevsw[ip->dev.major].read();
-            // Echo back
-            // cdevsw[ip->dev.major].write(dest[i]);
+            dest[i] = cdevsw[major(ip->dev)].read();
             if (dest[i] == '\r') {
-                cdevsw[ip->dev.major].write('\n');
+                cdevsw[major(ip->dev)].write('\n');
                 dest[i] = '\0';
                 return i;
             }
@@ -261,7 +259,7 @@ u64 writei(struct inode *ip, char *src, u64 offset, u64 size) {
         // There is no offset in Character device.
         for (u64 i = 0; i < size; i++) {
             // Character device accept data to be written one byte one.
-            cdevsw[ip->dev.major].write(src[i]);
+            cdevsw[major(ip->dev)].write(src[i]);
         }
         return size;
     }

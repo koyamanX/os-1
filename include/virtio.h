@@ -1,7 +1,7 @@
 #ifndef VIRTIO_H
 #define VIRTIO_H
 
-#include <sys/types.h>
+#include <riscv.h>
 
 enum {
     MAGIC_VALUE = 0x000,

@@ -8,6 +8,7 @@
 #define _BUF_H
 
 #include <devsw.h>
+#include <riscv.h>
 #include <sys/types.h>
 
 #define BUFSIZ 1024  //!< Buffer size.

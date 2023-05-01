@@ -1,7 +1,7 @@
 #ifndef ELF_H
 #define ELF_H
 
-#include <sys/types.h>
+#include <riscv.h>
 
 typedef u64 Elf64_Addr;
 typedef u64 Elf64_Off;

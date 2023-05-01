@@ -83,6 +83,7 @@ create_image() {
 	sudo mount $IMAGE_NAME $MOUNT_DIR
 	cp kernel/main.c $INSTALL_ROOT/hello.txt
 	cp -r $INSTALL_ROOT/* $MOUNT_DIR -r
+	riscv64-unknown-elf-strip $MOUNT_DIR/usr/sbin/*
 	sync
 	sudo umount $MOUNT_DIR
 	[ -d "$MOUNT_DIR" ] && rm -rf $MOUNT_DIR

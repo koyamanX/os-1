@@ -7,12 +7,12 @@ jobs:
       fail-fast: false
       matrix:
 #       os: [ubuntu-22.04, ubuntu-20.04, macos-latest]
-        os: [ubuntu-22.04, ubuntu-20.04, ubuntu-latest] #ubuntu-latest is used for in-docker build.
+        os: [ubuntu-22.04, ubuntu-latest] #ubuntu-latest is used for in-docker build.
         include:
           - os: ubuntu-22.04
             in_docker: false
-          - os: ubuntu-20.04
-            in_docker: false
+#         - os: ubuntu-20.04
+#           in_docker: false
           - os: ubuntu-latest
             in_docker: true
     name: "Build on ${{ matrix.os }} in docker: ${{ matrix.in_docker }}"

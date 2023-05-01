@@ -7,7 +7,7 @@ set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -Wall -Werror -O0 -ggdb -g3 -gdwarf-2 -mar
 						-fno-omit-frame-pointer -mno-relax -mcmodel=medany -fno-stack-protector -fno-pie -no-pie")
 set(CMAKE_ASM_FLAGS "${CMAKE_ASM_FLAGS} -Wall -Werror -O0 -ggdb -g3 -gdwarf-2 -march=rv64g -ffreestanding -fno-common -nostdlib \
 						-fno-omit-frame-pointer -mno-relax -mcmodel=medany -fno-stack-protector -fno-pie -no-pie")
-set(NEWLIB "/usr/lib/riscv64-unknown-elf/")
+set(NEWLIB "/usr/lib/riscv64-unknown-elf")
 set(NEWLIB_INCLUDE "${NEWLIB}/include")
 set(NEWLIB_LIB "${NEWLIB}/lib")
-set(NEWLIB_LIBS "${NEWLIB_LIB}/libc.a")
+set(NEWLIB_LIBS ${NEWLIB_LIB}/libc.a gloss gcc)

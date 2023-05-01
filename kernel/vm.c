@@ -3,6 +3,7 @@
 #include <os1.h>
 #include <plic.h>
 #include <printk.h>
+#include <proc.h>
 #include <riscv.h>
 #include <sys/types.h>
 #include <uart.h>
@@ -151,4 +152,40 @@ void kvmstart(pagetable_t kpgtbl) {
     sfence_vma();
     w_satp(SATP(kpgtbl));
     sfence_vma();
+}
+
+int copyin(const void *uaddr, void *kaddr, size_t len) {
+    u64 pa = va2pa(this_proc()->pgtbl, (u64)uaddr);
+
+    if (pa == 0) {
+        return -1;
+    }
+    memmove(kaddr, (void *)pa, len);
+
+    return 0;
+}
+
+int copyout(const void *kaddr, void *uaddr, size_t len) {
+    u64 pa = va2pa(this_proc()->pgtbl, (u64)uaddr);
+
+    if (pa == 0) {
+        return -1;
+    }
+    memmove((void *)pa, kaddr, len);
+
+    return 0;
+}
+
+int copyinstr(const void *uaddr, void *kaddr, size_t len, size_t *done) {
+    u64 pa = va2pa(this_proc()->pgtbl, (u64)uaddr);
+
+    for (int i = 0; i < len; i++) {
+        if (((char *)pa)[i] == '\0') {
+            *done = i + 1;
+            break;
+        }
+        ((char *)kaddr)[i] = ((char *)pa)[i];
+    }
+
+    return 0;
 }

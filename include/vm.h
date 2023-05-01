@@ -145,4 +145,36 @@ u64 va2pa(pagetable_t pgtbl, u64 va);
  */
 #define free_page(p) free_pages(p, MIN_ORDER)
 
+/**
+ * @brief copy len byte from user space to kernel space.
+ * @details This function copies len byte from user space to kernel space.
+ * @param[in] uaddr The user space address.
+ * @param[in] kaddr The kernel space address.
+ * @param[in] len The length of the copy.
+ * @return success(0) or failure(-1).
+ */
+int copyin(const void *uaddr, void *kaddr, size_t len);
+
+/**
+ * @brief copy len byte from kernel space to user space.
+ * @details This function copies len byte from kernel space to user space.
+ * @param[in] kaddr The kernel space address.
+ * @param[in] uaddr The user space address.
+ * @param[in] len The length of the copy.
+ * @return success(0) or failure(-1).
+ */
+int copyout(const void *kaddr, void *uaddr, size_t len);
+
+/**
+ * @brief copy string from user space to kernel space for len byte.
+ * @details This function copies string from user space to kernel space for len
+ * byte.
+ * @param[in] uaddr The user space address.
+ * @param[in] kaddr The kernel space address.
+ * @param[in] len The length of the copy.
+ * @param[out] done The length of the copied string.
+ * @return success(0) or failure(-1).
+ */
+int copyinstr(const void *uaddr, void *kaddr, size_t len, size_t *done);
+
 #endif  // _VM_H

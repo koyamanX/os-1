@@ -155,6 +155,14 @@ u64 readi(struct inode *ip, char *dest, u64 offset, u64 size);
  */
 u64 writei(struct inode *ip, char *src, u64 offset, u64 size);
 
+/**
+ * @brief Find empty direct entry in dip and return its offset in dip.
+ * @details Find empty direct entry in dip and return its offset in dip.
+ * @param[in] dip Pointer to directory inode to search.
+ * @return offset of free slot in dip.
+ */
+u64 newdirect(struct inode *dip);
+
 #define ROOT 1              //!< Inode number of root directory.
 #define SUPERBLOCK_BLKNO 1  //!< Block number of super block.
 #define IMAP_BLKNO(sb) (2)  //!< Block number of first inode map.
@@ -193,5 +201,7 @@ struct direct {
 extern struct super_block sb[];  //!< Superblock cache, only superblock of minix
                                  //!< 3 filesystem is supported.
 extern struct inode inode[NICACHE];  //!< On-memory inode cache.
+
+char *kstrdup(const char *str);
 
 #endif /* _FS_H */

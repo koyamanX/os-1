@@ -1,5 +1,5 @@
 
-add_library(sys STATIC
+add_library(sys2 STATIC
 	write.S
 	open.S
 	mkdir.S
@@ -20,7 +20,7 @@ add_library(sys STATIC
 	waitpid.S
 	)
 
-target_include_directories(sys PUBLIC
+target_include_directories(sys2 PUBLIC
 	${PROJECT_SOURCE_DIR}/libc/include
 	# TODO:
 	${PROJECT_SOURCE_DIR}/include)

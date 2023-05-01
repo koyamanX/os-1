@@ -144,8 +144,8 @@ int execv(const char *file, char const **argv) {
                 if (page == NULL) {
                     page = alloc_page();
                     kvmmap(rp->pgtbl, va, (u64)page, PAGE_SIZE, prot);
-                    kvmdump(rp->pgtbl, va);
                 }
+                kvmdump(rp->pgtbl, va);
                 readi(ip, (char *)page, off, PAGE_SIZE);
                 off += PAGE_SIZE;
             }

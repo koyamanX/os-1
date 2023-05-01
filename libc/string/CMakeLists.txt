@@ -10,6 +10,6 @@ add_library(string STATIC
 	memmove.c)
 
 target_include_directories(string PUBLIC
-	${CMAKE_CURRENT_SOURCE_DIR}/../include
+	${PROJECT_SOURCE_DIR}/libc/include
 	# TODO:
 	${PROJECT_SOURCE_DIR}/include)

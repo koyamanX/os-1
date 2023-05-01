@@ -4,6 +4,6 @@ add_library(stdio STATIC
 	stdio.c)
 
 target_include_directories(stdio PUBLIC
-	${CMAKE_CURRENT_SOURCE_DIR}/../include
+	${PROJECT_SOURCE_DIR}/libc/include
 	# TODO:
 	${PROJECT_SOURCE_DIR}/include)

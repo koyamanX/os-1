@@ -31,11 +31,10 @@ SECTIONS {
 	}
 	_bss_end = .;
 	. = ALIGN(0x1000);
+	. = 0x20000000;
 	_heap_start = .;
 
-	.note : {
-		KEEP(*(.note.gnu.build-id))
-	}
+	/DISCARD/ : {*(*) }
 
 	_stack_top = 0x80000000;
 }

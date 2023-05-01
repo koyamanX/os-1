@@ -1,4 +1,5 @@
 #include <fcntl.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <sys/stat.h>
@@ -35,7 +36,7 @@ void ls(char *path) {
 }
 
 int main(int argc, char *argv[]) {
-    ls("/hello.txt");
+    write(1, "hello", 5);
 
     return 0;
 }

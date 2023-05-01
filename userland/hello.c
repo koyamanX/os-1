@@ -1,8 +1,7 @@
 #include <stdio.h>
-#include <unistd.h>
 
 int main(void) {
-    write(1, "Hello World\n", 12);
+    printf("Hello,world!\n");
 
     return 0;
 }

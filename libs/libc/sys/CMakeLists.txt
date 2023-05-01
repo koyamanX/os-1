@@ -21,6 +21,6 @@ add_library(sys STATIC
 	)
 
 target_include_directories(sys PUBLIC
-	${PROJECT_SOURCE_DIR}/libc/include
+	${CMAKE_CURRENT_SOURCE_DIR}/../include
 	# TODO:
 	${PROJECT_SOURCE_DIR}/include)

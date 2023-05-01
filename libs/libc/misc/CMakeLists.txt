@@ -4,6 +4,6 @@ add_library(misc STATIC
 	basename.c)
 
 target_include_directories(misc PUBLIC
-	${PROJECT_SOURCE_DIR}/libc/include
+	${CMAKE_CURRENT_SOURCE_DIR}/../include
 	# TODO:
 	${PROJECT_SOURCE_DIR}/include)

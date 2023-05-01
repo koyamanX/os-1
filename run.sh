@@ -17,6 +17,7 @@ CLEAN_LISTS=*.log
 declare -A LOG_LEVELS=( [verbose]=0 [debug]=1 [info]=2 [warn]=3 [release]=15 )
 LOG_LEVEL=${LOG_LEVELS["verbose"]}
 TOOLCHAIN_FILE=$(pwd)/riscv.cmake
+DOCKER_IMAGE_VERSION=v1.3
 
 usage() {
 	cat <<EOF
@@ -49,6 +50,7 @@ COMMANDS
 	docs
 	gdb
 	clean
+	install_deps
 EOF
 	exit 0
 }
@@ -86,6 +88,10 @@ create_image() {
 	[ -d "$MOUNT_DIR" ] && rm -rf $MOUNT_DIR
 }
 
+install_deps() {
+	./install_deps.sh
+}
+
 run() {
 	clear
 	$QEMU $QEMU_OPTS $@
@@ -115,7 +121,7 @@ fi
 CMD=$1
 if [ "$CMD" = "build_in_docker" ]; then
 	shift
-	docker run --rm -v$(pwd):/work -w /work koyamanx/os1_dev:v1.1 ./run.sh build $1
+	docker run --rm -v$(pwd):/work -w /work koyamanx/os1_dev:$DOCKER_IMAGE_VERSION ./run.sh build $1
 	exit 0
 fi
 
@@ -161,6 +167,13 @@ CMD=$1
 if [ "$CMD" = "docs" ]; then
 	shift
 	doxygen
+	exit 0
+fi
+
+CMD=$1
+if [ "$CMD" = "install_deps" ]; then
+	shift
+	install_deps
 	exit 0
 fi
 

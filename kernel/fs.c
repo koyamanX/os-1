@@ -515,7 +515,7 @@ u64 zmap(struct inode *ip, u64 zone) {
     u32 *zones;
     struct buf *buf;
 
-    if (zone < DIRECTZONE) {
+    if (zone <= DIRECTZONE) {
         addr = ip->zone[zone];
         if (addr == UNUSED_ZONE) {
             addr = alloc_bit(ip->dev, ZMAP);
@@ -527,7 +527,7 @@ u64 zmap(struct inode *ip, u64 zone) {
         }
         return addr;
     }
-    zone -= DIRECTZONE;
+    zone -= INDIRECTZONE;
 
     if (zone < NINDIRECTZONE) {
         addr = ip->zone[INDIRECTZONE];

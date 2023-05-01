@@ -35,7 +35,7 @@ struct super_block {
 #define NICACHE 128    //!< Size of inode chache
 #define INODE_SIZE 64  //!< Size of on disk inode
 
-#define DIRECTZONE 7    //!< Direct zone number
+#define DIRECTZONE 6    //!< Direct zone number
 #define INDIRECTZONE 7  //!< Indirect zone number
 
 // TODO: 1024 == sb->block_size

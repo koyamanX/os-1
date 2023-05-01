@@ -1,8 +1,8 @@
 #include <fs.h>
+#include <lib.h>
 #include <libgen.h>
 #include <proc.h>
 #include <slob.h>
-#include <string.h>
 
 // TODO: Update mtime and ctime on successful link.
 // TODO: Check permissions.

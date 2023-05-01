@@ -6,12 +6,13 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
+extern int mknod(const char *pathname, mode_t mode, dev_t dev);
+
 int main(void) {
     dev_t dev;
     int pid;
 
-    dev.major = 0;
-    dev.minor = 0;
+    dev = 0;
     mknod("/console", S_IFCHR | S_IRWXU | S_IRGRP | S_IXGRP | S_IROTH | S_IXOTH,
           dev);
     dup(0);

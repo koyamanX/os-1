@@ -1,5 +1,5 @@
+#include <lib.h>
 #include <panic.h>
-#include <string.h>
 #include <virtio.h>
 #include <vm.h>
 

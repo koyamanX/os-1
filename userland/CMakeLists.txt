@@ -4,16 +4,16 @@ set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_LINKER_FLAGS} -T ${USER_LINKER_SCRIPT}")
 
 add_executable(init init.c crt0.S)
 target_include_directories(init
-	PUBLIC ${PROJECT_SOURCE_DIR}/libc/include
+	PUBLIC ${NEWLIB}/include
 	PUBLIC ${PROJECT_SOURCE_DIR}/include)
-target_link_libraries(init libc)
+target_link_libraries(init ${NEWLIB_LIBS})
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/init" DESTINATION "${CMAKE_INSTALL_PREFIX}/usr/sbin/")
 
 add_executable(sh sh.c crt0.S)
 target_include_directories(sh
-	PUBLIC ${PROJECT_SOURCE_DIR}/libc/include
+	PUBLIC ${NEWLIB}/include
 	PUBLIC ${PROJECT_SOURCE_DIR}/include)
-target_link_libraries(sh libc)
+target_link_libraries(sh ${NEWLIB_LIBS})
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/sh" DESTINATION "${CMAKE_INSTALL_PREFIX}/usr/sbin/")
 
 add_executable(hello hello.c crt0.S)

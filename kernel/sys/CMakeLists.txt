@@ -20,5 +20,4 @@ add_library(sys STATIC
 	)
 
 target_include_directories(sys PUBLIC
-	${PROJECT_SOURCE_DIR}/libc/include
 	${PROJECT_SOURCE_DIR}/include)

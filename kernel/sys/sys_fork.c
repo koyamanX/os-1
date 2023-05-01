@@ -1,5 +1,5 @@
+#include <lib.h>
 #include <proc.h>
-#include <string.h>
 #include <vm.h>
 
 // TODO: pid_t

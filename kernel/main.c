@@ -6,13 +6,13 @@
 #include <alloc.h>
 #include <buf.h>
 #include <fs.h>
+#include <lib.h>
 #include <os1.h>
 #include <plic.h>
 #include <printk.h>
 #include <proc.h>
 #include <riscv.h>
 #include <sched.h>
-#include <string.h>
 #include <sys/types.h>
 #include <timer.h>
 #include <uart.h>

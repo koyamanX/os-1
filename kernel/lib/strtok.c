@@ -1,4 +1,4 @@
-#include <string.h>
+#include <lib.h>
 
 char *strtok(char *str, const char *delim) {
     static char *saveptr = NULL;

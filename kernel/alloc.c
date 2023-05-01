@@ -1,7 +1,7 @@
 #include <alloc.h>
+#include <lib.h>
 #include <panic.h>
 #include <printk.h>
-#include <string.h>
 #include <vm.h>
 
 struct buddy_free_area buddy_free_area[MAX_ORDER + 1];  //!< Buddy freelist.

@@ -1,13 +1,9 @@
-#include <stdio.h>
-#include <string.h>
 #include <unistd.h>
 
 int main(void) {
     // Implemetation of simple shell which execute one command with no
     // arguments.
     char input[100];
-
-    memset(input, 0, 100);
 
     // Write prompt with write system call.
     write(1, "sh> ", 4);
@@ -16,6 +12,7 @@ int main(void) {
     // line.
     read(0, input, 100);
 
+#if 0
     if (strncmp(input, "reten", 6) == 0) {
         write(1, "@DHA_DHA_DHA\n", 13);
         return 0;
@@ -23,6 +20,7 @@ int main(void) {
         write(1, "@koyamanX\n", 10);
         return 0;
     }
+#endif
 
     // Execute command using exec system call.
     execv(input, NULL);

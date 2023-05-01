@@ -1,5 +1,6 @@
 #include <elf.h>
 #include <fs.h>
+#include <lib.h>
 #include <os1.h>
 #include <panic.h>
 #include <printk.h>
@@ -7,7 +8,6 @@
 #include <riscv.h>
 #include <sched.h>
 #include <slob.h>
-#include <string.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <trap.h>

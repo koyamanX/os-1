@@ -8,19 +8,25 @@ add_library(gloss STATIC
 	close.S
 	crt0.S
 	dup.S
+	dup.c
 	execv.S
+	execv.c
+	execve.c
 	_exit.S
 	fork.S
 	fstat.S
 	link.S
 	mkdir.S
 	mknod.S
+	mknod.c
 	open.S
 	read.S
 	_sbrk.S
 	stat.S
 	truncate.S
 	waitpid.S
+	waitpid.c
+	wait.c
 	write.S
 )
 

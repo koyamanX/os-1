@@ -1,4 +1,4 @@
-#include <string.h>
+#include <lib.h>
 
 void *memmove(void *dest, const void *src, size_t n) {
     char *d = dest;

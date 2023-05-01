@@ -1,9 +1,9 @@
 #include <alloc.h>
+#include <lib.h>
 #include <os1.h>
 #include <plic.h>
 #include <printk.h>
 #include <riscv.h>
-#include <string.h>
 #include <sys/types.h>
 #include <uart.h>
 #include <virtio.h>

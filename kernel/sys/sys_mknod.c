@@ -1,8 +1,8 @@
 #include <file.h>
 #include <fs.h>
+#include <lib.h>
 #include <libgen.h>
 #include <slob.h>
-#include <string.h>
 #include <sys/stat.h>
 
 int mknod(const char *pathname, mode_t mode, dev_t dev) {

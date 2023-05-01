@@ -9,13 +9,13 @@
 #include <fcntl.h>
 #include <file.h>
 #include <fs.h>
+#include <lib.h>
 #include <libgen.h>
 #include <panic.h>
 #include <printk.h>
 #include <proc.h>
 #include <riscv.h>
 #include <slob.h>
-#include <string.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <uart.h>

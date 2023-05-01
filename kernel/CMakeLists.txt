@@ -23,15 +23,15 @@ set(KERNEL_SOURCE
 	swtch.S)
 
 add_subdirectory(sys)
+add_subdirectory(lib)
 
 set(KERNEL_LINKER_SCRIPT ${CMAKE_CURRENT_SOURCE_DIR}/kernel.ldS)
 
 add_executable(kernel ${KERNEL_SOURCE})
 
 target_include_directories(kernel
-	PUBLIC ${PROJECT_SOURCE_DIR}/libc/include
 	PUBLIC ${PROJECT_SOURCE_DIR}/include)
-target_link_libraries(kernel libc sys)
+target_link_libraries(kernel sys lib)
 
 target_link_options(kernel PRIVATE LINKER:-T ${KERNEL_LINKER_SCRIPT})
 

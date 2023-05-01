@@ -8,7 +8,7 @@ git clone https://sourceware.org/git/newlib-cygwin.git /tmp/newlib-cygwin
 pushd /tmp/newlib-cygwin/
 	mkdir _build
 	pushd _build
-		../configure --disable-multilib --target=riscv64-unknown-elf --prefix=/usr/lib/
+		../configure --disable-multilib --target=riscv64-unknown-elf --prefix=/usr/lib/ CFLAGS_FOR_TARGET='-march=rv64g'
 		make -j$(nproc)
 		make install
 	popd

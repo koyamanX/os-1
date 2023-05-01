@@ -31,6 +31,6 @@ add_library(gloss STATIC
 )
 
 target_include_directories(gloss PUBLIC
-	${NEWLIB_INCLUDE}
+	${NEWLIB_INCLUDES}
 	${PROJECT_SOURCE_DIR}/include
 )

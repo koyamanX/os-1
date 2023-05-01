@@ -107,10 +107,11 @@ int uvmcopy(pagetable_t dst, pagetable_t src, u64 sz) {
 
 u64 va2pa(pagetable_t pgtbl, u64 va) {
     pte_t *pte;
-    u64 pa;
+    u64 pa = 0;
 
     pte = kvmwalk(pgtbl, va);
-    pa = (PTE2PA(*pte) | (va & ((1 << PAGE_OFFSET) - 1)));
+    if (pte != NULL)
+        pa = (PTE2PA(*pte) | (va & ((1 << PAGE_OFFSET) - 1)));
 
     return pa;
 }

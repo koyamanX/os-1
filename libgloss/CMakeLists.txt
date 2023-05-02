@@ -1,7 +1,6 @@
 add_library(gloss STATIC
 	crt0.S
 	nanosleep.c
-	sbrk.c
 	syscalls.c
 	times.c
 	brk.S

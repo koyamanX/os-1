@@ -90,7 +90,7 @@ found:
                PTE_V | PTE_W | PTE_R | PTE_U);
         kvmdump(p->pgtbl, stack);
     }
-	p->heap = 0x20000000;
+    p->heap = 0x20000000;
 
     return p;
 }

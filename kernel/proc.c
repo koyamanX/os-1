@@ -46,7 +46,7 @@ void userinit(void) {
     kvmdump(p->pgtbl, 4096);
 }
 
-static u64 mpid = 0;
+static u64 mpid = 1;
 struct proc *newproc(void) {
     struct proc *p;
 
@@ -70,6 +70,7 @@ found:
     // Initialize trapframe.
     memset(p->tf, 0, sizeof(trapframe_t));
     p->tf->sepc = 4096;
+    memset(p->pgtbl, 0, PAGE_SIZE);
 
     // Initialize context.
     p->ctx.ra = (u64)usertrapret;

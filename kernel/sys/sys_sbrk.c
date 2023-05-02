@@ -12,7 +12,7 @@ void *sbrk(ptrdiff_t increment) {
         pte_t *pte;
 
         pte = kvmwalk(rp->pgtbl, (u64)(addr + i));
-        if (*pte == 0) {
+        if (pte == NULL || *pte == 0) {
             kvmmap(rp->pgtbl, (u64)(addr + i), (u64)alloc_page(), PAGE_SIZE,
                    PTE_V | PTE_W | PTE_R | PTE_X | PTE_U);
         }

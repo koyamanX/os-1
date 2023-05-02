@@ -47,6 +47,8 @@ pte_t *kvmwalk(pagetable_t pgtbl, u64 va) {
 
         if (*pte & PTE_V) {
             pgtbl = (pagetable_t)PTE2PA(*pte);
+        } else {
+            return NULL;
         }
     }
     return &pgtbl[VA2IDX(va, 0)];
@@ -96,7 +98,7 @@ int uvmcopy(pagetable_t dst, pagetable_t src, u64 sz) {
 
     for (u64 i = 0; i < sz; i += PAGE_SIZE) {
         pte = kvmwalk(src, i);
-        if (*pte == 0) {
+        if (pte == NULL || *pte == 0) {
             continue;
         }
         pa = alloc_page();
@@ -111,8 +113,9 @@ u64 va2pa(pagetable_t pgtbl, u64 va) {
     u64 pa = 0;
 
     pte = kvmwalk(pgtbl, va);
-    if (pte != NULL)
+    if (pte != NULL) {
         pa = (PTE2PA(*pte) | (va & ((1 << PAGE_OFFSET) - 1)));
+    }
 
     return pa;
 }
@@ -121,7 +124,7 @@ void kvmdump(pagetable_t pgtbl, u64 va) {
     pte_t *pte;
 
     pte = kvmwalk(pgtbl, va);
-    if (*pte == 0) {
+    if (pte == NULL || *pte == 0) {
         VERBOSE_PRINTK("%x: not mapped\n", va);
         return;
     }

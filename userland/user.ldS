@@ -29,6 +29,7 @@ SECTIONS {
 		*(.sbss .sbss.*)
 		*(.bss .bss.*)
 	}
+	. = ALIGN(16);
 	_bss_end = .;
 	. = ALIGN(0x1000);
 	. = 0x20000000;

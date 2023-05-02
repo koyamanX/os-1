@@ -40,7 +40,7 @@ void *kmalloc(size_t size) {
             freelist = prev;
 
             // Skip slob header
-            return cur + sizeof(struct slob_header);
+            return cur;
         }
         if (cur == freelist) {
             cur = (struct slob_header *)alloc_page();

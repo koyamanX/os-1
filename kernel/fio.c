@@ -51,10 +51,14 @@ struct file *falloc(void) {
 void openi(struct inode *ip) {
     switch (ip->mode & I_TYPE) {
         case I_CHAR_SPECIAL:
-            cdevsw[major(ip->dev)].open();
+            if (cdevsw[major(ip->dev)].open != NULL) {
+                cdevsw[major(ip->dev)].open();
+            }
             break;
         case I_BLOCK_SPECIAL:
-            bdevsw[major(ip->dev)].open();
+            if (bdevsw[major(ip->dev)].open != NULL) {
+                bdevsw[major(ip->dev)].open();
+            }
             break;
         default:
             panic("openi: unsupported device\n");
@@ -65,10 +69,14 @@ void openi(struct inode *ip) {
 void closei(struct inode *ip) {
     switch (ip->mode & I_TYPE) {
         case I_CHAR_SPECIAL:
-            cdevsw[major(ip->dev)].close();
+            if (cdevsw[major(ip->dev)].close != NULL) {
+                cdevsw[major(ip->dev)].close();
+            }
             break;
         case I_BLOCK_SPECIAL:
-            bdevsw[major(ip->dev)].close();
+            if (bdevsw[major(ip->dev)].close != NULL) {
+                bdevsw[major(ip->dev)].close();
+            }
             break;
         default:
             iput(ip);

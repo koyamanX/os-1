@@ -3,23 +3,19 @@
 #include <uart.h>
 #include <virtio.h>
 
-static int nulldev(void) {
-    return 0;
-}
-
 struct bdevsw bdevsw[NBDEVSW] = {
-    {nulldev, nulldev, virtio_req, NULL},
+    {NULL, NULL, virtio_req, NULL},  //!< 0: virtio block device
     {NULL, NULL, NULL, NULL},
     {NULL, NULL, NULL, NULL},
     {NULL, NULL, NULL, NULL},
 };
 
 struct cdevsw cdevsw[NCDEVSW] = {
-    {nulldev, nulldev, uart_getc, uart_putchar, nulldev},
-    {NULL, NULL, NULL, NULL, NULL},
-    {NULL, NULL, NULL, NULL, NULL},
-    {NULL, NULL, NULL, NULL, NULL},
+    {NULL, NULL, uart_getc, uart_putchar},  //!< 0: console
+    {NULL, NULL, NULL, NULL},
+    {NULL, NULL, NULL, NULL},
+    {NULL, NULL, NULL, NULL},
 };
 
-struct mount mount[NMOUNT];
-dev_t rootdev = 0;
+struct mount mount[NMOUNT];  //!< Mount table
+dev_t rootdev = 0;           //!< Root device number

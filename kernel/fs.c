@@ -172,9 +172,13 @@ u64 readi(struct inode *ip, char *dest, u64 offset, u64 size) {
         VERBOSE_PRINTK("readi: S_IFCHR\n");
         for (u64 i = 0; i < size - 1; i++) {
             // If character device read one by one.
-            dest[i] = cdevsw[major(ip->dev)].read();
+            if (cdevsw[major(ip->dev)].read != NULL) {
+                dest[i] = cdevsw[major(ip->dev)].read();
+            }
             if (dest[i] == '\r') {
-                cdevsw[major(ip->dev)].write('\n');
+                if (cdevsw[major(ip->dev)].write != NULL) {
+                    cdevsw[major(ip->dev)].write('\n');
+                }
                 dest[i] = '\0';
                 return i;
             }
@@ -259,7 +263,9 @@ u64 writei(struct inode *ip, char *src, u64 offset, u64 size) {
         // There is no offset in Character device.
         for (u64 i = 0; i < size; i++) {
             // Character device accept data to be written one byte one.
-            cdevsw[major(ip->dev)].write(src[i]);
+            if (cdevsw[major(ip->dev)].write != NULL) {
+                cdevsw[major(ip->dev)].write(src[i]);
+            }
         }
         return size;
     }

@@ -22,7 +22,9 @@ void binit(void) {
 struct buf *bread(dev_t dev, u64 blkno) {
     struct buf *bp = getblk(dev, blkno);
     // Read the block into the buffer from the device
-    (*bdevsw[major(dev)].strategy)(bp->data, bp->blkno, 0);
+    if (bdevsw[major(dev)].strategy != NULL) {
+        (*bdevsw[major(dev)].strategy)(bp->data, bp->blkno, 0);
+    }
     bp->valid = 1;
 
     return bp;
@@ -40,7 +42,9 @@ void bwrite(struct buf *bp) {
     struct bdevsw *dev = &bdevsw[major(bp->dev)];
 
     // Call device specific write function
-    dev->strategy(bp->data, bp->blkno, 1);
+    if (dev->strategy != NULL) {
+        dev->strategy(bp->data, bp->blkno, 1);
+    }
 
     // Mark buffer as clean
     bp->dirty = 0;

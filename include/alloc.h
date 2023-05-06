@@ -21,6 +21,10 @@ struct buddy_header {
     struct buddy_header *next;  //!< Next free buddy.
 };
 
+/**
+ * @brief Struct for free area.
+ * @details Maintain free area and its number of free blocks.
+ */
 struct buddy_free_area {
     struct buddy_header *freelist;
     u64 nr_free;

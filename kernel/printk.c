@@ -52,6 +52,10 @@ int printk(const char *format, ...) {
                     uart_puts(buf);
                     bp++;
                     break;
+                case 'c':
+                    uart_putchar(*bp);
+                    bp++;
+                    break;
             }
         } else {
             uart_putchar(*bp);

@@ -23,7 +23,8 @@ int main(void) {
 #endif
 
     // Execute command using exec system call.
-    execv(input, NULL);
+    char *argv[] = {"/usr/sbin/cat", "/hello.txt", NULL};
+    execv(input, argv);
 
     return 0;
 }

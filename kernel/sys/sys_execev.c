@@ -3,14 +3,18 @@
 #include <printk.h>
 #include <proc.h>
 #include <slob.h>
+#include <string.h>
 #include <vm.h>
 
+#define MAX_ARG 8
+#define MAX_ARG_LEN 128
 int execv(const char *file, char const **argv) {
     struct inode *ip;
     Elf64_Ehdr ehdr;
     struct proc *rp;
     char *page;
     Elf64_Phdr *phdr = NULL;
+    u64 sp = USTACK;
 
     ip = namei((char *)file);
     // TODO: check permission for executable file (rx)
@@ -66,8 +70,26 @@ int execv(const char *file, char const **argv) {
     }
     kfree(phdr);
 
+    char *str1 = (char *)file;
+    char *str2 = "/hello.txt";
+    size_t n;
+    char *args[2];
+    n = strlen(str1) + 1;
+    sp -= n;
+    args[0] = (void *)sp;
+    copyout(str1, (void *)sp, n);
+    n = strlen(str2) + 1;
+    sp -= n;
+    args[1] = (void *)sp;
+    copyout(str2, (void *)sp, n);
+    n = sizeof(char *) * 2;
+    sp -= n;
+    copyout(args, (void *)sp, n);
+
     rp->tf->sepc = ehdr.e_entry;
-    rp->tf->sp = USTACK;
+    rp->tf->sp = sp;
+    rp->tf->a0 = 2;
+    rp->tf->a1 = sp;
 
     return 0;
 }

@@ -15,7 +15,7 @@ QEMU_OPTS="$QEMU_OPTS -drive file=$IMAGE_NAME,if=none,format=raw,id=x0 -device v
 QEMU_GDB_PORT=tcp::12345
 CLEAN_LISTS=*.log
 declare -A LOG_LEVELS=( [verbose]=0 [debug]=1 [info]=2 [warn]=3 [release]=15 )
-LOG_LEVEL=${LOG_LEVELS["verbose"]}
+LOG_LEVEL=${LOG_LEVELS["release"]}
 TOOLCHAIN_FILE=$(pwd)/riscv.cmake
 DOCKER_IMAGE_VERSION=v1.3
 

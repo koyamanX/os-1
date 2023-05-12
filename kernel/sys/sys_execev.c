@@ -15,6 +15,7 @@ int execv(const char *file, char const **argv) {
     char *page;
     Elf64_Phdr *phdr = NULL;
     u64 sp = USTACK;
+    int argc = 0;
 
     ip = namei((char *)file);
     // TODO: check permission for executable file (rx)
@@ -30,6 +31,33 @@ int execv(const char *file, char const **argv) {
     }
 
     phdr = kmalloc(sizeof(Elf64_Phdr));
+
+    // Extract argv from caller's memory space.
+    if (argv != NULL) {
+        u64 pa;
+        size_t n;
+        char str[MAX_ARG_LEN + 1];
+        char *args[MAX_ARG + 1];
+        memset(args, 0, sizeof(args));
+
+        for (int i = 0; i < MAX_ARG; i++) {
+            copyin((void *)argv, &pa, sizeof(char *));
+            if (pa == 0)
+                break;
+            memset(str, 0, sizeof(str));
+            copyinstr((void *)pa, str, MAX_ARG_LEN, &n);
+
+            n = ALIGN_SP(n);
+            sp = sp - n;
+            args[i] = (void *)sp;
+            copyout(str, (void *)sp, n);
+
+            argc++;
+            argv++;
+        }
+        sp = sp - (sizeof(char *) * (MAX_ARG + 1));
+        copyout(args, (void *)sp, sizeof(char *) * (MAX_ARG + 1));
+    }
 
     rp = this_proc();
     readi(ip, (char *)phdr, ehdr.e_phoff, sizeof(Elf64_Phdr) * ehdr.e_phnum);
@@ -70,6 +98,7 @@ int execv(const char *file, char const **argv) {
     }
     kfree(phdr);
 
+#if 0
     char *str1 = (char *)file;
     char *str2 = "/hello.txt";
     size_t n;
@@ -85,10 +114,11 @@ int execv(const char *file, char const **argv) {
     n = sizeof(char *) * 2;
     sp -= n;
     copyout(args, (void *)sp, n);
+#endif
 
     rp->tf->sepc = ehdr.e_entry;
     rp->tf->sp = sp;
-    rp->tf->a0 = 2;
+    rp->tf->a0 = argc;
     rp->tf->a1 = sp;
 
     return 0;

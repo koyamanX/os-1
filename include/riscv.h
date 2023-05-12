@@ -42,6 +42,10 @@ typedef signed char s8;
 #define ROUNDUP(x) ((((u64)(x)) + PAGE_SIZE - 1) & (~(PAGE_SIZE - 1)))
 #define ROUNDDOWN(x) (((u64)(x)) & (~(PAGE_SIZE - 1)))
 
+#define STACK_ALGINMENT 8
+#define ALIGN_SP(sp) \
+    ((((u64)(sp)) + (STACK_ALGINMENT - 1)) & ~(STACK_ALGINMENT - 1))
+
 #define PA2PTE(pa) (((u64)(pa) >> 12) << 10)
 #define PTE2PA(pte) (((pte) >> 10) << 12)
 #define PTE_FLAGS(pte) ((pte)&0x3ff)

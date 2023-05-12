@@ -6,3 +6,4 @@ os1/*
 init
 _build
 docs/*
+compile_commands.json

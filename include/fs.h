@@ -28,8 +28,11 @@ struct super_block {
     u16 magic;            //!< Magic number
     u16 pad2;             //!< Padding
     u16 block_size;       //!< Block size in bytes
-    u8 disk_version;      //!< Filesystem version
+    u8 disk_version;      //!< Filesystem sub-version
 };
+
+#define FS_MAGIC 0x4d5a
+#define FS_VERSION 3
 
 #define NINODE 16      //!< Size of inode in one block
 #define NICACHE 128    //!< Size of inode chache

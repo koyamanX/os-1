@@ -42,6 +42,9 @@ void fsinit(void) {
     bp = bread(rootdev, SUPERBLOCK_BLKNO);
     // Copy superblock to superblock cache.
     memcpy(&sb, bp->data, sizeof(struct super_block));
+    if (sb->magic != FS_MAGIC) {
+        panic("Unknown filesystem\n");
+    }
     // Zero clear file cache.
     memset(&file, 0, sizeof(struct file) * NFILE);
     // Zero clear inode cache.

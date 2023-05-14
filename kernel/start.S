@@ -11,7 +11,7 @@ _clear_bss:
 	add t0, t0, 8
 	bltu t0, t1, _clear_bss
 
-	# Set mpp to s-mode
+	# Set mpp to M-mode
 	li t0, 0x3<<11
 	csrs mstatus, t0
 

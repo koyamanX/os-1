@@ -29,9 +29,9 @@ _clear_bss:
 	# Set mepc to kinit
 	la t0, kinit
 	csrw mepc, t0
-	# Setup stack(4KB)
+	# Setup stack(16KB)
 	la sp, stack
-	li t0, 4096
+	li t0, 16384
 	add sp, sp, t0
 	
 	# call main with s-mode

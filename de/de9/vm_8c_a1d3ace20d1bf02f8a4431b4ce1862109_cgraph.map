@@ -1,0 +1,5 @@
+<map id="copyinstr" name="copyinstr">
+<area shape="rect" id="node1" title="copy string from user space to kernel space for len byte." alt="" coords="5,5,88,32"/>
+<area shape="rect" id="node2" href="$de/de9/vm_8c.html#a4a1c038e62a24366226807044cf12b2c" title="Convert a virtual address to a physical address." alt="" coords="136,5,199,32"/>
+<area shape="rect" id="node3" href="$de/de9/vm_8c.html#a20fa4134dd4bffdb3a2ac4e4097f7d4b" title="Walk the page table." alt="" coords="247,5,329,32"/>
+</map>

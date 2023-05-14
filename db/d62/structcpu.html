@@ -69,30 +69,37 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Struct for Processors.  
+ <a href="../../db/d62/structcpu.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="../../df/d03/proc_8h_source.html">proc.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for cpu:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d0/de5/structcpu__coll__graph.png" border="0" usemap="#acpu_coll__map" alt="Collaboration graph"/></div>
 <map name="acpu_coll__map" id="acpu_coll__map">
-<area shape="rect" title=" " alt="" coords="49,976,95,1053"/>
-<area shape="rect" href="../../db/db1/structcontext__t.html" title=" " alt="" coords="5,447,88,715"/>
-<area shape="rect" href="../../de/d48/structproc.html" title=" " alt="" coords="120,777,200,913"/>
-<area shape="rect" href="../../d7/dca/structtrapframe__t.html" title=" " alt="" coords="113,469,229,693"/>
-<area shape="rect" href="../../d7/d3a/structfile.html" title=" " alt="" coords="253,527,328,634"/>
-<area shape="rect" href="../../d0/df8/structinode.html" title="Struct for minix3 inode." alt="" coords="251,160,331,384"/>
-<area shape="rect" href="../../d2/dd6/structdev__t.html" title=" " alt="" coords="253,5,328,97"/>
+<area shape="rect" title="Struct for Processors." alt="" coords="49,880,95,957"/>
+<area shape="rect" href="../../db/db1/structcontext__t.html" title="Structure for execution context of process." alt="" coords="5,307,88,575"/>
+<area shape="rect" href="../../de/d48/structproc.html" title="Process structure." alt="" coords="120,637,200,817"/>
+<area shape="rect" href="../../d7/dca/structtrapframe__t.html" title="Struct for trapframe." alt="" coords="113,329,229,553"/>
+<area shape="rect" href="../../d7/d3a/structfile.html" title=" " alt="" coords="253,387,328,494"/>
+<area shape="rect" href="../../d0/df8/structinode.html" title="Struct for minix3 inode." alt="" coords="251,5,331,244"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
 <tr class="memitem:aa7ba802b13a6ded581bbfc917fba17be"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="../../de/d48/structproc.html">proc</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d62/structcpu.html#aa7ba802b13a6ded581bbfc917fba17be">rp</a></td></tr>
+<tr class="memdesc:aa7ba802b13a6ded581bbfc917fba17be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Running process.  <a href="../../db/d62/structcpu.html#aa7ba802b13a6ded581bbfc917fba17be">More...</a><br /></td></tr>
 <tr class="separator:aa7ba802b13a6ded581bbfc917fba17be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a647bc4a22639427a15143cfd5a32f7f5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/db1/structcontext__t.html">context_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d62/structcpu.html#a647bc4a22639427a15143cfd5a32f7f5">ctx</a></td></tr>
+<tr class="memdesc:a647bc4a22639427a15143cfd5a32f7f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Context of scheduler.  <a href="../../db/d62/structcpu.html#a647bc4a22639427a15143cfd5a32f7f5">More...</a><br /></td></tr>
 <tr class="separator:a647bc4a22639427a15143cfd5a32f7f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Field Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Struct for Processors. </p>
+<p>It contains running process on a processor and scheduler's context. </p>
+</div><h2 class="groupheader">Field Documentation</h2>
 <a id="a647bc4a22639427a15143cfd5a32f7f5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a647bc4a22639427a15143cfd5a32f7f5">&#9670;&nbsp;</a></span>ctx</h2>
 
@@ -104,6 +111,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Context of scheduler. </p>
 
 </div>
 </div>
@@ -118,6 +127,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Running process. </p>
 
 </div>
 </div>

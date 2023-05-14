@@ -1,0 +1,14 @@
+<map id="uart_intr" name="uart_intr">
+<area shape="rect" id="node1" title=" " alt="" coords="5,157,83,184"/>
+<area shape="rect" id="node2" href="$db/d11/printk_8h.html#a36fe4a3ea4506cb4d128b11f93187f71" title=" " alt="" coords="154,81,214,108"/>
+<area shape="rect" id="node9" href="$d1/d87/uart_8c.html#aea92973e3d3e2fb34fba39c5fc4b253a" title=" " alt="" coords="416,56,520,83"/>
+<area shape="rect" id="node11" href="$d0/d74/sleeplock_8h.html#a70681555597cff29eabb9ec21f7a865e" title=" " alt="" coords="131,208,237,235"/>
+<area shape="rect" id="node3" href="$d2/d86/uart_8h.html#aea92973e3d3e2fb34fba39c5fc4b253a" title=" " alt="" coords="416,5,520,32"/>
+<area shape="rect" id="node8" href="$d2/d86/uart_8h.html#aa1f548a14c782ece5290f74e607adee3" title=" " alt="" coords="285,56,368,83"/>
+<area shape="rect" id="node10" href="$dc/d57/printk_8c.html#a63e8bd2e10e535bcd91c2fd607b83ca7" title=" " alt="" coords="297,107,356,133"/>
+<area shape="rect" id="node4" href="$d0/d74/sleeplock_8h.html#ab63c9f0a9f71c65020743193340560fa" title=" " alt="" coords="568,31,659,57"/>
+<area shape="rect" id="node5" href="$df/d03/proc_8h.html#a2d84ba9e668499e6b42d10b502590d0c" title="Sleep for wait channel." alt="" coords="707,31,764,57"/>
+<area shape="rect" id="node6" href="$d7/d00/sched_8h.html#ad788da91743c333b5bed7c4a0dd12365" title=" " alt="" coords="812,31,872,57"/>
+<area shape="rect" id="node7" href="$db/dbe/sched_8c.html#aa1559f2bb08f486bdd3452f752e23bee" title=" " alt="" coords="920,31,980,57"/>
+<area shape="rect" id="node12" href="$df/d03/proc_8h.html#a889b2e06ff2f0f329447d6d4961bb92b" title="Wakeup process waitting for wchan." alt="" coords="291,208,363,235"/>
+</map>

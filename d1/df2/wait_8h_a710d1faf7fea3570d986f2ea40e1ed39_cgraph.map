@@ -1,0 +1,9 @@
+<map id="waitpid" name="waitpid">
+<area shape="rect" id="node1" title=" " alt="" coords="5,56,76,83"/>
+<area shape="rect" id="node2" href="$d4/d03/kmalloc_8h.html#af7105034bf054e37218d6ade20db4684" title="Free memory area allocated by kmalloc. @detail Free memory area allocated by kmalloc." alt="" coords="144,5,200,32"/>
+<area shape="rect" id="node3" href="$da/d0a/vm_8h.html#a5748283d139d13b1100338f2ea7774a8" title="Unmap a virtual address." alt="" coords="124,56,220,83"/>
+<area shape="rect" id="node5" href="$df/d03/proc_8h.html#a2d84ba9e668499e6b42d10b502590d0c" title="Sleep for wait channel." alt="" coords="143,107,201,133"/>
+<area shape="rect" id="node4" href="$de/de9/vm_8c.html#a20fa4134dd4bffdb3a2ac4e4097f7d4b" title="Walk the page table." alt="" coords="268,56,351,83"/>
+<area shape="rect" id="node6" href="$d7/d00/sched_8h.html#ad788da91743c333b5bed7c4a0dd12365" title=" " alt="" coords="279,107,339,133"/>
+<area shape="rect" id="node7" href="$db/dbe/sched_8c.html#aa1559f2bb08f486bdd3452f752e23bee" title=" " alt="" coords="399,107,459,133"/>
+</map>

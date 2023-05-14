@@ -1,0 +1,9 @@
+<map id="include/sys/wait.h" name="include/sys/wait.h">
+<area shape="rect" id="node1" title=" " alt="" coords="402,5,541,32"/>
+<area shape="rect" id="node2" href="$d3/dda/proc_8c.html" title=" " alt="" coords="5,80,111,107"/>
+<area shape="rect" id="node3" href="$df/dba/sys__waitpid_8c.html" title=" " alt="" coords="135,80,315,107"/>
+<area shape="rect" id="node4" href="$db/dd8/syscall_8c.html" title=" " alt="" coords="339,80,462,107"/>
+<area shape="rect" id="node5" href="$dd/d10/wait_8c.html" title=" " alt="" coords="486,80,601,107"/>
+<area shape="rect" id="node6" href="$d8/df7/waitpid_8c.html" title=" " alt="" coords="625,80,760,107"/>
+<area shape="rect" id="node7" href="$d8/d60/init_8c.html" title=" " alt="" coords="785,80,899,107"/>
+</map>

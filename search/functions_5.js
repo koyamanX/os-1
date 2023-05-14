@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['exec_710',['exec',['../df/d03/proc_8h.html#aa53d427e0341b41d6dfa1081b1fcdc0b',1,'exec(const char *file, char const **argv):&#160;proc.c'],['../d3/dda/proc_8c.html#aa53d427e0341b41d6dfa1081b1fcdc0b',1,'exec(const char *file, char const **argv):&#160;proc.c'],['../da/d6f/unistd_8h.html#af8950427da00bae36f496cf5a92ebefe',1,'exec(const char *pathname, const char *argv[]):&#160;unistd.h']]],
-  ['exit_711',['exit',['../dc/d9c/stdlib_8h.html#a55e99c539cf7723ec15e856b7e0a8cee',1,'exit(int status):&#160;exit.c'],['../d1/d85/exit_8c.html#a55e99c539cf7723ec15e856b7e0a8cee',1,'exit(int status):&#160;exit.c']]]
+  ['execv_864',['execv',['../df/d03/proc_8h.html#af10928bf96b16a4464f21307cfe799d3',1,'execv(const char *file, char const **argv):&#160;sys_execev.c'],['../da/d6f/unistd_8h.html#a819b048520eea51c8f68c46c521d8ffa',1,'execv(const char *pathname, const char *argv[]):&#160;unistd.h'],['../d1/d97/sys__execev_8c.html#af10928bf96b16a4464f21307cfe799d3',1,'execv(const char *file, char const **argv):&#160;sys_execev.c'],['../dc/d4d/execv_8c.html#a9beb0deb77463ccfff7586cefa0714ed',1,'execv(const char *pathname, char *const argv[]):&#160;execv.c'],['../d9/d74/execve_8c.html#a9beb0deb77463ccfff7586cefa0714ed',1,'execv(const char *pathname, char *const argv[]):&#160;execv.c']]]
 ];

@@ -1,5 +1,12 @@
 <map id="buddy_free" name="buddy_free">
-<area shape="rect" id="node1" title="Deallocate memory region." alt="" coords="291,55,385,81"/>
-<area shape="rect" id="node2" href="$d2/dfe/alloc_8h.html#a22a6fdcb9cfeffb921e110c072a68b99" title="Deallocate memory region." alt="" coords="148,29,243,56"/>
-<area shape="rect" id="node3" href="$da/d0a/vm_8h.html#a6f021ed5330aa52b27837a6f991f1aa1" title=" " alt="" coords="5,55,100,81"/>
+<area shape="rect" id="node1" title="Deallocate memory region." alt="" coords="828,104,923,131"/>
+<area shape="rect" id="node2" href="$d2/dfe/alloc_8h.html#a492d78ef609946d35518ab7090e90669" title="Allocate memory region." alt="" coords="537,29,637,56"/>
+<area shape="rect" id="node4" href="$d2/dfe/alloc_8h.html#a22a6fdcb9cfeffb921e110c072a68b99" title="Deallocate memory region." alt="" coords="685,79,780,105"/>
+<area shape="rect" id="node5" href="$d2/dfe/alloc_8h.html#aed0eb7c3c621b7b0c8905f142b78fd5a" title="Initialize buddy allocator." alt="" coords="542,104,633,131"/>
+<area shape="rect" id="node10" href="$da/d0a/vm_8h.html#a6f021ed5330aa52b27837a6f991f1aa1" title="Free a pages with the given order." alt="" coords="540,167,635,193"/>
+<area shape="rect" id="node3" href="$da/d0a/vm_8h.html#abcc1fac65e3c6c00525c58749ae9f9db" title="Allocate a pages with the given order." alt="" coords="391,29,489,56"/>
+<area shape="rect" id="node6" href="$da/d0a/vm_8h.html#aa40ad702f23c8e93eea74d40a0bb5ea4" title="Initialize the kernel memory allocator." alt="" coords="397,104,483,131"/>
+<area shape="rect" id="node7" href="$da/d0a/vm_8h.html#a24215709d8ae11407d477ca36ca7a0b2" title="Initialize the kernel page table." alt="" coords="271,104,343,131"/>
+<area shape="rect" id="node8" href="$da/da9/os1_8h.html#a406c20548822065e144564476378f8a1" title=" " alt="" coords="160,104,223,131"/>
+<area shape="rect" id="node9" href="$d0/d29/main_8c.html#aa97e24fea4daabae6b4e5d534ac8066d" title="Kernel stack per CPU." alt="" coords="5,104,112,131"/>
 </map>

@@ -1,9 +1,8 @@
 <map id="cpu" name="cpu">
-<area shape="rect" id="node1" title=" " alt="" coords="49,976,95,1053"/>
-<area shape="rect" id="node2" href="$db/db1/structcontext__t.html" title=" " alt="" coords="5,447,88,715"/>
-<area shape="rect" id="node3" href="$de/d48/structproc.html" title=" " alt="" coords="120,777,200,913"/>
-<area shape="rect" id="node4" href="$d7/dca/structtrapframe__t.html" title=" " alt="" coords="113,469,229,693"/>
-<area shape="rect" id="node5" href="$d7/d3a/structfile.html" title=" " alt="" coords="253,527,328,634"/>
-<area shape="rect" id="node6" href="$d0/df8/structinode.html" title="Struct for minix3 inode." alt="" coords="251,160,331,384"/>
-<area shape="rect" id="node7" href="$d2/dd6/structdev__t.html" title=" " alt="" coords="253,5,328,97"/>
+<area shape="rect" id="node1" title="Struct for Processors." alt="" coords="49,880,95,957"/>
+<area shape="rect" id="node2" href="$db/db1/structcontext__t.html" title="Structure for execution context of process." alt="" coords="5,307,88,575"/>
+<area shape="rect" id="node3" href="$de/d48/structproc.html" title="Process structure." alt="" coords="120,637,200,817"/>
+<area shape="rect" id="node4" href="$d7/dca/structtrapframe__t.html" title="Struct for trapframe." alt="" coords="113,329,229,553"/>
+<area shape="rect" id="node5" href="$d7/d3a/structfile.html" title=" " alt="" coords="253,387,328,494"/>
+<area shape="rect" id="node6" href="$d0/df8/structinode.html" title="Struct for minix3 inode." alt="" coords="251,5,331,244"/>
 </map>

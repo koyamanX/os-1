@@ -74,14 +74,15 @@ $(function() {
 <div class="title">elf.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="../../d9/d49/types_8h_source.html">sys/types.h</a>&gt;</code><br />
+<div class="textblock"><code>#include &lt;<a class="el" href="../../d1/d4e/riscv_8h_source.html">riscv.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for elf.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../dd/dfb/elf_8h__incl.png" border="0" usemap="#ainclude_2elf_8h" alt=""/></div>
 <map name="ainclude_2elf_8h" id="ainclude_2elf_8h">
 <area shape="rect" title=" " alt="" coords="5,5,107,32"/>
-<area shape="rect" href="../../d9/d49/types_8h.html" title=" " alt="" coords="8,80,104,107"/>
+<area shape="rect" href="../../d1/d4e/riscv_8h.html" title=" " alt="" coords="24,80,88,107"/>
+<area shape="rect" title=" " alt="" coords="8,155,104,181"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -89,8 +90,9 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../df/d0c/elf_8h__dep__incl.png" border="0" usemap="#ainclude_2elf_8hdep" alt=""/></div>
 <map name="ainclude_2elf_8hdep" id="ainclude_2elf_8hdep">
-<area shape="rect" title=" " alt="" coords="7,5,109,32"/>
+<area shape="rect" title=" " alt="" coords="90,5,191,32"/>
 <area shape="rect" href="../../d3/dda/proc_8c.html" title=" " alt="" coords="5,80,111,107"/>
+<area shape="rect" href="../../d1/d97/sys__execev_8c.html" title=" " alt="" coords="135,80,312,107"/>
 </map>
 </div>
 </div>
@@ -169,24 +171,30 @@ Macros</h2></td></tr>
 <tr class="separator:a854729c1dc4623abeaeb765a1b745012"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84d7768fd6c6ece599d297090900cf92"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d9e/elf_8h.html#a84d7768fd6c6ece599d297090900cf92">PT_LOAD</a>&#160;&#160;&#160;1</td></tr>
 <tr class="separator:a84d7768fd6c6ece599d297090900cf92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1780bfb8eae34d26e52459699877c640"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d9e/elf_8h.html#a1780bfb8eae34d26e52459699877c640">PF_X</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a1780bfb8eae34d26e52459699877c640"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20892094358e21f49ab6e5f8c4e29ae6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d9e/elf_8h.html#a20892094358e21f49ab6e5f8c4e29ae6">PF_W</a>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:a20892094358e21f49ab6e5f8c4e29ae6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae529f935e58c029768c06fbc98b2ba8c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d9e/elf_8h.html#ae529f935e58c029768c06fbc98b2ba8c">PF_R</a>&#160;&#160;&#160;4</td></tr>
+<tr class="separator:ae529f935e58c029768c06fbc98b2ba8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a1d7c9d60865716a6057a274ec1ff7903"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="../../d9/d49/types_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d9e/elf_8h.html#a1d7c9d60865716a6057a274ec1ff7903">Elf64_Addr</a></td></tr>
+<tr class="memitem:a1d7c9d60865716a6057a274ec1ff7903"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="../../d1/d4e/riscv_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d9e/elf_8h.html#a1d7c9d60865716a6057a274ec1ff7903">Elf64_Addr</a></td></tr>
 <tr class="separator:a1d7c9d60865716a6057a274ec1ff7903"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac901922ddeae2ab46daaeabbf01b7182"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="../../d9/d49/types_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d9e/elf_8h.html#ac901922ddeae2ab46daaeabbf01b7182">Elf64_Off</a></td></tr>
+<tr class="memitem:ac901922ddeae2ab46daaeabbf01b7182"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="../../d1/d4e/riscv_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d9e/elf_8h.html#ac901922ddeae2ab46daaeabbf01b7182">Elf64_Off</a></td></tr>
 <tr class="separator:ac901922ddeae2ab46daaeabbf01b7182"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52a2cd3c6310258c2cc4eeb7ac7e8fe3"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="../../d9/d49/types_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d9e/elf_8h.html#a52a2cd3c6310258c2cc4eeb7ac7e8fe3">Elf64_Byte</a></td></tr>
+<tr class="memitem:a52a2cd3c6310258c2cc4eeb7ac7e8fe3"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="../../d1/d4e/riscv_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d9e/elf_8h.html#a52a2cd3c6310258c2cc4eeb7ac7e8fe3">Elf64_Byte</a></td></tr>
 <tr class="separator:a52a2cd3c6310258c2cc4eeb7ac7e8fe3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a28c29e3e9f559135dc8cc725c2a52b86"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="../../d9/d49/types_8h.html#a9e6c91d77e24643b888dbd1a1a590054">u16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d9e/elf_8h.html#a28c29e3e9f559135dc8cc725c2a52b86">Elf64_Half</a></td></tr>
+<tr class="memitem:a28c29e3e9f559135dc8cc725c2a52b86"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="../../d1/d4e/riscv_8h.html#a9e6c91d77e24643b888dbd1a1a590054">u16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d9e/elf_8h.html#a28c29e3e9f559135dc8cc725c2a52b86">Elf64_Half</a></td></tr>
 <tr class="separator:a28c29e3e9f559135dc8cc725c2a52b86"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a752162af96a8f5426a32f335af522335"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="../../d9/d49/types_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d9e/elf_8h.html#a752162af96a8f5426a32f335af522335">Elf64_Sword</a></td></tr>
+<tr class="memitem:a752162af96a8f5426a32f335af522335"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="../../d1/d4e/riscv_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d9e/elf_8h.html#a752162af96a8f5426a32f335af522335">Elf64_Sword</a></td></tr>
 <tr class="separator:a752162af96a8f5426a32f335af522335"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab35f5ca68f69001a44607e7094f834fe"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="../../d9/d49/types_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d9e/elf_8h.html#ab35f5ca68f69001a44607e7094f834fe">Elf64_Word</a></td></tr>
+<tr class="memitem:ab35f5ca68f69001a44607e7094f834fe"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="../../d1/d4e/riscv_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d9e/elf_8h.html#ab35f5ca68f69001a44607e7094f834fe">Elf64_Word</a></td></tr>
 <tr class="separator:ab35f5ca68f69001a44607e7094f834fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a74620bffe9c155b43dde0b67a269545b"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="../../d9/d49/types_8h.html#a5106b4bd2f7bcab473ddcebe168264bd">i64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d9e/elf_8h.html#a74620bffe9c155b43dde0b67a269545b">Elf64_Sxword</a></td></tr>
+<tr class="memitem:a74620bffe9c155b43dde0b67a269545b"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="../../d1/d4e/riscv_8h.html#a5106b4bd2f7bcab473ddcebe168264bd">i64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d9e/elf_8h.html#a74620bffe9c155b43dde0b67a269545b">Elf64_Sxword</a></td></tr>
 <tr class="separator:a74620bffe9c155b43dde0b67a269545b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad23e75512150d9a195453793f8078c95"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="../../d9/d49/types_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d9e/elf_8h.html#ad23e75512150d9a195453793f8078c95">Elf64_Xword</a></td></tr>
+<tr class="memitem:ad23e75512150d9a195453793f8078c95"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="../../d1/d4e/riscv_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d9e/elf_8h.html#ad23e75512150d9a195453793f8078c95">Elf64_Xword</a></td></tr>
 <tr class="separator:ad23e75512150d9a195453793f8078c95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af59c9cc8cec9316330f757a0fbd79956"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="../../da/d7b/structelf64__hdr.html">elf64_hdr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d9e/elf_8h.html#af59c9cc8cec9316330f757a0fbd79956">Elf64_Ehdr</a></td></tr>
 <tr class="separator:af59c9cc8cec9316330f757a0fbd79956"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -632,6 +640,48 @@ Typedefs</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
+<a id="ae529f935e58c029768c06fbc98b2ba8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae529f935e58c029768c06fbc98b2ba8c">&#9670;&nbsp;</a></span>PF_R</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PF_R&#160;&#160;&#160;4</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a20892094358e21f49ab6e5f8c4e29ae6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20892094358e21f49ab6e5f8c4e29ae6">&#9670;&nbsp;</a></span>PF_W</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PF_W&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1780bfb8eae34d26e52459699877c640"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1780bfb8eae34d26e52459699877c640">&#9670;&nbsp;</a></span>PF_X</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PF_X&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a84d7768fd6c6ece599d297090900cf92"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a84d7768fd6c6ece599d297090900cf92">&#9670;&nbsp;</a></span>PT_LOAD</h2>
 
@@ -668,7 +718,7 @@ Typedefs</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef <a class="el" href="../../d9/d49/types_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a> <a class="el" href="../../d1/d9e/elf_8h.html#a1d7c9d60865716a6057a274ec1ff7903">Elf64_Addr</a></td>
+          <td class="memname">typedef <a class="el" href="../../d1/d4e/riscv_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a> <a class="el" href="../../d1/d9e/elf_8h.html#a1d7c9d60865716a6057a274ec1ff7903">Elf64_Addr</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -682,7 +732,7 @@ Typedefs</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef <a class="el" href="../../d9/d49/types_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> <a class="el" href="../../d1/d9e/elf_8h.html#a52a2cd3c6310258c2cc4eeb7ac7e8fe3">Elf64_Byte</a></td>
+          <td class="memname">typedef <a class="el" href="../../d1/d4e/riscv_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> <a class="el" href="../../d1/d9e/elf_8h.html#a52a2cd3c6310258c2cc4eeb7ac7e8fe3">Elf64_Byte</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -710,7 +760,7 @@ Typedefs</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef <a class="el" href="../../d9/d49/types_8h.html#a9e6c91d77e24643b888dbd1a1a590054">u16</a> <a class="el" href="../../d1/d9e/elf_8h.html#a28c29e3e9f559135dc8cc725c2a52b86">Elf64_Half</a></td>
+          <td class="memname">typedef <a class="el" href="../../d1/d4e/riscv_8h.html#a9e6c91d77e24643b888dbd1a1a590054">u16</a> <a class="el" href="../../d1/d9e/elf_8h.html#a28c29e3e9f559135dc8cc725c2a52b86">Elf64_Half</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -724,7 +774,7 @@ Typedefs</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef <a class="el" href="../../d9/d49/types_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a> <a class="el" href="../../d1/d9e/elf_8h.html#ac901922ddeae2ab46daaeabbf01b7182">Elf64_Off</a></td>
+          <td class="memname">typedef <a class="el" href="../../d1/d4e/riscv_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a> <a class="el" href="../../d1/d9e/elf_8h.html#ac901922ddeae2ab46daaeabbf01b7182">Elf64_Off</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -766,7 +816,7 @@ Typedefs</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef <a class="el" href="../../d9/d49/types_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a> <a class="el" href="../../d1/d9e/elf_8h.html#a752162af96a8f5426a32f335af522335">Elf64_Sword</a></td>
+          <td class="memname">typedef <a class="el" href="../../d1/d4e/riscv_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a> <a class="el" href="../../d1/d9e/elf_8h.html#a752162af96a8f5426a32f335af522335">Elf64_Sword</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -780,7 +830,7 @@ Typedefs</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef <a class="el" href="../../d9/d49/types_8h.html#a5106b4bd2f7bcab473ddcebe168264bd">i64</a> <a class="el" href="../../d1/d9e/elf_8h.html#a74620bffe9c155b43dde0b67a269545b">Elf64_Sxword</a></td>
+          <td class="memname">typedef <a class="el" href="../../d1/d4e/riscv_8h.html#a5106b4bd2f7bcab473ddcebe168264bd">i64</a> <a class="el" href="../../d1/d9e/elf_8h.html#a74620bffe9c155b43dde0b67a269545b">Elf64_Sxword</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -794,7 +844,7 @@ Typedefs</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef <a class="el" href="../../d9/d49/types_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a> <a class="el" href="../../d1/d9e/elf_8h.html#ab35f5ca68f69001a44607e7094f834fe">Elf64_Word</a></td>
+          <td class="memname">typedef <a class="el" href="../../d1/d4e/riscv_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a> <a class="el" href="../../d1/d9e/elf_8h.html#ab35f5ca68f69001a44607e7094f834fe">Elf64_Word</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -808,7 +858,7 @@ Typedefs</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef <a class="el" href="../../d9/d49/types_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a> <a class="el" href="../../d1/d9e/elf_8h.html#ad23e75512150d9a195453793f8078c95">Elf64_Xword</a></td>
+          <td class="memname">typedef <a class="el" href="../../d1/d4e/riscv_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a> <a class="el" href="../../d1/d9e/elf_8h.html#ad23e75512150d9a195453793f8078c95">Elf64_Xword</a></td>
         </tr>
       </table>
 </div><div class="memdoc">

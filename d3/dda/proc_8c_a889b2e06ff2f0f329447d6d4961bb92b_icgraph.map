@@ -1,0 +1,14 @@
+<map id="wakeup" name="wakeup">
+<area shape="rect" id="node1" title="Wakeup process waitting for wchan." alt="" coords="919,31,991,57"/>
+<area shape="rect" id="node2" href="$df/d03/proc_8h.html#abc96bd69b58b2deaddb484478d911c1b" title="Exit process." alt="" coords="790,5,845,32"/>
+<area shape="rect" id="node11" href="$d0/d74/sleeplock_8h.html#a70681555597cff29eabb9ec21f7a865e" title=" " alt="" coords="764,56,871,83"/>
+<area shape="rect" id="node3" href="$db/dd8/syscall_8c.html#ae596b3527909b69c760d28d0e7dc7736" title=" " alt="" coords="644,5,711,32"/>
+<area shape="rect" id="node4" href="$d7/d0b/trap_8h.html#acfa5000a11c20f9f7f8775248e1a8075" title="Trap handler for user mode." alt="" coords="515,56,591,83"/>
+<area shape="rect" id="node5" href="$df/d03/proc_8h.html#a91f1ecf029d6974a6678b185397d2c8f" title="Allocate new proc structure and initialize." alt="" coords="389,56,467,83"/>
+<area shape="rect" id="node6" href="$da/d6f/unistd_8h.html#acd2e1ded4bb6fce4500438bf928330f4" title=" " alt="" coords="282,5,330,32"/>
+<area shape="rect" id="node8" href="$df/d03/proc_8h.html#a81c8a6a0cae413bc81aa223f7f7b7205" title="Allocate user page for first user&#45;mode process, init." alt="" coords="271,56,341,83"/>
+<area shape="rect" id="node7" href="$d8/d60/init_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="164,5,219,32"/>
+<area shape="rect" id="node9" href="$da/da9/os1_8h.html#a406c20548822065e144564476378f8a1" title=" " alt="" coords="160,56,223,83"/>
+<area shape="rect" id="node10" href="$d0/d29/main_8c.html#aa97e24fea4daabae6b4e5d534ac8066d" title="Kernel stack per CPU." alt="" coords="5,56,112,83"/>
+<area shape="rect" id="node12" href="$d2/d86/uart_8h.html#a102eccaa73ad8b455577c902fa56e333" title=" " alt="" coords="639,56,716,83"/>
+</map>

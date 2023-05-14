@@ -1,6 +1,8 @@
 <map id="include/fs.h" name="include/fs.h">
-<area shape="rect" id="node1" title="Structures and function prototypes for low&#45;level access to minix3 filesystem." alt="" coords="63,5,160,32"/>
-<area shape="rect" id="node2" href="$d4/dca/devsw_8h.html" title=" " alt="" coords="37,80,111,107"/>
-<area shape="rect" id="node4" href="$d9/d49/types_8h.html" title=" " alt="" coords="101,155,197,181"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,155,76,181"/>
+<area shape="rect" id="node1" title="Structures and function prototypes for low&#45;level access to minix3 filesystem." alt="" coords="111,5,208,32"/>
+<area shape="rect" id="node2" href="$d4/dca/devsw_8h.html" title=" " alt="" coords="61,80,136,107"/>
+<area shape="rect" id="node4" href="$d1/d4e/riscv_8h.html" title=" " alt="" coords="137,229,201,256"/>
+<area shape="rect" id="node3" href="$d6/d6d/buf_8h.html" title="Buffer cache for disk I/O operations." alt="" coords="27,155,82,181"/>
+<area shape="rect" id="node5" title=" " alt="" coords="6,304,102,331"/>
+<area shape="rect" id="node6" title=" " alt="" coords="106,155,176,181"/>
 </map>

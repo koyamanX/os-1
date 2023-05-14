@@ -75,15 +75,16 @@ $(function() {
 <div class="contents">
 <div class="textblock"><code>#include &lt;<a class="el" href="../../d1/d9e/elf_8h_source.html">elf.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="../../df/d26/fs_8h_source.html">fs.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../d4/d03/kmalloc_8h_source.html">kmalloc.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../de/d14/lib_8h_source.html">lib.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="../../da/da9/os1_8h_source.html">os1.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="../../df/d1f/panic_8h_source.html">panic.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="../../db/d11/printk_8h_source.html">printk.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="../../df/d03/proc_8h_source.html">proc.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="../../d1/d4e/riscv_8h_source.html">riscv.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="../../d7/d00/sched_8h_source.html">sched.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="../../de/d37/slob_8h_source.html">slob.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="../../da/d66/string_8h_source.html">string.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="../../d9/d49/types_8h_source.html">sys/types.h</a>&gt;</code><br />
+<code>#include &lt;sys/types.h&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../d1/df2/wait_8h_source.html">sys/wait.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="../../d7/d0b/trap_8h_source.html">trap.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="../../da/d0a/vm_8h_source.html">vm.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -91,274 +92,66 @@ Include dependency graph for proc.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d6/d6a/proc_8c__incl.png" border="0" usemap="#akernel_2proc_8c" alt=""/></div>
 <map name="akernel_2proc_8c" id="akernel_2proc_8c">
-<area shape="rect" title=" " alt="" coords="353,5,458,32"/>
-<area shape="rect" href="../../d1/d9e/elf_8h.html" title=" " alt="" coords="419,304,469,331"/>
-<area shape="rect" href="../../d9/d49/types_8h.html" title=" " alt="" coords="221,453,317,480"/>
-<area shape="rect" href="../../df/d26/fs_8h.html" title="Structures and function prototypes for low&#45;level access to minix3 filesystem." alt="" coords="45,304,91,331"/>
-<area shape="rect" href="../../da/da9/os1_8h.html" title=" " alt="" coords="477,379,534,405"/>
-<area shape="rect" href="../../df/d1f/panic_8h.html" title=" " alt="" coords="544,80,613,107"/>
-<area shape="rect" href="../../db/d11/printk_8h.html" title=" " alt="" coords="637,80,709,107"/>
-<area shape="rect" href="../../df/d03/proc_8h.html" title=" " alt="" coords="62,155,125,181"/>
-<area shape="rect" href="../../d1/d4e/riscv_8h.html" title=" " alt="" coords="168,229,232,256"/>
-<area shape="rect" href="../../d7/d00/sched_8h.html" title=" " alt="" coords="111,80,183,107"/>
-<area shape="rect" href="../../de/d37/slob_8h.html" title="Slob allocator." alt="" coords="307,229,368,256"/>
-<area shape="rect" href="../../da/d66/string_8h.html" title=" " alt="" coords="734,80,805,107"/>
-<area shape="rect" href="../../d7/d0b/trap_8h.html" title=" " alt="" coords="829,80,889,107"/>
-<area shape="rect" href="../../da/d0a/vm_8h.html" title=" " alt="" coords="258,80,313,107"/>
-<area shape="rect" href="../../d4/dca/devsw_8h.html" title=" " alt="" coords="5,379,80,405"/>
-<area shape="rect" title=" " alt="" coords="7,453,78,480"/>
-<area shape="rect" href="../../d2/d4d/file_8h.html" title=" " alt="" coords="66,229,121,256"/>
-<area shape="rect" title=" " alt="" coords="732,155,807,181"/>
-<area shape="rect" href="../../d2/dfe/alloc_8h.html" title="Buddy allocator." alt="" coords="251,155,317,181"/>
+<area shape="rect" title=" " alt="" coords="498,5,603,32"/>
+<area shape="rect" href="../../d1/d9e/elf_8h.html" title=" " alt="" coords="557,229,608,256"/>
+<area shape="rect" href="../../d1/d4e/riscv_8h.html" title=" " alt="" coords="492,528,556,555"/>
+<area shape="rect" title=" " alt="" coords="175,603,271,629"/>
+<area shape="rect" href="../../df/d26/fs_8h.html" title="Structures and function prototypes for low&#45;level access to minix3 filesystem." alt="" coords="385,304,431,331"/>
+<area shape="rect" href="../../d4/d03/kmalloc_8h.html" title="kmalloc allocator" alt="" coords="755,304,842,331"/>
+<area shape="rect" href="../../de/d14/lib_8h.html" title=" " alt="" coords="484,80,535,107"/>
+<area shape="rect" href="../../da/da9/os1_8h.html" title=" " alt="" coords="695,229,753,256"/>
+<area shape="rect" href="../../df/d1f/panic_8h.html" title=" " alt="" coords="559,80,628,107"/>
+<area shape="rect" href="../../db/d11/printk_8h.html" title=" " alt="" coords="652,80,724,107"/>
+<area shape="rect" href="../../df/d03/proc_8h.html" title="Structures and function prototypes for process management." alt="" coords="273,155,335,181"/>
+<area shape="rect" href="../../d7/d00/sched_8h.html" title=" " alt="" coords="236,80,308,107"/>
+<area shape="rect" href="../../d1/df2/wait_8h.html" title=" " alt="" coords="849,80,937,107"/>
+<area shape="rect" href="../../d7/d0b/trap_8h.html" title=" " alt="" coords="962,80,1022,107"/>
+<area shape="rect" href="../../da/d0a/vm_8h.html" title="Virtual memory management." alt="" coords="105,379,159,405"/>
+<area shape="rect" href="../../d4/dca/devsw_8h.html" title=" " alt="" coords="371,379,445,405"/>
+<area shape="rect" href="../../d6/d6d/buf_8h.html" title="Buffer cache for disk I/O operations." alt="" coords="381,453,435,480"/>
+<area shape="rect" title=" " alt="" coords="286,453,357,480"/>
+<area shape="rect" href="../../d0/dc6/libgen_8h.html" title=" " alt="" coords="484,155,559,181"/>
+<area shape="rect" title=" " alt="" coords="583,155,657,181"/>
+<area shape="rect" href="../../d2/d4d/file_8h.html" title=" " alt="" coords="265,229,319,256"/>
+<area shape="rect" href="../../d2/dfe/alloc_8h.html" title="Buddy allocator." alt="" coords="43,453,109,480"/>
 </map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a110d22e05e1a290608cf59725adca0e2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dda/proc_8c.html#a110d22e05e1a290608cf59725adca0e2">initcpu</a> (void)</td></tr>
-<tr class="separator:a110d22e05e1a290608cf59725adca0e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a031a1eb3a4709f0274d6a170ec74d4b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dda/proc_8c.html#a031a1eb3a4709f0274d6a170ec74d4b9">initproc</a> (void)</td></tr>
-<tr class="separator:a031a1eb3a4709f0274d6a170ec74d4b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2858154e2009b0e6e616f313177762bc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dda/proc_8c.html#a2858154e2009b0e6e616f313177762bc">init</a> (void)</td></tr>
 <tr class="separator:a2858154e2009b0e6e616f313177762bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a110d22e05e1a290608cf59725adca0e2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dda/proc_8c.html#a110d22e05e1a290608cf59725adca0e2">initcpu</a> (void)</td></tr>
+<tr class="memdesc:a110d22e05e1a290608cf59725adca0e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize cpu structure.  <a href="../../d3/dda/proc_8c.html#a110d22e05e1a290608cf59725adca0e2">More...</a><br /></td></tr>
+<tr class="separator:a110d22e05e1a290608cf59725adca0e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a031a1eb3a4709f0274d6a170ec74d4b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dda/proc_8c.html#a031a1eb3a4709f0274d6a170ec74d4b9">initproc</a> (void)</td></tr>
+<tr class="memdesc:a031a1eb3a4709f0274d6a170ec74d4b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize proc structure.  <a href="../../d3/dda/proc_8c.html#a031a1eb3a4709f0274d6a170ec74d4b9">More...</a><br /></td></tr>
+<tr class="separator:a031a1eb3a4709f0274d6a170ec74d4b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a81c8a6a0cae413bc81aa223f7f7b7205"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dda/proc_8c.html#a81c8a6a0cae413bc81aa223f7f7b7205">userinit</a> (void)</td></tr>
+<tr class="memdesc:a81c8a6a0cae413bc81aa223f7f7b7205"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate user page for first user-mode process, init.  <a href="../../d3/dda/proc_8c.html#a81c8a6a0cae413bc81aa223f7f7b7205">More...</a><br /></td></tr>
 <tr class="separator:a81c8a6a0cae413bc81aa223f7f7b7205"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a95e901259bd8697ecfbd661cfe5ac26f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dda/proc_8c.html#a95e901259bd8697ecfbd661cfe5ac26f">newproc</a> (void)</td></tr>
-<tr class="separator:a95e901259bd8697ecfbd661cfe5ac26f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa53d427e0341b41d6dfa1081b1fcdc0b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dda/proc_8c.html#aa53d427e0341b41d6dfa1081b1fcdc0b">exec</a> (const char *<a class="el" href="../../d7/d3a/structfile.html">file</a>, char const **argv)</td></tr>
-<tr class="separator:aa53d427e0341b41d6dfa1081b1fcdc0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa1559f2bb08f486bdd3452f752e23bee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dda/proc_8c.html#aa1559f2bb08f486bdd3452f752e23bee">swtch</a> (<a class="el" href="../../db/db1/structcontext__t.html">context_t</a> *old, <a class="el" href="../../db/db1/structcontext__t.html">context_t</a> *new)</td></tr>
-<tr class="separator:aa1559f2bb08f486bdd3452f752e23bee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acd2e1ded4bb6fce4500438bf928330f4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dda/proc_8c.html#acd2e1ded4bb6fce4500438bf928330f4">fork</a> (void)</td></tr>
-<tr class="separator:acd2e1ded4bb6fce4500438bf928330f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc96bd69b58b2deaddb484478d911c1b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dda/proc_8c.html#abc96bd69b58b2deaddb484478d911c1b">_exit</a> (int status)</td></tr>
-<tr class="separator:abc96bd69b58b2deaddb484478d911c1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91f1ecf029d6974a6678b185397d2c8f"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="../../de/d48/structproc.html">proc</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dda/proc_8c.html#a91f1ecf029d6974a6678b185397d2c8f">newproc</a> (void)</td></tr>
+<tr class="memdesc:a91f1ecf029d6974a6678b185397d2c8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate new proc structure and initialize.  <a href="../../d3/dda/proc_8c.html#a91f1ecf029d6974a6678b185397d2c8f">More...</a><br /></td></tr>
+<tr class="separator:a91f1ecf029d6974a6678b185397d2c8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d84ba9e668499e6b42d10b502590d0c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dda/proc_8c.html#a2d84ba9e668499e6b42d10b502590d0c">sleep</a> (void *wchan)</td></tr>
+<tr class="memdesc:a2d84ba9e668499e6b42d10b502590d0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sleep for wait channel.  <a href="../../d3/dda/proc_8c.html#a2d84ba9e668499e6b42d10b502590d0c">More...</a><br /></td></tr>
+<tr class="separator:a2d84ba9e668499e6b42d10b502590d0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a889b2e06ff2f0f329447d6d4961bb92b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dda/proc_8c.html#a889b2e06ff2f0f329447d6d4961bb92b">wakeup</a> (void *wchan)</td></tr>
+<tr class="memdesc:a889b2e06ff2f0f329447d6d4961bb92b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wakeup process waitting for wchan.  <a href="../../d3/dda/proc_8c.html#a889b2e06ff2f0f329447d6d4961bb92b">More...</a><br /></td></tr>
+<tr class="separator:a889b2e06ff2f0f329447d6d4961bb92b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a45f8be4ea340ffe030245175f2bd52e4"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="../../de/d48/structproc.html">proc</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dda/proc_8c.html#a45f8be4ea340ffe030245175f2bd52e4">procs</a> [<a class="el" href="../../df/d03/proc_8h.html#a0ea0920e8f676392a537fbeca28362e7">NPROCS</a>]</td></tr>
+<tr class="memdesc:a45f8be4ea340ffe030245175f2bd52e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes.  <a href="../../d3/dda/proc_8c.html#a45f8be4ea340ffe030245175f2bd52e4">More...</a><br /></td></tr>
 <tr class="separator:a45f8be4ea340ffe030245175f2bd52e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38a4e7338da76d91ea0a5557316e9372"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d49/types_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dda/proc_8c.html#a38a4e7338da76d91ea0a5557316e9372">mpid</a> = 1</td></tr>
+<tr class="memitem:af6f66d3e0557a98874e27146e4303ff9"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="../../db/d62/structcpu.html">cpu</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dda/proc_8c.html#af6f66d3e0557a98874e27146e4303ff9">cpu</a></td></tr>
+<tr class="memdesc:af6f66d3e0557a98874e27146e4303ff9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processors kernel can run.  <a href="../../d3/dda/proc_8c.html#af6f66d3e0557a98874e27146e4303ff9">More...</a><br /></td></tr>
+<tr class="separator:af6f66d3e0557a98874e27146e4303ff9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38a4e7338da76d91ea0a5557316e9372"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d1/d4e/riscv_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dda/proc_8c.html#a38a4e7338da76d91ea0a5557316e9372">mpid</a> = 1</td></tr>
 <tr class="separator:a38a4e7338da76d91ea0a5557316e9372"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a58f2fd4cb4c7e59b909a1000afbfc971"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="../../db/d62/structcpu.html">cpu</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dda/proc_8c.html#a58f2fd4cb4c7e59b909a1000afbfc971">cpus</a> [<a class="el" href="../../df/d03/proc_8h.html#a1e1e0a2717788848aae0ca35c216e8fc">NCPUS</a>]</td></tr>
-<tr class="separator:a58f2fd4cb4c7e59b909a1000afbfc971"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="abc96bd69b58b2deaddb484478d911c1b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abc96bd69b58b2deaddb484478d911c1b">&#9670;&nbsp;</a></span>_exit()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void _exit </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>status</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../d3/dda/proc_8c_abc96bd69b58b2deaddb484478d911c1b_cgraph.png" border="0" usemap="#ad3/dda/proc_8c_abc96bd69b58b2deaddb484478d911c1b_cgraph" alt=""/></div>
-<map name="ad3/dda/proc_8c_abc96bd69b58b2deaddb484478d911c1b_cgraph" id="ad3/dda/proc_8c_abc96bd69b58b2deaddb484478d911c1b_cgraph">
-<area shape="rect" title=" " alt="" coords="5,31,60,57"/>
-<area shape="rect" href="../../d2/d4d/file_8h.html#aa126418263f281c0581ca7bb06a992ca" title=" " alt="" coords="108,5,168,32"/>
-<area shape="rect" href="../../d1/d4e/riscv_8h.html#a781ed1f79c2a7a0a7d1b1c30bfaaa798" title=" " alt="" coords="115,56,161,83"/>
-<area shape="rect" href="../../df/d1f/panic_8h.html#a92ad17d19a46880dd5e6c99143666b4a" title=" " alt="" coords="216,5,273,32"/>
-<area shape="rect" href="../../d2/d86/uart_8h.html#aa1f548a14c782ece5290f74e607adee3" title=" " alt="" coords="321,5,404,32"/>
-<area shape="rect" href="../../d1/d87/uart_8c.html#aea92973e3d3e2fb34fba39c5fc4b253a" title=" " alt="" coords="452,5,556,32"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../d3/dda/proc_8c_abc96bd69b58b2deaddb484478d911c1b_icgraph.png" border="0" usemap="#ad3/dda/proc_8c_abc96bd69b58b2deaddb484478d911c1b_icgraph" alt=""/></div>
-<map name="ad3/dda/proc_8c_abc96bd69b58b2deaddb484478d911c1b_icgraph" id="ad3/dda/proc_8c_abc96bd69b58b2deaddb484478d911c1b_icgraph">
-<area shape="rect" title=" " alt="" coords="765,31,820,57"/>
-<area shape="rect" href="../../dc/d9c/stdlib_8h.html#a55e99c539cf7723ec15e856b7e0a8cee" title=" " alt="" coords="535,5,582,32"/>
-<area shape="rect" href="../../db/dd8/syscall_8c.html#a068ed63a10c4dd229deb2ec36497d3ac" title=" " alt="" coords="651,56,717,83"/>
-<area shape="rect" href="../../d8/d60/init_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="164,31,219,57"/>
-<area shape="rect" href="../../d7/d0b/trap_8h.html#aed543a44247cc3ccdb7d0f9bba224549" title=" " alt="" coords="515,107,603,133"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#a95e901259bd8697ecfbd661cfe5ac26f" title=" " alt="" coords="389,107,467,133"/>
-<area shape="rect" href="../../d3/dda/proc_8c.html#acd2e1ded4bb6fce4500438bf928330f4" title=" " alt="" coords="282,56,330,83"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#a81c8a6a0cae413bc81aa223f7f7b7205" title=" " alt="" coords="271,107,341,133"/>
-<area shape="rect" href="../../da/da9/os1_8h.html#a406c20548822065e144564476378f8a1" title=" " alt="" coords="160,107,223,133"/>
-<area shape="rect" href="../../d0/d29/main_8c.html#aa97e24fea4daabae6b4e5d534ac8066d" title=" " alt="" coords="5,107,112,133"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="aa53d427e0341b41d6dfa1081b1fcdc0b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa53d427e0341b41d6dfa1081b1fcdc0b">&#9670;&nbsp;</a></span>exec()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int exec </td>
-          <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>file</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char const **&#160;</td>
-          <td class="paramname"><em>argv</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../d3/dda/proc_8c_aa53d427e0341b41d6dfa1081b1fcdc0b_cgraph.png" border="0" usemap="#ad3/dda/proc_8c_aa53d427e0341b41d6dfa1081b1fcdc0b_cgraph" alt=""/></div>
-<map name="ad3/dda/proc_8c_aa53d427e0341b41d6dfa1081b1fcdc0b_cgraph" id="ad3/dda/proc_8c_aa53d427e0341b41d6dfa1081b1fcdc0b_cgraph">
-<area shape="rect" title=" " alt="" coords="5,284,57,311"/>
-<area shape="rect" href="../../de/d37/slob_8h.html#af7105034bf054e37218d6ade20db4684" title="Free memory area allocated by kmalloc. @detail Free memory area allocated by kmalloc." alt="" coords="128,31,184,57"/>
-<area shape="rect" href="../../de/d37/slob_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocate size bytes from kernel heap." alt="" coords="119,81,193,108"/>
-<area shape="rect" href="../../da/d66/string_8h.html#aaca5c21d6f783f0d2b75936ae54b7f66" title=" " alt="" coords="118,132,194,159"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#a9baba030d5bc6e9e20cf8b7d181edf35" title=" " alt="" coords="125,259,187,285"/>
-<area shape="rect" href="../../df/d1f/panic_8h.html#a92ad17d19a46880dd5e6c99143666b4a" title=" " alt="" coords="629,284,687,311"/>
-<area shape="rect" href="../../d1/d4e/riscv_8h.html#a781ed1f79c2a7a0a7d1b1c30bfaaa798" title=" " alt="" coords="133,360,179,387"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#a73f693587ef4357633ceb1786d13efcd" title=" " alt="" coords="391,157,446,184"/>
-<area shape="rect" href="../../d1/d4e/riscv_8h.html#ac389c77856b09c5c2922da14df0f0798" title=" " alt="" coords="105,411,207,437"/>
-<area shape="rect" href="../../da/d66/string_8h.html#a7a82515b5d377be04817715c5465b647" title=" " alt="" coords="125,461,187,488"/>
-<area shape="rect" href="../../da/d0a/vm_8h.html#a4a1c038e62a24366226807044cf12b2c" title=" " alt="" coords="125,512,187,539"/>
-<area shape="rect" href="../../d7/db3/slob_8c.html#af7105034bf054e37218d6ade20db4684" title="Free memory area allocated by kmalloc. @detail Free memory area allocated by kmalloc." alt="" coords="268,81,324,108"/>
-<area shape="rect" href="../../d2/d5a/fs_8c.html#a6a1907f2aabd7c9145b3c2beed1beb63" title=" " alt="" coords="275,208,317,235"/>
-<area shape="rect" href="../../d2/d5a/fs_8c.html#a005941ed6b951de6188291c240fb00e9" title=" " alt="" coords="395,259,442,285"/>
-<area shape="rect" href="../../da/d66/string_8h.html#a8cb460f64c449f2a9b9b7a40569ce0fe" title=" " alt="" coords="266,309,326,336"/>
-<area shape="rect" href="../../d6/d6d/buf_8h.html#a698c2e69ee3a6a76b6adfd479397969b" title=" " alt="" coords="510,208,569,235"/>
-<area shape="rect" href="../../da/d66/string_8h.html#a11bd144d7d44914099a3aeddf1c8567d" title=" " alt="" coords="385,56,452,83"/>
-<area shape="rect" href="../../d2/d5a/fs_8c.html#a3faf776bb14363fd149b07904e252884" title=" " alt="" coords="510,107,569,133"/>
-<area shape="rect" href="../../dc/de6/bio_8c.html#aa118b4fa3c1c5d061e04fc824f9d1891" title=" " alt="" coords="627,208,689,235"/>
-<area shape="rect" href="../../d2/d5a/fs_8c.html#aec001fd653f9a666e84e3a4012aac6ac" title=" " alt="" coords="512,309,567,336"/>
-<area shape="rect" href="../../da/d66/string_8h.html#a14938524dcbeb59d7117ba5e151ad1b1" title=" " alt="" coords="500,157,579,184"/>
-<area shape="rect" href="../../d2/d86/uart_8h.html#aa1f548a14c782ece5290f74e607adee3" title=" " alt="" coords="737,284,820,311"/>
-<area shape="rect" href="../../d1/d87/uart_8c.html#aea92973e3d3e2fb34fba39c5fc4b253a" title=" " alt="" coords="868,284,972,311"/>
-<area shape="rect" href="../../da/d66/string_8h.html#ab0bbf26e71ce67713b8c1121f38ff7cd" title=" " alt="" coords="510,56,569,83"/>
-<area shape="rect" href="../../da/d66/string_8h.html#a07f4a84c11c106e95c32b6ab509346ef" title=" " alt="" coords="502,5,577,32"/>
-<area shape="rect" href="../../de/de9/vm_8c.html#a20fa4134dd4bffdb3a2ac4e4097f7d4b" title=" " alt="" coords="255,512,337,539"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../d3/dda/proc_8c_aa53d427e0341b41d6dfa1081b1fcdc0b_icgraph.png" border="0" usemap="#ad3/dda/proc_8c_aa53d427e0341b41d6dfa1081b1fcdc0b_icgraph" alt=""/></div>
-<map name="ad3/dda/proc_8c_aa53d427e0341b41d6dfa1081b1fcdc0b_icgraph" id="ad3/dda/proc_8c_aa53d427e0341b41d6dfa1081b1fcdc0b_icgraph">
-<area shape="rect" title=" " alt="" coords="765,31,817,57"/>
-<area shape="rect" href="../../db/dd8/syscall_8c.html#a068ed63a10c4dd229deb2ec36497d3ac" title=" " alt="" coords="651,31,717,57"/>
-<area shape="rect" href="../../d7/d0b/trap_8h.html#aed543a44247cc3ccdb7d0f9bba224549" title=" " alt="" coords="515,5,603,32"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#a95e901259bd8697ecfbd661cfe5ac26f" title=" " alt="" coords="389,5,467,32"/>
-<area shape="rect" href="../../d3/dda/proc_8c.html#acd2e1ded4bb6fce4500438bf928330f4" title=" " alt="" coords="282,56,330,83"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#a81c8a6a0cae413bc81aa223f7f7b7205" title=" " alt="" coords="271,5,341,32"/>
-<area shape="rect" href="../../d8/d60/init_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="164,56,219,83"/>
-<area shape="rect" href="../../da/da9/os1_8h.html#a406c20548822065e144564476378f8a1" title=" " alt="" coords="160,5,223,32"/>
-<area shape="rect" href="../../d0/d29/main_8c.html#aa97e24fea4daabae6b4e5d534ac8066d" title=" " alt="" coords="5,5,112,32"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="acd2e1ded4bb6fce4500438bf928330f4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acd2e1ded4bb6fce4500438bf928330f4">&#9670;&nbsp;</a></span>fork()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int fork </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../d3/dda/proc_8c_acd2e1ded4bb6fce4500438bf928330f4_cgraph.png" border="0" usemap="#ad3/dda/proc_8c_acd2e1ded4bb6fce4500438bf928330f4_cgraph" alt=""/></div>
-<map name="ad3/dda/proc_8c_acd2e1ded4bb6fce4500438bf928330f4_cgraph" id="ad3/dda/proc_8c_acd2e1ded4bb6fce4500438bf928330f4_cgraph">
-<area shape="rect" title=" " alt="" coords="5,816,53,843"/>
-<area shape="rect" href="../../da/d0a/vm_8h.html#af115498144befef7de1d67b0ded22eb5" title=" " alt="" coords="231,5,311,32"/>
-<area shape="rect" href="../../da/d66/string_8h.html#a14938524dcbeb59d7117ba5e151ad1b1" title=" " alt="" coords="802,892,881,919"/>
-<area shape="rect" href="../../d3/dda/proc_8c.html#a95e901259bd8697ecfbd661cfe5ac26f" title=" " alt="" coords="101,360,179,387"/>
-<area shape="rect" href="../../d1/d4e/riscv_8h.html#a781ed1f79c2a7a0a7d1b1c30bfaaa798" title=" " alt="" coords="953,892,999,919"/>
-<area shape="rect" href="../../da/d0a/vm_8h.html#a4a1c038e62a24366226807044cf12b2c" title=" " alt="" coords="666,1069,729,1096"/>
-<area shape="rect" href="../../de/de9/vm_8c.html#a5d5ee00b0f9e74d54e650564939646a2" title=" " alt="" coords="369,5,451,32"/>
-<area shape="rect" href="../../da/d66/string_8h.html#aaca5c21d6f783f0d2b75936ae54b7f66" title=" " alt="" coords="659,56,735,83"/>
-<area shape="rect" href="../../d7/d0b/trap_8h.html#aed543a44247cc3ccdb7d0f9bba224549" title=" " alt="" coords="227,588,315,615"/>
-<area shape="rect" href="../../da/da9/os1_8h.html#a9052542a47ceb5899c3c1d5ddff0f23c" title=" " alt="" coords="505,512,599,539"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#ab247cbaa295acd0662cf88b188f23453" title=" " alt="" coords="363,309,457,336"/>
-<area shape="rect" href="../../df/d1f/panic_8h.html#a92ad17d19a46880dd5e6c99143666b4a" title=" " alt="" coords="813,1728,870,1755"/>
-<area shape="rect" href="../../d1/d4e/riscv_8h.html#a86438074316906dd9aa5a0c4296cf96d" title=" " alt="" coords="371,461,449,488"/>
-<area shape="rect" href="../../d1/d4e/riscv_8h.html#acbadf9f65ec424fcfa88a1a43c837209" title=" " alt="" coords="378,512,442,539"/>
-<area shape="rect" href="../../d1/d4e/riscv_8h.html#ab63ff16838a714f96b854ede0509e2e3" title=" " alt="" coords="377,563,443,589"/>
-<area shape="rect" href="../../d7/d00/sched_8h.html#adc13a85efcb68657390ea7abab655812" title=" " alt="" coords="380,664,440,691"/>
-<area shape="rect" href="../../dc/d6f/trap_8c.html#a068ed63a10c4dd229deb2ec36497d3ac" title=" " alt="" coords="377,1221,443,1248"/>
-<area shape="rect" href="../../dc/d6f/trap_8c.html#ab247cbaa295acd0662cf88b188f23453" title=" " alt="" coords="363,360,457,387"/>
-<area shape="rect" href="../../d1/d4e/riscv_8h.html#a6f91b37b1dd93c696037e38f8e101b8e" title=" " alt="" coords="381,613,439,640"/>
-<area shape="rect" href="../../d2/d86/uart_8h.html#aa1f548a14c782ece5290f74e607adee3" title=" " alt="" coords="935,1728,1017,1755"/>
-<area shape="rect" href="../../d1/d87/uart_8c.html#aea92973e3d3e2fb34fba39c5fc4b253a" title=" " alt="" coords="1065,1728,1169,1755"/>
-<area shape="rect" href="../../db/dbe/sched_8c.html#aa1559f2bb08f486bdd3452f752e23bee" title=" " alt="" coords="522,563,582,589"/>
-<area shape="rect" href="../../d1/d4e/riscv_8h.html#a9625bfcd7df9cb3f7376321b4f2023ee" title=" " alt="" coords="523,613,581,640"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#abc96bd69b58b2deaddb484478d911c1b" title=" " alt="" coords="525,1627,579,1653"/>
-<area shape="rect" href="../../db/dd8/syscall_8c.html#a6363aa4e42f01c8c657effa91abfa421" title=" " alt="" coords="674,1019,721,1045"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#aa53d427e0341b41d6dfa1081b1fcdc0b" title=" " alt="" coords="526,1196,578,1223"/>
-<area shape="rect" href="../../d2/d1b/stat_8h.html#aee98bbe743c2d14dbaa67f01c3fb9ed5" title=" " alt="" coords="522,1348,582,1375"/>
-<area shape="rect" href="../../d2/d1b/stat_8h.html#ae92589973c691560ce2a6a97043872cf" title=" " alt="" coords="664,1424,731,1451"/>
-<area shape="rect" href="../../d7/d9f/fcntl_8h.html#a4e522854927c8a3a43847c39fe999391" title=" " alt="" coords="670,1475,725,1501"/>
-<area shape="rect" href="../../db/dd8/syscall_8c.html#aba50464fe1a1d83175115f6d08dd259a" title=" " alt="" coords="527,968,577,995"/>
-<area shape="rect" href="../../d3/dda/proc_8c.html#aa1559f2bb08f486bdd3452f752e23bee" title=" " alt="" coords="522,1399,582,1425"/>
-<area shape="rect" href="../../db/dd8/syscall_8c.html#abb39b21888372e95ad3e5c59b166f5c8" title=" " alt="" coords="670,1576,725,1603"/>
-<area shape="rect" href="../../d2/d4d/file_8h.html#aa126418263f281c0581ca7bb06a992ca" title=" " alt="" coords="667,1728,727,1755"/>
-<area shape="rect" href="../../d2/d4d/file_8h.html#ae7c1c8f26b7361c935ff79eaa5acc597" title=" " alt="" coords="808,1373,875,1400"/>
-<area shape="rect" href="../../de/d37/slob_8h.html#af7105034bf054e37218d6ade20db4684" title="Free memory area allocated by kmalloc. @detail Free memory area allocated by kmalloc." alt="" coords="669,1323,725,1349"/>
-<area shape="rect" href="../../de/d37/slob_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocate size bytes from kernel heap." alt="" coords="660,1171,735,1197"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#a9baba030d5bc6e9e20cf8b7d181edf35" title=" " alt="" coords="666,1221,729,1248"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#a73f693587ef4357633ceb1786d13efcd" title=" " alt="" coords="670,917,725,944"/>
-<area shape="rect" href="../../d1/d4e/riscv_8h.html#ac389c77856b09c5c2922da14df0f0798" title=" " alt="" coords="647,1272,748,1299"/>
-<area shape="rect" href="../../da/d66/string_8h.html#a7a82515b5d377be04817715c5465b647" title=" " alt="" coords="810,1424,873,1451"/>
-<area shape="rect" href="../../de/de9/vm_8c.html#a20fa4134dd4bffdb3a2ac4e4097f7d4b" title=" " alt="" coords="800,1069,883,1096"/>
-<area shape="rect" href="../../d2/d5a/fs_8c.html#a4e522854927c8a3a43847c39fe999391" title=" " alt="" coords="670,1525,725,1552"/>
-<area shape="rect" href="../../d0/dc6/libgen_8h.html#aa14fc3333d84f41eacc023626687aebd" title=" " alt="" coords="796,1525,887,1552"/>
-<area shape="rect" href="../../d0/dc6/libgen_8h.html#ab1b6028f4625caec30c1020e737216e2" title=" " alt="" coords="803,1475,879,1501"/>
-<area shape="rect" href="../../d1/d4e/riscv_8h.html#a44e721f33710d723e2dc0b64ba5214e3" title=" " alt="" coords="521,208,583,235"/>
-<area shape="rect" href="../../d1/d4e/riscv_8h.html#a7fdda5e07cb6e0da978f9b7a15ca781d" title=" " alt="" coords="511,259,593,285"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#ad02a806569a1e94124abc933ae06def1" title=" " alt="" coords="518,309,586,336"/>
-<area shape="rect" href="../../d1/d4e/riscv_8h.html#af11bac055e0303ab3bffdc13bdc35c84" title=" " alt="" coords="517,360,587,387"/>
-<area shape="rect" href="../../d1/d4e/riscv_8h.html#a3cf08d1a084970277d90f7509ce71f79" title=" " alt="" coords="509,411,595,437"/>
-<area shape="rect" href="../../d1/d4e/riscv_8h.html#a43f2715a3c75e490d05d6262cd903cdb" title=" " alt="" coords="515,157,589,184"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../d3/dda/proc_8c_acd2e1ded4bb6fce4500438bf928330f4_icgraph.png" border="0" usemap="#ad3/dda/proc_8c_acd2e1ded4bb6fce4500438bf928330f4_icgraph" alt=""/></div>
-<map name="ad3/dda/proc_8c_acd2e1ded4bb6fce4500438bf928330f4_icgraph" id="ad3/dda/proc_8c_acd2e1ded4bb6fce4500438bf928330f4_icgraph">
-<area shape="rect" title=" " alt="" coords="765,56,813,83"/>
-<area shape="rect" href="../../d8/d60/init_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="657,5,711,32"/>
-<area shape="rect" href="../../db/dd8/syscall_8c.html#a068ed63a10c4dd229deb2ec36497d3ac" title=" " alt="" coords="651,56,717,83"/>
-<area shape="rect" href="../../d7/d0b/trap_8h.html#aed543a44247cc3ccdb7d0f9bba224549" title=" " alt="" coords="515,56,603,83"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#a95e901259bd8697ecfbd661cfe5ac26f" title=" " alt="" coords="389,81,467,108"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#a81c8a6a0cae413bc81aa223f7f7b7205" title=" " alt="" coords="271,81,341,108"/>
-<area shape="rect" href="../../da/da9/os1_8h.html#a406c20548822065e144564476378f8a1" title=" " alt="" coords="160,81,223,108"/>
-<area shape="rect" href="../../d0/d29/main_8c.html#aa97e24fea4daabae6b4e5d534ac8066d" title=" " alt="" coords="5,81,112,108"/>
-</map>
-</div>
-
-</div>
-</div>
 <a id="a2858154e2009b0e6e616f313177762bc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2858154e2009b0e6e616f313177762bc">&#9670;&nbsp;</a></span>init()</h2>
 
@@ -380,9 +173,9 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="../../d3/dda/proc_8c_a2858154e2009b0e6e616f313177762bc_icgraph.png" border="0" usemap="#ad3/dda/proc_8c_a2858154e2009b0e6e616f313177762bc_icgraph" alt=""/></div>
 <map name="ad3/dda/proc_8c_a2858154e2009b0e6e616f313177762bc_icgraph" id="ad3/dda/proc_8c_a2858154e2009b0e6e616f313177762bc_icgraph">
 <area shape="rect" title=" " alt="" coords="389,5,432,32"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#a81c8a6a0cae413bc81aa223f7f7b7205" title=" " alt="" coords="271,5,341,32"/>
+<area shape="rect" href="../../df/d03/proc_8h.html#a81c8a6a0cae413bc81aa223f7f7b7205" title="Allocate user page for first user&#45;mode process, init." alt="" coords="271,5,341,32"/>
 <area shape="rect" href="../../da/da9/os1_8h.html#a406c20548822065e144564476378f8a1" title=" " alt="" coords="160,5,223,32"/>
-<area shape="rect" href="../../d0/d29/main_8c.html#aa97e24fea4daabae6b4e5d534ac8066d" title=" " alt="" coords="5,5,112,32"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#aa97e24fea4daabae6b4e5d534ac8066d" title="Kernel stack per CPU." alt="" coords="5,5,112,32"/>
 </map>
 </div>
 
@@ -403,13 +196,16 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Initialize cpu structure. </p>
+<p>Initialize cpu structure. </p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d3/dda/proc_8c_a110d22e05e1a290608cf59725adca0e2_cgraph.png" border="0" usemap="#ad3/dda/proc_8c_a110d22e05e1a290608cf59725adca0e2_cgraph" alt=""/></div>
 <map name="ad3/dda/proc_8c_a110d22e05e1a290608cf59725adca0e2_cgraph" id="ad3/dda/proc_8c_a110d22e05e1a290608cf59725adca0e2_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,72,32"/>
-<area shape="rect" href="../../da/d66/string_8h.html#aaca5c21d6f783f0d2b75936ae54b7f66" title=" " alt="" coords="120,5,196,32"/>
+<area shape="rect" title="Initialize cpu structure." alt="" coords="5,5,72,32"/>
+<area shape="rect" href="../../de/d14/lib_8h.html#aaca5c21d6f783f0d2b75936ae54b7f66" title=" " alt="" coords="120,5,196,32"/>
 </map>
 </div>
 <div class="dynheader">
@@ -417,9 +213,9 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d3/dda/proc_8c_a110d22e05e1a290608cf59725adca0e2_icgraph.png" border="0" usemap="#ad3/dda/proc_8c_a110d22e05e1a290608cf59725adca0e2_icgraph" alt=""/></div>
 <map name="ad3/dda/proc_8c_a110d22e05e1a290608cf59725adca0e2_icgraph" id="ad3/dda/proc_8c_a110d22e05e1a290608cf59725adca0e2_icgraph">
-<area shape="rect" title=" " alt="" coords="271,5,337,32"/>
+<area shape="rect" title="Initialize cpu structure." alt="" coords="271,5,337,32"/>
 <area shape="rect" href="../../da/da9/os1_8h.html#a406c20548822065e144564476378f8a1" title=" " alt="" coords="160,5,223,32"/>
-<area shape="rect" href="../../d0/d29/main_8c.html#aa97e24fea4daabae6b4e5d534ac8066d" title=" " alt="" coords="5,5,112,32"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#aa97e24fea4daabae6b4e5d534ac8066d" title="Kernel stack per CPU." alt="" coords="5,5,112,32"/>
 </map>
 </div>
 
@@ -440,27 +236,30 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Initialize proc structure. </p>
+<p>Initialize proc structure. </p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d3/dda/proc_8c_a031a1eb3a4709f0274d6a170ec74d4b9_icgraph.png" border="0" usemap="#ad3/dda/proc_8c_a031a1eb3a4709f0274d6a170ec74d4b9_icgraph" alt=""/></div>
 <map name="ad3/dda/proc_8c_a031a1eb3a4709f0274d6a170ec74d4b9_icgraph" id="ad3/dda/proc_8c_a031a1eb3a4709f0274d6a170ec74d4b9_icgraph">
-<area shape="rect" title=" " alt="" coords="271,5,341,32"/>
+<area shape="rect" title="Initialize proc structure." alt="" coords="271,5,341,32"/>
 <area shape="rect" href="../../da/da9/os1_8h.html#a406c20548822065e144564476378f8a1" title=" " alt="" coords="160,5,223,32"/>
-<area shape="rect" href="../../d0/d29/main_8c.html#aa97e24fea4daabae6b4e5d534ac8066d" title=" " alt="" coords="5,5,112,32"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#aa97e24fea4daabae6b4e5d534ac8066d" title="Kernel stack per CPU." alt="" coords="5,5,112,32"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="a95e901259bd8697ecfbd661cfe5ac26f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a95e901259bd8697ecfbd661cfe5ac26f">&#9670;&nbsp;</a></span>newproc()</h2>
+<a id="a91f1ecf029d6974a6678b185397d2c8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91f1ecf029d6974a6678b185397d2c8f">&#9670;&nbsp;</a></span>newproc()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int newproc </td>
+          <td class="memname">struct <a class="el" href="../../de/d48/structproc.html">proc</a>* newproc </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -468,121 +267,173 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Allocate new proc structure and initialize. </p>
+<p>Allocate new proc structure and initialize. </p><dl class="section return"><dt>Returns</dt><dd>newly created proc. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../d3/dda/proc_8c_a95e901259bd8697ecfbd661cfe5ac26f_cgraph.png" border="0" usemap="#ad3/dda/proc_8c_a95e901259bd8697ecfbd661cfe5ac26f_cgraph" alt=""/></div>
-<map name="ad3/dda/proc_8c_a95e901259bd8697ecfbd661cfe5ac26f_cgraph" id="ad3/dda/proc_8c_a95e901259bd8697ecfbd661cfe5ac26f_cgraph">
-<area shape="rect" title=" " alt="" coords="5,628,83,655"/>
-<area shape="rect" href="../../d7/d0b/trap_8h.html#aed543a44247cc3ccdb7d0f9bba224549" title=" " alt="" coords="131,349,219,376"/>
-<area shape="rect" href="../../da/d66/string_8h.html#aaca5c21d6f783f0d2b75936ae54b7f66" title=" " alt="" coords="839,1413,915,1440"/>
-<area shape="rect" href="../../da/d0a/vm_8h.html#af115498144befef7de1d67b0ded22eb5" title=" " alt="" coords="561,1413,641,1440"/>
-<area shape="rect" href="../../da/da9/os1_8h.html#a9052542a47ceb5899c3c1d5ddff0f23c" title=" " alt="" coords="409,400,503,427"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#ab247cbaa295acd0662cf88b188f23453" title=" " alt="" coords="267,425,361,452"/>
-<area shape="rect" href="../../df/d1f/panic_8h.html#a92ad17d19a46880dd5e6c99143666b4a" title=" " alt="" coords="848,1084,905,1111"/>
-<area shape="rect" href="../../d1/d4e/riscv_8h.html#a86438074316906dd9aa5a0c4296cf96d" title=" " alt="" coords="275,223,353,249"/>
-<area shape="rect" href="../../d1/d4e/riscv_8h.html#acbadf9f65ec424fcfa88a1a43c837209" title=" " alt="" coords="282,273,346,300"/>
-<area shape="rect" href="../../d1/d4e/riscv_8h.html#ab63ff16838a714f96b854ede0509e2e3" title=" " alt="" coords="281,324,347,351"/>
-<area shape="rect" href="../../d1/d4e/riscv_8h.html#a781ed1f79c2a7a0a7d1b1c30bfaaa798" title=" " alt="" coords="853,451,900,477"/>
-<area shape="rect" href="../../d7/d00/sched_8h.html#adc13a85efcb68657390ea7abab655812" title=" " alt="" coords="284,1363,344,1389"/>
-<area shape="rect" href="../../dc/d6f/trap_8c.html#a068ed63a10c4dd229deb2ec36497d3ac" title=" " alt="" coords="281,755,347,781"/>
-<area shape="rect" href="../../dc/d6f/trap_8c.html#ab247cbaa295acd0662cf88b188f23453" title=" " alt="" coords="267,172,361,199"/>
-<area shape="rect" href="../../d1/d4e/riscv_8h.html#a6f91b37b1dd93c696037e38f8e101b8e" title=" " alt="" coords="285,375,343,401"/>
-<area shape="rect" href="../../d2/d86/uart_8h.html#aa1f548a14c782ece5290f74e607adee3" title=" " alt="" coords="963,1084,1045,1111"/>
-<area shape="rect" href="../../d1/d87/uart_8c.html#aea92973e3d3e2fb34fba39c5fc4b253a" title=" " alt="" coords="1093,1084,1197,1111"/>
-<area shape="rect" href="../../db/dbe/sched_8c.html#aa1559f2bb08f486bdd3452f752e23bee" title=" " alt="" coords="426,1413,486,1440"/>
-<area shape="rect" href="../../d1/d4e/riscv_8h.html#a9625bfcd7df9cb3f7376321b4f2023ee" title=" " alt="" coords="427,1363,485,1389"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#abc96bd69b58b2deaddb484478d911c1b" title=" " alt="" coords="574,1059,629,1085"/>
-<area shape="rect" href="../../db/dd8/syscall_8c.html#a6363aa4e42f01c8c657effa91abfa421" title=" " alt="" coords="578,299,625,325"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#aa53d427e0341b41d6dfa1081b1fcdc0b" title=" " alt="" coords="430,704,482,731"/>
-<area shape="rect" href="../../da/d0a/vm_8h.html#a4a1c038e62a24366226807044cf12b2c" title=" " alt="" coords="570,907,633,933"/>
-<area shape="rect" href="../../d3/dda/proc_8c.html#acd2e1ded4bb6fce4500438bf928330f4" title=" " alt="" coords="432,957,480,984"/>
-<area shape="rect" href="../../d2/d1b/stat_8h.html#aee98bbe743c2d14dbaa67f01c3fb9ed5" title=" " alt="" coords="426,552,486,579"/>
-<area shape="rect" href="../../d2/d1b/stat_8h.html#ae92589973c691560ce2a6a97043872cf" title=" " alt="" coords="568,147,635,173"/>
-<area shape="rect" href="../../d7/d9f/fcntl_8h.html#a4e522854927c8a3a43847c39fe999391" title=" " alt="" coords="574,197,629,224"/>
-<area shape="rect" href="../../db/dd8/syscall_8c.html#aba50464fe1a1d83175115f6d08dd259a" title=" " alt="" coords="431,805,481,832"/>
-<area shape="rect" href="../../d3/dda/proc_8c.html#aa1559f2bb08f486bdd3452f752e23bee" title=" " alt="" coords="426,907,486,933"/>
-<area shape="rect" href="../../db/dd8/syscall_8c.html#abb39b21888372e95ad3e5c59b166f5c8" title=" " alt="" coords="718,1135,773,1161"/>
-<area shape="rect" href="../../d2/d4d/file_8h.html#aa126418263f281c0581ca7bb06a992ca" title=" " alt="" coords="715,1033,775,1060"/>
-<area shape="rect" href="../../d2/d4d/file_8h.html#ae7c1c8f26b7361c935ff79eaa5acc597" title=" " alt="" coords="712,248,779,275"/>
-<area shape="rect" href="../../de/d37/slob_8h.html#af7105034bf054e37218d6ade20db4684" title="Free memory area allocated by kmalloc. @detail Free memory area allocated by kmalloc." alt="" coords="573,501,629,528"/>
-<area shape="rect" href="../../de/d37/slob_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocate size bytes from kernel heap." alt="" coords="564,552,639,579"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#a9baba030d5bc6e9e20cf8b7d181edf35" title=" " alt="" coords="570,653,633,680"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#a73f693587ef4357633ceb1786d13efcd" title=" " alt="" coords="574,805,629,832"/>
-<area shape="rect" href="../../d1/d4e/riscv_8h.html#ac389c77856b09c5c2922da14df0f0798" title=" " alt="" coords="551,603,652,629"/>
-<area shape="rect" href="../../da/d66/string_8h.html#a7a82515b5d377be04817715c5465b647" title=" " alt="" coords="714,299,777,325"/>
-<area shape="rect" href="../../da/d66/string_8h.html#a14938524dcbeb59d7117ba5e151ad1b1" title=" " alt="" coords="706,881,785,908"/>
-<area shape="rect" href="../../de/de9/vm_8c.html#a5d5ee00b0f9e74d54e650564939646a2" title=" " alt="" coords="704,1413,787,1440"/>
-<area shape="rect" href="../../d2/d5a/fs_8c.html#a4e522854927c8a3a43847c39fe999391" title=" " alt="" coords="574,248,629,275"/>
-<area shape="rect" href="../../d0/dc6/libgen_8h.html#aa14fc3333d84f41eacc023626687aebd" title=" " alt="" coords="700,147,791,173"/>
-<area shape="rect" href="../../d0/dc6/libgen_8h.html#ab1b6028f4625caec30c1020e737216e2" title=" " alt="" coords="707,96,783,123"/>
-<area shape="rect" href="../../d2/d4d/file_8h.html#a952c06132c0fe469e8aa14bdfc2dd0c9" title=" " alt="" coords="716,197,775,224"/>
-<area shape="rect" href="../../d1/d4e/riscv_8h.html#a44e721f33710d723e2dc0b64ba5214e3" title=" " alt="" coords="425,197,487,224"/>
-<area shape="rect" href="../../d1/d4e/riscv_8h.html#a7fdda5e07cb6e0da978f9b7a15ca781d" title=" " alt="" coords="415,248,497,275"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#ad02a806569a1e94124abc933ae06def1" title=" " alt="" coords="422,299,490,325"/>
-<area shape="rect" href="../../d1/d4e/riscv_8h.html#af11bac055e0303ab3bffdc13bdc35c84" title=" " alt="" coords="421,349,491,376"/>
-<area shape="rect" href="../../d1/d4e/riscv_8h.html#a3cf08d1a084970277d90f7509ce71f79" title=" " alt="" coords="413,96,499,123"/>
-<area shape="rect" href="../../d1/d4e/riscv_8h.html#a43f2715a3c75e490d05d6262cd903cdb" title=" " alt="" coords="419,147,493,173"/>
+<div class="center"><img src="../../d3/dda/proc_8c_a91f1ecf029d6974a6678b185397d2c8f_cgraph.png" border="0" usemap="#ad3/dda/proc_8c_a91f1ecf029d6974a6678b185397d2c8f_cgraph" alt=""/></div>
+<map name="ad3/dda/proc_8c_a91f1ecf029d6974a6678b185397d2c8f_cgraph" id="ad3/dda/proc_8c_a91f1ecf029d6974a6678b185397d2c8f_cgraph">
+<area shape="rect" title="Allocate new proc structure and initialize." alt="" coords="5,1487,83,1513"/>
+<area shape="rect" href="../../da/d0a/vm_8h.html#ac3f8b55879de06493c4fe061cea29e83" title="Dump page table entry for givien virtual address." alt="" coords="567,791,655,817"/>
+<area shape="rect" href="../../da/d0a/vm_8h.html#af115498144befef7de1d67b0ded22eb5" title="Map a virtual address to a physical address." alt="" coords="571,1424,651,1451"/>
+<area shape="rect" href="../../de/d14/lib_8h.html#aaca5c21d6f783f0d2b75936ae54b7f66" title=" " alt="" coords="857,1424,933,1451"/>
+<area shape="rect" href="../../da/da9/os1_8h.html#a9052542a47ceb5899c3c1d5ddff0f23c" title=" " alt="" coords="416,1551,509,1577"/>
+<area shape="rect" href="../../d7/d0b/trap_8h.html#acfa5000a11c20f9f7f8775248e1a8075" title="Trap handler for user mode." alt="" coords="131,968,207,995"/>
+<area shape="rect" href="../../d7/d0b/trap_8h.html#ab247cbaa295acd0662cf88b188f23453" title="Returns to user code where trap occurs." alt="" coords="264,1424,359,1451"/>
+<area shape="rect" href="../../de/de9/vm_8c.html#a20fa4134dd4bffdb3a2ac4e4097f7d4b" title="Walk the page table." alt="" coords="712,841,795,868"/>
+<area shape="rect" href="../../de/de9/vm_8c.html#a5d5ee00b0f9e74d54e650564939646a2" title="Allocate a page table entry." alt="" coords="712,1424,795,1451"/>
+<area shape="rect" href="../../df/d1f/panic_8h.html#a92ad17d19a46880dd5e6c99143666b4a" title=" " alt="" coords="582,183,639,209"/>
+<area shape="rect" href="../../d6/d1e/plic_8h.html#a3a956eedd668e59606078abe8c0d99aa" title=" " alt="" coords="267,1107,355,1133"/>
+<area shape="rect" href="../../d6/d1e/plic_8h.html#adadd23fbca6dd31ee82150c1a58c8a83" title=" " alt="" coords="255,1157,368,1184"/>
+<area shape="rect" href="../../d1/d4e/riscv_8h.html#a86438074316906dd9aa5a0c4296cf96d" title=" " alt="" coords="272,1208,351,1235"/>
+<area shape="rect" href="../../d1/d4e/riscv_8h.html#acbadf9f65ec424fcfa88a1a43c837209" title=" " alt="" coords="279,613,343,640"/>
+<area shape="rect" href="../../d1/d4e/riscv_8h.html#ab63ff16838a714f96b854ede0509e2e3" title=" " alt="" coords="278,664,345,691"/>
+<area shape="rect" href="../../d7/d00/sched_8h.html#ad788da91743c333b5bed7c4a0dd12365" title=" " alt="" coords="581,1120,641,1147"/>
+<area shape="rect" href="../../dc/d6f/trap_8c.html#ae596b3527909b69c760d28d0e7dc7736" title=" " alt="" coords="278,765,345,792"/>
+<area shape="rect" href="../../d2/d86/uart_8h.html#a102eccaa73ad8b455577c902fa56e333" title=" " alt="" coords="424,31,501,57"/>
+<area shape="rect" href="../../dc/d6f/trap_8c.html#ab247cbaa295acd0662cf88b188f23453" title="Returns to user code where trap occurs." alt="" coords="264,1360,359,1387"/>
+<area shape="rect" href="../../d1/d4e/riscv_8h.html#a6f91b37b1dd93c696037e38f8e101b8e" title=" " alt="" coords="282,715,341,741"/>
+<area shape="rect" href="../../d2/d86/uart_8h.html#aa1f548a14c782ece5290f74e607adee3" title=" " alt="" coords="712,107,795,133"/>
+<area shape="rect" href="../../d1/d87/uart_8c.html#aea92973e3d3e2fb34fba39c5fc4b253a" title=" " alt="" coords="843,81,947,108"/>
+<area shape="rect" href="../../db/dbe/sched_8c.html#aa1559f2bb08f486bdd3452f752e23bee" title=" " alt="" coords="723,1120,783,1147"/>
+<area shape="rect" href="../../df/d03/proc_8h.html#abc96bd69b58b2deaddb484478d911c1b" title="Exit process." alt="" coords="435,1044,490,1071"/>
+<area shape="rect" href="../../da/d6f/unistd_8h.html#a4b20a70d83d7f74a2734da590b4b8cf8" title=" " alt="" coords="441,1095,484,1121"/>
+<area shape="rect" href="../../da/d6f/unistd_8h.html#aafbcde67669a1b96577e735ddebd8634" title=" " alt="" coords="435,284,491,311"/>
+<area shape="rect" href="../../da/d6f/unistd_8h.html#a6363aa4e42f01c8c657effa91abfa421" title=" " alt="" coords="439,1145,486,1172"/>
+<area shape="rect" href="../../df/d03/proc_8h.html#af10928bf96b16a4464f21307cfe799d3" title="Execute a file." alt="" coords="433,943,493,969"/>
+<area shape="rect" href="../../da/d0a/vm_8h.html#a4a1c038e62a24366226807044cf12b2c" title="Convert a virtual address to a physical address." alt="" coords="579,892,642,919"/>
+<area shape="rect" href="../../da/d6f/unistd_8h.html#acd2e1ded4bb6fce4500438bf928330f4" title=" " alt="" coords="439,335,487,361"/>
+<area shape="rect" href="../../d9/d0e/sys__fstat_8c.html#ac1759a877da2f37512096f3a491e4112" title=" " alt="" coords="437,385,489,412"/>
+<area shape="rect" href="../../da/d6f/unistd_8h.html#a8c94afd0b7e5bb4ce95fefd964241f7f" title=" " alt="" coords="439,436,486,463"/>
+<area shape="rect" href="../../d2/d56/sys__mkdir_8c.html#aee98bbe743c2d14dbaa67f01c3fb9ed5" title=" " alt="" coords="433,841,493,868"/>
+<area shape="rect" href="../../d7/d9f/fcntl_8h.html#a4e522854927c8a3a43847c39fe999391" title="Open a file." alt="" coords="583,841,638,868"/>
+<area shape="rect" href="../../db/dd8/syscall_8c.html#ae92589973c691560ce2a6a97043872cf" title=" " alt="" coords="429,537,496,564"/>
+<area shape="rect" href="../../da/d6f/unistd_8h.html#aba50464fe1a1d83175115f6d08dd259a" title=" " alt="" coords="437,588,488,615"/>
+<area shape="rect" href="../../da/d6f/unistd_8h.html#a3b818446c640442e94e746319f5f2858" title=" " alt="" coords="437,639,488,665"/>
+<area shape="rect" href="../../d1/dfb/sys__stat_8c.html#a3dc1b07404b646712a144e2057359876" title=" " alt="" coords="439,689,486,716"/>
+<area shape="rect" href="../../df/d03/proc_8h.html#aa1559f2bb08f486bdd3452f752e23bee" title="switch context." alt="" coords="433,791,493,817"/>
+<area shape="rect" href="../../da/d6f/unistd_8h.html#a87674838dd2bcf61e1a1fb5c9892ab6c" title=" " alt="" coords="425,993,501,1020"/>
+<area shape="rect" href="../../d1/df2/wait_8h.html#a710d1faf7fea3570d986f2ea40e1ed39" title=" " alt="" coords="427,487,498,513"/>
+<area shape="rect" href="../../da/d6f/unistd_8h.html#abb39b21888372e95ad3e5c59b166f5c8" title=" " alt="" coords="435,183,490,209"/>
+<area shape="rect" href="../../db/d11/printk_8h.html#a36fe4a3ea4506cb4d128b11f93187f71" title=" " alt="" coords="581,107,641,133"/>
+<area shape="rect" href="../../d0/d74/sleeplock_8h.html#a70681555597cff29eabb9ec21f7a865e" title=" " alt="" coords="557,5,664,32"/>
+<area shape="rect" href="../../d1/d4e/riscv_8h.html#a44e721f33710d723e2dc0b64ba5214e3" title=" " alt="" coords="431,1247,494,1273"/>
+<area shape="rect" href="../../d1/d4e/riscv_8h.html#a7fdda5e07cb6e0da978f9b7a15ca781d" title=" " alt="" coords="422,1297,503,1324"/>
+<area shape="rect" href="../../d7/d0b/trap_8h.html#ad02a806569a1e94124abc933ae06def1" title="Low&#45;level codes to return user code." alt="" coords="429,1348,497,1375"/>
+<area shape="rect" href="../../d1/d4e/riscv_8h.html#af11bac055e0303ab3bffdc13bdc35c84" title=" " alt="" coords="427,1399,498,1425"/>
+<area shape="rect" href="../../d1/d4e/riscv_8h.html#a3cf08d1a084970277d90f7509ce71f79" title=" " alt="" coords="419,1449,506,1476"/>
+<area shape="rect" href="../../d1/d4e/riscv_8h.html#a43f2715a3c75e490d05d6262cd903cdb" title=" " alt="" coords="425,1500,500,1527"/>
 </map>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../d3/dda/proc_8c_a95e901259bd8697ecfbd661cfe5ac26f_icgraph.png" border="0" usemap="#ad3/dda/proc_8c_a95e901259bd8697ecfbd661cfe5ac26f_icgraph" alt=""/></div>
-<map name="ad3/dda/proc_8c_a95e901259bd8697ecfbd661cfe5ac26f_icgraph" id="ad3/dda/proc_8c_a95e901259bd8697ecfbd661cfe5ac26f_icgraph">
-<area shape="rect" title=" " alt="" coords="861,132,939,159"/>
-<area shape="rect" href="../../d3/dda/proc_8c.html#acd2e1ded4bb6fce4500438bf928330f4" title=" " alt="" coords="765,81,813,108"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#a81c8a6a0cae413bc81aa223f7f7b7205" title=" " alt="" coords="271,132,341,159"/>
-<area shape="rect" href="../../d8/d60/init_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="657,5,711,32"/>
-<area shape="rect" href="../../db/dd8/syscall_8c.html#a068ed63a10c4dd229deb2ec36497d3ac" title=" " alt="" coords="651,56,717,83"/>
-<area shape="rect" href="../../d7/d0b/trap_8h.html#aed543a44247cc3ccdb7d0f9bba224549" title=" " alt="" coords="515,56,603,83"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#a95e901259bd8697ecfbd661cfe5ac26f" title=" " alt="" coords="389,107,467,133"/>
+<div class="center"><img src="../../d3/dda/proc_8c_a91f1ecf029d6974a6678b185397d2c8f_icgraph.png" border="0" usemap="#ad3/dda/proc_8c_a91f1ecf029d6974a6678b185397d2c8f_icgraph" alt=""/></div>
+<map name="ad3/dda/proc_8c_a91f1ecf029d6974a6678b185397d2c8f_icgraph" id="ad3/dda/proc_8c_a91f1ecf029d6974a6678b185397d2c8f_icgraph">
+<area shape="rect" title="Allocate new proc structure and initialize." alt="" coords="849,132,927,159"/>
+<area shape="rect" href="../../da/d6f/unistd_8h.html#acd2e1ded4bb6fce4500438bf928330f4" title=" " alt="" coords="753,81,801,108"/>
+<area shape="rect" href="../../df/d03/proc_8h.html#a81c8a6a0cae413bc81aa223f7f7b7205" title="Allocate user page for first user&#45;mode process, init." alt="" coords="271,132,341,159"/>
+<area shape="rect" href="../../d8/d60/init_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="645,5,699,32"/>
+<area shape="rect" href="../../db/dd8/syscall_8c.html#ae596b3527909b69c760d28d0e7dc7736" title=" " alt="" coords="639,56,705,83"/>
+<area shape="rect" href="../../d7/d0b/trap_8h.html#acfa5000a11c20f9f7f8775248e1a8075" title="Trap handler for user mode." alt="" coords="515,56,591,83"/>
+<area shape="rect" href="../../df/d03/proc_8h.html#a91f1ecf029d6974a6678b185397d2c8f" title="Allocate new proc structure and initialize." alt="" coords="389,107,467,133"/>
 <area shape="rect" href="../../da/da9/os1_8h.html#a406c20548822065e144564476378f8a1" title=" " alt="" coords="160,132,223,159"/>
-<area shape="rect" href="../../d0/d29/main_8c.html#aa97e24fea4daabae6b4e5d534ac8066d" title=" " alt="" coords="5,132,112,159"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#aa97e24fea4daabae6b4e5d534ac8066d" title="Kernel stack per CPU." alt="" coords="5,132,112,159"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="aa1559f2bb08f486bdd3452f752e23bee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa1559f2bb08f486bdd3452f752e23bee">&#9670;&nbsp;</a></span>swtch()</h2>
+<a id="a2d84ba9e668499e6b42d10b502590d0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d84ba9e668499e6b42d10b502590d0c">&#9670;&nbsp;</a></span>sleep()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void swtch </td>
+          <td class="memname">void sleep </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../db/db1/structcontext__t.html">context_t</a> *&#160;</td>
-          <td class="paramname"><em>old</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>wchan</em></td><td>)</td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../db/db1/structcontext__t.html">context_t</a> *&#160;</td>
-          <td class="paramname"><em>new</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Sleep for wait channel. </p>
+<p>Sleep for wait channel, process will be SLEEP. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">wchan</td><td>address to wait for. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d3/dda/proc_8c_a2d84ba9e668499e6b42d10b502590d0c_cgraph.png" border="0" usemap="#ad3/dda/proc_8c_a2d84ba9e668499e6b42d10b502590d0c_cgraph" alt=""/></div>
+<map name="ad3/dda/proc_8c_a2d84ba9e668499e6b42d10b502590d0c_cgraph" id="ad3/dda/proc_8c_a2d84ba9e668499e6b42d10b502590d0c_cgraph">
+<area shape="rect" title="Sleep for wait channel." alt="" coords="5,5,63,32"/>
+<area shape="rect" href="../../d7/d00/sched_8h.html#ad788da91743c333b5bed7c4a0dd12365" title=" " alt="" coords="111,5,171,32"/>
+<area shape="rect" href="../../db/dbe/sched_8c.html#aa1559f2bb08f486bdd3452f752e23bee" title=" " alt="" coords="219,5,279,32"/>
+</map>
+</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../d3/dda/proc_8c_aa1559f2bb08f486bdd3452f752e23bee_icgraph.png" border="0" usemap="#ad3/dda/proc_8c_aa1559f2bb08f486bdd3452f752e23bee_icgraph" alt=""/></div>
-<map name="ad3/dda/proc_8c_aa1559f2bb08f486bdd3452f752e23bee_icgraph" id="ad3/dda/proc_8c_aa1559f2bb08f486bdd3452f752e23bee_icgraph">
-<area shape="rect" title=" " alt="" coords="765,31,825,57"/>
-<area shape="rect" href="../../db/dd8/syscall_8c.html#a068ed63a10c4dd229deb2ec36497d3ac" title=" " alt="" coords="651,31,717,57"/>
-<area shape="rect" href="../../d7/d0b/trap_8h.html#aed543a44247cc3ccdb7d0f9bba224549" title=" " alt="" coords="515,5,603,32"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#a95e901259bd8697ecfbd661cfe5ac26f" title=" " alt="" coords="389,5,467,32"/>
-<area shape="rect" href="../../d3/dda/proc_8c.html#acd2e1ded4bb6fce4500438bf928330f4" title=" " alt="" coords="282,56,330,83"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#a81c8a6a0cae413bc81aa223f7f7b7205" title=" " alt="" coords="271,5,341,32"/>
-<area shape="rect" href="../../d8/d60/init_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="164,56,219,83"/>
-<area shape="rect" href="../../da/da9/os1_8h.html#a406c20548822065e144564476378f8a1" title=" " alt="" coords="160,5,223,32"/>
-<area shape="rect" href="../../d0/d29/main_8c.html#aa97e24fea4daabae6b4e5d534ac8066d" title=" " alt="" coords="5,5,112,32"/>
+<div class="center"><img src="../../d3/dda/proc_8c_a2d84ba9e668499e6b42d10b502590d0c_icgraph.png" border="0" usemap="#ad3/dda/proc_8c_a2d84ba9e668499e6b42d10b502590d0c_icgraph" alt=""/></div>
+<map name="ad3/dda/proc_8c_a2d84ba9e668499e6b42d10b502590d0c_icgraph" id="ad3/dda/proc_8c_a2d84ba9e668499e6b42d10b502590d0c_icgraph">
+<area shape="rect" title="Sleep for wait channel." alt="" coords="1471,1169,1528,1196"/>
+<area shape="rect" href="../../d0/d74/sleeplock_8h.html#ab63c9f0a9f71c65020743193340560fa" title=" " alt="" coords="1332,1119,1423,1145"/>
+<area shape="rect" href="../../d1/df2/wait_8h.html#a710d1faf7fea3570d986f2ea40e1ed39" title=" " alt="" coords="251,1195,321,1221"/>
+<area shape="rect" href="../../d2/d86/uart_8h.html#acc77a57056a321cb6f8155102946045d" title=" " alt="" coords="1191,1068,1273,1095"/>
+<area shape="rect" href="../../d2/d86/uart_8h.html#aea92973e3d3e2fb34fba39c5fc4b253a" title=" " alt="" coords="1180,1119,1284,1145"/>
+<area shape="rect" href="../../db/d11/printk_8h.html#a36fe4a3ea4506cb4d128b11f93187f71" title=" " alt="" coords="941,1093,1001,1120"/>
+<area shape="rect" href="../../d2/d86/uart_8h.html#a102eccaa73ad8b455577c902fa56e333" title=" " alt="" coords="807,1144,885,1171"/>
+<area shape="rect" href="../../d2/d86/uart_8h.html#aa1f548a14c782ece5290f74e607adee3" title=" " alt="" coords="1049,1043,1132,1069"/>
+<area shape="rect" href="../../d7/d0b/trap_8h.html#acfa5000a11c20f9f7f8775248e1a8075" title="Trap handler for user mode." alt="" coords="509,1119,585,1145"/>
+<area shape="rect" href="../../df/d03/proc_8h.html#a91f1ecf029d6974a6678b185397d2c8f" title="Allocate new proc structure and initialize." alt="" coords="372,1144,449,1171"/>
+<area shape="rect" href="../../da/d6f/unistd_8h.html#acd2e1ded4bb6fce4500438bf928330f4" title=" " alt="" coords="262,1144,310,1171"/>
+<area shape="rect" href="../../df/d03/proc_8h.html#a81c8a6a0cae413bc81aa223f7f7b7205" title="Allocate user page for first user&#45;mode process, init." alt="" coords="123,1207,193,1233"/>
+<area shape="rect" href="../../d8/d60/init_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="131,1080,185,1107"/>
+<area shape="rect" href="../../db/dd8/syscall_8c.html#ae596b3527909b69c760d28d0e7dc7736" title=" " alt="" coords="125,916,191,943"/>
+<area shape="rect" href="../../da/da9/os1_8h.html#a406c20548822065e144564476378f8a1" title=" " alt="" coords="5,587,68,613"/>
+<area shape="rect" href="../../df/d1f/panic_8h.html#a92ad17d19a46880dd5e6c99143666b4a" title=" " alt="" coords="943,529,1000,556"/>
+<area shape="rect" href="../../d2/d5a/fs_8c.html#a36f229bbda63818246ec86181b1fdd42" title="Free entry to map." alt="" coords="644,435,751,461"/>
+<area shape="rect" href="../../d2/d5a/fs_8c.html#a8e8a06c5de725cb453a74a2d455b41d1" title="Allocate new entry from map." alt="" coords="659,637,736,664"/>
+<area shape="rect" href="../../df/d26/fs_8h.html#a8fe154ec483a85a863311ef072a47c76" title=" " alt="" coords="131,587,185,613"/>
+<area shape="rect" href="../../da/d6f/unistd_8h.html#abb39b21888372e95ad3e5c59b166f5c8" title=" " alt="" coords="259,739,313,765"/>
+<area shape="rect" href="../../df/d26/fs_8h.html#a3faf776bb14363fd149b07904e252884" title=" " alt="" coords="517,739,576,765"/>
+<area shape="rect" href="../../d2/dfe/alloc_8h.html#a492d78ef609946d35518ab7090e90669" title="Allocate memory region." alt="" coords="647,29,747,56"/>
+<area shape="rect" href="../../d2/dfe/alloc_8h.html#a22a6fdcb9cfeffb921e110c072a68b99" title="Deallocate memory region." alt="" coords="799,124,893,151"/>
+<area shape="rect" href="../../da/d6f/unistd_8h.html#aafbcde67669a1b96577e735ddebd8634" title=" " alt="" coords="258,1043,314,1069"/>
+<area shape="rect" href="../../d2/d4d/file_8h.html#a952c06132c0fe469e8aa14bdfc2dd0c9" title=" " alt="" coords="381,485,440,512"/>
+<area shape="rect" href="../../df/d26/fs_8h.html#aec001fd653f9a666e84e3a4012aac6ac" title=" " alt="" coords="819,561,873,588"/>
+<area shape="rect" href="../../d2/d5a/fs_8c.html#aedcebf5c9883811f75eddb545846c536" title="Find n in map is used or not." alt="" coords="663,485,732,512"/>
+<area shape="rect" href="../../df/d26/fs_8h.html#a005941ed6b951de6188291c240fb00e9" title=" " alt="" coords="523,384,570,411"/>
+<area shape="rect" href="../../df/d26/fs_8h.html#a0a9db2c1b48271268635514b96c3049d" title=" " alt="" coords="379,688,442,715"/>
+<area shape="rect" href="../../d2/d4d/file_8h.html#ad8536352138953346cca56ec5576eb89" title=" " alt="" coords="817,283,875,309"/>
+<area shape="rect" href="../../d7/dcd/virtio_8h.html#a90c9d3888cc255a6b0ce0edf6f829634" title=" " alt="" coords="804,181,888,208"/>
+<area shape="rect" href="../../df/d26/fs_8h.html#a8379fc33406a014a1e8b899fe9dc814a" title=" " alt="" coords="382,536,439,563"/>
+<area shape="rect" href="../../df/d26/fs_8h.html#a73e9346902e5d64607762adfbc611489" title=" " alt="" coords="381,637,440,664"/>
+<area shape="rect" href="../../d4/d9e/sys__mknod_8c.html#ae92589973c691560ce2a6a97043872cf" title=" " alt="" coords="253,511,319,537"/>
+<area shape="rect" href="../../d7/d9f/fcntl_8h.html#a4e522854927c8a3a43847c39fe999391" title="Open a file." alt="" coords="259,587,313,613"/>
+<area shape="rect" href="../../de/d77/ls_8c.html#a0dd2caa6531a27dcd755c46e814b63af" title=" " alt="" coords="139,827,177,853"/>
+<area shape="rect" href="../../d1/d8f/cat_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="131,663,185,689"/>
+<area shape="rect" href="../../de/d77/ls_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="9,827,64,853"/>
+<area shape="rect" href="../../da/d6f/unistd_8h.html#a8c94afd0b7e5bb4ce95fefd964241f7f" title=" " alt="" coords="263,637,309,664"/>
+<area shape="rect" href="../../d7/dcd/virtio_8h.html#ad6b51fac330adaad6e8c3390fdbfa179" title=" " alt="" coords="116,739,200,765"/>
+<area shape="rect" href="../../df/d26/fs_8h.html#a73f693587ef4357633ceb1786d13efcd" title=" " alt="" coords="383,941,438,968"/>
+<area shape="rect" href="../../df/d03/proc_8h.html#af10928bf96b16a4464f21307cfe799d3" title="Execute a file." alt="" coords="256,941,316,968"/>
+<area shape="rect" href="../../da/d0a/vm_8h.html#abcc1fac65e3c6c00525c58749ae9f9db" title="Allocate a pages with the given order." alt="" coords="497,29,596,56"/>
+<area shape="rect" href="../../d2/dfe/alloc_8h.html#aed0eb7c3c621b7b0c8905f142b78fd5a" title="Initialize buddy allocator." alt="" coords="652,80,743,107"/>
+<area shape="rect" href="../../da/d0a/vm_8h.html#a6f021ed5330aa52b27837a6f991f1aa1" title="Free a pages with the given order." alt="" coords="650,131,745,157"/>
+<area shape="rect" href="../../da/d0a/vm_8h.html#aa40ad702f23c8e93eea74d40a0bb5ea4" title="Initialize the kernel memory allocator." alt="" coords="504,80,589,107"/>
+<area shape="rect" href="../../d9/d0e/sys__fstat_8c.html#ac1759a877da2f37512096f3a491e4112" title=" " alt="" coords="260,891,312,917"/>
+<area shape="rect" href="../../d1/dfb/sys__stat_8c.html#a3dc1b07404b646712a144e2057359876" title=" " alt="" coords="263,789,309,816"/>
+<area shape="rect" href="../../df/d26/fs_8h.html#a7220afa8e5f4bea540eb95879ea7df6e" title=" " alt="" coords="662,587,733,613"/>
+<area shape="rect" href="../../da/d6f/unistd_8h.html#a87674838dd2bcf61e1a1fb5c9892ab6c" title=" " alt="" coords="248,840,324,867"/>
 </map>
 </div>
 
@@ -603,61 +454,64 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Allocate user page for first user-mode process, init. </p>
+<p>Allocate user page for first user-mode process, init </p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d3/dda/proc_8c_a81c8a6a0cae413bc81aa223f7f7b7205_cgraph.png" border="0" usemap="#ad3/dda/proc_8c_a81c8a6a0cae413bc81aa223f7f7b7205_cgraph" alt=""/></div>
 <map name="ad3/dda/proc_8c_a81c8a6a0cae413bc81aa223f7f7b7205_cgraph" id="ad3/dda/proc_8c_a81c8a6a0cae413bc81aa223f7f7b7205_cgraph">
-<area shape="rect" title=" " alt="" coords="5,81,76,108"/>
+<area shape="rect" title="Allocate user page for first user&#45;mode process, init." alt="" coords="5,81,76,108"/>
 <area shape="rect" href="../../d3/dda/proc_8c.html#a2858154e2009b0e6e616f313177762bc" title=" " alt="" coords="141,5,184,32"/>
-<area shape="rect" href="../../da/d0a/vm_8h.html#ac3f8b55879de06493c4fe061cea29e83" title=" " alt="" coords="249,56,337,83"/>
-<area shape="rect" href="../../da/d0a/vm_8h.html#af115498144befef7de1d67b0ded22eb5" title=" " alt="" coords="680,107,760,133"/>
-<area shape="rect" href="../../d3/dda/proc_8c.html#a95e901259bd8697ecfbd661cfe5ac26f" title=" " alt="" coords="124,259,201,285"/>
-<area shape="rect" href="../../de/de9/vm_8c.html#a20fa4134dd4bffdb3a2ac4e4097f7d4b" title=" " alt="" coords="819,107,901,133"/>
-<area shape="rect" href="../../de/de9/vm_8c.html#a5d5ee00b0f9e74d54e650564939646a2" title=" " alt="" coords="819,56,901,83"/>
-<area shape="rect" href="../../da/d66/string_8h.html#aaca5c21d6f783f0d2b75936ae54b7f66" title=" " alt="" coords="953,157,1029,184"/>
-<area shape="rect" href="../../d7/d0b/trap_8h.html#aed543a44247cc3ccdb7d0f9bba224549" title=" " alt="" coords="249,613,337,640"/>
-<area shape="rect" href="../../da/da9/os1_8h.html#a9052542a47ceb5899c3c1d5ddff0f23c" title=" " alt="" coords="528,1703,621,1729"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#ab247cbaa295acd0662cf88b188f23453" title=" " alt="" coords="385,1551,480,1577"/>
-<area shape="rect" href="../../df/d1f/panic_8h.html#a92ad17d19a46880dd5e6c99143666b4a" title=" " alt="" coords="831,1348,889,1375"/>
-<area shape="rect" href="../../d1/d4e/riscv_8h.html#a86438074316906dd9aa5a0c4296cf96d" title=" " alt="" coords="393,487,472,513"/>
-<area shape="rect" href="../../d1/d4e/riscv_8h.html#acbadf9f65ec424fcfa88a1a43c837209" title=" " alt="" coords="401,537,465,564"/>
-<area shape="rect" href="../../d1/d4e/riscv_8h.html#ab63ff16838a714f96b854ede0509e2e3" title=" " alt="" coords="399,588,466,615"/>
-<area shape="rect" href="../../d1/d4e/riscv_8h.html#a781ed1f79c2a7a0a7d1b1c30bfaaa798" title=" " alt="" coords="837,993,883,1020"/>
-<area shape="rect" href="../../d7/d00/sched_8h.html#adc13a85efcb68657390ea7abab655812" title=" " alt="" coords="403,1196,463,1223"/>
-<area shape="rect" href="../../dc/d6f/trap_8c.html#a068ed63a10c4dd229deb2ec36497d3ac" title=" " alt="" coords="399,816,466,843"/>
-<area shape="rect" href="../../dc/d6f/trap_8c.html#ab247cbaa295acd0662cf88b188f23453" title=" " alt="" coords="385,1500,480,1527"/>
-<area shape="rect" href="../../d1/d4e/riscv_8h.html#a6f91b37b1dd93c696037e38f8e101b8e" title=" " alt="" coords="403,436,462,463"/>
-<area shape="rect" href="../../d2/d86/uart_8h.html#aa1f548a14c782ece5290f74e607adee3" title=" " alt="" coords="949,1348,1032,1375"/>
-<area shape="rect" href="../../d1/d87/uart_8c.html#aea92973e3d3e2fb34fba39c5fc4b253a" title=" " alt="" coords="1080,1348,1184,1375"/>
-<area shape="rect" href="../../db/dbe/sched_8c.html#aa1559f2bb08f486bdd3452f752e23bee" title=" " alt="" coords="545,1247,605,1273"/>
-<area shape="rect" href="../../d1/d4e/riscv_8h.html#a9625bfcd7df9cb3f7376321b4f2023ee" title=" " alt="" coords="545,1297,604,1324"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#abc96bd69b58b2deaddb484478d911c1b" title=" " alt="" coords="547,1044,602,1071"/>
-<area shape="rect" href="../../db/dd8/syscall_8c.html#a6363aa4e42f01c8c657effa91abfa421" title=" " alt="" coords="551,943,598,969"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#aa53d427e0341b41d6dfa1081b1fcdc0b" title=" " alt="" coords="549,563,601,589"/>
-<area shape="rect" href="../../da/d0a/vm_8h.html#a4a1c038e62a24366226807044cf12b2c" title=" " alt="" coords="689,309,751,336"/>
-<area shape="rect" href="../../d3/dda/proc_8c.html#acd2e1ded4bb6fce4500438bf928330f4" title=" " alt="" coords="551,259,599,285"/>
-<area shape="rect" href="../../d2/d1b/stat_8h.html#aee98bbe743c2d14dbaa67f01c3fb9ed5" title=" " alt="" coords="545,689,605,716"/>
-<area shape="rect" href="../../d2/d1b/stat_8h.html#ae92589973c691560ce2a6a97043872cf" title=" " alt="" coords="541,841,608,868"/>
-<area shape="rect" href="../../d7/d9f/fcntl_8h.html#a4e522854927c8a3a43847c39fe999391" title=" " alt="" coords="547,892,602,919"/>
-<area shape="rect" href="../../db/dd8/syscall_8c.html#aba50464fe1a1d83175115f6d08dd259a" title=" " alt="" coords="549,740,600,767"/>
-<area shape="rect" href="../../d3/dda/proc_8c.html#aa1559f2bb08f486bdd3452f752e23bee" title=" " alt="" coords="545,791,605,817"/>
-<area shape="rect" href="../../db/dd8/syscall_8c.html#abb39b21888372e95ad3e5c59b166f5c8" title=" " alt="" coords="693,1297,747,1324"/>
-<area shape="rect" href="../../d2/d4d/file_8h.html#aa126418263f281c0581ca7bb06a992ca" title=" " alt="" coords="690,1348,750,1375"/>
-<area shape="rect" href="../../d2/d4d/file_8h.html#ae7c1c8f26b7361c935ff79eaa5acc597" title=" " alt="" coords="687,917,753,944"/>
-<area shape="rect" href="../../de/d37/slob_8h.html#af7105034bf054e37218d6ade20db4684" title="Free memory area allocated by kmalloc. @detail Free memory area allocated by kmalloc." alt="" coords="692,512,748,539"/>
-<area shape="rect" href="../../de/d37/slob_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocate size bytes from kernel heap." alt="" coords="683,563,757,589"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#a9baba030d5bc6e9e20cf8b7d181edf35" title=" " alt="" coords="689,411,751,437"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#a73f693587ef4357633ceb1786d13efcd" title=" " alt="" coords="693,664,747,691"/>
-<area shape="rect" href="../../d1/d4e/riscv_8h.html#ac389c77856b09c5c2922da14df0f0798" title=" " alt="" coords="669,461,771,488"/>
-<area shape="rect" href="../../da/d66/string_8h.html#a7a82515b5d377be04817715c5465b647" title=" " alt="" coords="689,867,751,893"/>
-<area shape="rect" href="../../da/d66/string_8h.html#a14938524dcbeb59d7117ba5e151ad1b1" title=" " alt="" coords="821,259,899,285"/>
-<area shape="rect" href="../../d1/d4e/riscv_8h.html#a44e721f33710d723e2dc0b64ba5214e3" title=" " alt="" coords="543,1500,606,1527"/>
-<area shape="rect" href="../../d1/d4e/riscv_8h.html#a7fdda5e07cb6e0da978f9b7a15ca781d" title=" " alt="" coords="534,1551,615,1577"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#ad02a806569a1e94124abc933ae06def1" title=" " alt="" coords="541,1601,609,1628"/>
-<area shape="rect" href="../../d1/d4e/riscv_8h.html#af11bac055e0303ab3bffdc13bdc35c84" title=" " alt="" coords="539,1652,610,1679"/>
-<area shape="rect" href="../../d1/d4e/riscv_8h.html#a3cf08d1a084970277d90f7509ce71f79" title=" " alt="" coords="531,1399,618,1425"/>
-<area shape="rect" href="../../d1/d4e/riscv_8h.html#a43f2715a3c75e490d05d6262cd903cdb" title=" " alt="" coords="537,1449,612,1476"/>
+<area shape="rect" href="../../da/d0a/vm_8h.html#ac3f8b55879de06493c4fe061cea29e83" title="Dump page table entry for givien virtual address." alt="" coords="676,259,764,285"/>
+<area shape="rect" href="../../da/d0a/vm_8h.html#af115498144befef7de1d67b0ded22eb5" title="Map a virtual address to a physical address." alt="" coords="680,157,760,184"/>
+<area shape="rect" href="../../d3/dda/proc_8c.html#a91f1ecf029d6974a6678b185397d2c8f" title="Allocate new proc structure and initialize." alt="" coords="124,1279,201,1305"/>
+<area shape="rect" href="../../de/de9/vm_8c.html#a20fa4134dd4bffdb3a2ac4e4097f7d4b" title="Walk the page table." alt="" coords="812,284,895,311"/>
+<area shape="rect" href="../../de/de9/vm_8c.html#a5d5ee00b0f9e74d54e650564939646a2" title="Allocate a page table entry." alt="" coords="812,157,895,184"/>
+<area shape="rect" href="../../de/d14/lib_8h.html#aaca5c21d6f783f0d2b75936ae54b7f66" title=" " alt="" coords="943,208,1019,235"/>
+<area shape="rect" href="../../da/da9/os1_8h.html#a9052542a47ceb5899c3c1d5ddff0f23c" title=" " alt="" coords="535,1677,628,1704"/>
+<area shape="rect" href="../../d7/d0b/trap_8h.html#acfa5000a11c20f9f7f8775248e1a8075" title="Trap handler for user mode." alt="" coords="249,1279,325,1305"/>
+<area shape="rect" href="../../d7/d0b/trap_8h.html#ab247cbaa295acd0662cf88b188f23453" title="Returns to user code where trap occurs." alt="" coords="383,1532,477,1559"/>
+<area shape="rect" href="../../df/d1f/panic_8h.html#a92ad17d19a46880dd5e6c99143666b4a" title=" " alt="" coords="691,1272,749,1299"/>
+<area shape="rect" href="../../d6/d1e/plic_8h.html#a3a956eedd668e59606078abe8c0d99aa" title=" " alt="" coords="386,1329,474,1356"/>
+<area shape="rect" href="../../d6/d1e/plic_8h.html#adadd23fbca6dd31ee82150c1a58c8a83" title=" " alt="" coords="373,1380,487,1407"/>
+<area shape="rect" href="../../d1/d4e/riscv_8h.html#a86438074316906dd9aa5a0c4296cf96d" title=" " alt="" coords="391,1431,469,1457"/>
+<area shape="rect" href="../../d1/d4e/riscv_8h.html#acbadf9f65ec424fcfa88a1a43c837209" title=" " alt="" coords="398,715,462,741"/>
+<area shape="rect" href="../../d1/d4e/riscv_8h.html#ab63ff16838a714f96b854ede0509e2e3" title=" " alt="" coords="397,765,463,792"/>
+<area shape="rect" href="../../d7/d00/sched_8h.html#ad788da91743c333b5bed7c4a0dd12365" title=" " alt="" coords="690,1069,750,1096"/>
+<area shape="rect" href="../../dc/d6f/trap_8c.html#ae596b3527909b69c760d28d0e7dc7736" title=" " alt="" coords="397,816,463,843"/>
+<area shape="rect" href="../../d2/d86/uart_8h.html#a102eccaa73ad8b455577c902fa56e333" title=" " alt="" coords="391,1595,469,1621"/>
+<area shape="rect" href="../../dc/d6f/trap_8c.html#ab247cbaa295acd0662cf88b188f23453" title="Returns to user code where trap occurs." alt="" coords="383,1481,477,1508"/>
+<area shape="rect" href="../../d1/d4e/riscv_8h.html#a6f91b37b1dd93c696037e38f8e101b8e" title=" " alt="" coords="401,1228,459,1255"/>
+<area shape="rect" href="../../d2/d86/uart_8h.html#aa1f548a14c782ece5290f74e607adee3" title=" " alt="" coords="812,1399,895,1425"/>
+<area shape="rect" href="../../db/dbe/sched_8c.html#aa1559f2bb08f486bdd3452f752e23bee" title=" " alt="" coords="823,1069,883,1096"/>
+<area shape="rect" href="../../df/d03/proc_8h.html#abc96bd69b58b2deaddb484478d911c1b" title="Exit process." alt="" coords="554,968,609,995"/>
+<area shape="rect" href="../../da/d6f/unistd_8h.html#a4b20a70d83d7f74a2734da590b4b8cf8" title=" " alt="" coords="560,1019,603,1045"/>
+<area shape="rect" href="../../da/d6f/unistd_8h.html#aafbcde67669a1b96577e735ddebd8634" title=" " alt="" coords="553,1272,609,1299"/>
+<area shape="rect" href="../../da/d6f/unistd_8h.html#a6363aa4e42f01c8c657effa91abfa421" title=" " alt="" coords="558,1069,605,1096"/>
+<area shape="rect" href="../../df/d03/proc_8h.html#af10928bf96b16a4464f21307cfe799d3" title="Execute a file." alt="" coords="551,208,611,235"/>
+<area shape="rect" href="../../da/d0a/vm_8h.html#a4a1c038e62a24366226807044cf12b2c" title="Convert a virtual address to a physical address." alt="" coords="689,309,751,336"/>
+<area shape="rect" href="../../da/d6f/unistd_8h.html#acd2e1ded4bb6fce4500438bf928330f4" title=" " alt="" coords="557,309,605,336"/>
+<area shape="rect" href="../../d9/d0e/sys__fstat_8c.html#ac1759a877da2f37512096f3a491e4112" title=" " alt="" coords="555,360,607,387"/>
+<area shape="rect" href="../../da/d6f/unistd_8h.html#a8c94afd0b7e5bb4ce95fefd964241f7f" title=" " alt="" coords="558,411,605,437"/>
+<area shape="rect" href="../../d2/d56/sys__mkdir_8c.html#aee98bbe743c2d14dbaa67f01c3fb9ed5" title=" " alt="" coords="551,917,611,944"/>
+<area shape="rect" href="../../d7/d9f/fcntl_8h.html#a4e522854927c8a3a43847c39fe999391" title="Open a file." alt="" coords="693,715,747,741"/>
+<area shape="rect" href="../../db/dd8/syscall_8c.html#ae92589973c691560ce2a6a97043872cf" title=" " alt="" coords="548,563,615,589"/>
+<area shape="rect" href="../../da/d6f/unistd_8h.html#aba50464fe1a1d83175115f6d08dd259a" title=" " alt="" coords="556,613,607,640"/>
+<area shape="rect" href="../../da/d6f/unistd_8h.html#a3b818446c640442e94e746319f5f2858" title=" " alt="" coords="556,664,607,691"/>
+<area shape="rect" href="../../d1/dfb/sys__stat_8c.html#a3dc1b07404b646712a144e2057359876" title=" " alt="" coords="558,715,605,741"/>
+<area shape="rect" href="../../df/d03/proc_8h.html#aa1559f2bb08f486bdd3452f752e23bee" title="switch context." alt="" coords="551,765,611,792"/>
+<area shape="rect" href="../../da/d6f/unistd_8h.html#a87674838dd2bcf61e1a1fb5c9892ab6c" title=" " alt="" coords="543,816,619,843"/>
+<area shape="rect" href="../../d1/df2/wait_8h.html#a710d1faf7fea3570d986f2ea40e1ed39" title=" " alt="" coords="546,867,617,893"/>
+<area shape="rect" href="../../da/d6f/unistd_8h.html#abb39b21888372e95ad3e5c59b166f5c8" title=" " alt="" coords="554,1120,609,1147"/>
+<area shape="rect" href="../../db/d11/printk_8h.html#a36fe4a3ea4506cb4d128b11f93187f71" title=" " alt="" coords="690,1525,750,1552"/>
+<area shape="rect" href="../../d1/d4e/riscv_8h.html#a44e721f33710d723e2dc0b64ba5214e3" title=" " alt="" coords="550,1475,613,1501"/>
+<area shape="rect" href="../../d1/d4e/riscv_8h.html#a7fdda5e07cb6e0da978f9b7a15ca781d" title=" " alt="" coords="541,1525,622,1552"/>
+<area shape="rect" href="../../d7/d0b/trap_8h.html#ad02a806569a1e94124abc933ae06def1" title="Low&#45;level codes to return user code." alt="" coords="547,1576,615,1603"/>
+<area shape="rect" href="../../d1/d4e/riscv_8h.html#af11bac055e0303ab3bffdc13bdc35c84" title=" " alt="" coords="546,1627,617,1653"/>
+<area shape="rect" href="../../d1/d4e/riscv_8h.html#a3cf08d1a084970277d90f7509ce71f79" title=" " alt="" coords="538,1373,625,1400"/>
+<area shape="rect" href="../../d1/d4e/riscv_8h.html#a43f2715a3c75e490d05d6262cd903cdb" title=" " alt="" coords="544,1424,619,1451"/>
 </map>
 </div>
 <div class="dynheader">
@@ -665,26 +519,73 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d3/dda/proc_8c_a81c8a6a0cae413bc81aa223f7f7b7205_icgraph.png" border="0" usemap="#ad3/dda/proc_8c_a81c8a6a0cae413bc81aa223f7f7b7205_icgraph" alt=""/></div>
 <map name="ad3/dda/proc_8c_a81c8a6a0cae413bc81aa223f7f7b7205_icgraph" id="ad3/dda/proc_8c_a81c8a6a0cae413bc81aa223f7f7b7205_icgraph">
-<area shape="rect" title=" " alt="" coords="271,5,341,32"/>
+<area shape="rect" title="Allocate user page for first user&#45;mode process, init." alt="" coords="271,5,341,32"/>
 <area shape="rect" href="../../da/da9/os1_8h.html#a406c20548822065e144564476378f8a1" title=" " alt="" coords="160,5,223,32"/>
-<area shape="rect" href="../../d0/d29/main_8c.html#aa97e24fea4daabae6b4e5d534ac8066d" title=" " alt="" coords="5,5,112,32"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#aa97e24fea4daabae6b4e5d534ac8066d" title="Kernel stack per CPU." alt="" coords="5,5,112,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a889b2e06ff2f0f329447d6d4961bb92b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a889b2e06ff2f0f329447d6d4961bb92b">&#9670;&nbsp;</a></span>wakeup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void wakeup </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>wchan</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Wakeup process waitting for wchan. </p>
+<p>Wakeup process waitting for wchan, set RUNNABLE. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">wchan</td><td>address to wakeup. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d3/dda/proc_8c_a889b2e06ff2f0f329447d6d4961bb92b_icgraph.png" border="0" usemap="#ad3/dda/proc_8c_a889b2e06ff2f0f329447d6d4961bb92b_icgraph" alt=""/></div>
+<map name="ad3/dda/proc_8c_a889b2e06ff2f0f329447d6d4961bb92b_icgraph" id="ad3/dda/proc_8c_a889b2e06ff2f0f329447d6d4961bb92b_icgraph">
+<area shape="rect" title="Wakeup process waitting for wchan." alt="" coords="919,31,991,57"/>
+<area shape="rect" href="../../df/d03/proc_8h.html#abc96bd69b58b2deaddb484478d911c1b" title="Exit process." alt="" coords="790,5,845,32"/>
+<area shape="rect" href="../../d0/d74/sleeplock_8h.html#a70681555597cff29eabb9ec21f7a865e" title=" " alt="" coords="764,56,871,83"/>
+<area shape="rect" href="../../db/dd8/syscall_8c.html#ae596b3527909b69c760d28d0e7dc7736" title=" " alt="" coords="644,5,711,32"/>
+<area shape="rect" href="../../d7/d0b/trap_8h.html#acfa5000a11c20f9f7f8775248e1a8075" title="Trap handler for user mode." alt="" coords="515,56,591,83"/>
+<area shape="rect" href="../../df/d03/proc_8h.html#a91f1ecf029d6974a6678b185397d2c8f" title="Allocate new proc structure and initialize." alt="" coords="389,56,467,83"/>
+<area shape="rect" href="../../da/d6f/unistd_8h.html#acd2e1ded4bb6fce4500438bf928330f4" title=" " alt="" coords="282,5,330,32"/>
+<area shape="rect" href="../../df/d03/proc_8h.html#a81c8a6a0cae413bc81aa223f7f7b7205" title="Allocate user page for first user&#45;mode process, init." alt="" coords="271,56,341,83"/>
+<area shape="rect" href="../../d8/d60/init_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="164,5,219,32"/>
+<area shape="rect" href="../../da/da9/os1_8h.html#a406c20548822065e144564476378f8a1" title=" " alt="" coords="160,56,223,83"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#aa97e24fea4daabae6b4e5d534ac8066d" title="Kernel stack per CPU." alt="" coords="5,56,112,83"/>
+<area shape="rect" href="../../d2/d86/uart_8h.html#a102eccaa73ad8b455577c902fa56e333" title=" " alt="" coords="639,56,716,83"/>
 </map>
 </div>
 
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a id="a58f2fd4cb4c7e59b909a1000afbfc971"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a58f2fd4cb4c7e59b909a1000afbfc971">&#9670;&nbsp;</a></span>cpus</h2>
+<a id="af6f66d3e0557a98874e27146e4303ff9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6f66d3e0557a98874e27146e4303ff9">&#9670;&nbsp;</a></span>cpu</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">struct <a class="el" href="../../db/d62/structcpu.html">cpu</a> cpus[<a class="el" href="../../df/d03/proc_8h.html#a1e1e0a2717788848aae0ca35c216e8fc">NCPUS</a>]</td>
+          <td class="memname">struct <a class="el" href="../../db/d62/structcpu.html">cpu</a> <a class="el" href="../../db/d62/structcpu.html">cpu</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Processors kernel can run. </p>
 
 </div>
 </div>
@@ -693,11 +594,19 @@ Here is the caller graph for this function:</div>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d9/d49/types_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a> mpid = 1</td>
+          <td class="memname"><a class="el" href="../../d1/d4e/riscv_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a> mpid = 1</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
@@ -713,6 +622,8 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Processes. </p>
 
 </div>
 </div>

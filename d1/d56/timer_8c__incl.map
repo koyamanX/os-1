@@ -1,7 +1,7 @@
 <map id="kernel/timer.c" name="kernel/timer.c">
-<area shape="rect" id="node1" title=" " alt="" coords="80,5,191,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="71,5,181,32"/>
 <area shape="rect" id="node2" href="$da/da9/os1_8h.html" title=" " alt="" coords="5,80,63,107"/>
-<area shape="rect" id="node3" href="$d9/d49/types_8h.html" title=" " alt="" coords="53,155,149,181"/>
-<area shape="rect" id="node4" href="$d1/d4e/riscv_8h.html" title=" " alt="" coords="138,80,202,107"/>
-<area shape="rect" id="node5" href="$d5/dd0/timer_8h.html" title=" " alt="" coords="227,80,295,107"/>
+<area shape="rect" id="node3" href="$d1/d4e/riscv_8h.html" title=" " alt="" coords="50,155,114,181"/>
+<area shape="rect" id="node4" title=" " alt="" coords="69,229,165,256"/>
+<area shape="rect" id="node5" href="$d5/dd0/timer_8h.html" title=" " alt="" coords="189,80,257,107"/>
 </map>

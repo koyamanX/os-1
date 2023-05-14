@@ -1,0 +1,11 @@
+<map id="kernel/kmalloc.c" name="kernel/kmalloc.c">
+<area shape="rect" id="node1" title=" " alt="" coords="92,5,221,32"/>
+<area shape="rect" id="node2" href="$d4/d03/kmalloc_8h.html" title="kmalloc allocator" alt="" coords="44,155,130,181"/>
+<area shape="rect" id="node5" href="$db/d11/printk_8h.html" title=" " alt="" coords="23,80,95,107"/>
+<area shape="rect" id="node6" title=" " alt="" coords="119,80,194,107"/>
+<area shape="rect" id="node7" title=" " alt="" coords="218,80,289,107"/>
+<area shape="rect" id="node8" href="$da/d0a/vm_8h.html" title="Virtual memory management." alt="" coords="313,80,368,107"/>
+<area shape="rect" id="node3" href="$d1/d4e/riscv_8h.html" title=" " alt="" coords="238,229,302,256"/>
+<area shape="rect" id="node4" title=" " alt="" coords="256,304,352,331"/>
+<area shape="rect" id="node9" href="$d2/dfe/alloc_8h.html" title="Buddy allocator." alt="" coords="308,155,373,181"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="uvmcopy" name="uvmcopy">
+<area shape="rect" id="node1" title="Copy a page table." alt="" coords="5,56,88,83"/>
+<area shape="rect" id="node2" href="$de/de9/vm_8c.html#a20fa4134dd4bffdb3a2ac4e4097f7d4b" title="Walk the page table." alt="" coords="141,5,224,32"/>
+<area shape="rect" id="node3" href="$de/d14/lib_8h.html#a802c986820d3866639922b6bc9484f90" title=" " alt="" coords="136,56,229,83"/>
+<area shape="rect" id="node4" href="$de/de9/vm_8c.html#af986f6342c7d9380b9a8f1f139a9ed64" title="Map a virtual address to a physical address for user." alt="" coords="143,107,223,133"/>
+<area shape="rect" id="node5" href="$de/de9/vm_8c.html#af115498144befef7de1d67b0ded22eb5" title="Map a virtual address to a physical address." alt="" coords="277,107,357,133"/>
+<area shape="rect" id="node6" href="$de/de9/vm_8c.html#a5d5ee00b0f9e74d54e650564939646a2" title="Allocate a page table entry." alt="" coords="405,107,488,133"/>
+<area shape="rect" id="node7" href="$de/d14/lib_8h.html#aaca5c21d6f783f0d2b75936ae54b7f66" title=" " alt="" coords="536,107,612,133"/>
+</map>

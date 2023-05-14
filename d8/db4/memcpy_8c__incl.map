@@ -1,5 +1,6 @@
-<map id="libc/string/memcpy.c" name="libc/string/memcpy.c">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,161,32"/>
-<area shape="rect" id="node2" href="$da/d66/string_8h.html" title=" " alt="" coords="48,80,119,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="46,155,121,181"/>
+<map id="kernel/lib/memcpy.c" name="kernel/lib/memcpy.c">
+<area shape="rect" id="node1" title=" " alt="" coords="16,5,168,32"/>
+<area shape="rect" id="node2" href="$de/d14/lib_8h.html" title=" " alt="" coords="67,80,117,107"/>
+<area shape="rect" id="node3" href="$d0/dc6/libgen_8h.html" title=" " alt="" coords="5,155,80,181"/>
+<area shape="rect" id="node4" title=" " alt="" coords="104,155,179,181"/>
 </map>

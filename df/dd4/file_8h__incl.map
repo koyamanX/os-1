@@ -1,7 +1,9 @@
 <map id="include/file.h" name="include/file.h">
-<area shape="rect" id="node1" title=" " alt="" coords="99,5,204,32"/>
-<area shape="rect" id="node2" href="$df/d26/fs_8h.html" title="Structures and function prototypes for low&#45;level access to minix3 filesystem." alt="" coords="97,80,144,107"/>
-<area shape="rect" id="node5" href="$d9/d49/types_8h.html" title=" " alt="" coords="101,229,197,256"/>
-<area shape="rect" id="node3" href="$d4/dca/devsw_8h.html" title=" " alt="" coords="19,155,94,181"/>
-<area shape="rect" id="node4" title=" " alt="" coords="5,229,76,256"/>
+<area shape="rect" id="node1" title=" " alt="" coords="10,5,115,32"/>
+<area shape="rect" id="node2" href="$df/d26/fs_8h.html" title="Structures and function prototypes for low&#45;level access to minix3 filesystem." alt="" coords="98,80,145,107"/>
+<area shape="rect" id="node6" title=" " alt="" coords="36,379,132,405"/>
+<area shape="rect" id="node3" href="$d4/dca/devsw_8h.html" title=" " alt="" coords="84,155,159,181"/>
+<area shape="rect" id="node5" href="$d1/d4e/riscv_8h.html" title=" " alt="" coords="152,304,216,331"/>
+<area shape="rect" id="node4" href="$d6/d6d/buf_8h.html" title="Buffer cache for disk I/O operations." alt="" coords="94,229,149,256"/>
+<area shape="rect" id="node7" title=" " alt="" coords="225,229,295,256"/>
 </map>

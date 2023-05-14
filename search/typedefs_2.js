@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['i32_976',['i32',['../d9/d49/types_8h.html#a576bef63f021adcd1d541f9303083013',1,'types.h']]],
-  ['i64_977',['i64',['../d9/d49/types_8h.html#a5106b4bd2f7bcab473ddcebe168264bd',1,'types.h']]],
-  ['ino_5ft_978',['ino_t',['../d9/d49/types_8h.html#af96c3b20f756fefb1c68dc7535c7206b',1,'types.h']]]
+  ['pagetable_5ft_1172',['pagetable_t',['../d1/d4e/riscv_8h.html#a7da3c85dcd23ae062e5c8a57d0675e9e',1,'riscv.h']]],
+  ['pte_5ft_1173',['pte_t',['../d1/d4e/riscv_8h.html#aafc6a6819ecc73b6a588f9459857e622',1,'riscv.h']]]
 ];

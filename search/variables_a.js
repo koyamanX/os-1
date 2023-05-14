@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['len_866',['len',['../d7/d7a/structvirtq__desc.html#ae73e6c2f83a66b51c232b194f92554db',1,'virtq_desc::len()'],['../db/d2b/structvirtq__used__elem.html#aebaf1c1712abff5682125654e5798f4e',1,'virtq_used_elem::len()']]],
-  ['log_5fzone_5fsize_867',['log_zone_size',['../de/d37/structsuper__block.html#acee82b83fa28609596fa273a342ba317',1,'super_block']]]
+  ['kernelvec_1056',['kernelvec',['../da/da9/os1_8h.html#aba7c5e399d593ff2e98a940c32feb525',1,'os1.h']]],
+  ['ksp_1057',['ksp',['../d7/dca/structtrapframe__t.html#ad2422df1b41954eb8b2e2ebfa1191e1c',1,'trapframe_t']]],
+  ['kstack_1058',['kstack',['../de/d48/structproc.html#a50868aea73497273250430272e5efe37',1,'proc']]]
 ];

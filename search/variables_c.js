@@ -1,9 +1,11 @@
 var searchData=
 [
-  ['name_878',['name',['../d5/dac/structdirect.html#aaa2a7f7cf21d809d991d8ec617b861a9',1,'direct::name()'],['../de/d48/structproc.html#ac04af53e17d24b90c3cbfab56d658d62',1,'proc::name()']]],
-  ['next_879',['next',['../d3/d8f/structbuddy__header.html#aaddecf917c155f86248159693a3646f5',1,'buddy_header::next()'],['../d7/d1a/structpage.html#a27ff7807791328e47d47e37660eb53e0',1,'page::next()'],['../da/d88/structslob__header.html#ab8496cd97208d0829e5401b58783a5ed',1,'slob_header::next()'],['../d1/d94/structslob__big__header.html#a81703ea2fd4c4cd187c53ba615326eb0',1,'slob_big_header::next()'],['../d7/d7a/structvirtq__desc.html#a5a3254675360dbd35c514bff48f4848b',1,'virtq_desc::next()']]],
-  ['ninodes_880',['ninodes',['../de/d37/structsuper__block.html#a1cad00122dbbf36bc95ac630530a26be',1,'super_block']]],
-  ['nlinks_881',['nlinks',['../d0/df8/structinode.html#ad1f18bcb3dfa99f7e9c464d95dd03ca1',1,'inode']]],
-  ['nr_5ffree_882',['nr_free',['../da/d45/structbuddy__free__area.html#a2ae50991c04358e3523ff0beaafb4620',1,'buddy_free_area']]],
-  ['nzones_883',['nzones',['../de/d37/structsuper__block.html#a4ebc538e291f898636a89ecf0cff329e',1,'super_block']]]
+  ['magic_1063',['magic',['../de/d37/structsuper__block.html#a766c4d372a97fc1b1977005ffa30b3b4',1,'super_block']]],
+  ['max_5fsize_1064',['max_size',['../de/d37/structsuper__block.html#a450199bdac7fb70d19da7006a7477d7e',1,'super_block']]],
+  ['mode_1065',['mode',['../d0/df8/structinode.html#a397f6a188c6ec28a95fc16b0611290a6',1,'inode']]],
+  ['mount_1066',['mount',['../d4/dca/devsw_8h.html#acf7382ce44b4e7a37e65e514bd6233d9',1,'mount():&#160;devsw.c'],['../d4/d5b/devsw_8c.html#aa65ac8a81870852949cf00fd744453aa',1,'mount():&#160;devsw.c']]],
+  ['mpid_1067',['mpid',['../d3/dda/proc_8c.html#a38a4e7338da76d91ea0a5557316e9372',1,'proc.c']]],
+  ['mscratch_1068',['mscratch',['../df/d41/timer_8c.html#afe14247ecac5fe07c254bcaa42c05826',1,'timer.c']]],
+  ['mtime_1069',['mtime',['../d0/df8/structinode.html#a4752b2ba697dcb8abb7e5bd94b5cb2d7',1,'inode']]],
+  ['mtimecmp_1070',['mtimecmp',['../d2/da0/structmscratch.html#a5a256e2688cfe8784f6188dd812e6b2d',1,'mscratch']]]
 ];

@@ -1,0 +1,11 @@
+<map id="kernel/sys/sys_mkdir.c" name="kernel/sys/sys_mkdir.c">
+<area shape="rect" id="node1" title=" " alt="" coords="56,5,225,32"/>
+<area shape="rect" id="node2" href="$d7/d9f/fcntl_8h.html" title="File control options." alt="" coords="5,155,68,181"/>
+<area shape="rect" id="node4" href="$df/d26/fs_8h.html" title="Structures and function prototypes for low&#45;level access to minix3 filesystem." alt="" coords="117,80,164,107"/>
+<area shape="rect" id="node9" title=" " alt="" coords="189,80,274,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="55,379,151,405"/>
+<area shape="rect" id="node5" href="$d4/dca/devsw_8h.html" title=" " alt="" coords="103,155,178,181"/>
+<area shape="rect" id="node7" href="$d1/d4e/riscv_8h.html" title=" " alt="" coords="171,304,235,331"/>
+<area shape="rect" id="node6" href="$d6/d6d/buf_8h.html" title="Buffer cache for disk I/O operations." alt="" coords="113,229,168,256"/>
+<area shape="rect" id="node8" title=" " alt="" coords="244,229,315,256"/>
+</map>

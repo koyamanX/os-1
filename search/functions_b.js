@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['namei_743',['namei',['../df/d26/fs_8h.html#a9baba030d5bc6e9e20cf8b7d181edf35',1,'namei(char *path):&#160;fs.c'],['../d2/d5a/fs_8c.html#a9baba030d5bc6e9e20cf8b7d181edf35',1,'namei(char *path):&#160;fs.c']]],
-  ['newproc_744',['newproc',['../df/d03/proc_8h.html#a95e901259bd8697ecfbd661cfe5ac26f',1,'newproc(void):&#160;proc.c'],['../d3/dda/proc_8c.html#a95e901259bd8697ecfbd661cfe5ac26f',1,'newproc(void):&#160;proc.c']]],
-  ['nulldev_745',['nulldev',['../d4/d5b/devsw_8c.html#a29ec50f598d42ea16463f3d290343a61',1,'devsw.c']]]
+  ['link_898',['link',['../da/d6f/unistd_8h.html#a8c94afd0b7e5bb4ce95fefd964241f7f',1,'link(const char *path1, const char *path2):&#160;sys_link.c'],['../d7/d6a/sys__link_8c.html#a8c94afd0b7e5bb4ce95fefd964241f7f',1,'link(const char *path1, const char *path2):&#160;sys_link.c']]],
+  ['ls_899',['ls',['../de/d77/ls_8c.html#a0dd2caa6531a27dcd755c46e814b63af',1,'ls.c']]]
 ];

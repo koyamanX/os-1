@@ -1,0 +1,5 @@
+<map id="uvmunmap" name="uvmunmap">
+<area shape="rect" id="node1" title="Unmap a virtual address for user." alt="" coords="5,5,101,32"/>
+<area shape="rect" id="node2" href="$de/de9/vm_8c.html#a5748283d139d13b1100338f2ea7774a8" title="Unmap a virtual address." alt="" coords="149,5,245,32"/>
+<area shape="rect" id="node3" href="$de/de9/vm_8c.html#a20fa4134dd4bffdb3a2ac4e4097f7d4b" title="Walk the page table." alt="" coords="293,5,376,32"/>
+</map>

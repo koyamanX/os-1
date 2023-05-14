@@ -1,11 +1,12 @@
 <map id="kernel/alloc.c" name="kernel/alloc.c">
-<area shape="rect" id="node1" title=" " alt="" coords="99,5,207,32"/>
-<area shape="rect" id="node2" href="$d2/dfe/alloc_8h.html" title="Buddy allocator." alt="" coords="138,155,203,181"/>
-<area shape="rect" id="node5" href="$df/d1f/panic_8h.html" title=" " alt="" coords="24,80,93,107"/>
-<area shape="rect" id="node6" href="$db/d11/printk_8h.html" title=" " alt="" coords="117,80,189,107"/>
-<area shape="rect" id="node7" href="$da/d66/string_8h.html" title=" " alt="" coords="293,80,363,107"/>
-<area shape="rect" id="node9" href="$da/d0a/vm_8h.html" title=" " alt="" coords="214,80,269,107"/>
-<area shape="rect" id="node3" href="$d1/d4e/riscv_8h.html" title=" " alt="" coords="208,229,272,256"/>
-<area shape="rect" id="node4" href="$d9/d49/types_8h.html" title=" " alt="" coords="157,304,253,331"/>
-<area shape="rect" id="node8" title=" " alt="" coords="291,155,365,181"/>
+<area shape="rect" id="node1" title=" " alt="" coords="173,5,281,32"/>
+<area shape="rect" id="node2" href="$d2/dfe/alloc_8h.html" title="Buddy allocator." alt="" coords="306,155,371,181"/>
+<area shape="rect" id="node5" href="$de/d14/lib_8h.html" title=" " alt="" coords="67,80,117,107"/>
+<area shape="rect" id="node8" href="$df/d1f/panic_8h.html" title=" " alt="" coords="192,80,261,107"/>
+<area shape="rect" id="node9" href="$db/d11/printk_8h.html" title=" " alt="" coords="285,80,357,107"/>
+<area shape="rect" id="node10" href="$da/d0a/vm_8h.html" title="Virtual memory management." alt="" coords="382,80,437,107"/>
+<area shape="rect" id="node3" href="$d1/d4e/riscv_8h.html" title=" " alt="" coords="376,229,440,256"/>
+<area shape="rect" id="node4" title=" " alt="" coords="325,304,421,331"/>
+<area shape="rect" id="node6" href="$d0/dc6/libgen_8h.html" title=" " alt="" coords="104,155,179,181"/>
+<area shape="rect" id="node7" title=" " alt="" coords="5,155,80,181"/>
 </map>

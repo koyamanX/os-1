@@ -1,4 +1,8 @@
 <map id="uart_puts" name="uart_puts">
 <area shape="rect" id="node1" title=" " alt="" coords="5,5,88,32"/>
 <area shape="rect" id="node2" href="$d1/d87/uart_8c.html#aea92973e3d3e2fb34fba39c5fc4b253a" title=" " alt="" coords="136,5,240,32"/>
+<area shape="rect" id="node3" href="$d0/d74/sleeplock_8h.html#ab63c9f0a9f71c65020743193340560fa" title=" " alt="" coords="288,5,379,32"/>
+<area shape="rect" id="node4" href="$df/d03/proc_8h.html#a2d84ba9e668499e6b42d10b502590d0c" title="Sleep for wait channel." alt="" coords="427,5,484,32"/>
+<area shape="rect" id="node5" href="$d7/d00/sched_8h.html#ad788da91743c333b5bed7c4a0dd12365" title=" " alt="" coords="532,5,592,32"/>
+<area shape="rect" id="node6" href="$db/dbe/sched_8c.html#aa1559f2bb08f486bdd3452f752e23bee" title=" " alt="" coords="640,5,700,32"/>
 </map>

@@ -69,41 +69,63 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Process structure.  
+ <a href="../../de/d48/structproc.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="../../df/d03/proc_8h_source.html">proc.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for proc:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d6/d98/structproc__coll__graph.png" border="0" usemap="#aproc_coll__map" alt="Collaboration graph"/></div>
 <map name="aproc_coll__map" id="aproc_coll__map">
-<area shape="rect" title=" " alt="" coords="131,777,211,913"/>
-<area shape="rect" href="../../db/db1/structcontext__t.html" title=" " alt="" coords="5,447,88,715"/>
-<area shape="rect" href="../../d7/dca/structtrapframe__t.html" title=" " alt="" coords="113,469,229,693"/>
-<area shape="rect" href="../../d7/d3a/structfile.html" title=" " alt="" coords="253,527,328,634"/>
-<area shape="rect" href="../../d0/df8/structinode.html" title="Struct for minix3 inode." alt="" coords="251,160,331,384"/>
-<area shape="rect" href="../../d2/dd6/structdev__t.html" title=" " alt="" coords="253,5,328,97"/>
+<area shape="rect" title="Process structure." alt="" coords="131,637,211,817"/>
+<area shape="rect" href="../../db/db1/structcontext__t.html" title="Structure for execution context of process." alt="" coords="5,307,88,575"/>
+<area shape="rect" href="../../d7/dca/structtrapframe__t.html" title="Struct for trapframe." alt="" coords="113,329,229,553"/>
+<area shape="rect" href="../../d7/d3a/structfile.html" title=" " alt="" coords="253,387,328,494"/>
+<area shape="rect" href="../../d0/df8/structinode.html" title="Struct for minix3 inode." alt="" coords="251,5,331,244"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:a4fa41150178e74fc442d2cb6a988a103"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d49/types_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d48/structproc.html#a4fa41150178e74fc442d2cb6a988a103">stat</a></td></tr>
+<tr class="memitem:a4fa41150178e74fc442d2cb6a988a103"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d4e/riscv_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d48/structproc.html#a4fa41150178e74fc442d2cb6a988a103">stat</a></td></tr>
+<tr class="memdesc:a4fa41150178e74fc442d2cb6a988a103"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execution status of process.  <a href="../../de/d48/structproc.html#a4fa41150178e74fc442d2cb6a988a103">More...</a><br /></td></tr>
 <tr class="separator:a4fa41150178e74fc442d2cb6a988a103"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa5c392af054022bc27b1fd0bb1c78e78"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d49/types_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d48/structproc.html#aa5c392af054022bc27b1fd0bb1c78e78">pid</a></td></tr>
+<tr class="memitem:aa5c392af054022bc27b1fd0bb1c78e78"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d4e/riscv_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d48/structproc.html#aa5c392af054022bc27b1fd0bb1c78e78">pid</a></td></tr>
+<tr class="memdesc:aa5c392af054022bc27b1fd0bb1c78e78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process IDs.  <a href="../../de/d48/structproc.html#aa5c392af054022bc27b1fd0bb1c78e78">More...</a><br /></td></tr>
 <tr class="separator:aa5c392af054022bc27b1fd0bb1c78e78"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8acdd0fc203b56d7cf7c68ac31e5d2b6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/dca/structtrapframe__t.html">trapframe_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d48/structproc.html#a8acdd0fc203b56d7cf7c68ac31e5d2b6">tf</a></td></tr>
+<tr class="memdesc:a8acdd0fc203b56d7cf7c68ac31e5d2b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Trapframe.  <a href="../../de/d48/structproc.html#a8acdd0fc203b56d7cf7c68ac31e5d2b6">More...</a><br /></td></tr>
 <tr class="separator:a8acdd0fc203b56d7cf7c68ac31e5d2b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a23c110ea6d3fe73950a899fbcfc452e2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/db1/structcontext__t.html">context_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d48/structproc.html#a23c110ea6d3fe73950a899fbcfc452e2">ctx</a></td></tr>
+<tr class="memdesc:a23c110ea6d3fe73950a899fbcfc452e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Context.  <a href="../../de/d48/structproc.html#a23c110ea6d3fe73950a899fbcfc452e2">More...</a><br /></td></tr>
 <tr class="separator:a23c110ea6d3fe73950a899fbcfc452e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac04af53e17d24b90c3cbfab56d658d62"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d48/structproc.html#ac04af53e17d24b90c3cbfab56d658d62">name</a> [16]</td></tr>
+<tr class="memdesc:ac04af53e17d24b90c3cbfab56d658d62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Name of process.  <a href="../../de/d48/structproc.html#ac04af53e17d24b90c3cbfab56d658d62">More...</a><br /></td></tr>
 <tr class="separator:ac04af53e17d24b90c3cbfab56d658d62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a9eb0352efe3fc097c91fccfaac50bd"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="../../d7/d3a/structfile.html">file</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d48/structproc.html#a4a9eb0352efe3fc097c91fccfaac50bd">ofile</a> [<a class="el" href="../../df/d03/proc_8h.html#a80bacbaea8dd6aecf216d85d981bcb21">NOFILE</a>]</td></tr>
+<tr class="memdesc:a4a9eb0352efe3fc097c91fccfaac50bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open files.  <a href="../../de/d48/structproc.html#a4a9eb0352efe3fc097c91fccfaac50bd">More...</a><br /></td></tr>
 <tr class="separator:a4a9eb0352efe3fc097c91fccfaac50bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa371d8a11eec6278f8a76715bddecbc5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d4e/riscv_8h.html#a7da3c85dcd23ae062e5c8a57d0675e9e">pagetable_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d48/structproc.html#aa371d8a11eec6278f8a76715bddecbc5">pgtbl</a></td></tr>
+<tr class="memdesc:aa371d8a11eec6278f8a76715bddecbc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pagetable of process.  <a href="../../de/d48/structproc.html#aa371d8a11eec6278f8a76715bddecbc5">More...</a><br /></td></tr>
 <tr class="separator:aa371d8a11eec6278f8a76715bddecbc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a50868aea73497273250430272e5efe37"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d49/types_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d48/structproc.html#a50868aea73497273250430272e5efe37">kstack</a></td></tr>
+<tr class="memitem:a4df10244ea5f7d13341c38a96c66605f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d4e/riscv_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d48/structproc.html#a4df10244ea5f7d13341c38a96c66605f">heap</a></td></tr>
+<tr class="memdesc:a4df10244ea5f7d13341c38a96c66605f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start address of heap.  <a href="../../de/d48/structproc.html#a4df10244ea5f7d13341c38a96c66605f">More...</a><br /></td></tr>
+<tr class="separator:a4df10244ea5f7d13341c38a96c66605f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50868aea73497273250430272e5efe37"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d4e/riscv_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d48/structproc.html#a50868aea73497273250430272e5efe37">kstack</a></td></tr>
+<tr class="memdesc:a50868aea73497273250430272e5efe37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to per-process kernel stack.  <a href="../../de/d48/structproc.html#a50868aea73497273250430272e5efe37">More...</a><br /></td></tr>
 <tr class="separator:a50868aea73497273250430272e5efe37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36fb6c0cde32e7c4368f426e26c142ad"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d48/structproc.html#a36fb6c0cde32e7c4368f426e26c142ad">wchan</a></td></tr>
+<tr class="memdesc:a36fb6c0cde32e7c4368f426e26c142ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Waiting channel.  <a href="../../de/d48/structproc.html#a36fb6c0cde32e7c4368f426e26c142ad">More...</a><br /></td></tr>
+<tr class="separator:a36fb6c0cde32e7c4368f426e26c142ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fb2ced934c91dbdbe479426a55ef679"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d4e/riscv_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d48/structproc.html#a4fb2ced934c91dbdbe479426a55ef679">ppid</a></td></tr>
+<tr class="memdesc:a4fb2ced934c91dbdbe479426a55ef679"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parent process.  <a href="../../de/d48/structproc.html#a4fb2ced934c91dbdbe479426a55ef679">More...</a><br /></td></tr>
+<tr class="separator:a4fb2ced934c91dbdbe479426a55ef679"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Field Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Process structure. </p>
+<p>Structure for process. </p>
+</div><h2 class="groupheader">Field Documentation</h2>
 <a id="a23c110ea6d3fe73950a899fbcfc452e2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a23c110ea6d3fe73950a899fbcfc452e2">&#9670;&nbsp;</a></span>ctx</h2>
 
@@ -116,6 +138,24 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Context. </p>
+
+</div>
+</div>
+<a id="a4df10244ea5f7d13341c38a96c66605f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4df10244ea5f7d13341c38a96c66605f">&#9670;&nbsp;</a></span>heap</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d1/d4e/riscv_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a> proc::heap</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Start address of heap. </p>
+
 </div>
 </div>
 <a id="a50868aea73497273250430272e5efe37"></a>
@@ -125,10 +165,12 @@ Data Fields</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d9/d49/types_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>* proc::kstack</td>
+          <td class="memname"><a class="el" href="../../d1/d4e/riscv_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>* proc::kstack</td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Pointer to per-process kernel stack. </p>
 
 </div>
 </div>
@@ -144,6 +186,8 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Name of process. </p>
+
 </div>
 </div>
 <a id="a4a9eb0352efe3fc097c91fccfaac50bd"></a>
@@ -157,6 +201,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Open files. </p>
 
 </div>
 </div>
@@ -172,6 +218,8 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Pagetable of process. </p>
+
 </div>
 </div>
 <a id="aa5c392af054022bc27b1fd0bb1c78e78"></a>
@@ -181,10 +229,28 @@ Data Fields</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d9/d49/types_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a> proc::pid</td>
+          <td class="memname"><a class="el" href="../../d1/d4e/riscv_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a> proc::pid</td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Process IDs. </p>
+
+</div>
+</div>
+<a id="a4fb2ced934c91dbdbe479426a55ef679"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fb2ced934c91dbdbe479426a55ef679">&#9670;&nbsp;</a></span>ppid</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d1/d4e/riscv_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a> proc::ppid</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Parent process. </p>
 
 </div>
 </div>
@@ -195,10 +261,12 @@ Data Fields</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d9/d49/types_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a> proc::stat</td>
+          <td class="memname"><a class="el" href="../../d1/d4e/riscv_8h.html#ad758b7a5c3f18ed79d2fcd23d9f16357">u64</a> proc::stat</td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Execution status of process. </p>
 
 </div>
 </div>
@@ -213,6 +281,24 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Trapframe. </p>
+
+</div>
+</div>
+<a id="a36fb6c0cde32e7c4368f426e26c142ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36fb6c0cde32e7c4368f426e26c142ad">&#9670;&nbsp;</a></span>wchan</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* proc::wchan</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Waiting channel. </p>
 
 </div>
 </div>

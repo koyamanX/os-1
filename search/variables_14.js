@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['write_960',['write',['../de/d84/structcdevsw.html#a4cfeedeb7c778258a496a5c3485fc76d',1,'cdevsw']]]
+  ['valid_1153',['valid',['../d9/dd0/structbuf.html#a8983733a2501c7d03a45c7de7057116a',1,'buf']]]
 ];

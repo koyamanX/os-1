@@ -1,4 +1,4 @@
 <map id="buddy_alloc" name="buddy_alloc">
 <area shape="rect" id="node1" title="Allocate memory region." alt="" coords="152,29,252,56"/>
-<area shape="rect" id="node2" href="$da/d0a/vm_8h.html#abcc1fac65e3c6c00525c58749ae9f9db" title=" " alt="" coords="5,29,104,56"/>
+<area shape="rect" id="node2" href="$da/d0a/vm_8h.html#abcc1fac65e3c6c00525c58749ae9f9db" title="Allocate a pages with the given order." alt="" coords="5,29,104,56"/>
 </map>

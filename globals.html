@@ -67,9 +67,19 @@ $(function() {
 <h3><a id="index__5F"></a>- _ -</h3><ul>
 <li>__attribute__()
 : <a class="el" href="d0/d29/main_8c.html#aa97e24fea4daabae6b4e5d534ac8066d">main.c</a>
+, <a class="el" href="d2/d5a/fs_8c.html#a36f229bbda63818246ec86181b1fdd42">fs.c</a>
+</li>
+<li>__env
+: <a class="el" href="d5/d87/syscalls_8c.html#a5428d66981cb84e60b899495874618b2">syscalls.c</a>
 </li>
 <li>__NR__EXIT
 : <a class="el" href="de/ddf/syscall_8h.html#ac67d6708319aa954bb3d535cd0cbd917">syscall.h</a>
+</li>
+<li>__NR_BRK
+: <a class="el" href="de/ddf/syscall_8h.html#ac7f3af2ac2d6f82ae427717198fd7032">syscall.h</a>
+</li>
+<li>__NR_CLOSE
+: <a class="el" href="de/ddf/syscall_8h.html#a9fff129e3c00ee5610baaa46d41b3f91">syscall.h</a>
 </li>
 <li>__NR_DUP
 : <a class="el" href="de/ddf/syscall_8h.html#a69c5960e9e46c2dbb0adf37ed4c6838f">syscall.h</a>
@@ -79,6 +89,12 @@ $(function() {
 </li>
 <li>__NR_FORK
 : <a class="el" href="de/ddf/syscall_8h.html#aa59b63b5e167b1a8b1bd3c18db4107d5">syscall.h</a>
+</li>
+<li>__NR_FSTAT
+: <a class="el" href="de/ddf/syscall_8h.html#a88bdc6e2a4e1a065c2a0a9f84221dd68">syscall.h</a>
+</li>
+<li>__NR_LINK
+: <a class="el" href="de/ddf/syscall_8h.html#aff28d74290afe14675ddf469793c54e4">syscall.h</a>
 </li>
 <li>__NR_MKDIR
 : <a class="el" href="de/ddf/syscall_8h.html#a2a3cb06d1fe1f4c35c8530802d7ca61b">syscall.h</a>
@@ -92,8 +108,26 @@ $(function() {
 <li>__NR_READ
 : <a class="el" href="de/ddf/syscall_8h.html#a6543d76c73ec5c1b6445bef3c0710dbb">syscall.h</a>
 </li>
+<li>__NR_SBRK
+: <a class="el" href="de/ddf/syscall_8h.html#ac032ea2a441ba1e3c0f666e54e9a15d2">syscall.h</a>
+</li>
+<li>__NR_STAT
+: <a class="el" href="de/ddf/syscall_8h.html#ad756973364fcdbe760e333ad05b4477f">syscall.h</a>
+</li>
+<li>__NR_TRUNCATE
+: <a class="el" href="de/ddf/syscall_8h.html#aeb103502821b4d6c4714bdbeed375a52">syscall.h</a>
+</li>
+<li>__NR_WAITPID
+: <a class="el" href="de/ddf/syscall_8h.html#ac52c64c29c2fbb7b61ef313628b8c477">syscall.h</a>
+</li>
 <li>__NR_WRITE
 : <a class="el" href="de/ddf/syscall_8h.html#aa42fea986010fc79b090cbe0f034abed">syscall.h</a>
+</li>
+<li>_access()
+: <a class="el" href="d5/d87/syscalls_8c.html#a780737623b8027f5953de2594082ecb6">syscalls.c</a>
+</li>
+<li>_dup()
+: <a class="el" href="df/d0f/dup_8c.html#a55926a98bc23c5b6800af993fec3c078">dup.c</a>
 </li>
 <li>_end
 : <a class="el" href="da/da9/os1_8h.html#a865a22c1418db4b28137e7e4dd35930d">os1.h</a>
@@ -101,16 +135,55 @@ $(function() {
 <li>_etext
 : <a class="el" href="da/da9/os1_8h.html#a28078467db3c6e1433f6616255b5d83f">os1.h</a>
 </li>
+<li>_execv()
+: <a class="el" href="dc/d4d/execv_8c.html#a60f54361c065a7d339c009ff288e8173">execv.c</a>
+</li>
+<li>_execve()
+: <a class="el" href="d9/d74/execve_8c.html#a4ad7f95baf7c01ae082305a47ea9c484">execve.c</a>
+</li>
 <li>_exit()
 : <a class="el" href="df/d03/proc_8h.html#abc96bd69b58b2deaddb484478d911c1b">proc.h</a>
-, <a class="el" href="d3/dda/proc_8c.html#abc96bd69b58b2deaddb484478d911c1b">proc.c</a>
 , <a class="el" href="da/d6f/unistd_8h.html#abc96bd69b58b2deaddb484478d911c1b">unistd.h</a>
+, <a class="el" href="d6/d33/sys__exit_8c.html#abc96bd69b58b2deaddb484478d911c1b">sys_exit.c</a>
 </li>
-<li>_SIZE_T
-: <a class="el" href="d9/d49/types_8h.html#a0ba95ba075f659fa991ee3df107aa3c3">types.h</a>
+<li>_faccessat()
+: <a class="el" href="d5/d87/syscalls_8c.html#a4bb6aa11f34afc2f1cfc24474ec60d3d">syscalls.c</a>
 </li>
-<li>_SSIZE_T
-: <a class="el" href="d9/d49/types_8h.html#a4460ee1eb123f97ece06e7e238094fd0">types.h</a>
+<li>_fstatat()
+: <a class="el" href="d5/d87/syscalls_8c.html#a4417fab3f136b630f2f54aacbebb1dde">syscalls.c</a>
+</li>
+<li>_getpid()
+: <a class="el" href="d5/d87/syscalls_8c.html#ad1f206883946ce8cb8bb983464f9b102">syscalls.c</a>
+</li>
+<li>_gettimeofday()
+: <a class="el" href="d5/d87/syscalls_8c.html#a909740b4329fab2bccd1f3e6e2cf67ca">syscalls.c</a>
+</li>
+<li>_isatty()
+: <a class="el" href="d5/d87/syscalls_8c.html#a4284676ccba12d7f2061d338001f71fb">syscalls.c</a>
+</li>
+<li>_kill()
+: <a class="el" href="d5/d87/syscalls_8c.html#aea4fc7643f2a2aacc79a377ffb7be528">syscalls.c</a>
+</li>
+<li>_lseek()
+: <a class="el" href="d5/d87/syscalls_8c.html#a6fd96f1827f22161142519298141cd2f">syscalls.c</a>
+</li>
+<li>_lstat()
+: <a class="el" href="d5/d87/syscalls_8c.html#ae6558d58e843b7db455d91e4a1c3e2ed">syscalls.c</a>
+</li>
+<li>_mknod()
+: <a class="el" href="d3/d84/mknod_8c.html#a6acdc645df204e7b34a2cb23aa65bef3">mknod.c</a>
+</li>
+<li>_openat()
+: <a class="el" href="d5/d87/syscalls_8c.html#a5069f2aae60dbf75debe634bbf9d9b21">syscalls.c</a>
+</li>
+<li>_unlink()
+: <a class="el" href="d5/d87/syscalls_8c.html#a4d72b683ad6870a251ea1c4e2de3ae7b">syscalls.c</a>
+</li>
+<li>_wait()
+: <a class="el" href="dd/d10/wait_8c.html#a5a6b53fe43fed0fb1297f8a2a1e52c9a">wait.c</a>
+</li>
+<li>_waitpid()
+: <a class="el" href="d8/df7/waitpid_8c.html#a44a68c0f7d3520046019b71181ef3c68">waitpid.c</a>
 </li>
 </ul>
 </div><!-- contents -->

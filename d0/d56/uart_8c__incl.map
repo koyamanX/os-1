@@ -1,5 +1,8 @@
 <map id="kernel/uart.c" name="kernel/uart.c">
-<area shape="rect" id="node1" title=" " alt="" coords="53,5,155,32"/>
-<area shape="rect" id="node2" href="$d9/d49/types_8h.html" title=" " alt="" coords="5,80,101,107"/>
-<area shape="rect" id="node3" href="$d2/d86/uart_8h.html" title=" " alt="" coords="126,80,186,107"/>
+<area shape="rect" id="node1" title=" " alt="" coords="134,5,237,32"/>
+<area shape="rect" id="node2" href="$db/d11/printk_8h.html" title=" " alt="" coords="5,80,77,107"/>
+<area shape="rect" id="node3" href="$d1/d4e/riscv_8h.html" title=" " alt="" coords="101,80,165,107"/>
+<area shape="rect" id="node5" href="$d0/d74/sleeplock_8h.html" title=" " alt="" coords="189,80,285,107"/>
+<area shape="rect" id="node6" href="$d2/d86/uart_8h.html" title=" " alt="" coords="310,80,370,107"/>
+<area shape="rect" id="node4" title=" " alt="" coords="85,155,181,181"/>
 </map>

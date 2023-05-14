@@ -1,0 +1,13 @@
+<map id="kernel/sys/sys_brk.c" name="kernel/sys/sys_brk.c">
+<area shape="rect" id="node1" title=" " alt="" coords="338,5,491,32"/>
+<area shape="rect" id="node2" href="$df/d03/proc_8h.html" title="Structures and function prototypes for process management." alt="" coords="349,80,411,107"/>
+<area shape="rect" id="node10" href="$da/d0a/vm_8h.html" title="Virtual memory management." alt="" coords="422,304,477,331"/>
+<area shape="rect" id="node3" href="$d2/d4d/file_8h.html" title=" " alt="" coords="193,155,247,181"/>
+<area shape="rect" id="node7" href="$d1/d4e/riscv_8h.html" title=" " alt="" coords="300,453,364,480"/>
+<area shape="rect" id="node4" href="$df/d26/fs_8h.html" title="Structures and function prototypes for low&#45;level access to minix3 filesystem." alt="" coords="197,229,243,256"/>
+<area shape="rect" id="node8" title=" " alt="" coords="73,528,169,555"/>
+<area shape="rect" id="node5" href="$d4/dca/devsw_8h.html" title=" " alt="" coords="128,304,203,331"/>
+<area shape="rect" id="node6" href="$d6/d6d/buf_8h.html" title="Buffer cache for disk I/O operations." alt="" coords="94,379,149,405"/>
+<area shape="rect" id="node9" title=" " alt="" coords="173,379,243,405"/>
+<area shape="rect" id="node11" href="$d2/dfe/alloc_8h.html" title="Buddy allocator." alt="" coords="471,379,537,405"/>
+</map>

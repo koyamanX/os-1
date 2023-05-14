@@ -1,6 +1,11 @@
 <map id="openi" name="openi">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,64,32"/>
-<area shape="rect" id="node2" href="$df/d1f/panic_8h.html#a92ad17d19a46880dd5e6c99143666b4a" title=" " alt="" coords="112,5,169,32"/>
-<area shape="rect" id="node3" href="$d2/d86/uart_8h.html#aa1f548a14c782ece5290f74e607adee3" title=" " alt="" coords="217,5,300,32"/>
-<area shape="rect" id="node4" href="$d1/d87/uart_8c.html#aea92973e3d3e2fb34fba39c5fc4b253a" title=" " alt="" coords="348,5,452,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,31,64,57"/>
+<area shape="rect" id="node2" href="$d1/d4e/riscv_8h.html#a6762c6c8953799e2ff6624f66a1c7c10" title=" " alt="" coords="112,5,172,32"/>
+<area shape="rect" id="node3" href="$df/d1f/panic_8h.html#a92ad17d19a46880dd5e6c99143666b4a" title=" " alt="" coords="113,56,171,83"/>
+<area shape="rect" id="node4" href="$d2/d86/uart_8h.html#aa1f548a14c782ece5290f74e607adee3" title=" " alt="" coords="220,56,303,83"/>
+<area shape="rect" id="node5" href="$d1/d87/uart_8c.html#aea92973e3d3e2fb34fba39c5fc4b253a" title=" " alt="" coords="351,56,455,83"/>
+<area shape="rect" id="node6" href="$d0/d74/sleeplock_8h.html#ab63c9f0a9f71c65020743193340560fa" title=" " alt="" coords="503,56,593,83"/>
+<area shape="rect" id="node7" href="$df/d03/proc_8h.html#a2d84ba9e668499e6b42d10b502590d0c" title="Sleep for wait channel." alt="" coords="641,56,699,83"/>
+<area shape="rect" id="node8" href="$d7/d00/sched_8h.html#ad788da91743c333b5bed7c4a0dd12365" title=" " alt="" coords="747,56,807,83"/>
+<area shape="rect" id="node9" href="$db/dbe/sched_8c.html#aa1559f2bb08f486bdd3452f752e23bee" title=" " alt="" coords="855,56,915,83"/>
 </map>

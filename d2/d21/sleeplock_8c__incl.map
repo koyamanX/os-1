@@ -1,0 +1,13 @@
+<map id="kernel/sleeplock.c" name="kernel/sleeplock.c">
+<area shape="rect" id="node1" title=" " alt="" coords="280,5,419,32"/>
+<area shape="rect" id="node2" href="$db/d11/printk_8h.html" title=" " alt="" coords="221,80,293,107"/>
+<area shape="rect" id="node3" href="$df/d03/proc_8h.html" title="Structures and function prototypes for process management." alt="" coords="318,80,381,107"/>
+<area shape="rect" id="node11" href="$d0/d74/sleeplock_8h.html" title=" " alt="" coords="405,80,501,107"/>
+<area shape="rect" id="node4" href="$d2/d4d/file_8h.html" title=" " alt="" coords="191,155,246,181"/>
+<area shape="rect" id="node8" href="$d1/d4e/riscv_8h.html" title=" " alt="" coords="249,453,313,480"/>
+<area shape="rect" id="node5" href="$df/d26/fs_8h.html" title="Structures and function prototypes for low&#45;level access to minix3 filesystem." alt="" coords="195,229,242,256"/>
+<area shape="rect" id="node9" title=" " alt="" coords="37,528,133,555"/>
+<area shape="rect" id="node6" href="$d4/dca/devsw_8h.html" title=" " alt="" coords="116,304,191,331"/>
+<area shape="rect" id="node7" href="$d6/d6d/buf_8h.html" title="Buffer cache for disk I/O operations." alt="" coords="94,379,149,405"/>
+<area shape="rect" id="node10" title=" " alt="" coords="173,379,243,405"/>
+</map>

@@ -1,13 +1,8 @@
 var searchData=
 [
-  ['sched_763',['sched',['../db/dbe/sched_8c.html#adc13a85efcb68657390ea7abab655812',1,'sched(struct proc *rp):&#160;sched.c'],['../d7/d00/sched_8h.html#adc13a85efcb68657390ea7abab655812',1,'sched(struct proc *rp):&#160;sched.c']]],
-  ['scheduler_764',['scheduler',['../d7/d00/sched_8h.html#a9fa00b0be5d3c4781048861e2506eb63',1,'scheduler(void):&#160;sched.c'],['../db/dbe/sched_8c.html#a9fa00b0be5d3c4781048861e2506eb63',1,'scheduler(void):&#160;sched.c']]],
-  ['sfence_5fvma_765',['sfence_vma',['../d1/d4e/riscv_8h.html#ac389c77856b09c5c2922da14df0f0798',1,'riscv.h']]],
-  ['strcmp_766',['strcmp',['../da/d66/string_8h.html#a11bd144d7d44914099a3aeddf1c8567d',1,'strcmp(const char *s1, const char *s2):&#160;strcmp.c'],['../d7/d4b/strcmp_8c.html#a11bd144d7d44914099a3aeddf1c8567d',1,'strcmp(const char *s1, const char *s2):&#160;strcmp.c']]],
-  ['strcpy_767',['strcpy',['../da/d66/string_8h.html#a7a82515b5d377be04817715c5465b647',1,'strcpy(char *dest, const char *src):&#160;strcpy.c'],['../d1/d1d/strcpy_8c.html#a7a82515b5d377be04817715c5465b647',1,'strcpy(char *dest, const char *src):&#160;strcpy.c']]],
-  ['strlen_768',['strlen',['../da/d66/string_8h.html#ab0bbf26e71ce67713b8c1121f38ff7cd',1,'strlen(char *s):&#160;strlen.c'],['../d3/d67/strlen_8c.html#ab0bbf26e71ce67713b8c1121f38ff7cd',1,'strlen(char *s):&#160;strlen.c']]],
-  ['strncmp_769',['strncmp',['../da/d66/string_8h.html#a07f4a84c11c106e95c32b6ab509346ef',1,'strncmp(const char *s1, const char *s2, size_t n):&#160;strncmp.c'],['../d3/d27/strncmp_8c.html#a07f4a84c11c106e95c32b6ab509346ef',1,'strncmp(const char *s1, const char *s2, size_t n):&#160;strncmp.c']]],
-  ['strtok_770',['strtok',['../da/d66/string_8h.html#a8cb460f64c449f2a9b9b7a40569ce0fe',1,'strtok(char *str, const char *delim):&#160;strtok.c'],['../d7/d7c/strtok_8c.html#a8cb460f64c449f2a9b9b7a40569ce0fe',1,'strtok(char *str, const char *delim):&#160;strtok.c']]],
-  ['swtch_771',['swtch',['../d3/dda/proc_8c.html#aa1559f2bb08f486bdd3452f752e23bee',1,'swtch(context_t *old, context_t *new):&#160;proc.c'],['../db/dbe/sched_8c.html#aa1559f2bb08f486bdd3452f752e23bee',1,'swtch(context_t *old, context_t *new):&#160;sched.c']]],
-  ['syscall_772',['syscall',['../db/dd8/syscall_8c.html#a068ed63a10c4dd229deb2ec36497d3ac',1,'syscall(struct proc *rp):&#160;syscall.c'],['../dc/d6f/trap_8c.html#a068ed63a10c4dd229deb2ec36497d3ac',1,'syscall(struct proc *rp):&#160;syscall.c']]]
+  ['panic_915',['panic',['../df/d1f/panic_8h.html#a92ad17d19a46880dd5e6c99143666b4a',1,'panic(char *msg):&#160;panic.c'],['../d2/daf/panic_8c.html#a92ad17d19a46880dd5e6c99143666b4a',1,'panic(char *msg):&#160;panic.c']]],
+  ['plic_5fclaim_916',['plic_claim',['../d6/d1e/plic_8h.html#a3a956eedd668e59606078abe8c0d99aa',1,'plic_claim(void):&#160;plic.c'],['../de/d3d/plic_8c.html#a3a956eedd668e59606078abe8c0d99aa',1,'plic_claim(void):&#160;plic.c']]],
+  ['plic_5fcomplete_917',['plic_complete',['../d6/d1e/plic_8h.html#adadd23fbca6dd31ee82150c1a58c8a83',1,'plic_complete(int claim):&#160;plic.c'],['../de/d3d/plic_8c.html#adadd23fbca6dd31ee82150c1a58c8a83',1,'plic_complete(int claim):&#160;plic.c']]],
+  ['plic_5finit_918',['plic_init',['../d6/d1e/plic_8h.html#a93065b3d2380f9b899232ea7e79bfa2d',1,'plic_init(void):&#160;plic.c'],['../de/d3d/plic_8c.html#a93065b3d2380f9b899232ea7e79bfa2d',1,'plic_init(void):&#160;plic.c']]],
+  ['printk_919',['printk',['../db/d11/printk_8h.html#a36fe4a3ea4506cb4d128b11f93187f71',1,'printk(const char *format,...):&#160;printk.c'],['../dc/d57/printk_8c.html#a36fe4a3ea4506cb4d128b11f93187f71',1,'printk(const char *format,...):&#160;printk.c']]]
 ];

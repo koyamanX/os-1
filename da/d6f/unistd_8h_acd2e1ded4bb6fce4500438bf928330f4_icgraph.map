@@ -1,11 +1,10 @@
 <map id="fork" name="fork">
-<area shape="rect" id="node1" title=" " alt="" coords="765,17,813,44"/>
-<area shape="rect" id="node2" href="$d8/d60/init_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="164,17,219,44"/>
-<area shape="rect" id="node3" href="$db/dd8/syscall_8c.html#a068ed63a10c4dd229deb2ec36497d3ac" title=" " alt="" coords="651,43,717,69"/>
-<area shape="rect" id="node4" href="$d7/d0b/trap_8h.html#aed543a44247cc3ccdb7d0f9bba224549" title=" " alt="" coords="515,93,603,120"/>
-<area shape="rect" id="node5" href="$df/d03/proc_8h.html#a95e901259bd8697ecfbd661cfe5ac26f" title=" " alt="" coords="389,93,467,120"/>
-<area shape="rect" id="node6" href="$d3/dda/proc_8c.html#acd2e1ded4bb6fce4500438bf928330f4" title=" " alt="" coords="282,43,330,69"/>
-<area shape="rect" id="node7" href="$df/d03/proc_8h.html#a81c8a6a0cae413bc81aa223f7f7b7205" title=" " alt="" coords="271,93,341,120"/>
-<area shape="rect" id="node8" href="$da/da9/os1_8h.html#a406c20548822065e144564476378f8a1" title=" " alt="" coords="160,93,223,120"/>
-<area shape="rect" id="node9" href="$d0/d29/main_8c.html#aa97e24fea4daabae6b4e5d534ac8066d" title=" " alt="" coords="5,93,112,120"/>
+<area shape="rect" id="node1" title=" " alt="" coords="753,56,801,83"/>
+<area shape="rect" id="node2" href="$d8/d60/init_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="645,5,699,32"/>
+<area shape="rect" id="node3" href="$db/dd8/syscall_8c.html#ae596b3527909b69c760d28d0e7dc7736" title=" " alt="" coords="639,56,705,83"/>
+<area shape="rect" id="node4" href="$d7/d0b/trap_8h.html#acfa5000a11c20f9f7f8775248e1a8075" title="Trap handler for user mode." alt="" coords="515,56,591,83"/>
+<area shape="rect" id="node5" href="$df/d03/proc_8h.html#a91f1ecf029d6974a6678b185397d2c8f" title="Allocate new proc structure and initialize." alt="" coords="389,81,467,108"/>
+<area shape="rect" id="node6" href="$df/d03/proc_8h.html#a81c8a6a0cae413bc81aa223f7f7b7205" title="Allocate user page for first user&#45;mode process, init." alt="" coords="271,81,341,108"/>
+<area shape="rect" id="node7" href="$da/da9/os1_8h.html#a406c20548822065e144564476378f8a1" title=" " alt="" coords="160,81,223,108"/>
+<area shape="rect" id="node8" href="$d0/d29/main_8c.html#aa97e24fea4daabae6b4e5d534ac8066d" title="Kernel stack per CPU." alt="" coords="5,81,112,108"/>
 </map>

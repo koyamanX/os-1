@@ -105,11 +105,17 @@ $(function() {
 
 
 <h3><a id="index_b"></a>- b -</h3><ul>
+<li>bactivelist
+: <a class="el" href="d0/d7a/structbdevsw.html#a0dab76869d1cde937c3154ad938246fe">bdevsw</a>
+</li>
 <li>blkno
 : <a class="el" href="d9/dd0/structbuf.html#a4c5240cd4da1c4ad10ee270a3c97865d">buf</a>
 </li>
 <li>block_size
 : <a class="el" href="de/d37/structsuper__block.html#a504ae9cf51ea606ff9b4730b5c052699">super_block</a>
+</li>
+<li>buffer
+: <a class="el" href="db/df4/structring__buffer.html#af6e8d4b464e384591d5ae107a4cef981">ring_buffer</a>
 </li>
 </ul>
 
@@ -122,6 +128,7 @@ $(function() {
 <li>count
 : <a class="el" href="d7/d3a/structfile.html#a4550639a651ea1b210baf6d698461150">file</a>
 , <a class="el" href="d0/df8/structinode.html#afa7fbb19d55bef85717015d72eee951a">inode</a>
+, <a class="el" href="db/df4/structring__buffer.html#a8ebd97c64808fe55e0825f686085a2a0">ring_buffer</a>
 </li>
 <li>ctime
 : <a class="el" href="d0/df8/structinode.html#a7d4c26d1812fca72513270ce44a174de">inode</a>
@@ -144,6 +151,9 @@ $(function() {
 : <a class="el" href="d9/dd0/structbuf.html#a172a6df910355838fa9a08d5e69b6256">buf</a>
 , <a class="el" href="d0/df8/structinode.html#a127a2eb030df332fa64a81188731ad6b">inode</a>
 , <a class="el" href="d3/df8/structmount.html#a3f1d0f957119c7f0c24d7124e39cc7fe">mount</a>
+</li>
+<li>dirty
+: <a class="el" href="d9/dd0/structbuf.html#ac9263a879a327688780e9e7cde1f08aa">buf</a>
 </li>
 <li>disk_version
 : <a class="el" href="de/d37/structsuper__block.html#ae9e2fc07701ada6c378261fa49cd0c95">super_block</a>
@@ -198,8 +208,8 @@ $(function() {
 
 
 <h3><a id="index_f"></a>- f -</h3><ul>
-<li>firstdatazone
-: <a class="el" href="de/d37/structsuper__block.html#a79d1ec8eb4255ab5e7a2a1a6c84df00d">super_block</a>
+<li>first_data_zone
+: <a class="el" href="de/d37/structsuper__block.html#ab2bd35bce5f73b5960cc75665f340f8a">super_block</a>
 </li>
 <li>flags
 : <a class="el" href="d7/d3a/structfile.html#aa94488d52adca3835dbd811eee93cf32">file</a>
@@ -223,6 +233,16 @@ $(function() {
 </ul>
 
 
+<h3><a id="index_h"></a>- h -</h3><ul>
+<li>head
+: <a class="el" href="db/df4/structring__buffer.html#ac1b620f2e27c3af75e68bd1645a2f5f0">ring_buffer</a>
+</li>
+<li>heap
+: <a class="el" href="de/d48/structproc.html#a4df10244ea5f7d13341c38a96c66605f">proc</a>
+</li>
+</ul>
+
+
 <h3><a id="index_i"></a>- i -</h3><ul>
 <li>id
 : <a class="el" href="db/d2b/structvirtq__used__elem.html#af2eb7dbfb08f70b5bb8d250b4193eb59">virtq_used_elem</a>
@@ -236,6 +256,7 @@ $(function() {
 </li>
 <li>ino
 : <a class="el" href="d5/dac/structdirect.html#a708047069dc900c80d5e27d7bd830897">direct</a>
+, <a class="el" href="d5/de2/structdirent.html#a1560e71bede9092c2fe09fd56af167b0">dirent</a>
 </li>
 <li>interval
 : <a class="el" href="d2/da0/structmscratch.html#ad100156e86b50135864b222914be3431">mscratch</a>
@@ -265,6 +286,12 @@ $(function() {
 : <a class="el" href="d7/d7a/structvirtq__desc.html#ae73e6c2f83a66b51c232b194f92554db">virtq_desc</a>
 , <a class="el" href="db/d2b/structvirtq__used__elem.html#aebaf1c1712abff5682125654e5798f4e">virtq_used_elem</a>
 </li>
+<li>lk
+: <a class="el" href="db/df4/structring__buffer.html#ac38851b76afac203b367f5f9d9d0c889">ring_buffer</a>
+</li>
+<li>locked
+: <a class="el" href="d9/dd0/structsleeplock.html#afe5eae3c982e674e975d6f99aae42b3a">sleeplock</a>
+</li>
 <li>log_zone_size
 : <a class="el" href="de/d37/structsuper__block.html#acee82b83fa28609596fa273a342ba317">super_block</a>
 </li>
@@ -275,14 +302,8 @@ $(function() {
 <li>magic
 : <a class="el" href="de/d37/structsuper__block.html#a766c4d372a97fc1b1977005ffa30b3b4">super_block</a>
 </li>
-<li>major
-: <a class="el" href="d2/dd6/structdev__t.html#add02785377234eaf2a9408f0fabc5f5c">dev_t</a>
-</li>
 <li>max_size
 : <a class="el" href="de/d37/structsuper__block.html#a450199bdac7fb70d19da7006a7477d7e">super_block</a>
-</li>
-<li>minor
-: <a class="el" href="d2/dd6/structdev__t.html#a921264a233f27216a4e8221ac9bf220b">dev_t</a>
 </li>
 <li>mode
 : <a class="el" href="d0/df8/structinode.html#a397f6a188c6ec28a95fc16b0611290a6">inode</a>
@@ -299,13 +320,15 @@ $(function() {
 <h3><a id="index_n"></a>- n -</h3><ul>
 <li>name
 : <a class="el" href="d5/dac/structdirect.html#aaa2a7f7cf21d809d991d8ec617b861a9">direct</a>
+, <a class="el" href="d5/de2/structdirent.html#a4e08a84dbac9b9f6a3e006151855d14d">dirent</a>
 , <a class="el" href="de/d48/structproc.html#ac04af53e17d24b90c3cbfab56d658d62">proc</a>
+, <a class="el" href="d9/dd0/structsleeplock.html#a40f1db61da688063cd5ac4f72d839590">sleeplock</a>
 </li>
 <li>next
 : <a class="el" href="d3/d8f/structbuddy__header.html#aaddecf917c155f86248159693a3646f5">buddy_header</a>
+, <a class="el" href="d9/dd0/structbuf.html#ab18c18abb22f07617619e9a74c71f51a">buf</a>
+, <a class="el" href="df/db0/structkmalloc__header.html#af1c23469350c8d6f01b5374f411fa424">kmalloc_header</a>
 , <a class="el" href="d7/d1a/structpage.html#a27ff7807791328e47d47e37660eb53e0">page</a>
-, <a class="el" href="d1/d94/structslob__big__header.html#a81703ea2fd4c4cd187c53ba615326eb0">slob_big_header</a>
-, <a class="el" href="da/d88/structslob__header.html#ab8496cd97208d0829e5401b58783a5ed">slob_header</a>
 , <a class="el" href="d7/d7a/structvirtq__desc.html#a5a3254675360dbd35c514bff48f4848b">virtq_desc</a>
 </li>
 <li>ninodes
@@ -325,7 +348,7 @@ $(function() {
 
 <h3><a id="index_o"></a>- o -</h3><ul>
 <li>offset
-: <a class="el" href="d7/d3a/structfile.html#a34ffe2b198adcd5659f8ea7751478a31">file</a>
+: <a class="el" href="d7/d3a/structfile.html#a11a5e660ba975860481ff3eaa12b331d">file</a>
 </li>
 <li>ofile
 : <a class="el" href="de/d48/structproc.html#a4a9eb0352efe3fc097c91fccfaac50bd">proc</a>
@@ -333,9 +356,6 @@ $(function() {
 <li>open
 : <a class="el" href="d0/d7a/structbdevsw.html#afc0a57799a23d9cae43dce3020421187">bdevsw</a>
 , <a class="el" href="de/d84/structcdevsw.html#ab9cd1474952e0c5a01f06e856a232a0a">cdevsw</a>
-</li>
-<li>order
-: <a class="el" href="d1/d94/structslob__big__header.html#ada58b4d7da2800d1b4ddf36d0ebf2c6b">slob_big_header</a>
 </li>
 </ul>
 
@@ -371,14 +391,15 @@ $(function() {
 <li>pad2
 : <a class="el" href="de/d37/structsuper__block.html#aa64481c24305f00d84be8651450c4114">super_block</a>
 </li>
-<li>page
-: <a class="el" href="d1/d94/structslob__big__header.html#aa11e324608fe39acd7371e71f13b80e7">slob_big_header</a>
-</li>
 <li>pgtbl
 : <a class="el" href="de/d48/structproc.html#aa371d8a11eec6278f8a76715bddecbc5">proc</a>
 </li>
 <li>pid
 : <a class="el" href="de/d48/structproc.html#aa5c392af054022bc27b1fd0bb1c78e78">proc</a>
+, <a class="el" href="d9/dd0/structsleeplock.html#a99a4c6a784956ab1c391a12af475a55e">sleeplock</a>
+</li>
+<li>ppid
+: <a class="el" href="de/d48/structproc.html#a4fb2ced934c91dbdbe479426a55ef679">proc</a>
 </li>
 </ul>
 
@@ -468,9 +489,6 @@ $(function() {
 <li>sepc
 : <a class="el" href="d7/dca/structtrapframe__t.html#a6bc05ef033ef4bd538139315a3a8a67c">trapframe_t</a>
 </li>
-<li>sgtty
-: <a class="el" href="de/d84/structcdevsw.html#a4be12c75e68d0caeee50e5a973afeb49">cdevsw</a>
-</li>
 <li>sh_addr
 : <a class="el" href="d3/d22/structelf64__shdr.html#a95fc1d39362f66104c1b66d63ba85a34">elf64_shdr</a>
 </li>
@@ -542,6 +560,9 @@ $(function() {
 <li>t6
 : <a class="el" href="d7/dca/structtrapframe__t.html#a621ee1d518c3fc26a3d88719dcf7e368">trapframe_t</a>
 </li>
+<li>tail
+: <a class="el" href="db/df4/structring__buffer.html#a4d06965736f37f64f15bbd0ca9457771">ring_buffer</a>
+</li>
 <li>tf
 : <a class="el" href="de/d48/structproc.html#a8acdd0fc203b56d7cf7c68ac31e5d2b6">proc</a>
 </li>
@@ -571,7 +592,7 @@ $(function() {
 : <a class="el" href="d0/df8/structinode.html#a6b59709d64997ec69bce1032b0532207">inode</a>
 </li>
 <li>units
-: <a class="el" href="da/d88/structslob__header.html#a33eabc5797a49d393dbdbc7feef61e4e">slob_header</a>
+: <a class="el" href="df/db0/structkmalloc__header.html#aaf37fe300c0f1ad3be0d25ed9740fea9">kmalloc_header</a>
 </li>
 <li>used
 : <a class="el" href="d3/d7e/structblock__device__t.html#ab115639e128e8dc88ed0358c434b5110">block_device_t</a>
@@ -590,6 +611,9 @@ $(function() {
 
 
 <h3><a id="index_w"></a>- w -</h3><ul>
+<li>wchan
+: <a class="el" href="de/d48/structproc.html#a36fb6c0cde32e7c4368f426e26c142ad">proc</a>
+</li>
 <li>write
 : <a class="el" href="de/d84/structcdevsw.html#a4cfeedeb7c778258a496a5c3485fc76d">cdevsw</a>
 </li>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>OS-1: A toy UNIX like Operating System OS-1</title>
+<title>OS-1: OS-1: A toy UNIX like Operating System Version 1.</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -63,10 +63,11 @@ $(function() {
 </div><!-- top -->
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">A toy UNIX like Operating System OS-1 </div>  </div>
+<div class="title">OS-1: A toy UNIX like Operating System Version 1. </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md1"></a>
+<div class="textblock"><p><a href="https://github.com/koyamanX/os-1/actions/workflows/build.yml"><img src="https://github.com/koyamanX/os-1/actions/workflows/build.yml/badge.svg" alt="CI" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/koyamanX/os-1/actions/workflows/docs.yml"><img src="https://github.com/koyamanX/os-1/actions/workflows/docs.yml/badge.svg" alt="Doxygen deploy to GitHub pages" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/koyamanX/os-1/actions/workflows/format.yml"><img src="https://github.com/koyamanX/os-1/actions/workflows/format.yml/badge.svg" alt="clang-format Check" style="pointer-events: none;" class="inline"/></a></p>
+<h1><a class="anchor" id="autotoc_md1"></a>
 Overview</h1>
 <p>OS-1 is a toy UNIX like operating system version 1.</p>
 <p>OS-1 is implemented in C and assembly for RISC-V qemu.</p>
@@ -90,18 +91,20 @@ Implemented system calls</h1>
 <li>[x] read</li>
 <li>[x] fork</li>
 <li>[x] _exit</li>
-<li>[ ] wait</li>
+<li>[x] close</li>
+<li>[x] link</li>
+<li>[x] truncate</li>
+<li>[x] stat</li>
+<li>[x] fstat</li>
+<li>[x] waitpid</li>
 <li>[ ] sleep</li>
 <li>[ ] pipe</li>
-<li>[ ] fstat</li>
 <li>[ ] chdir</li>
 <li>[ ] kill</li>
 <li>[ ] getpid</li>
-<li>[ ] sbrk</li>
+<li>[x] sbrk</li>
 <li>[ ] uptime</li>
 <li>[ ] unlink</li>
-<li>[ ] link</li>
-<li>[ ] close</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md3"></a>
 How to use</h1>
@@ -120,7 +123,17 @@ Help</h2>
 <div class="fragment"><div class="line">./run.sh help</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md8"></a>
 Documentation</h1>
-<p><a href="https://koyamanx.github.io/os-1/">Internal documentaions</a> </p>
+<p><a href="https://koyamanx.github.io/os-1/">Internal documentaions</a></p>
+<h1><a class="anchor" id="autotoc_md9"></a>
+Limitations</h1>
+<ul>
+<li>File larger than 8KB is not supported.</li>
+<li>Directory holding over 128 entries is not supported.</li>
+<li>uid/gid is set to user id and group id of root which is 0.</li>
+<li>Timestamp for <a class="el" href="../../d7/d3a/structfile.html">file(atime,mtime and ctime)</a> is not supported and always be constant 0 (1970/1/1).</li>
+<li>Current working directory is not supported.</li>
+<li>Relative path is not supported. </li>
+</ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->

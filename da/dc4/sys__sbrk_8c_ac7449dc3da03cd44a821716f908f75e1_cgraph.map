@@ -1,0 +1,9 @@
+<map id="sbrk" name="sbrk">
+<area shape="rect" id="node1" title=" " alt="" coords="5,56,56,83"/>
+<area shape="rect" id="node2" href="$da/d0a/vm_8h.html#ac3f8b55879de06493c4fe061cea29e83" title="Dump page table entry for givien virtual address." alt="" coords="104,5,192,32"/>
+<area shape="rect" id="node4" href="$da/d0a/vm_8h.html#af115498144befef7de1d67b0ded22eb5" title="Map a virtual address to a physical address." alt="" coords="108,56,188,83"/>
+<area shape="rect" id="node7" href="$da/d0a/vm_8h.html#a20fa4134dd4bffdb3a2ac4e4097f7d4b" title="Walk the page table." alt="" coords="107,107,189,133"/>
+<area shape="rect" id="node3" href="$de/de9/vm_8c.html#a20fa4134dd4bffdb3a2ac4e4097f7d4b" title="Walk the page table." alt="" coords="240,5,323,32"/>
+<area shape="rect" id="node5" href="$de/de9/vm_8c.html#a5d5ee00b0f9e74d54e650564939646a2" title="Allocate a page table entry." alt="" coords="240,56,323,83"/>
+<area shape="rect" id="node6" href="$de/d14/lib_8h.html#aaca5c21d6f783f0d2b75936ae54b7f66" title=" " alt="" coords="371,56,447,83"/>
+</map>

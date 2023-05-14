@@ -1,12 +1,12 @@
 <map id="r_sstatus" name="r_sstatus">
-<area shape="rect" id="node1" title=" " alt="" coords="797,17,879,44"/>
-<area shape="rect" id="node2" href="$d0/d29/main_8c.html#aa97e24fea4daabae6b4e5d534ac8066d" title=" " alt="" coords="5,68,112,95"/>
-<area shape="rect" id="node3" href="$df/d03/proc_8h.html#ab247cbaa295acd0662cf88b188f23453" title=" " alt="" coords="655,43,749,69"/>
-<area shape="rect" id="node4" href="$d7/d0b/trap_8h.html#aed543a44247cc3ccdb7d0f9bba224549" title=" " alt="" coords="519,43,607,69"/>
-<area shape="rect" id="node5" href="$df/d03/proc_8h.html#a95e901259bd8697ecfbd661cfe5ac26f" title=" " alt="" coords="393,93,471,120"/>
-<area shape="rect" id="node6" href="$d3/dda/proc_8c.html#acd2e1ded4bb6fce4500438bf928330f4" title=" " alt="" coords="286,93,334,120"/>
-<area shape="rect" id="node9" href="$df/d03/proc_8h.html#a81c8a6a0cae413bc81aa223f7f7b7205" title=" " alt="" coords="275,144,345,171"/>
-<area shape="rect" id="node7" href="$d8/d60/init_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="166,93,221,120"/>
-<area shape="rect" id="node8" href="$db/dd8/syscall_8c.html#a068ed63a10c4dd229deb2ec36497d3ac" title=" " alt="" coords="160,43,227,69"/>
-<area shape="rect" id="node10" href="$da/da9/os1_8h.html#a406c20548822065e144564476378f8a1" title=" " alt="" coords="162,144,225,171"/>
+<area shape="rect" id="node1" title=" " alt="" coords="661,139,743,165"/>
+<area shape="rect" id="node2" href="$d0/d29/main_8c.html#aa97e24fea4daabae6b4e5d534ac8066d" title="Kernel stack per CPU." alt="" coords="5,183,112,209"/>
+<area shape="rect" id="node3" href="$d7/d0b/trap_8h.html#ab247cbaa295acd0662cf88b188f23453" title="Returns to user code where trap occurs." alt="" coords="519,68,613,95"/>
+<area shape="rect" id="node4" href="$df/d03/proc_8h.html#a91f1ecf029d6974a6678b185397d2c8f" title="Allocate new proc structure and initialize." alt="" coords="393,68,471,95"/>
+<area shape="rect" id="node8" href="$d7/d0b/trap_8h.html#acfa5000a11c20f9f7f8775248e1a8075" title="Trap handler for user mode." alt="" coords="21,5,97,32"/>
+<area shape="rect" id="node5" href="$da/d6f/unistd_8h.html#acd2e1ded4bb6fce4500438bf928330f4" title=" " alt="" coords="286,68,334,95"/>
+<area shape="rect" id="node9" href="$df/d03/proc_8h.html#a81c8a6a0cae413bc81aa223f7f7b7205" title="Allocate user page for first user&#45;mode process, init." alt="" coords="275,144,345,171"/>
+<area shape="rect" id="node6" href="$d8/d60/init_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="166,107,221,133"/>
+<area shape="rect" id="node7" href="$db/dd8/syscall_8c.html#ae596b3527909b69c760d28d0e7dc7736" title=" " alt="" coords="160,56,227,83"/>
+<area shape="rect" id="node10" href="$da/da9/os1_8h.html#a406c20548822065e144564476378f8a1" title=" " alt="" coords="162,157,225,184"/>
 </map>

@@ -1,0 +1,16 @@
+<map id="has_bit" name="has_bit">
+<area shape="rect" id="node1" title="Find n in map is used or not." alt="" coords="5,99,75,126"/>
+<area shape="rect" id="node2" href="$d6/d6d/buf_8h.html#a698c2e69ee3a6a76b6adfd479397969b" title="Read block from disk." alt="" coords="123,23,181,50"/>
+<area shape="rect" id="node6" href="$d6/d6d/buf_8h.html#af154613de80f6b640872720a3cc4ec92" title="Release buffer cache, flush if dirty." alt="" coords="229,74,292,100"/>
+<area shape="rect" id="node7" href="$d2/d5a/fs_8c.html#aec001fd653f9a666e84e3a4012aac6ac" title=" " alt="" coords="125,124,179,151"/>
+<area shape="rect" id="node8" href="$df/d1f/panic_8h.html#a92ad17d19a46880dd5e6c99143666b4a" title=" " alt="" coords="232,150,289,176"/>
+<area shape="rect" id="node3" href="$dc/de6/bio_8c.html#ab13e6197ba8af3d7add9fb17a5440344" title="Get new buffer cache entry." alt="" coords="229,23,292,50"/>
+<area shape="rect" id="node5" href="$d1/d4e/riscv_8h.html#a6762c6c8953799e2ff6624f66a1c7c10" title=" " alt="" coords="493,23,553,50"/>
+<area shape="rect" id="node4" href="$dc/de6/bio_8c.html#a40ae6d4f407ff644aef7b7320c55aebb" title="Write block to disk." alt="" coords="350,74,413,100"/>
+<area shape="rect" id="node9" href="$d2/d86/uart_8h.html#aa1f548a14c782ece5290f74e607adee3" title=" " alt="" coords="340,150,423,176"/>
+<area shape="rect" id="node10" href="$d1/d87/uart_8c.html#aea92973e3d3e2fb34fba39c5fc4b253a" title=" " alt="" coords="471,150,575,176"/>
+<area shape="rect" id="node11" href="$d0/d74/sleeplock_8h.html#ab63c9f0a9f71c65020743193340560fa" title=" " alt="" coords="623,150,713,176"/>
+<area shape="rect" id="node12" href="$df/d03/proc_8h.html#a2d84ba9e668499e6b42d10b502590d0c" title="Sleep for wait channel." alt="" coords="761,150,819,176"/>
+<area shape="rect" id="node13" href="$d7/d00/sched_8h.html#ad788da91743c333b5bed7c4a0dd12365" title=" " alt="" coords="867,150,927,176"/>
+<area shape="rect" id="node14" href="$db/dbe/sched_8c.html#aa1559f2bb08f486bdd3452f752e23bee" title=" " alt="" coords="975,150,1035,176"/>
+</map>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>OS-1: libc/string/strcmp.c File Reference</title>
+<title>OS-1: kernel/lib/strcmp.c File Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -62,7 +62,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="../../dir_fc1eb218ab426e5adb60367f98438da0.html">libc</a></li><li class="navelem"><a class="el" href="../../dir_9c99158f21f12d76100305e616b7d1f5.html">string</a></li>  </ul>
+<li class="navelem"><a class="el" href="../../dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="../../dir_c883bf649c7845365059c82cfcfc2919.html">lib</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -72,15 +72,16 @@ $(function() {
 <div class="title">strcmp.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="../../da/d66/string_8h_source.html">string.h</a>&gt;</code><br />
+<div class="textblock"><code>#include &lt;<a class="el" href="../../de/d14/lib_8h_source.html">lib.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for strcmp.c:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../dc/d6e/strcmp_8c__incl.png" border="0" usemap="#alibc_2string_2strcmp_8c" alt=""/></div>
-<map name="alibc_2string_2strcmp_8c" id="alibc_2string_2strcmp_8c">
-<area shape="rect" title=" " alt="" coords="5,5,152,32"/>
-<area shape="rect" href="../../da/d66/string_8h.html" title=" " alt="" coords="43,80,114,107"/>
-<area shape="rect" title=" " alt="" coords="41,155,116,181"/>
+<div class="center"><img src="../../dc/d6e/strcmp_8c__incl.png" border="0" usemap="#akernel_2lib_2strcmp_8c" alt=""/></div>
+<map name="akernel_2lib_2strcmp_8c" id="akernel_2lib_2strcmp_8c">
+<area shape="rect" title=" " alt="" coords="21,5,163,32"/>
+<area shape="rect" href="../../de/d14/lib_8h.html" title=" " alt="" coords="67,80,117,107"/>
+<area shape="rect" href="../../d0/dc6/libgen_8h.html" title=" " alt="" coords="5,155,80,181"/>
+<area shape="rect" title=" " alt="" coords="104,155,179,181"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -121,8 +122,8 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="../../d7/d4b/strcmp_8c_a11bd144d7d44914099a3aeddf1c8567d_cgraph.png" border="0" usemap="#ad7/d4b/strcmp_8c_a11bd144d7d44914099a3aeddf1c8567d_cgraph" alt=""/></div>
 <map name="ad7/d4b/strcmp_8c_a11bd144d7d44914099a3aeddf1c8567d_cgraph" id="ad7/d4b/strcmp_8c_a11bd144d7d44914099a3aeddf1c8567d_cgraph">
 <area shape="rect" title=" " alt="" coords="5,31,72,57"/>
-<area shape="rect" href="../../da/d66/string_8h.html#ab0bbf26e71ce67713b8c1121f38ff7cd" title=" " alt="" coords="128,5,187,32"/>
-<area shape="rect" href="../../da/d66/string_8h.html#a07f4a84c11c106e95c32b6ab509346ef" title=" " alt="" coords="120,56,195,83"/>
+<area shape="rect" href="../../de/d14/lib_8h.html#aa383452fe445bfae989358c9d7d96f4f" title=" " alt="" coords="128,5,187,32"/>
+<area shape="rect" href="../../de/d14/lib_8h.html#a07f4a84c11c106e95c32b6ab509346ef" title=" " alt="" coords="120,56,195,83"/>
 </map>
 </div>
 <div class="dynheader">
@@ -130,23 +131,30 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d7/d4b/strcmp_8c_a11bd144d7d44914099a3aeddf1c8567d_icgraph.png" border="0" usemap="#ad7/d4b/strcmp_8c_a11bd144d7d44914099a3aeddf1c8567d_icgraph" alt=""/></div>
 <map name="ad7/d4b/strcmp_8c_a11bd144d7d44914099a3aeddf1c8567d_icgraph" id="ad7/d4b/strcmp_8c_a11bd144d7d44914099a3aeddf1c8567d_icgraph">
-<area shape="rect" title=" " alt="" coords="1189,136,1256,163"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#a6a1907f2aabd7c9145b3c2beed1beb63" title=" " alt="" coords="1099,86,1141,112"/>
-<area shape="rect" href="../../d2/d1b/stat_8h.html#ae92589973c691560ce2a6a97043872cf" title=" " alt="" coords="873,200,940,227"/>
-<area shape="rect" href="../../d7/d9f/fcntl_8h.html#a4e522854927c8a3a43847c39fe999391" title=" " alt="" coords="879,124,934,151"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#a9baba030d5bc6e9e20cf8b7d181edf35" title=" " alt="" coords="988,86,1051,112"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#aa53d427e0341b41d6dfa1081b1fcdc0b" title=" " alt="" coords="769,23,821,50"/>
-<area shape="rect" href="../../df/d26/fs_8h.html#a8fe154ec483a85a863311ef072a47c76" title=" " alt="" coords="657,74,711,100"/>
-<area shape="rect" href="../../db/dd8/syscall_8c.html#a068ed63a10c4dd229deb2ec36497d3ac" title=" " alt="" coords="651,150,717,176"/>
-<area shape="rect" href="../../d7/d0b/trap_8h.html#aed543a44247cc3ccdb7d0f9bba224549" title=" " alt="" coords="515,146,603,172"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#a95e901259bd8697ecfbd661cfe5ac26f" title=" " alt="" coords="389,146,467,172"/>
-<area shape="rect" href="../../d3/dda/proc_8c.html#acd2e1ded4bb6fce4500438bf928330f4" title=" " alt="" coords="282,196,330,223"/>
-<area shape="rect" href="../../df/d03/proc_8h.html#a81c8a6a0cae413bc81aa223f7f7b7205" title=" " alt="" coords="271,139,341,166"/>
-<area shape="rect" href="../../d8/d60/init_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="164,203,219,230"/>
-<area shape="rect" href="../../da/da9/os1_8h.html#a406c20548822065e144564476378f8a1" title=" " alt="" coords="160,127,223,154"/>
-<area shape="rect" href="../../d0/d29/main_8c.html#aa97e24fea4daabae6b4e5d534ac8066d" title=" " alt="" coords="5,127,112,154"/>
-<area shape="rect" href="../../d7/d9f/fcntl_8h.html#a0c7518235c1384debeb9e38b04623417" title=" " alt="" coords="768,74,823,100"/>
-<area shape="rect" href="../../d2/d1b/stat_8h.html#aee98bbe743c2d14dbaa67f01c3fb9ed5" title=" " alt="" coords="765,124,825,151"/>
+<area shape="rect" title=" " alt="" coords="1199,259,1265,285"/>
+<area shape="rect" href="../../df/d26/fs_8h.html#a6a1907f2aabd7c9145b3c2beed1beb63" title=" " alt="" coords="1102,233,1145,260"/>
+<area shape="rect" href="../../dd/da3/sh_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="1096,284,1151,311"/>
+<area shape="rect" href="../../df/d26/fs_8h.html#a0a9db2c1b48271268635514b96c3049d" title=" " alt="" coords="985,233,1048,260"/>
+<area shape="rect" href="../../df/d03/proc_8h.html#af10928bf96b16a4464f21307cfe799d3" title="Execute a file." alt="" coords="753,5,813,32"/>
+<area shape="rect" href="../../df/d26/fs_8h.html#a8fe154ec483a85a863311ef072a47c76" title=" " alt="" coords="756,461,811,488"/>
+<area shape="rect" href="../../da/d6f/unistd_8h.html#a8c94afd0b7e5bb4ce95fefd964241f7f" title=" " alt="" coords="876,69,923,96"/>
+<area shape="rect" href="../../d4/d9e/sys__mknod_8c.html#ae92589973c691560ce2a6a97043872cf" title=" " alt="" coords="866,385,933,412"/>
+<area shape="rect" href="../../d7/d9f/fcntl_8h.html#a4e522854927c8a3a43847c39fe999391" title="Open a file." alt="" coords="872,284,927,311"/>
+<area shape="rect" href="../../d1/dfb/sys__stat_8c.html#a3dc1b07404b646712a144e2057359876" title=" " alt="" coords="876,233,923,260"/>
+<area shape="rect" href="../../da/d6f/unistd_8h.html#a87674838dd2bcf61e1a1fb5c9892ab6c" title=" " alt="" coords="861,132,937,159"/>
+<area shape="rect" href="../../d8/d60/init_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="164,81,219,108"/>
+<area shape="rect" href="../../db/dd8/syscall_8c.html#ae596b3527909b69c760d28d0e7dc7736" title=" " alt="" coords="639,132,705,159"/>
+<area shape="rect" href="../../d7/d0b/trap_8h.html#acfa5000a11c20f9f7f8775248e1a8075" title="Trap handler for user mode." alt="" coords="515,157,591,184"/>
+<area shape="rect" href="../../df/d03/proc_8h.html#a91f1ecf029d6974a6678b185397d2c8f" title="Allocate new proc structure and initialize." alt="" coords="389,157,467,184"/>
+<area shape="rect" href="../../da/d6f/unistd_8h.html#acd2e1ded4bb6fce4500438bf928330f4" title=" " alt="" coords="282,107,330,133"/>
+<area shape="rect" href="../../df/d03/proc_8h.html#a81c8a6a0cae413bc81aa223f7f7b7205" title="Allocate user page for first user&#45;mode process, init." alt="" coords="271,169,341,196"/>
+<area shape="rect" href="../../da/da9/os1_8h.html#a406c20548822065e144564476378f8a1" title=" " alt="" coords="160,183,223,209"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#aa97e24fea4daabae6b4e5d534ac8066d" title="Kernel stack per CPU." alt="" coords="5,183,112,209"/>
+<area shape="rect" href="../../d7/d9f/fcntl_8h.html#a0c7518235c1384debeb9e38b04623417" title="Create a new file or rewrite an existing one." alt="" coords="756,411,811,437"/>
+<area shape="rect" href="../../de/d77/ls_8c.html#a0dd2caa6531a27dcd755c46e814b63af" title=" " alt="" coords="764,259,803,285"/>
+<area shape="rect" href="../../d1/d8f/cat_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="756,309,811,336"/>
+<area shape="rect" href="../../d2/d56/sys__mkdir_8c.html#aee98bbe743c2d14dbaa67f01c3fb9ed5" title=" " alt="" coords="753,208,813,235"/>
+<area shape="rect" href="../../de/d77/ls_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="645,259,699,285"/>
 </map>
 </div>
 

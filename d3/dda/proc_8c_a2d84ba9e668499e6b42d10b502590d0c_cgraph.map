@@ -1,0 +1,5 @@
+<map id="sleep" name="sleep">
+<area shape="rect" id="node1" title="Sleep for wait channel." alt="" coords="5,5,63,32"/>
+<area shape="rect" id="node2" href="$d7/d00/sched_8h.html#ad788da91743c333b5bed7c4a0dd12365" title=" " alt="" coords="111,5,171,32"/>
+<area shape="rect" id="node3" href="$db/dbe/sched_8c.html#aa1559f2bb08f486bdd3452f752e23bee" title=" " alt="" coords="219,5,279,32"/>
+</map>

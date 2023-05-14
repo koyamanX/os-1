@@ -1,0 +1,11 @@
+<map id="kernel/sys/sys_read.c" name="kernel/sys/sys_read.c">
+<area shape="rect" id="node1" title=" " alt="" coords="202,5,364,32"/>
+<area shape="rect" id="node2" href="$df/d26/fs_8h.html" title="Structures and function prototypes for low&#45;level access to minix3 filesystem." alt="" coords="225,229,272,256"/>
+<area shape="rect" id="node8" href="$df/d03/proc_8h.html" title="Structures and function prototypes for process management." alt="" coords="286,80,349,107"/>
+<area shape="rect" id="node3" href="$d4/dca/devsw_8h.html" title=" " alt="" coords="55,304,130,331"/>
+<area shape="rect" id="node5" href="$d1/d4e/riscv_8h.html" title=" " alt="" coords="176,453,240,480"/>
+<area shape="rect" id="node4" href="$d6/d6d/buf_8h.html" title="Buffer cache for disk I/O operations." alt="" coords="21,379,76,405"/>
+<area shape="rect" id="node6" title=" " alt="" coords="120,528,216,555"/>
+<area shape="rect" id="node7" title=" " alt="" coords="100,379,170,405"/>
+<area shape="rect" id="node9" href="$d2/d4d/file_8h.html" title=" " alt="" coords="348,155,402,181"/>
+</map>

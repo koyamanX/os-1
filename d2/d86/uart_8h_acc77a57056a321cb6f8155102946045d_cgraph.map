@@ -1,0 +1,7 @@
+<map id="uart_getc" name="uart_getc">
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,88,32"/>
+<area shape="rect" id="node2" href="$d0/d74/sleeplock_8h.html#ab63c9f0a9f71c65020743193340560fa" title=" " alt="" coords="136,5,227,32"/>
+<area shape="rect" id="node3" href="$df/d03/proc_8h.html#a2d84ba9e668499e6b42d10b502590d0c" title="Sleep for wait channel." alt="" coords="275,5,332,32"/>
+<area shape="rect" id="node4" href="$d7/d00/sched_8h.html#ad788da91743c333b5bed7c4a0dd12365" title=" " alt="" coords="380,5,440,32"/>
+<area shape="rect" id="node5" href="$db/dbe/sched_8c.html#aa1559f2bb08f486bdd3452f752e23bee" title=" " alt="" coords="488,5,548,32"/>
+</map>

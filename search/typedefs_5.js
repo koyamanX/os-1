@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['pagetable_5ft_981',['pagetable_t',['../d1/d4e/riscv_8h.html#a7da3c85dcd23ae062e5c8a57d0675e9e',1,'riscv.h']]],
-  ['pte_5ft_982',['pte_t',['../d1/d4e/riscv_8h.html#aafc6a6819ecc73b6a588f9459857e622',1,'riscv.h']]]
+  ['virtio_5fblk_5freq_5fdata_1180',['virtio_blk_req_data',['../d7/dcd/virtio_8h.html#ada9d201127bc80f413c6bd7115c07acc',1,'virtio.h']]],
+  ['virtio_5fblk_5freq_5fstatus_1181',['virtio_blk_req_status',['../d7/dcd/virtio_8h.html#af9a065b7dde21ad8e53f13b5082b6bd8',1,'virtio.h']]]
 ];

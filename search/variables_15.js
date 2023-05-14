@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['zmap_5fblocks_961',['zmap_blocks',['../de/d37/structsuper__block.html#ab7a2054b0027286d382d159efaec5dad',1,'super_block']]],
-  ['zone_962',['zone',['../d0/df8/structinode.html#a49cd15d44ad9d04162ad79bf92714a9c',1,'inode']]],
-  ['zones_963',['zones',['../de/d37/structsuper__block.html#a2414ea87246267c4c4712f3b8ac0b23a',1,'super_block']]]
+  ['wchan_1154',['wchan',['../de/d48/structproc.html#a36fb6c0cde32e7c4368f426e26c142ad',1,'proc']]],
+  ['write_1155',['write',['../de/d84/structcdevsw.html#a4cfeedeb7c778258a496a5c3485fc76d',1,'cdevsw']]]
 ];

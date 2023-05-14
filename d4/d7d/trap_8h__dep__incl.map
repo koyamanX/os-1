@@ -1,4 +1,5 @@
 <map id="include/trap.h" name="include/trap.h">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,116,32"/>
-<area shape="rect" id="node2" href="$d3/dda/proc_8c.html" title=" " alt="" coords="8,80,113,107"/>
+<area shape="rect" id="node1" title=" " alt="" coords="67,5,177,32"/>
+<area shape="rect" id="node2" href="$d3/dda/proc_8c.html" title=" " alt="" coords="5,80,111,107"/>
+<area shape="rect" id="node3" href="$dc/d6f/trap_8c.html" title=" " alt="" coords="135,80,237,107"/>
 </map>

@@ -1,0 +1,7 @@
+<map id="kstrdup" name="kstrdup">
+<area shape="rect" id="node1" title=" " alt="" coords="5,56,76,83"/>
+<area shape="rect" id="node2" href="$d4/d03/kmalloc_8h.html#a5f52d7c56b7d67dc2f96b2e93dfdc7be" title="Allocate size bytes from kernel heap." alt="" coords="124,5,199,32"/>
+<area shape="rect" id="node4" href="$de/d14/lib_8h.html#a7a82515b5d377be04817715c5465b647" title=" " alt="" coords="130,56,193,83"/>
+<area shape="rect" id="node5" href="$de/d14/lib_8h.html#aa383452fe445bfae989358c9d7d96f4f" title=" " alt="" coords="132,107,191,133"/>
+<area shape="rect" id="node3" href="$d3/d1a/kmalloc_8c.html#af7105034bf054e37218d6ade20db4684" title="Free memory area allocated by kmalloc. @detail Free memory area allocated by kmalloc." alt="" coords="247,5,303,32"/>
+</map>

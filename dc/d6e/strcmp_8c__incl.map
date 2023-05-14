@@ -1,5 +1,6 @@
-<map id="libc/string/strcmp.c" name="libc/string/strcmp.c">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,152,32"/>
-<area shape="rect" id="node2" href="$da/d66/string_8h.html" title=" " alt="" coords="43,80,114,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="41,155,116,181"/>
+<map id="kernel/lib/strcmp.c" name="kernel/lib/strcmp.c">
+<area shape="rect" id="node1" title=" " alt="" coords="21,5,163,32"/>
+<area shape="rect" id="node2" href="$de/d14/lib_8h.html" title=" " alt="" coords="67,80,117,107"/>
+<area shape="rect" id="node3" href="$d0/dc6/libgen_8h.html" title=" " alt="" coords="5,155,80,181"/>
+<area shape="rect" id="node4" title=" " alt="" coords="104,155,179,181"/>
 </map>

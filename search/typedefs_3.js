@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['mode_5ft_979',['mode_t',['../d9/d49/types_8h.html#a51b5bca3280ca743227e9b07c4f839a1',1,'types.h']]]
+  ['s16_1174',['s16',['../d1/d4e/riscv_8h.html#a2e9bf6983da73775aa86158c825bf777',1,'riscv.h']]],
+  ['s8_1175',['s8',['../d1/d4e/riscv_8h.html#a151f780fb455885061d3b77ec1c90c03',1,'riscv.h']]]
 ];

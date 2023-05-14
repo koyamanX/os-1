@@ -1,3 +1,4 @@
 <map id="bdevsw" name="bdevsw">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,96,112"/>
+<area shape="rect" id="node1" title="Block device switch table." alt="" coords="5,204,96,311"/>
+<area shape="rect" id="node2" href="$d9/dd0/structbuf.html" title="Struct for buffer cache." alt="" coords="14,5,87,141"/>
 </map>

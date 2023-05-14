@@ -1,0 +1,6 @@
+<map id="sleep_lock" name="sleep_lock">
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,96,32"/>
+<area shape="rect" id="node2" href="$df/d03/proc_8h.html#a2d84ba9e668499e6b42d10b502590d0c" title="Sleep for wait channel." alt="" coords="144,5,201,32"/>
+<area shape="rect" id="node3" href="$d7/d00/sched_8h.html#ad788da91743c333b5bed7c4a0dd12365" title=" " alt="" coords="249,5,309,32"/>
+<area shape="rect" id="node4" href="$db/dbe/sched_8c.html#aa1559f2bb08f486bdd3452f752e23bee" title=" " alt="" coords="357,5,417,32"/>
+</map>

@@ -1,12 +1,12 @@
 <map id="w_sepc" name="w_sepc">
-<area shape="rect" id="node1" title=" " alt="" coords="797,81,868,108"/>
-<area shape="rect" id="node2" href="$df/d03/proc_8h.html#ab247cbaa295acd0662cf88b188f23453" title=" " alt="" coords="655,81,749,108"/>
-<area shape="rect" id="node3" href="$d7/d0b/trap_8h.html#aed543a44247cc3ccdb7d0f9bba224549" title=" " alt="" coords="519,107,607,133"/>
-<area shape="rect" id="node4" href="$df/d03/proc_8h.html#a95e901259bd8697ecfbd661cfe5ac26f" title=" " alt="" coords="393,56,471,83"/>
-<area shape="rect" id="node5" href="$d3/dda/proc_8c.html#acd2e1ded4bb6fce4500438bf928330f4" title=" " alt="" coords="286,56,334,83"/>
-<area shape="rect" id="node8" href="$df/d03/proc_8h.html#a81c8a6a0cae413bc81aa223f7f7b7205" title=" " alt="" coords="275,5,345,32"/>
-<area shape="rect" id="node6" href="$d8/d60/init_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="166,56,221,83"/>
-<area shape="rect" id="node7" href="$db/dd8/syscall_8c.html#a068ed63a10c4dd229deb2ec36497d3ac" title=" " alt="" coords="160,107,227,133"/>
-<area shape="rect" id="node9" href="$da/da9/os1_8h.html#a406c20548822065e144564476378f8a1" title=" " alt="" coords="162,5,225,32"/>
-<area shape="rect" id="node10" href="$d0/d29/main_8c.html#aa97e24fea4daabae6b4e5d534ac8066d" title=" " alt="" coords="5,5,112,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="661,48,732,74"/>
+<area shape="rect" id="node2" href="$d7/d0b/trap_8h.html#ab247cbaa295acd0662cf88b188f23453" title="Returns to user code where trap occurs." alt="" coords="519,48,613,74"/>
+<area shape="rect" id="node3" href="$df/d03/proc_8h.html#a91f1ecf029d6974a6678b185397d2c8f" title="Allocate new proc structure and initialize." alt="" coords="393,98,471,125"/>
+<area shape="rect" id="node7" href="$d7/d0b/trap_8h.html#acfa5000a11c20f9f7f8775248e1a8075" title="Trap handler for user mode." alt="" coords="21,22,97,49"/>
+<area shape="rect" id="node4" href="$da/d6f/unistd_8h.html#acd2e1ded4bb6fce4500438bf928330f4" title=" " alt="" coords="286,73,334,100"/>
+<area shape="rect" id="node8" href="$df/d03/proc_8h.html#a81c8a6a0cae413bc81aa223f7f7b7205" title="Allocate user page for first user&#45;mode process, init." alt="" coords="275,174,345,201"/>
+<area shape="rect" id="node5" href="$d8/d60/init_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="166,73,221,100"/>
+<area shape="rect" id="node6" href="$db/dd8/syscall_8c.html#ae596b3527909b69c760d28d0e7dc7736" title=" " alt="" coords="160,22,227,49"/>
+<area shape="rect" id="node9" href="$da/da9/os1_8h.html#a406c20548822065e144564476378f8a1" title=" " alt="" coords="162,174,225,201"/>
+<area shape="rect" id="node10" href="$d0/d29/main_8c.html#aa97e24fea4daabae6b4e5d534ac8066d" title="Kernel stack per CPU." alt="" coords="5,174,112,201"/>
 </map>

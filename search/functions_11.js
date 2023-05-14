@@ -1,14 +1,20 @@
 var searchData=
 [
-  ['uart_5fgetc_775',['uart_getc',['../d1/d87/uart_8c.html#acc77a57056a321cb6f8155102946045d',1,'uart_getc(void):&#160;uart.c'],['../d2/d86/uart_8h.html#acc77a57056a321cb6f8155102946045d',1,'uart_getc(void):&#160;uart.c']]],
-  ['uart_5finit_776',['uart_init',['../d2/d86/uart_8h.html#a0c0ca72359ddf28dcd15900dfba19343',1,'uart_init(void):&#160;uart.c'],['../d1/d87/uart_8c.html#a0c0ca72359ddf28dcd15900dfba19343',1,'uart_init(void):&#160;uart.c']]],
-  ['uart_5fputchar_777',['uart_putchar',['../d2/d86/uart_8h.html#aea92973e3d3e2fb34fba39c5fc4b253a',1,'uart_putchar(int c):&#160;uart.c'],['../d1/d87/uart_8c.html#aea92973e3d3e2fb34fba39c5fc4b253a',1,'uart_putchar(int c):&#160;uart.c']]],
-  ['uart_5fputs_778',['uart_puts',['../d2/d86/uart_8h.html#aa1f548a14c782ece5290f74e607adee3',1,'uart_puts(char *str):&#160;uart.c'],['../d1/d87/uart_8c.html#aa1f548a14c782ece5290f74e607adee3',1,'uart_puts(char *str):&#160;uart.c']]],
-  ['ufalloc_779',['ufalloc',['../d9/dc3/fio_8c.html#ae7c1c8f26b7361c935ff79eaa5acc597',1,'ufalloc(void):&#160;fio.c'],['../d2/d4d/file_8h.html#ae7c1c8f26b7361c935ff79eaa5acc597',1,'ufalloc(void):&#160;fio.c']]],
-  ['ulltoa_780',['ulltoa',['../dc/d57/printk_8c.html#a63e8bd2e10e535bcd91c2fd607b83ca7',1,'printk.c']]],
-  ['userinit_781',['userinit',['../df/d03/proc_8h.html#a81c8a6a0cae413bc81aa223f7f7b7205',1,'userinit(void):&#160;proc.c'],['../d3/dda/proc_8c.html#a81c8a6a0cae413bc81aa223f7f7b7205',1,'userinit(void):&#160;proc.c']]],
-  ['userret_782',['userret',['../df/d03/proc_8h.html#ad02a806569a1e94124abc933ae06def1',1,'proc.h']]],
-  ['usertrap_783',['usertrap',['../dc/d6f/trap_8c.html#acfa5000a11c20f9f7f8775248e1a8075',1,'trap.c']]],
-  ['usertrapret_784',['usertrapret',['../df/d03/proc_8h.html#ab247cbaa295acd0662cf88b188f23453',1,'usertrapret(void):&#160;trap.c'],['../dc/d6f/trap_8c.html#ab247cbaa295acd0662cf88b188f23453',1,'usertrapret(void):&#160;trap.c']]],
-  ['uvminit_785',['uvminit',['../df/d03/proc_8h.html#ad675d7b632e40c31c1ae8c69a01f6798',1,'proc.h']]]
+  ['sbrk_932',['sbrk',['../da/dc4/sys__sbrk_8c.html#ac7449dc3da03cd44a821716f908f75e1',1,'sbrk(ptrdiff_t increment):&#160;sys_sbrk.c'],['../da/d6f/unistd_8h.html#a3b818446c640442e94e746319f5f2858',1,'sbrk(intptr_t increment):&#160;unistd.h']]],
+  ['sched_933',['sched',['../d7/d00/sched_8h.html#ad788da91743c333b5bed7c4a0dd12365',1,'sched(void):&#160;sched.c'],['../db/dbe/sched_8c.html#ad788da91743c333b5bed7c4a0dd12365',1,'sched(void):&#160;sched.c']]],
+  ['scheduler_934',['scheduler',['../d7/d00/sched_8h.html#a9fa00b0be5d3c4781048861e2506eb63',1,'scheduler(void):&#160;sched.c'],['../db/dbe/sched_8c.html#a9fa00b0be5d3c4781048861e2506eb63',1,'scheduler(void):&#160;sched.c']]],
+  ['sfence_5fvma_935',['sfence_vma',['../d1/d4e/riscv_8h.html#ac389c77856b09c5c2922da14df0f0798',1,'riscv.h']]],
+  ['sleep_936',['sleep',['../df/d03/proc_8h.html#a2d84ba9e668499e6b42d10b502590d0c',1,'sleep(void *wchan):&#160;proc.c'],['../d3/dda/proc_8c.html#a2d84ba9e668499e6b42d10b502590d0c',1,'sleep(void *wchan):&#160;proc.c']]],
+  ['sleep_5fis_5flocked_937',['sleep_is_locked',['../d0/d74/sleeplock_8h.html#a86d02168755c7de2e59be76e0c91e1ca',1,'sleep_is_locked(struct sleeplock *lk):&#160;sleeplock.c'],['../d8/dd1/sleeplock_8c.html#a86d02168755c7de2e59be76e0c91e1ca',1,'sleep_is_locked(struct sleeplock *lk):&#160;sleeplock.c']]],
+  ['sleep_5flock_938',['sleep_lock',['../d0/d74/sleeplock_8h.html#ab63c9f0a9f71c65020743193340560fa',1,'sleep_lock(struct sleeplock *lk):&#160;sleeplock.c'],['../d8/dd1/sleeplock_8c.html#ab63c9f0a9f71c65020743193340560fa',1,'sleep_lock(struct sleeplock *lk):&#160;sleeplock.c']]],
+  ['sleep_5flock_5finit_939',['sleep_lock_init',['../d0/d74/sleeplock_8h.html#a06fbbca3e6650406000f3cc1ce326e4d',1,'sleep_lock_init(struct sleeplock *lk, char *name):&#160;sleeplock.c'],['../d8/dd1/sleeplock_8c.html#a06fbbca3e6650406000f3cc1ce326e4d',1,'sleep_lock_init(struct sleeplock *lk, char *name):&#160;sleeplock.c']]],
+  ['sleep_5funlock_940',['sleep_unlock',['../d8/dd1/sleeplock_8c.html#a70681555597cff29eabb9ec21f7a865e',1,'sleep_unlock(struct sleeplock *lk):&#160;sleeplock.c'],['../d0/d74/sleeplock_8h.html#a70681555597cff29eabb9ec21f7a865e',1,'sleep_unlock(struct sleeplock *lk):&#160;sleeplock.c']]],
+  ['stat_941',['stat',['../d1/dfb/sys__stat_8c.html#a3dc1b07404b646712a144e2057359876',1,'sys_stat.c']]],
+  ['strcmp_942',['strcmp',['../de/d14/lib_8h.html#a11bd144d7d44914099a3aeddf1c8567d',1,'strcmp(const char *s1, const char *s2):&#160;strcmp.c'],['../d7/d4b/strcmp_8c.html#a11bd144d7d44914099a3aeddf1c8567d',1,'strcmp(const char *s1, const char *s2):&#160;strcmp.c']]],
+  ['strcpy_943',['strcpy',['../de/d14/lib_8h.html#a7a82515b5d377be04817715c5465b647',1,'strcpy(char *dest, const char *src):&#160;strcpy.c'],['../d1/d1d/strcpy_8c.html#a7a82515b5d377be04817715c5465b647',1,'strcpy(char *dest, const char *src):&#160;strcpy.c']]],
+  ['strlen_944',['strlen',['../de/d14/lib_8h.html#aa383452fe445bfae989358c9d7d96f4f',1,'strlen(const char *s):&#160;strlen.c'],['../d3/d67/strlen_8c.html#aa383452fe445bfae989358c9d7d96f4f',1,'strlen(const char *s):&#160;strlen.c']]],
+  ['strncmp_945',['strncmp',['../de/d14/lib_8h.html#a07f4a84c11c106e95c32b6ab509346ef',1,'strncmp(const char *s1, const char *s2, size_t n):&#160;strncmp.c'],['../d3/d27/strncmp_8c.html#a07f4a84c11c106e95c32b6ab509346ef',1,'strncmp(const char *s1, const char *s2, size_t n):&#160;strncmp.c']]],
+  ['strtok_946',['strtok',['../de/d14/lib_8h.html#a8cb460f64c449f2a9b9b7a40569ce0fe',1,'strtok(char *str, const char *delim):&#160;strtok.c'],['../d7/d7c/strtok_8c.html#a8cb460f64c449f2a9b9b7a40569ce0fe',1,'strtok(char *str, const char *delim):&#160;strtok.c']]],
+  ['swtch_947',['swtch',['../df/d03/proc_8h.html#aa1559f2bb08f486bdd3452f752e23bee',1,'swtch(context_t *old, context_t *new):&#160;proc.h'],['../db/dbe/sched_8c.html#aa1559f2bb08f486bdd3452f752e23bee',1,'swtch(context_t *old, context_t *new):&#160;sched.c']]],
+  ['syscall_948',['syscall',['../db/dd8/syscall_8c.html#ae596b3527909b69c760d28d0e7dc7736',1,'syscall(struct proc *rp):&#160;syscall.c'],['../dc/d6f/trap_8c.html#ae596b3527909b69c760d28d0e7dc7736',1,'syscall(struct proc *rp):&#160;syscall.c']]]
 ];

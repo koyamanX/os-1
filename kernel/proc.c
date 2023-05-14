@@ -7,7 +7,7 @@
 #include <proc.h>
 #include <riscv.h>
 #include <sched.h>
-#include <slob.h>
+#include <kmalloc.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <trap.h>

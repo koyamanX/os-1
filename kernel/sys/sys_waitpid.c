@@ -1,6 +1,6 @@
 #include <proc.h>
 #include <sleeplock.h>
-#include <slob.h>
+#include <kmalloc.h>
 #include <sys/wait.h>
 #include <vm.h>
 

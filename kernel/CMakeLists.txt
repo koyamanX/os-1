@@ -17,7 +17,7 @@ set(KERNEL_SOURCE
 	devsw.c
 	fio.c
 	alloc.c
-	slob.c
+	kmalloc.c
 	sleeplock.c
 	plic.c
 	trampoline.S

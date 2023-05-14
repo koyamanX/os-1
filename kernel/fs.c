@@ -15,7 +15,7 @@
 #include <printk.h>
 #include <proc.h>
 #include <riscv.h>
-#include <slob.h>
+#include <kmalloc.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <uart.h>

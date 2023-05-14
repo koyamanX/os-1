@@ -2,7 +2,7 @@
 #include <fs.h>
 #include <printk.h>
 #include <proc.h>
-#include <slob.h>
+#include <kmalloc.h>
 #include <string.h>
 #include <vm.h>
 

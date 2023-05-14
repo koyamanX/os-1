@@ -1,10 +1,10 @@
 /**
- * @file slob.h
- * @brief Slob allocator
+ * @file kmalloc.h
+ * @brief kmalloc allocator
  * @author ckoyama(koyamanX)
  */
-#ifndef _SLOB_H
-#define _SLOB_H
+#ifndef _kmalloc_H
+#define _kmalloc_H
 
 #include <riscv.h>
 
@@ -30,24 +30,18 @@ void kfree(void *p);
 /**
  * @brief kmalloc data structure.
  * @details header is maintained in following format.
- * There is no data field, area followed by slob_header is used as data area.
- * | slob_header | data |
- * Actual size of data allocated is multiples of slob_header to ensure
- * slob_header is propery aligned in allocated memory.
+ * There is no data field, area followed by kmalloc_header is used as data area.
+ * | kmalloc_header | data |
+ * Actual size of data allocated is multiples of kmalloc_header to ensure
+ * kmalloc_header is propery aligned in allocated memory.
  */
-struct slob_header {
-    u64 units;  //!< If slob_header appears any where in memory region it might
+struct kmalloc_header {
+    u64 units;  //!< If kmalloc_header appears any where in memory region it might
                 //!< cause misaligned exceptions
-                // Since field in slob_header is not propery aligned, to avoid
+                // Since field in kmalloc_header is not propery aligned, to avoid
                 // this, we need allocate area not by its requested size but
-                // size(units) multiples to slob_header to align in memory area.
-    struct slob_header *next;
+                // size(units) multiples to kmalloc_header to align in memory area.
+    struct kmalloc_header *next;
 };
 
-struct slob_big_header {
-    int order;
-    void *page;
-    struct big_slob_header *next;
-};
-
-#endif  //_SLOB_H
+#endif  //_kmalloc_H

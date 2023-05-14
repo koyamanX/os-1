@@ -21,6 +21,7 @@ set(KERNEL_SOURCE
 	sleeplock.c
 	plic.c
 	trampoline.S
+	timer.S
 	swtch.S)
 
 add_subdirectory(sys)

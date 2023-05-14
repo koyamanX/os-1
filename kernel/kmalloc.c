@@ -1,12 +1,13 @@
-#include <printk.h>
 #include <kmalloc.h>
+#include <printk.h>
 #include <stddef.h>
 #include <stdint.h>
 #include <vm.h>
 
-static struct kmalloc_header arena = {.next = &arena,
-                                   .units = 1};  //!< kmalloc freelist head base.
-static struct kmalloc_header *freelist = &arena;    //!< kmalloc freelist.
+static struct kmalloc_header arena = {
+    .next = &arena,
+    .units = 1};  //!< kmalloc freelist head base.
+static struct kmalloc_header *freelist = &arena;  //!< kmalloc freelist.
 
 void *kmalloc(size_t size) {
     u64 units;
@@ -19,9 +20,9 @@ void *kmalloc(size_t size) {
     }
 
     // Data size(aligned to kmalloc_header) + one kmalloc_header.
-    units =
-        ((size + sizeof(struct kmalloc_header) - 1) / sizeof(struct kmalloc_header)) +
-        1;
+    units = ((size + sizeof(struct kmalloc_header) - 1) /
+             sizeof(struct kmalloc_header)) +
+            1;
 
     prev = freelist;
     for (cur = prev->next;; prev = cur, cur = cur->next) {

@@ -36,11 +36,12 @@ void kfree(void *p);
  * kmalloc_header is propery aligned in allocated memory.
  */
 struct kmalloc_header {
-    u64 units;  //!< If kmalloc_header appears any where in memory region it might
-                //!< cause misaligned exceptions
-                // Since field in kmalloc_header is not propery aligned, to avoid
-                // this, we need allocate area not by its requested size but
-                // size(units) multiples to kmalloc_header to align in memory area.
+    u64 units;  //!< If kmalloc_header appears any where in memory region it
+                //!< might cause misaligned exceptions
+                // Since field in kmalloc_header is not propery aligned, to
+                // avoid this, we need allocate area not by its requested size
+                // but size(units) multiples to kmalloc_header to align in
+                // memory area.
     struct kmalloc_header *next;
 };
 

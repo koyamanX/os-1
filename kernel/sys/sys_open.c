@@ -1,10 +1,10 @@
 #include <fcntl.h>
 #include <fs.h>
+#include <kmalloc.h>
 #include <lib.h>
 #include <libgen.h>
 #include <printk.h>
 #include <proc.h>
-#include <kmalloc.h>
 #include <sys/stat.h>
 
 int open(const char *pathname, int flags, mode_t mode) {

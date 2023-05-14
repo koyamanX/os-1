@@ -1,8 +1,8 @@
 #include <elf.h>
 #include <fs.h>
+#include <kmalloc.h>
 #include <printk.h>
 #include <proc.h>
-#include <kmalloc.h>
 #include <string.h>
 #include <vm.h>
 

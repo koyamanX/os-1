@@ -47,10 +47,10 @@ void usertrap(void) {
 #define ECALL_FROM_U_MODE 8
         case ECALL_FROM_U_MODE: {
             rp->tf->sepc += 4;
-						if(rp->stat == RUNNING) {
-							rp->stat = RUNNABLE;
-						}
             syscall(rp);
+            if (rp->stat == RUNNING) {
+                rp->stat = RUNNABLE;
+            }
             sched();
             break;
         }

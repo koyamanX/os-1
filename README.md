@@ -66,6 +66,15 @@ RISC-V toolchain, qemu for RISC-V and minix3 kernel module is required to run os
 ./run.sh help
 ```
 
+# Supported userland command
+
+Notes: argv is hardcodeded and sh only accepts command path. 
+
+- /usr/sbin/sh
+- /usr/sbin/cat
+- /usr/sbin/ls
+- /usr/sbin/hello
+
 # Documentation
 
 [Internal documentaions](https://koyamanx.github.io/os-1/)
@@ -79,3 +88,4 @@ RISC-V toolchain, qemu for RISC-V and minix3 kernel module is required to run os
 - Timestamp for file(atime,mtime and ctime) is not supported and always be constant 0 (1970/1/1).
 - Current working directory is not supported.
 - Relative path is not supported.
+- Newlib may produce bugs when using dynamically allocate memory(still in debugging).

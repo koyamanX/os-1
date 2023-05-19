@@ -124,9 +124,18 @@ Clean</h2>
 Help</h2>
 <div class="fragment"><div class="line">./run.sh help</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md8"></a>
+Supported userland command</h1>
+<p>Notes: argv is hardcodeded and sh only accepts command path.</p>
+<ul>
+<li>/usr/sbin/sh</li>
+<li>/usr/sbin/cat</li>
+<li>/usr/sbin/ls</li>
+<li>/usr/sbin/hello</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md9"></a>
 Documentation</h1>
 <p><a href="https://koyamanx.github.io/os-1/">Internal documentaions</a></p>
-<h1><a class="anchor" id="autotoc_md9"></a>
+<h1><a class="anchor" id="autotoc_md10"></a>
 Limitations</h1>
 <ul>
 <li>File larger than 264KB is not supported.</li>
@@ -135,7 +144,8 @@ Limitations</h1>
 <li>argc, argv is partially supported.</li>
 <li>Timestamp for <a class="el" href="../../d7/d3a/structfile.html">file(atime,mtime and ctime)</a> is not supported and always be constant 0 (1970/1/1).</li>
 <li>Current working directory is not supported.</li>
-<li>Relative path is not supported. </li>
+<li>Relative path is not supported.</li>
+<li>Newlib may produce bugs when using dynamically allocate memory(still in debugging). </li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->

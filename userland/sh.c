@@ -19,8 +19,7 @@ int main(void) {
     }
 
     // Execute command using exec system call.
-    char *argv[] = {"/usr/sbin/cat", "/hello.txt", NULL};
-    execv(input, argv);
+    execv(input, NULL);
 
     return 0;
 }

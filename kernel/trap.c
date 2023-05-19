@@ -61,7 +61,7 @@ void usertrap(void) {
             plic_complete(plic_claim());
             break;
         default: {
-            DEBUG_PRINTK("trap: fault: cause: %x, epc:%x, tval:%x\n",
+            printk("trap: fault: cause: %x, epc:%x, tval:%x\n",
                          r_scause(), r_sepc(), r_stval());
             panic("trap: Unimplemented trap");
             break;

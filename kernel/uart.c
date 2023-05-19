@@ -78,8 +78,9 @@ void uart_intr(void) {
         if ((*UART_LSR & 0x1)) {
             int c = *UART_RBR;
 
-            if (c == '\r') {
+            if (c == '\r' || c == '\n') {
                 newline = 1;
+                c = '\n';
             }
             if (c == 0x7f) {
                 if (rxbuf.count == 0)
@@ -95,11 +96,13 @@ void uart_intr(void) {
             rxbuf.buffer[rxbuf.tail] = c;
             rxbuf.tail = (rxbuf.tail + 1) % N;
             rxbuf.count++;
+            if (newline)
+                break;
         } else {
             break;
         }
     }
-    if (rxbuf.count && newline) {
+    if (newline) {
         sleep_unlock(&rxbuf.lk);
     }
 

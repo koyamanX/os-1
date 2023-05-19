@@ -179,6 +179,7 @@ u64 readi(struct inode *ip, char *dest, u64 offset, u64 size) {
                 dest[i] = cdevsw[major(ip->dev)].read();
             }
             if (dest[i] == '\n') {
+								dest[i] = '\0';
                 return i + 1;
             }
         }

@@ -1,52 +1,52 @@
 <map id="newproc" name="newproc">
-<area shape="rect" id="node1" title="Allocate new proc structure and initialize." alt="" coords="5,144,83,171"/>
-<area shape="rect" id="node2" href="$da/d0a/vm_8h.html#ac3f8b55879de06493c4fe061cea29e83" title="Dump page table entry for givien virtual address." alt="" coords="567,321,655,348"/>
-<area shape="rect" id="node4" href="$da/d0a/vm_8h.html#af115498144befef7de1d67b0ded22eb5" title="Map a virtual address to a physical address." alt="" coords="571,81,651,108"/>
-<area shape="rect" id="node6" href="$de/d14/lib_8h.html#aaca5c21d6f783f0d2b75936ae54b7f66" title=" " alt="" coords="857,81,933,108"/>
-<area shape="rect" id="node7" href="$da/da9/os1_8h.html#a9052542a47ceb5899c3c1d5ddff0f23c" title=" " alt="" coords="416,1613,509,1640"/>
-<area shape="rect" id="node8" href="$d7/d0b/trap_8h.html#acfa5000a11c20f9f7f8775248e1a8075" title="Trap handler for user mode." alt="" coords="131,1183,207,1209"/>
-<area shape="rect" id="node50" href="$d7/d0b/trap_8h.html#ab247cbaa295acd0662cf88b188f23453" title="Returns to user code where trap occurs." alt="" coords="264,1512,359,1539"/>
-<area shape="rect" id="node3" href="$de/de9/vm_8c.html#a20fa4134dd4bffdb3a2ac4e4097f7d4b" title="Walk the page table." alt="" coords="712,347,795,373"/>
-<area shape="rect" id="node5" href="$de/de9/vm_8c.html#a5d5ee00b0f9e74d54e650564939646a2" title="Allocate a page table entry." alt="" coords="712,81,795,108"/>
-<area shape="rect" id="node9" href="$df/d1f/panic_8h.html#a92ad17d19a46880dd5e6c99143666b4a" title=" " alt="" coords="582,1157,639,1184"/>
-<area shape="rect" id="node12" href="$d6/d1e/plic_8h.html#a3a956eedd668e59606078abe8c0d99aa" title=" " alt="" coords="267,1309,355,1336"/>
-<area shape="rect" id="node13" href="$d6/d1e/plic_8h.html#adadd23fbca6dd31ee82150c1a58c8a83" title=" " alt="" coords="255,1360,368,1387"/>
-<area shape="rect" id="node14" href="$d1/d4e/riscv_8h.html#a86438074316906dd9aa5a0c4296cf96d" title=" " alt="" coords="272,1411,351,1437"/>
-<area shape="rect" id="node15" href="$d1/d4e/riscv_8h.html#acbadf9f65ec424fcfa88a1a43c837209" title=" " alt="" coords="279,600,343,627"/>
-<area shape="rect" id="node16" href="$d1/d4e/riscv_8h.html#ab63ff16838a714f96b854ede0509e2e3" title=" " alt="" coords="278,651,345,677"/>
-<area shape="rect" id="node17" href="$d7/d00/sched_8h.html#ad788da91743c333b5bed7c4a0dd12365" title=" " alt="" coords="581,929,641,956"/>
-<area shape="rect" id="node19" href="$dc/d6f/trap_8c.html#ae596b3527909b69c760d28d0e7dc7736" title=" " alt="" coords="278,701,345,728"/>
-<area shape="rect" id="node39" href="$d2/d86/uart_8h.html#a102eccaa73ad8b455577c902fa56e333" title=" " alt="" coords="424,1259,501,1285"/>
-<area shape="rect" id="node42" href="$dc/d6f/trap_8c.html#ab247cbaa295acd0662cf88b188f23453" title="Returns to user code where trap occurs." alt="" coords="264,1461,359,1488"/>
+<area shape="rect" id="node1" title="Allocate new proc structure and initialize." alt="" coords="5,1056,83,1083"/>
+<area shape="rect" id="node2" href="$da/d0a/vm_8h.html#ac3f8b55879de06493c4fe061cea29e83" title="Dump page table entry for givien virtual address." alt="" coords="565,93,653,120"/>
+<area shape="rect" id="node4" href="$da/d0a/vm_8h.html#af115498144befef7de1d67b0ded22eb5" title="Map a virtual address to a physical address." alt="" coords="569,43,649,69"/>
+<area shape="rect" id="node6" href="$de/d14/lib_8h.html#aaca5c21d6f783f0d2b75936ae54b7f66" title=" " alt="" coords="840,43,916,69"/>
+<area shape="rect" id="node7" href="$da/da9/os1_8h.html#a9052542a47ceb5899c3c1d5ddff0f23c" title=" " alt="" coords="416,1512,509,1539"/>
+<area shape="rect" id="node8" href="$d7/d0b/trap_8h.html#acfa5000a11c20f9f7f8775248e1a8075" title="Trap handler for user mode." alt="" coords="131,1259,207,1285"/>
+<area shape="rect" id="node50" href="$d7/d0b/trap_8h.html#ab247cbaa295acd0662cf88b188f23453" title="Returns to user code where trap occurs." alt="" coords="264,1664,359,1691"/>
+<area shape="rect" id="node3" href="$de/de9/vm_8c.html#a20fa4134dd4bffdb3a2ac4e4097f7d4b" title="Walk the page table." alt="" coords="709,119,792,145"/>
+<area shape="rect" id="node5" href="$de/de9/vm_8c.html#a5d5ee00b0f9e74d54e650564939646a2" title="Allocate a page table entry." alt="" coords="709,43,792,69"/>
+<area shape="rect" id="node9" href="$df/d1f/panic_8h.html#a92ad17d19a46880dd5e6c99143666b4a" title=" " alt="" coords="581,1107,638,1133"/>
+<area shape="rect" id="node11" href="$d6/d1e/plic_8h.html#a3a956eedd668e59606078abe8c0d99aa" title=" " alt="" coords="267,1360,355,1387"/>
+<area shape="rect" id="node12" href="$d6/d1e/plic_8h.html#adadd23fbca6dd31ee82150c1a58c8a83" title=" " alt="" coords="255,1411,368,1437"/>
+<area shape="rect" id="node13" href="$db/d11/printk_8h.html#a36fe4a3ea4506cb4d128b11f93187f71" title=" " alt="" coords="433,1259,493,1285"/>
+<area shape="rect" id="node16" href="$d1/d4e/riscv_8h.html#a86438074316906dd9aa5a0c4296cf96d" title=" " alt="" coords="272,1461,351,1488"/>
+<area shape="rect" id="node17" href="$d1/d4e/riscv_8h.html#acbadf9f65ec424fcfa88a1a43c837209" title=" " alt="" coords="279,1512,343,1539"/>
+<area shape="rect" id="node18" href="$d1/d4e/riscv_8h.html#ab63ff16838a714f96b854ede0509e2e3" title=" " alt="" coords="278,1107,345,1133"/>
+<area shape="rect" id="node19" href="$d7/d00/sched_8h.html#ad788da91743c333b5bed7c4a0dd12365" title=" " alt="" coords="579,625,639,652"/>
+<area shape="rect" id="node21" href="$dc/d6f/trap_8c.html#ae596b3527909b69c760d28d0e7dc7736" title=" " alt="" coords="278,701,345,728"/>
+<area shape="rect" id="node41" href="$d2/d86/uart_8h.html#a102eccaa73ad8b455577c902fa56e333" title=" " alt="" coords="273,1309,350,1336"/>
+<area shape="rect" id="node42" href="$dc/d6f/trap_8c.html#ab247cbaa295acd0662cf88b188f23453" title="Returns to user code where trap occurs." alt="" coords="264,1613,359,1640"/>
 <area shape="rect" id="node49" href="$d1/d4e/riscv_8h.html#a6f91b37b1dd93c696037e38f8e101b8e" title=" " alt="" coords="282,1259,341,1285"/>
-<area shape="rect" id="node10" href="$d2/d86/uart_8h.html#aa1f548a14c782ece5290f74e607adee3" title=" " alt="" coords="712,1259,795,1285"/>
-<area shape="rect" id="node11" href="$d1/d87/uart_8c.html#aea92973e3d3e2fb34fba39c5fc4b253a" title=" " alt="" coords="843,1233,947,1260"/>
-<area shape="rect" id="node18" href="$db/dbe/sched_8c.html#aa1559f2bb08f486bdd3452f752e23bee" title=" " alt="" coords="723,929,783,956"/>
-<area shape="rect" id="node20" href="$df/d03/proc_8h.html#abc96bd69b58b2deaddb484478d911c1b" title="Exit process." alt="" coords="435,752,490,779"/>
-<area shape="rect" id="node21" href="$da/d6f/unistd_8h.html#a4b20a70d83d7f74a2734da590b4b8cf8" title=" " alt="" coords="441,448,484,475"/>
-<area shape="rect" id="node22" href="$da/d6f/unistd_8h.html#aafbcde67669a1b96577e735ddebd8634" title=" " alt="" coords="435,1157,491,1184"/>
-<area shape="rect" id="node23" href="$da/d6f/unistd_8h.html#a6363aa4e42f01c8c657effa91abfa421" title=" " alt="" coords="439,499,486,525"/>
-<area shape="rect" id="node24" href="$df/d03/proc_8h.html#af10928bf96b16a4464f21307cfe799d3" title="Execute a file." alt="" coords="433,347,493,373"/>
-<area shape="rect" id="node25" href="$da/d0a/vm_8h.html#a4a1c038e62a24366226807044cf12b2c" title="Convert a virtual address to a physical address." alt="" coords="579,372,642,399"/>
-<area shape="rect" id="node26" href="$da/d6f/unistd_8h.html#acd2e1ded4bb6fce4500438bf928330f4" title=" " alt="" coords="439,144,487,171"/>
-<area shape="rect" id="node27" href="$d9/d0e/sys__fstat_8c.html#ac1759a877da2f37512096f3a491e4112" title=" " alt="" coords="437,651,489,677"/>
-<area shape="rect" id="node28" href="$da/d6f/unistd_8h.html#a8c94afd0b7e5bb4ce95fefd964241f7f" title=" " alt="" coords="439,701,486,728"/>
-<area shape="rect" id="node29" href="$d2/d56/sys__mkdir_8c.html#aee98bbe743c2d14dbaa67f01c3fb9ed5" title=" " alt="" coords="433,549,493,576"/>
-<area shape="rect" id="node30" href="$d7/d9f/fcntl_8h.html#a4e522854927c8a3a43847c39fe999391" title="Open a file." alt="" coords="583,575,638,601"/>
-<area shape="rect" id="node31" href="$db/dd8/syscall_8c.html#ae92589973c691560ce2a6a97043872cf" title=" " alt="" coords="429,803,496,829"/>
-<area shape="rect" id="node32" href="$da/d6f/unistd_8h.html#aba50464fe1a1d83175115f6d08dd259a" title=" " alt="" coords="437,853,488,880"/>
-<area shape="rect" id="node33" href="$da/d6f/unistd_8h.html#a3b818446c640442e94e746319f5f2858" title=" " alt="" coords="437,904,488,931"/>
-<area shape="rect" id="node34" href="$d1/dfb/sys__stat_8c.html#a3dc1b07404b646712a144e2057359876" title=" " alt="" coords="439,955,486,981"/>
-<area shape="rect" id="node35" href="$df/d03/proc_8h.html#aa1559f2bb08f486bdd3452f752e23bee" title="switch context." alt="" coords="433,195,493,221"/>
-<area shape="rect" id="node36" href="$da/d6f/unistd_8h.html#a87674838dd2bcf61e1a1fb5c9892ab6c" title=" " alt="" coords="425,245,501,272"/>
-<area shape="rect" id="node37" href="$d1/df2/wait_8h.html#a710d1faf7fea3570d986f2ea40e1ed39" title=" " alt="" coords="427,296,498,323"/>
-<area shape="rect" id="node38" href="$da/d6f/unistd_8h.html#abb39b21888372e95ad3e5c59b166f5c8" title=" " alt="" coords="435,1005,490,1032"/>
-<area shape="rect" id="node40" href="$db/d11/printk_8h.html#a36fe4a3ea4506cb4d128b11f93187f71" title=" " alt="" coords="581,1309,641,1336"/>
-<area shape="rect" id="node41" href="$d0/d74/sleeplock_8h.html#a70681555597cff29eabb9ec21f7a865e" title=" " alt="" coords="557,1259,664,1285"/>
-<area shape="rect" id="node43" href="$d1/d4e/riscv_8h.html#a44e721f33710d723e2dc0b64ba5214e3" title=" " alt="" coords="431,1512,494,1539"/>
-<area shape="rect" id="node44" href="$d1/d4e/riscv_8h.html#a7fdda5e07cb6e0da978f9b7a15ca781d" title=" " alt="" coords="422,1563,503,1589"/>
-<area shape="rect" id="node45" href="$d7/d0b/trap_8h.html#ad02a806569a1e94124abc933ae06def1" title="Low&#45;level codes to return user code." alt="" coords="429,1309,497,1336"/>
-<area shape="rect" id="node46" href="$d1/d4e/riscv_8h.html#af11bac055e0303ab3bffdc13bdc35c84" title=" " alt="" coords="427,1360,498,1387"/>
-<area shape="rect" id="node47" href="$d1/d4e/riscv_8h.html#a3cf08d1a084970277d90f7509ce71f79" title=" " alt="" coords="419,1411,506,1437"/>
-<area shape="rect" id="node48" href="$d1/d4e/riscv_8h.html#a43f2715a3c75e490d05d6262cd903cdb" title=" " alt="" coords="425,1461,500,1488"/>
+<area shape="rect" id="node10" href="$d2/d86/uart_8h.html#aa1f548a14c782ece5290f74e607adee3" title=" " alt="" coords="709,1145,792,1172"/>
+<area shape="rect" id="node14" href="$d2/d86/uart_8h.html#aea92973e3d3e2fb34fba39c5fc4b253a" title=" " alt="" coords="557,1247,661,1273"/>
+<area shape="rect" id="node15" href="$dc/d57/printk_8c.html#a63e8bd2e10e535bcd91c2fd607b83ca7" title=" " alt="" coords="580,1297,639,1324"/>
+<area shape="rect" id="node20" href="$db/dbe/sched_8c.html#aa1559f2bb08f486bdd3452f752e23bee" title=" " alt="" coords="721,625,781,652"/>
+<area shape="rect" id="node22" href="$df/d03/proc_8h.html#abc96bd69b58b2deaddb484478d911c1b" title="Exit process." alt="" coords="435,853,490,880"/>
+<area shape="rect" id="node23" href="$da/d6f/unistd_8h.html#a4b20a70d83d7f74a2734da590b4b8cf8" title=" " alt="" coords="441,955,484,981"/>
+<area shape="rect" id="node24" href="$da/d6f/unistd_8h.html#aafbcde67669a1b96577e735ddebd8634" title=" " alt="" coords="435,1107,491,1133"/>
+<area shape="rect" id="node25" href="$da/d6f/unistd_8h.html#a6363aa4e42f01c8c657effa91abfa421" title=" " alt="" coords="439,1056,486,1083"/>
+<area shape="rect" id="node26" href="$df/d03/proc_8h.html#af10928bf96b16a4464f21307cfe799d3" title="Execute a file." alt="" coords="433,144,493,171"/>
+<area shape="rect" id="node27" href="$da/d0a/vm_8h.html#a4a1c038e62a24366226807044cf12b2c" title="Convert a virtual address to a physical address." alt="" coords="578,144,641,171"/>
+<area shape="rect" id="node28" href="$da/d6f/unistd_8h.html#acd2e1ded4bb6fce4500438bf928330f4" title=" " alt="" coords="439,1157,487,1184"/>
+<area shape="rect" id="node29" href="$d9/d0e/sys__fstat_8c.html#ac1759a877da2f37512096f3a491e4112" title=" " alt="" coords="437,397,489,424"/>
+<area shape="rect" id="node30" href="$da/d6f/unistd_8h.html#a8c94afd0b7e5bb4ce95fefd964241f7f" title=" " alt="" coords="439,448,486,475"/>
+<area shape="rect" id="node31" href="$d2/d56/sys__mkdir_8c.html#aee98bbe743c2d14dbaa67f01c3fb9ed5" title=" " alt="" coords="433,347,493,373"/>
+<area shape="rect" id="node32" href="$d7/d9f/fcntl_8h.html#a4e522854927c8a3a43847c39fe999391" title="Open a file." alt="" coords="582,321,637,348"/>
+<area shape="rect" id="node33" href="$db/dd8/syscall_8c.html#ae92589973c691560ce2a6a97043872cf" title=" " alt="" coords="429,499,496,525"/>
+<area shape="rect" id="node34" href="$da/d6f/unistd_8h.html#aba50464fe1a1d83175115f6d08dd259a" title=" " alt="" coords="437,549,488,576"/>
+<area shape="rect" id="node35" href="$da/d6f/unistd_8h.html#a3b818446c640442e94e746319f5f2858" title=" " alt="" coords="437,600,488,627"/>
+<area shape="rect" id="node36" href="$d1/dfb/sys__stat_8c.html#a3dc1b07404b646712a144e2057359876" title=" " alt="" coords="439,651,486,677"/>
+<area shape="rect" id="node37" href="$df/d03/proc_8h.html#aa1559f2bb08f486bdd3452f752e23bee" title="switch context." alt="" coords="433,701,493,728"/>
+<area shape="rect" id="node38" href="$da/d6f/unistd_8h.html#a87674838dd2bcf61e1a1fb5c9892ab6c" title=" " alt="" coords="425,752,501,779"/>
+<area shape="rect" id="node39" href="$d1/df2/wait_8h.html#a710d1faf7fea3570d986f2ea40e1ed39" title=" " alt="" coords="427,803,498,829"/>
+<area shape="rect" id="node40" href="$da/d6f/unistd_8h.html#abb39b21888372e95ad3e5c59b166f5c8" title=" " alt="" coords="435,904,490,931"/>
+<area shape="rect" id="node43" href="$d1/d4e/riscv_8h.html#a44e721f33710d723e2dc0b64ba5214e3" title=" " alt="" coords="431,1613,494,1640"/>
+<area shape="rect" id="node44" href="$d1/d4e/riscv_8h.html#a7fdda5e07cb6e0da978f9b7a15ca781d" title=" " alt="" coords="422,1664,503,1691"/>
+<area shape="rect" id="node45" href="$d7/d0b/trap_8h.html#ad02a806569a1e94124abc933ae06def1" title="Low&#45;level codes to return user code." alt="" coords="429,1715,497,1741"/>
+<area shape="rect" id="node46" href="$d1/d4e/riscv_8h.html#af11bac055e0303ab3bffdc13bdc35c84" title=" " alt="" coords="427,1765,498,1792"/>
+<area shape="rect" id="node47" href="$d1/d4e/riscv_8h.html#a3cf08d1a084970277d90f7509ce71f79" title=" " alt="" coords="419,1816,506,1843"/>
+<area shape="rect" id="node48" href="$d1/d4e/riscv_8h.html#a43f2715a3c75e490d05d6262cd903cdb" title=" " alt="" coords="425,1563,500,1589"/>
 </map>

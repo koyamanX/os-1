@@ -71,6 +71,8 @@ $(function() {
 Overview</h1>
 <p>OS-1 is a toy UNIX like operating system version 1.</p>
 <p>OS-1 is implemented in C and assembly for RISC-V qemu.</p>
+<p>OS-1 is still in development and may have bugs in kernel.</p>
+<p>If you find any bugs, please report us by opening issue.</p>
 <p>Supporting following features.</p><ul>
 <li>Round-robin scheduling</li>
 <li>virtio-blk device dirver</li>
@@ -127,9 +129,10 @@ Documentation</h1>
 <h1><a class="anchor" id="autotoc_md9"></a>
 Limitations</h1>
 <ul>
-<li>File larger than 8KB is not supported.</li>
-<li>Directory holding over 128 entries is not supported.</li>
+<li>File larger than 264KB is not supported.</li>
 <li>uid/gid is set to user id and group id of root which is 0.</li>
+<li>Permission is not checked for files.</li>
+<li>argc, argv is partially supported.</li>
 <li>Timestamp for <a class="el" href="../../d7/d3a/structfile.html">file(atime,mtime and ctime)</a> is not supported and always be constant 0 (1970/1/1).</li>
 <li>Current working directory is not supported.</li>
 <li>Relative path is not supported. </li>

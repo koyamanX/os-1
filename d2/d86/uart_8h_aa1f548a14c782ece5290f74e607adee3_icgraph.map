@@ -1,52 +1,52 @@
 <map id="uart_puts" name="uart_puts">
-<area shape="rect" id="node1" title=" " alt="" coords="1715,485,1797,512"/>
-<area shape="rect" id="node2" href="$df/d1f/panic_8h.html#a92ad17d19a46880dd5e6c99143666b4a" title=" " alt="" coords="1608,511,1665,537"/>
-<area shape="rect" id="node49" href="$db/d11/printk_8h.html#a36fe4a3ea4506cb4d128b11f93187f71" title=" " alt="" coords="1607,233,1667,260"/>
-<area shape="rect" id="node3" href="$d2/d5a/fs_8c.html#a36f229bbda63818246ec86181b1fdd42" title="Free entry to map." alt="" coords="1309,536,1416,563"/>
-<area shape="rect" id="node4" href="$d2/d5a/fs_8c.html#a8e8a06c5de725cb453a74a2d455b41d1" title="Allocate new entry from map." alt="" coords="1324,435,1401,461"/>
-<area shape="rect" id="node9" href="$df/d26/fs_8h.html#a8fe154ec483a85a863311ef072a47c76" title=" " alt="" coords="787,573,841,600"/>
-<area shape="rect" id="node16" href="$db/dd8/syscall_8c.html#ae596b3527909b69c760d28d0e7dc7736" title=" " alt="" coords="652,847,719,873"/>
-<area shape="rect" id="node17" href="$d7/d0b/trap_8h.html#acfa5000a11c20f9f7f8775248e1a8075" title="Trap handler for user mode." alt="" coords="519,281,595,308"/>
-<area shape="rect" id="node24" href="$da/d6f/unistd_8h.html#abb39b21888372e95ad3e5c59b166f5c8" title=" " alt="" coords="915,157,969,184"/>
-<area shape="rect" id="node26" href="$df/d26/fs_8h.html#a3faf776bb14363fd149b07904e252884" title=" " alt="" coords="1183,587,1241,613"/>
-<area shape="rect" id="node29" href="$d2/dfe/alloc_8h.html#a492d78ef609946d35518ab7090e90669" title="Allocate memory region." alt="" coords="1313,283,1413,309"/>
-<area shape="rect" id="node31" href="$d2/dfe/alloc_8h.html#a22a6fdcb9cfeffb921e110c072a68b99" title="Deallocate memory region." alt="" coords="1464,377,1559,404"/>
-<area shape="rect" id="node35" href="$da/d6f/unistd_8h.html#aafbcde67669a1b96577e735ddebd8634" title=" " alt="" coords="914,1195,970,1221"/>
-<area shape="rect" id="node36" href="$d2/d4d/file_8h.html#a952c06132c0fe469e8aa14bdfc2dd0c9" title=" " alt="" coords="1042,688,1101,715"/>
-<area shape="rect" id="node37" href="$df/d26/fs_8h.html#aec001fd653f9a666e84e3a4012aac6ac" title=" " alt="" coords="1484,637,1539,664"/>
-<area shape="rect" id="node39" href="$d2/d5a/fs_8c.html#aedcebf5c9883811f75eddb545846c536" title="Find n in map is used or not." alt="" coords="1328,587,1397,613"/>
-<area shape="rect" id="node40" href="$df/d26/fs_8h.html#a005941ed6b951de6188291c240fb00e9" title=" " alt="" coords="1189,536,1235,563"/>
-<area shape="rect" id="node41" href="$df/d26/fs_8h.html#a0a9db2c1b48271268635514b96c3049d" title=" " alt="" coords="1040,891,1103,917"/>
-<area shape="rect" id="node47" href="$d2/d4d/file_8h.html#ad8536352138953346cca56ec5576eb89" title=" " alt="" coords="1482,992,1541,1019"/>
-<area shape="rect" id="node48" href="$d7/dcd/virtio_8h.html#a90c9d3888cc255a6b0ce0edf6f829634" title=" " alt="" coords="515,71,599,97"/>
-<area shape="rect" id="node5" href="$df/d26/fs_8h.html#a8379fc33406a014a1e8b899fe9dc814a" title=" " alt="" coords="1043,536,1100,563"/>
-<area shape="rect" id="node22" href="$df/d26/fs_8h.html#a73e9346902e5d64607762adfbc611489" title=" " alt="" coords="1042,587,1101,613"/>
-<area shape="rect" id="node6" href="$d4/d9e/sys__mknod_8c.html#ae92589973c691560ce2a6a97043872cf" title=" " alt="" coords="909,740,975,767"/>
-<area shape="rect" id="node7" href="$d7/d9f/fcntl_8h.html#a4e522854927c8a3a43847c39fe999391" title="Open a file." alt="" coords="915,639,969,665"/>
-<area shape="rect" id="node8" href="$d7/d9f/fcntl_8h.html#a0c7518235c1384debeb9e38b04623417" title="Create a new file or rewrite an existing one." alt="" coords="787,689,841,716"/>
-<area shape="rect" id="node12" href="$de/d77/ls_8c.html#a0dd2caa6531a27dcd755c46e814b63af" title=" " alt="" coords="795,1068,833,1095"/>
-<area shape="rect" id="node14" href="$d1/d8f/cat_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="787,456,841,483"/>
-<area shape="rect" id="node15" href="$d2/d56/sys__mkdir_8c.html#aee98bbe743c2d14dbaa67f01c3fb9ed5" title=" " alt="" coords="784,741,844,768"/>
-<area shape="rect" id="node10" href="$da/da9/os1_8h.html#a406c20548822065e144564476378f8a1" title=" " alt="" coords="160,281,223,308"/>
-<area shape="rect" id="node11" href="$d0/d29/main_8c.html#aa97e24fea4daabae6b4e5d534ac8066d" title="Kernel stack per CPU." alt="" coords="5,281,112,308"/>
-<area shape="rect" id="node13" href="$de/d77/ls_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="658,1068,713,1095"/>
-<area shape="rect" id="node18" href="$df/d03/proc_8h.html#a91f1ecf029d6974a6678b185397d2c8f" title="Allocate new proc structure and initialize." alt="" coords="389,281,467,308"/>
-<area shape="rect" id="node19" href="$da/d6f/unistd_8h.html#acd2e1ded4bb6fce4500438bf928330f4" title=" " alt="" coords="282,847,330,873"/>
-<area shape="rect" id="node21" href="$df/d03/proc_8h.html#a81c8a6a0cae413bc81aa223f7f7b7205" title="Allocate user page for first user&#45;mode process, init." alt="" coords="271,281,341,308"/>
-<area shape="rect" id="node20" href="$d8/d60/init_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="164,897,219,924"/>
-<area shape="rect" id="node23" href="$da/d6f/unistd_8h.html#a8c94afd0b7e5bb4ce95fefd964241f7f" title=" " alt="" coords="919,689,965,716"/>
-<area shape="rect" id="node25" href="$d7/dcd/virtio_8h.html#ad6b51fac330adaad6e8c3390fdbfa179" title=" " alt="" coords="772,157,856,184"/>
-<area shape="rect" id="node27" href="$df/d26/fs_8h.html#a73f693587ef4357633ceb1786d13efcd" title=" " alt="" coords="1044,941,1099,968"/>
-<area shape="rect" id="node28" href="$df/d03/proc_8h.html#af10928bf96b16a4464f21307cfe799d3" title="Execute a file." alt="" coords="784,897,844,924"/>
-<area shape="rect" id="node30" href="$da/d0a/vm_8h.html#abcc1fac65e3c6c00525c58749ae9f9db" title="Allocate a pages with the given order." alt="" coords="1163,283,1261,309"/>
-<area shape="rect" id="node32" href="$d2/dfe/alloc_8h.html#aed0eb7c3c621b7b0c8905f142b78fd5a" title="Initialize buddy allocator." alt="" coords="1317,333,1408,360"/>
-<area shape="rect" id="node34" href="$da/d0a/vm_8h.html#a6f021ed5330aa52b27837a6f991f1aa1" title="Free a pages with the given order." alt="" coords="1315,384,1410,411"/>
-<area shape="rect" id="node33" href="$da/d0a/vm_8h.html#aa40ad702f23c8e93eea74d40a0bb5ea4" title="Initialize the kernel memory allocator." alt="" coords="1169,333,1255,360"/>
-<area shape="rect" id="node38" href="$d9/d0e/sys__fstat_8c.html#ac1759a877da2f37512096f3a491e4112" title=" " alt="" coords="916,1119,968,1145"/>
-<area shape="rect" id="node42" href="$d1/dfb/sys__stat_8c.html#a3dc1b07404b646712a144e2057359876" title=" " alt="" coords="919,993,965,1020"/>
-<area shape="rect" id="node44" href="$df/d26/fs_8h.html#a7220afa8e5f4bea540eb95879ea7df6e" title=" " alt="" coords="1327,789,1398,816"/>
-<area shape="rect" id="node43" href="$da/d6f/unistd_8h.html#a87674838dd2bcf61e1a1fb5c9892ab6c" title=" " alt="" coords="904,892,980,919"/>
-<area shape="rect" id="node45" href="$df/d26/fs_8h.html#ab3c447f135c68e4c3c1f8d5866f6e77b" title=" " alt="" coords="1189,840,1235,867"/>
-<area shape="rect" id="node46" href="$df/d26/fs_8h.html#a522207c9de6e51d26c39080c953b7e40" title="Find empty direct entry in dip and return its offset in dip." alt="" coords="1028,739,1115,765"/>
-<area shape="rect" id="node50" href="$d2/d86/uart_8h.html#a102eccaa73ad8b455577c902fa56e333" title=" " alt="" coords="647,5,724,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="1712,314,1795,340"/>
+<area shape="rect" id="node2" href="$df/d1f/panic_8h.html#a92ad17d19a46880dd5e6c99143666b4a" title=" " alt="" coords="1607,554,1664,580"/>
+<area shape="rect" id="node49" href="$db/d11/printk_8h.html#a36fe4a3ea4506cb4d128b11f93187f71" title=" " alt="" coords="784,48,844,75"/>
+<area shape="rect" id="node3" href="$d2/d5a/fs_8c.html#a36f229bbda63818246ec86181b1fdd42" title="Free entry to map." alt="" coords="1309,579,1416,606"/>
+<area shape="rect" id="node4" href="$d2/d5a/fs_8c.html#a8e8a06c5de725cb453a74a2d455b41d1" title="Allocate new entry from map." alt="" coords="1324,478,1401,504"/>
+<area shape="rect" id="node9" href="$df/d26/fs_8h.html#a8fe154ec483a85a863311ef072a47c76" title=" " alt="" coords="787,639,841,666"/>
+<area shape="rect" id="node16" href="$db/dd8/syscall_8c.html#ae596b3527909b69c760d28d0e7dc7736" title=" " alt="" coords="652,934,719,960"/>
+<area shape="rect" id="node17" href="$d7/d0b/trap_8h.html#acfa5000a11c20f9f7f8775248e1a8075" title="Trap handler for user mode." alt="" coords="519,150,595,176"/>
+<area shape="rect" id="node24" href="$da/d6f/unistd_8h.html#abb39b21888372e95ad3e5c59b166f5c8" title=" " alt="" coords="915,200,969,227"/>
+<area shape="rect" id="node26" href="$df/d26/fs_8h.html#a3faf776bb14363fd149b07904e252884" title=" " alt="" coords="1183,630,1241,656"/>
+<area shape="rect" id="node29" href="$d2/dfe/alloc_8h.html#a492d78ef609946d35518ab7090e90669" title="Allocate memory region." alt="" coords="1313,326,1413,352"/>
+<area shape="rect" id="node31" href="$d2/dfe/alloc_8h.html#a22a6fdcb9cfeffb921e110c072a68b99" title="Deallocate memory region." alt="" coords="1464,420,1559,447"/>
+<area shape="rect" id="node35" href="$da/d6f/unistd_8h.html#aafbcde67669a1b96577e735ddebd8634" title=" " alt="" coords="914,1238,970,1264"/>
+<area shape="rect" id="node36" href="$d2/d4d/file_8h.html#a952c06132c0fe469e8aa14bdfc2dd0c9" title=" " alt="" coords="1042,731,1101,758"/>
+<area shape="rect" id="node37" href="$df/d26/fs_8h.html#aec001fd653f9a666e84e3a4012aac6ac" title=" " alt="" coords="1484,680,1539,707"/>
+<area shape="rect" id="node39" href="$d2/d5a/fs_8c.html#aedcebf5c9883811f75eddb545846c536" title="Find n in map is used or not." alt="" coords="1328,630,1397,656"/>
+<area shape="rect" id="node40" href="$df/d26/fs_8h.html#a005941ed6b951de6188291c240fb00e9" title=" " alt="" coords="1189,579,1235,606"/>
+<area shape="rect" id="node41" href="$df/d26/fs_8h.html#a0a9db2c1b48271268635514b96c3049d" title=" " alt="" coords="1040,934,1103,960"/>
+<area shape="rect" id="node47" href="$d2/d4d/file_8h.html#ad8536352138953346cca56ec5576eb89" title=" " alt="" coords="1482,1035,1541,1062"/>
+<area shape="rect" id="node48" href="$d7/dcd/virtio_8h.html#a90c9d3888cc255a6b0ce0edf6f829634" title=" " alt="" coords="515,23,599,50"/>
+<area shape="rect" id="node5" href="$df/d26/fs_8h.html#a8379fc33406a014a1e8b899fe9dc814a" title=" " alt="" coords="1043,579,1100,606"/>
+<area shape="rect" id="node22" href="$df/d26/fs_8h.html#a73e9346902e5d64607762adfbc611489" title=" " alt="" coords="1042,630,1101,656"/>
+<area shape="rect" id="node6" href="$d4/d9e/sys__mknod_8c.html#ae92589973c691560ce2a6a97043872cf" title=" " alt="" coords="909,782,975,808"/>
+<area shape="rect" id="node7" href="$d7/d9f/fcntl_8h.html#a4e522854927c8a3a43847c39fe999391" title="Open a file." alt="" coords="915,731,969,758"/>
+<area shape="rect" id="node8" href="$d7/d9f/fcntl_8h.html#a0c7518235c1384debeb9e38b04623417" title="Create a new file or rewrite an existing one." alt="" coords="787,782,841,808"/>
+<area shape="rect" id="node12" href="$de/d77/ls_8c.html#a0dd2caa6531a27dcd755c46e814b63af" title=" " alt="" coords="795,1136,833,1163"/>
+<area shape="rect" id="node14" href="$d1/d8f/cat_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="787,424,841,451"/>
+<area shape="rect" id="node15" href="$d2/d56/sys__mkdir_8c.html#aee98bbe743c2d14dbaa67f01c3fb9ed5" title=" " alt="" coords="784,832,844,859"/>
+<area shape="rect" id="node10" href="$da/da9/os1_8h.html#a406c20548822065e144564476378f8a1" title=" " alt="" coords="160,150,223,176"/>
+<area shape="rect" id="node11" href="$d0/d29/main_8c.html#aa97e24fea4daabae6b4e5d534ac8066d" title="Kernel stack per CPU." alt="" coords="5,150,112,176"/>
+<area shape="rect" id="node13" href="$de/d77/ls_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="658,1136,713,1163"/>
+<area shape="rect" id="node18" href="$df/d03/proc_8h.html#a91f1ecf029d6974a6678b185397d2c8f" title="Allocate new proc structure and initialize." alt="" coords="389,150,467,176"/>
+<area shape="rect" id="node19" href="$da/d6f/unistd_8h.html#acd2e1ded4bb6fce4500438bf928330f4" title=" " alt="" coords="282,934,330,960"/>
+<area shape="rect" id="node21" href="$df/d03/proc_8h.html#a81c8a6a0cae413bc81aa223f7f7b7205" title="Allocate user page for first user&#45;mode process, init." alt="" coords="271,150,341,176"/>
+<area shape="rect" id="node20" href="$d8/d60/init_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="164,984,219,1011"/>
+<area shape="rect" id="node23" href="$da/d6f/unistd_8h.html#a8c94afd0b7e5bb4ce95fefd964241f7f" title=" " alt="" coords="919,832,965,859"/>
+<area shape="rect" id="node25" href="$d7/dcd/virtio_8h.html#ad6b51fac330adaad6e8c3390fdbfa179" title=" " alt="" coords="772,200,856,227"/>
+<area shape="rect" id="node27" href="$df/d26/fs_8h.html#a73f693587ef4357633ceb1786d13efcd" title=" " alt="" coords="1044,1035,1099,1062"/>
+<area shape="rect" id="node28" href="$df/d03/proc_8h.html#af10928bf96b16a4464f21307cfe799d3" title="Execute a file." alt="" coords="784,984,844,1011"/>
+<area shape="rect" id="node30" href="$da/d0a/vm_8h.html#abcc1fac65e3c6c00525c58749ae9f9db" title="Allocate a pages with the given order." alt="" coords="1163,326,1261,352"/>
+<area shape="rect" id="node32" href="$d2/dfe/alloc_8h.html#aed0eb7c3c621b7b0c8905f142b78fd5a" title="Initialize buddy allocator." alt="" coords="1317,376,1408,403"/>
+<area shape="rect" id="node34" href="$da/d0a/vm_8h.html#a6f021ed5330aa52b27837a6f991f1aa1" title="Free a pages with the given order." alt="" coords="1315,427,1410,454"/>
+<area shape="rect" id="node33" href="$da/d0a/vm_8h.html#aa40ad702f23c8e93eea74d40a0bb5ea4" title="Initialize the kernel memory allocator." alt="" coords="1169,376,1255,403"/>
+<area shape="rect" id="node38" href="$d9/d0e/sys__fstat_8c.html#ac1759a877da2f37512096f3a491e4112" title=" " alt="" coords="916,1187,968,1214"/>
+<area shape="rect" id="node42" href="$d1/dfb/sys__stat_8c.html#a3dc1b07404b646712a144e2057359876" title=" " alt="" coords="919,1086,965,1112"/>
+<area shape="rect" id="node44" href="$df/d26/fs_8h.html#a7220afa8e5f4bea540eb95879ea7df6e" title=" " alt="" coords="1327,832,1398,859"/>
+<area shape="rect" id="node43" href="$da/d6f/unistd_8h.html#a87674838dd2bcf61e1a1fb5c9892ab6c" title=" " alt="" coords="904,984,980,1011"/>
+<area shape="rect" id="node45" href="$df/d26/fs_8h.html#ab3c447f135c68e4c3c1f8d5866f6e77b" title=" " alt="" coords="1189,883,1235,910"/>
+<area shape="rect" id="node46" href="$df/d26/fs_8h.html#a522207c9de6e51d26c39080c953b7e40" title="Find empty direct entry in dip and return its offset in dip." alt="" coords="1028,782,1115,808"/>
+<area shape="rect" id="node50" href="$d2/d86/uart_8h.html#a102eccaa73ad8b455577c902fa56e333" title=" " alt="" coords="647,99,724,126"/>
 </map>

@@ -173,17 +173,14 @@ u64 readi(struct inode *ip, char *dest, u64 offset, u64 size) {
 
     if ((ip->mode & S_IFMT) == S_IFCHR) {
         VERBOSE_PRINTK("readi: S_IFCHR\n");
-        for (u64 i = 0; i < size - 1; i++) {
+        for (u64 i = 0; i < size; i++) {
             // If character device read one by one.
             if (cdevsw[major(ip->dev)].read != NULL) {
                 dest[i] = cdevsw[major(ip->dev)].read();
             }
-            if (dest[i] == '\r') {
-                if (cdevsw[major(ip->dev)].write != NULL) {
-                    cdevsw[major(ip->dev)].write('\n');
-                }
-                dest[i] = '\0';
-                return i;
+            if (dest[i] == '\n') {
+								dest[i] = '\0';
+                return i + 1;
             }
         }
         dest[size - 1] = '\0';

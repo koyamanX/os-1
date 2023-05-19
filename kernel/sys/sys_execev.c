@@ -98,24 +98,6 @@ int execv(const char *file, char const **argv) {
     }
     kfree(phdr);
 
-#if 0
-    char *str1 = (char *)file;
-    char *str2 = "/hello.txt";
-    size_t n;
-    char *args[2];
-    n = strlen(str1) + 1;
-    sp -= n;
-    args[0] = (void *)sp;
-    copyout(str1, (void *)sp, n);
-    n = strlen(str2) + 1;
-    sp -= n;
-    args[1] = (void *)sp;
-    copyout(str2, (void *)sp, n);
-    n = sizeof(char *) * 2;
-    sp -= n;
-    copyout(args, (void *)sp, n);
-#endif
-
     rp->tf->sepc = ehdr.e_entry;
     rp->tf->sp = sp;
     rp->tf->a0 = argc;

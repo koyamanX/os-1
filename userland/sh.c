@@ -1,3 +1,4 @@
+#include <string.h>
 #include <unistd.h>
 
 int main(void) {
@@ -12,19 +13,13 @@ int main(void) {
     // line.
     read(0, input, 100);
 
-#if 0
-    if (strncmp(input, "reten", 6) == 0) {
+    if (strncmp(input, "contributors", strlen("contributors")) == 0) {
         write(1, "@DHA_DHA_DHA\n", 13);
         return 0;
-    } else if (strcmp(input, "koyaman") == 0) {
-        write(1, "@koyamanX\n", 10);
-        return 0;
     }
-#endif
 
     // Execute command using exec system call.
-    char *argv[] = {"/usr/sbin/cat", "/hello.txt", NULL};
-    execv(input, argv);
+    execv(input, NULL);
 
     return 0;
 }

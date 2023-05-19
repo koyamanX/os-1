@@ -9,6 +9,10 @@ OS-1 is a toy UNIX like operating system version 1.
 
 OS-1 is implemented in C and assembly for RISC-V qemu.
 
+OS-1 is still in development and may have bugs in kernel.
+
+If you find any bugs, please report us by opening issue.
+
 Supporting following features.
 - Round-robin scheduling
 - virtio-blk device dirver
@@ -68,9 +72,10 @@ RISC-V toolchain, qemu for RISC-V and minix3 kernel module is required to run os
 
 # Limitations
 
-- File larger than 8KB is not supported.
-- Directory holding over 128 entries is not supported.
+- File larger than 264KB is not supported.
 - uid/gid is set to user id and group id of root which is 0.
+- Permission is not checked for files.
+- argc, argv is partially supported.
 - Timestamp for file(atime,mtime and ctime) is not supported and always be constant 0 (1970/1/1).
 - Current working directory is not supported.
 - Relative path is not supported.

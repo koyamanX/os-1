@@ -48,6 +48,9 @@ void usertrap(void) {
         case ECALL_FROM_U_MODE: {
             rp->tf->sepc += 4;
             syscall(rp);
+            if (rp->stat == RUNNING) {
+                rp->stat = RUNNABLE;
+            }
             sched();
             break;
         }
@@ -58,7 +61,7 @@ void usertrap(void) {
             plic_complete(plic_claim());
             break;
         default: {
-            DEBUG_PRINTK("trap: fault: cause: %x, epc:%x, tval:%x\n",
+            printk("trap: fault: cause: %x, epc:%x, tval:%x\n",
                          r_scause(), r_sepc(), r_stval());
             panic("trap: Unimplemented trap");
             break;

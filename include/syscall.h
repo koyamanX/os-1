@@ -18,5 +18,6 @@
 #define __NR_SBRK 14
 #define __NR_BRK 15
 #define __NR_WAITPID 16
+#define __NR_IPC 17
 
 #endif

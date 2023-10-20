@@ -20,6 +20,7 @@ set(KERNEL_SOURCE
 	kmalloc.c
 	sleeplock.c
 	plic.c
+	ipc.c
 	trampoline.S
 	timer.S
 	swtch.S)

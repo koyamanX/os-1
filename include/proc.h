@@ -9,6 +9,7 @@
 
 #include <file.h>
 #include <riscv.h>
+#include <ipc.h>
 
 /**
  * @brief Struct for trapframe.
@@ -94,6 +95,9 @@ struct proc {
     u8 *kstack;                  //!< Pointer to per-process kernel stack.
     void *wchan;                 //!< Waiting channel.
     u64 ppid;                    //!< Parent process.
+    endpoint_t sendto;           //!< endpoint to send message.
+    endpoint_t recvfrom;         //!< endpoint to receive message.
+    message_t msg;               //!< message to send or receive.
 };
 
 #define UNUSED 0    //!< Proc struct is unused.

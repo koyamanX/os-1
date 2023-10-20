@@ -78,8 +78,14 @@ void ls(char *path) {
     close(fd);
 }
 
+#include <ipc.h>
+#include <string.h>
 int main(int argc, char *argv[]) {
-    ls("/");
+    message_t msg;
+    while(1) {
+        ipc(IPC_ANY, &msg, IPC_RECV);
+        printf("@@@: %s", msg.m1);
+    }
 
     return 0;
 }

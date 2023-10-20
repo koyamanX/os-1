@@ -6,6 +6,7 @@ int main(void) {
     // arguments.
     char input[100];
 
+loop:
     // Write prompt with write system call.
     write(1, "sh> ", 4);
 
@@ -18,8 +19,13 @@ int main(void) {
         return 0;
     }
 
-    // Execute command using exec system call.
-    execv(input, NULL);
+    // execute command in child process
+    if (fork() == 0) {
+        // Execute command using exec system call.
+        execv(input, NULL);
+    } else {
+        goto loop;
+    }
 
     return 0;
 }

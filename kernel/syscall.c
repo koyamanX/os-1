@@ -91,6 +91,10 @@ u64 syscall(struct proc *rp) {
             ret = waitpid(a0, (void *)va2pa(rp->pgtbl, a1), a2);
             rp->tf->a0 = ret;
             break;
+        case __NR_IPC:
+            ret = ipc(a0, (void *)va2pa(rp->pgtbl, a1), a2);
+            rp->tf->a0 = ret;
+            break;
         default:
             panic("invalid syscall\n");
             break;

@@ -27,6 +27,7 @@ add_library(gloss STATIC
 	waitpid.c
 	wait.c
 	write.S
+	ipc.S
 )
 
 target_include_directories(gloss PUBLIC

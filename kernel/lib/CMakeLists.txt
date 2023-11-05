@@ -10,6 +10,7 @@ add_library(lib STATIC
 	strcmp.c
 	strtok.c
 	strcpy.c
+	list.c
 	)
 
 target_include_directories(lib PUBLIC

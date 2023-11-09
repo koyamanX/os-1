@@ -6,4 +6,7 @@ os1/*
 init
 _build
 docs/*
+*.gcov
+coverage_report
 compile_commands.json
+.vscode

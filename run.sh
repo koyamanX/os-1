@@ -46,6 +46,7 @@ COMMANDS
 		info
 		warn
 		release
+	test
 	format
 	docs
 	gdb
@@ -98,6 +99,12 @@ run() {
 	$QEMU $QEMU_OPTS $@
 }
 
+test() {
+	pushd $BUILD_DIR
+	make test
+	popd
+}
+
 CMD=$1
 [ -n "$CMD" ] || usage
 if [ "$CMD" = "help" ]; then
@@ -116,6 +123,16 @@ CMD=$1
 if [ "$CMD" = "build" ]; then
 	shift
 	build $1
+	exit 0
+fi
+
+CMD=$1
+if [ "$CMD" = "test" ]; then
+	shift
+	if [ ! -d "$BUILD_DIR" ] ; then
+		build $1
+	fi
+	test
 	exit 0
 fi
 

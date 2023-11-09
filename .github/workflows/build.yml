@@ -38,3 +38,6 @@ jobs:
       - name: build for CI in docker
         if: matrix.in_docker == true
         run: ./run.sh build_in_docker
+      - name: test for CI
+        if: matrix.in_docker == false
+        run: ./run.sh test

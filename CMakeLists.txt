@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.22)
 project(OS-1 C ASM)
+enable_testing()
 
 if(NOT CMAKE_C_COMPILER_ID MATCHES GNU)
 	message(FATAL_ERROR "Unsupported compiler: ${CMAKE_C_COMPILER_ID}")

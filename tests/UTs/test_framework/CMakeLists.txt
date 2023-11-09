@@ -1,0 +1,2 @@
+add_library(test_framework STATIC test_framework.c)
+target_include_directories(test_framework PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

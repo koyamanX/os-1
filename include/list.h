@@ -1,6 +1,8 @@
 #ifndef LIST_H
 #define LIST_H
 
+#include <stddef.h>
+
 typedef struct list_elem {
     struct list_elem *prev;
     struct list_elem *next;
@@ -24,5 +26,6 @@ typedef list_elem_t list_t;
 void list_init(list_t *list);
 void list_push_back(list_t *list, list_elem_t *elem);
 list_elem_t *list_pop_front(list_t *list);
+int list_remove(list_elem_t *elem);
 
 #endif // LIST_H

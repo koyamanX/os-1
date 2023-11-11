@@ -129,11 +129,6 @@ void initproc(void);
  */
 void initcpu(void);
 /**
- * @brief Initialize vritual memory for first user process, init.
- * @return Pointer to pagetable.
- */
-pagetable_t uvminit(void);
-/**
  * @brief Allocate new proc structure and initialize.
  * @details Allocate new proc structure and initialize.
  * @return newly created proc.

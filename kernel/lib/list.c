@@ -7,32 +7,24 @@ void list_init(list_t *list) {
 
 void list_push_back(list_t *list, list_elem_t *elem) {
     elem->prev = list->prev;
-    elem->next = list;
-    list->prev->next = elem;
+    elem->next = list->next;
     list->prev = elem;
+    list->next = elem;
 }
 
 list_elem_t *list_pop_front(list_t *list) {
-    if(LIST_EMPTY(list)) {
+    list_t *head = list->next;
+    
+    if(head == list) {
         return NULL;
     }
-    list_elem_t *elem = list->next;
-    if(list_remove(elem) == 0) {
-        return NULL;
-    }
 
-    return elem;
-}
+    list_t *next = head->next;
+    list->next = next;
+    next->prev = list;
 
-int list_remove(list_elem_t *elem) {
-    if(elem->prev == NULL || elem->next == NULL) {
-        return 0;
-    }
-    elem->prev->next = elem->next;
-    elem->next->prev = elem->prev;
+    head->prev = NULL;
+    head->next = NULL;
 
-    elem->prev = NULL;
-    elem->next = NULL;
-
-    return 1;
+    return head;
 }
